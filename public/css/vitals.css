@@ -1,0 +1,274 @@
+*{
+    font-family: "Montserrat", sans-serif;
+}
+.navbar{
+    text-align: center;
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+}
+.top{
+  margin-top: 4%;
+}
+.top table{
+    border-collapse: collapse;
+    border: none;
+}
+.links{
+    margin-right: 5%;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    width: 45%;
+}
+.links ul li{
+    display: inline-block;
+    list-style-type: none;
+    margin-right: 10%;
+    padding-top: 3%;
+}
+.container{
+    display: flex;
+}
+.statusbar{
+    width: 15%;
+    margin-left: 2%;
+}
+.statusbar div{
+    margin-bottom: 10%;
+}
+.home{
+    display: flex;
+    justify-content: space-around;
+    height: 5%px;
+    width: 5%px;
+}
+.home p{
+    font-weight: 400;
+}
+.homepng{
+    margin-top: 6%;
+}
+.patients{
+    display: flex;
+    justify-content: space-around;
+    height: 5%px;
+    width: 5%px;
+}
+.patients p{
+    font-weight: 400;
+}
+.patientpng{
+    margin-top: 6%;
+}
+
+.app{
+    display: flex;
+    justify-content: space-around;
+    height: 5%px;
+    width: 5%px;
+}
+.app p{
+    font-weight: 400;
+}
+.apppng{
+    margin-top: 6%;
+}
+.billing{
+    display: flex;
+    justify-content: space-around;
+    height: 5%px;
+    width: 5%px;
+}
+.billing p{
+    font-weight: 400;
+}
+.billingpng{
+    margin-top: 6%;
+}
+.records{
+    display: flex;
+    justify-content: space-around;
+    height: 5%px;
+    width: 5%px;
+}
+.records p{
+    font-weight: 400;
+}
+.recordspng{
+    margin-top: 6%;
+}
+.patientBtn{
+  padding: 15px 55px;
+  background-color: green;
+  border-radius: 10px;
+  border: 1px solid green;
+  position: absolute;
+  bottom: 15%;
+  color: #ccc;
+  margin-left: 1%;
+}
+.searchbox{
+    width: 60%;
+    margin-left: 5%;
+}
+.searchbox input{
+    padding: 2% 15px;
+    width: 60%;
+    border: 1px solid;
+    border-radius: 10px;
+}
+.searchdiv{
+    display: flex;
+    background-color: #cccc;
+    width: 120%;
+    height: 15%;
+    border: 1px solid #cccc;
+    border-radius: 10px;
+    justify-content: space-between;
+}
+/* .searchpng{
+   margin-top: 1%;
+   margin-left: 1%;
+} */
+.searchinp{
+    background-color: #cccc;
+    margin-left: 3%;
+    color: black;
+}
+.searchdiv input{
+    outline:0px solid #cccc;
+    border: none;
+    width: 50%;
+}
+.searchButton{
+    width: 5%;
+    padding: 5px 10px;
+    background-color: green;
+}
+input [type="text"]{
+    border: none;
+}
+.flexside{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5%;
+}
+/* .flexside table{
+    border: 1px solid black;
+} */
+.flexside table {
+  border-collapse: collapse; /* Ensures borders don't overlap */
+  /*width: 70%; /* Adjust width as needed */
+ /* margin: 0 auto; /* Centers the table horizontally */
+}
+.flexside .left{
+  float: left;
+}
+
+.flexside .right{
+  float: right;
+}
+.flexside th, td {
+  border: 1px solid black; /* Adds borders to all cells */
+  padding: 10px; /* Adds padding for spacing around content */
+  text-align: left; /* Aligns content to the left by default */
+}
+
+.flexside th {
+  background-color: #f0f0f0; /* Adds a light gray background to headers */
+  font-weight: bold; /* Makes header text bold */
+}
+.flexbox2{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4%;
+}
+.flexbox2 .flexleft{
+  float:left
+}
+.flexbox2 .flexright{
+  float: right;
+}
+.flexbox2 table {
+    /* width: 25vw; */
+    border-collapse: collapse; /* Ensures borders don't overlap */
+    /*width: 100%; /* Adjust width as needed */
+    /*margin: 0 auto; /* Centers the table horizontally */
+  }
+  
+  .flexbox2 th, td {
+    border: 1px solid black; /* Adds borders to all cells */
+    padding: 10px; /* Adds padding for spacing around content */
+    text-align: left; /* Aligns content to the left by default */
+  }
+  
+  .flexbox2 th {
+    background-color: #f0f0f0; /* Adds a light gray background to headers */
+    font-weight: bold; /* Makes header text bold */
+  }
+  .flexbox3 table {
+    border-collapse: collapse; /* Ensures borders don't overlap */
+    /*width: 100%; /* Adjust width as needed */
+    margin: 0 auto; /* Centers the table horizontally */
+  }
+  
+  .flexbox2 th, td {
+    border: 1px solid black; /* Adds borders to all cells */
+    padding: 10px; /* Adds padding for spacing around content */
+    text-align: left; /* Aligns content to the left by default */
+  }
+  
+  .flexbox2 th {
+    background-color: #f0f0f0; /* Adds a light gray background to headers */
+    font-weight: bold; /* Makes header text bold */
+  }
+  /* th .cyl{
+    width: 10%;
+  } */
+  .flexbox3{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5%;
+  }
+  .flexbox3 table {
+    width: 25vw;
+    border-collapse: collapse; /* Ensures borders don't overlap */
+    /*width: 100%; /* Adjust width as needed */
+    margin: 0 auto; /* Centers the table horizontally */
+  }
+  
+  .flexbox3 th, td {
+    border: 1px solid black; /* Adds borders to all cells */
+    padding: 10px; /* Adds padding for spacing around content */
+    text-align: left; /* Aligns content to the left by default */
+  }
+  
+  .flexbox3 th {
+    background-color: #f0f0f0; /* Adds a light gray background to headers */
+    font-weight: bold; /* Makes header text bold */
+  }
+.flexbox4{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8%;
+}
+.flexbox4 table {
+    width: 25vw;
+    border-collapse: collapse; /* Ensures borders don't overlap */
+    /*width: 100%; /* Adjust width as needed */
+    margin: 0 auto; /* Centers the table horizontally */
+  }
+  
+  .flexbox4 th, td {
+    border: 1px solid black; /* Adds borders to all cells */
+    padding: 10px; /* Adds padding for spacing around content */
+    text-align: left; /* Aligns content to the left by default */
+  }
+  
+  .flexbox4 th {
+    background-color: #f0f0f0; /* Adds a light gray background to headers */
+    font-weight: bold; /* Makes header text bold */
+  }
+  .time{
+     margin-top: 10%;
+  }

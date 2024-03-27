@@ -1,0 +1,250 @@
+/* Reset default styles */
+* {
+    font-family: "Montserrat", sans-serif;
+  }
+a {
+  text-decoration: none;
+}  
+.navbar{
+    display: flex;
+    justify-content: space-between;
+}
+.logo{
+  margin-top: -5%;
+}
+.name{
+    margin-left: 5%;
+    font-family: "Montserrat", sans-serif;
+}
+.links{
+    margin-right: 5%;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    width: 40%;
+    width:45%;
+}
+.links ul li{
+    display: inline-block;
+    list-style-type: none;
+    margin-right: 10%;
+    padding-top: 3%;
+
+}
+hr{
+    border: 1px solid #ccc;
+    margin: 20px 0;
+    margin-top: -2%;
+    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); */
+}
+.patientLabel{
+    font-weight: 400;
+}
+.form{
+    display: grid;
+    place-items: center;
+    margin-right: 7%;
+    margin-top: 5%;
+}
+.fnlabel{
+    font-weight: 500;
+}
+.fninput{
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    width: 150%;
+    margin-top: 2%;
+    outline: none;
+}  
+.lnlabel{
+    font-weight: 500;
+    padding-top: 50%;
+}
+.lninput{
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    width: 150%;
+    margin-top: 2%;
+    outline: none;
+}
+.doblabel{
+  font-weight: 500;
+    padding-top: 50%;
+}
+.dobinput{
+  border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    width: 150%;
+    margin-top: 2%;
+    outline: none;
+}
+.male{
+  border: 1px solid #ccc;
+  height: 5%;
+  width: 150%;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 5%;
+}
+.female{
+  border: 1px solid #ccc;
+  height: 5%;
+  width: 150%;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 5%;
+}
+.contactInfo{
+  display: flex;
+  width: 150%;
+  margin-top: 4%;
+  /* justify-content: space-between; */
+}
+.phoneinput{
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  width: 150%;
+  margin-top: 2%;
+  outline: none;
+}
+.email{
+  margin-left: 25%;
+}
+.emailinput{
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  width: 150%;
+  margin-top: 2%;
+  outline: none;
+}
+.adlabel{
+  font-weight: 500;
+}
+.adl{
+  margin-top: 3%;
+}
+.cityAndstate{
+  display: flex;
+  width: 150%;
+  margin-top: 2%;
+}
+.cityinput{
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  width: 150%;
+  margin-top: 2%;
+  outline: none;
+}
+.state{
+  margin-left: 25%;
+}
+.stateinput{
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  width: 150%;
+  margin-top: 2%;
+  outline: none;
+}
+.street{
+  margin-top: 3%;
+}
+.occ{
+    margin-top: 2%;
+}
+.occinput{
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  width: 150%;
+  margin-top: 2%;
+  outline: none;
+}
+.streetinput{
+  border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    width: 150%;
+    margin-top: 2%;
+    outline: none;
+}
+.emergencyContact{
+  display: flex;
+  width: 150%;
+  margin-top: 5%;
+}
+.emergencyLabel{
+  margin-top: 7%;
+  font-weight: 500;
+}
+.efninput{
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  width: 150%;
+  margin-top: 2%;
+  outline: none;
+}
+.relationship{
+  margin-left: 25%;
+}
+.relationshipinput{
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  width: 150%;
+  margin-top: 2%;
+  outline: none;
+}
+.buttons{
+  margin-top: 7%;
+}
+.genbtn{
+  padding: 10px 10px;
+  background-color: green;
+  border-radius: 5px;
+  border: 1px solid green;
+}
+.save{
+  padding: 10px 10px;
+  background-color: orange;
+  border-radius: 5px;
+  border: 1px solid orange;
+  margin-left: 4%;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th, td {
+  border: 1px solid black;
+  padding: 5px;
+  text-align: left;
+}
+  /* Responsive styles
+  @media (max-width: 768px) {
+    .form-group {
+      flex: 1 0 100%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 20px;
+    }
+    label {
+      font-size: 14px;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select {
+      font-size: 14px;
+    }
+  }
+   */

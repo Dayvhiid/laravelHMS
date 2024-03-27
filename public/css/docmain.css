@@ -1,0 +1,109 @@
+/* Reset default styles */
+* {
+    font-family: "Montserrat", sans-serif;
+    background-color: red;
+  }
+a {
+  text-decoration: none;
+}  
+.navbar{
+    /* display: flex; */
+    justify-content: space-between;
+}
+.logo{
+  margin-top: -5%;
+}
+.links{
+    margin-right: 5%;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    width: 40%;
+    width:45%;
+}
+.links ul li{
+    display: inline-block;
+    list-style-type: none;
+    margin-right: 10%;
+    padding-top: 3%;
+
+}
+.container{
+  display: flex;
+  justify-content: space-between;
+}
+.home{
+  display: flex;
+  justify-content: space-around;
+  height: 5%px;
+  width: 5%px;
+}
+.home p{
+  font-weight: 400;
+}
+.homepng{
+  margin-top: 6%;
+}
+.statusbar{
+  width: 15%;
+  margin-left: 2%;
+}
+.statusbar div{
+  margin-bottom: 20%;
+}
+hr{
+  border: 1px solid #ccc;
+  margin: 20px 0;
+  margin-top: -4%;
+}
+.patients{
+  display: flex;
+  justify-content: space-around;
+  height: 5%px;
+  width: 5%px;
+}
+.patients p{
+  font-weight: 400;
+}
+.patientpng{
+  margin-top: 6%;
+}
+.app{
+  display: flex;
+  justify-content: space-around;
+  height: 5%px;
+  width: 5%px;
+}
+.app p{
+  font-weight: 400;
+}
+.apppng{
+  margin-top: 6%;
+}
+.billing{
+  display: flex;
+  justify-content: space-around;
+  height: 5%px;
+  width: 5%px;
+}
+.billing p{
+  font-weight: 400;
+}
+.billingpng{
+  margin-top: 6%;
+}
+.patientBtn{
+  padding: 15px 55px;
+  background-color: green;
+  border-radius: 10px;
+  border: 1px solid green;
+  position: absolute;
+  bottom: 15%;
+  color: #ccc;
+  margin-left: 1%;
+}
+/* .content{
+ 
+} */
+.slb{
+  text-align: center;
+}
