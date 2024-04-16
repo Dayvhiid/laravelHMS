@@ -97,15 +97,16 @@
 .recordspng{
     margin-top: 6%;
 }
-.patientBtn{
+.saveBtn{
   padding: 15px 55px;
   background-color: green;
   border-radius: 10px;
   border: 1px solid green;
-  position: absolute;
-  bottom: 15%;
   color: #ccc;
-  margin-left: 1%;
+}
+.save{
+  margin-left: 9%;
+  margin-top: 2%;
 }
 #btn-success{
   /* padding: 5px 5px; */
@@ -117,7 +118,9 @@
 }
 .searchbox{
     width: 60%;
-    margin-left: 5%;
+    /* margin-left: 5%; */
+    margin-left:10%;
+    margin-right: auto;
 }
 .searchbox input{
     padding: 2% 15px;
@@ -158,6 +161,7 @@ input [type="text"]{
 }
 .flexside{
     display: flex;
+    width: 150%;
     justify-content: space-between;
     margin-top: 5%;
 }
@@ -175,6 +179,7 @@ input [type="text"]{
 
 .flexside .right{
   float: right;
+  margin-left: 15%;
 }
 .flexside th, td {
   border: 1px solid black; /* Adds borders to all cells */
@@ -189,6 +194,7 @@ input [type="text"]{
 .flexbox2{
     display: flex;
     justify-content: space-between;
+    width: 140%;
     margin-top: 4%;
 }
 .flexbox2 .flexleft{
@@ -196,6 +202,7 @@ input [type="text"]{
 }
 .flexbox2 .flexright{
   float: right;
+  margin-left: 10%;
 }
 .flexbox2 table {
     /* width: 25vw; */
@@ -236,7 +243,8 @@ input [type="text"]{
   .flexbox3{
     /* display: flex; */
     justify-content: space-between;
-    margin-top: 5%;
+    margin-top: 0%;
+    width: 120%;
   }
   .flexbox3 div{
     /* margin-left: 5%; */
@@ -303,10 +311,10 @@ input [type="text"]{
         <h2>Diagnosis Vitals</h2>
         <div class="links">
             <ul>
-                <li> New Patients</li>
-                <li>Records</li>
-                <li>Invoice</li>
-                <li>Inventory</li>
+              {{-- <li><a class="nav-link" href="{{route('doctors.index')}}">Home</a></li> --}}
+              <li><a class="nav-link" href="{{route('doctors.treatment')}}">Treatment Plan</a></li>
+              <li><a class="nav-link" href="{{route('search.vitals')}}">Vitals Records</a></li>
+              <li><a class="nav-link" href="{{route('search.treatment')}}">Treatment Records</a></li>
             {{-- <button class="doc" onclick="window.location.href='/HMS/hospital/doc.html'">
               <img src="/HMS/hospital/images/doctor.png" height="35px" width="35px">
             </button> --}}
@@ -314,7 +322,7 @@ input [type="text"]{
         </div>
     </div>
     <div class="container">
-    <div class="statusbar">
+    {{-- <div class="statusbar">
           <div class="home">
             <img height="35px" width="35px" class="homepng" src="/hospital/images/house.png">
             <p>Home</p>
@@ -339,20 +347,23 @@ input [type="text"]{
             <img height="35px" width="35px" class="recordspng" src="/hospital/icons/search-interface-symbol.png">
             <p>Records</p>
           </div>
-          <div class="button">
-            <input type="submit" class="patientBtn" value="New Patient" onclick="window.location.href='/HMS/hospital/newPatient.php';">
-          </div>
+          <div class="button"> --}}
+            {{-- <input type="submit" class="patientBtn" value="New Patient" onclick="window.location.href='/HMS/hospital/newPatient.php';">
+          </div> --}}
        </div>
        <div class="searchbox">
-          <h2>Search Patients</h2>
+         
         
          
         <div>  
          
-<form method="post">  
+<form method="post" action="{{route('vitals.store')}}">  
+  @csrf
+  @method('POST')
+  <div></div>
   <div class="search"> 
-    <input type="text" placeholder="Enter patient ID" name="pid">
-    <input type="submit" id="btn-success" value="SAVE">
+    <input type="text" placeholder="Enter patient ID" name="patient_code">
+    
    </div>
 <label id="status"></label>   
          <div class="top">
@@ -384,7 +395,7 @@ input [type="text"]{
          <div class="flexside">
             <div class="left">
             <label>VISUAL ACTIVITY</label>
-            <table width="70%">
+            <table width="130%">
             <tr>
                 <th></th>
                 <th>UNAIDED</th>
@@ -656,7 +667,7 @@ input [type="text"]{
 
                     <tr>
                         <td>Macula</td>
-                        <td><input type="text" name="maculaod"></td>
+                        <td><input type="text" name="macularod"></td>
                         <td><input type="text" name="maculaos"></td>
                     </tr>
                     </table>
@@ -673,7 +684,7 @@ input [type="text"]{
 
                     <tr>
                         <td>OD</td>
-                        <td><input type="text" name="odcct"></td>
+                        <td><input type="text" name="odccct"></td>
                         <td><input type="text" name="odnct"></td>
                     </tr>
 
@@ -698,110 +709,12 @@ input [type="text"]{
                </div>
 
        </div>
-
+      <div class="save">
+        <input type="submit" class="saveBtn" id="btn-success" value="SAVE">
+      </div>
     </div>
  </form> 
 
- <script>
-     $(document).ready(function (){
-        $('#saveBtn').click(function(e) {
-           e.preventDefault()
-           var pid = $('input[name=pid]').val();
-           var cc = $('input[name=cc]').val();
-           var pohx = $('input[name=pohx]').val();
-           var lee = $('input[name=lee]').val();
-           var pmhx = $('input[name=pmhx]').val();
-           var pfohx = $('input[name=pfohx').val();
-           //visual activity
-           var ODunaided = $('input[name=ODunaided]').val();
-           var ODpinhole = $('input[name=ODpinhole]').val();
-           var ODnearva = $('input[name=ODnearva]').val();
-           var OSunaided = $('input[name=OSunaided]').val();
-           var OSpinhole = $('input[name=OSpinhole]').val();
-           var OSnearva = $('input[name=OSnearva]').val();
-           //LENSOMETRY
-           var odsph = $('input[name=ODSPH]').val();
-           var odcyl = $('input[name=ODCYL]').val();
-           var odaxis = $('input[name=ODAXIS]').val();
-           var odva = $('input[name=ODVA]').val();
-           var ossph = $('input[name=OSSPH]').val();
-           var oscyl = $('input[name=OSCYL]').val();
-           var osaxis = $('input[name=OSAXIS]').val();
-           var osva = $('input[name=OSVA]').val();
-           var addsph = $('input[name=ADDSPH]').val();
-           var addcyl = $('input[name=ADDCYL]').val();
-           var addaxis = $('input[name=ADDAXIS]').val();
-           var addva = $('input[name=ADDVA]').val();
-           //AUTO-REFRACTION
-           var arodsph = $('input[name=arodsph]').val();
-           var arodcyl = $('input[name=arodcyl]').val();
-           var arodaxis = $('input[name=arodaxis]').val();
-           var arossph = $('input[name=arossph]').val();
-           var aroscyl = $('input[name=aroscyl]').val();
-           var arosaxis = $('input[name=arosaxis]').val();
-           //RETINOSCOPE
-           var rodsph = $('input[name=rodsph]').val();
-           var rodcyl = $('input[name=rodcyl]').val();
-           var rodaxis = $('input[name=rodaxis]').val();
-           var rossph = $('input[name=rossph]').val();
-           var roscyl = $('input[name=roscyl]').val();
-           var rosaxis = $('input[name=rosaxis]').val();
-           $.ajax({
-                type:"POST",
-                url: "vitalspush.php",
-                data: {
-                    "save_btn_post":  1,
-                    "pid": pid,
-                     "cc": cc,
-                     "pohx": pohx,
-                     "lee": lee,
-                     "pmhx":pmhx,
-                     "pfohx":pfohx,
-                     //VISUAL ACTIVITY
-                     "ODunaided": ODunaided,
-                     "ODpinhole":ODpinhole,
-                     "ODnearva":ODnearva,
-                     "OSunaided": OSunaided,
-                     "OSpinhole": OSpinhole,
-                     "OSnearva":OSnearva,
-                     //LENSOMETRY
-                     "odsph": odsph,
-                     "odcyl":odcyl,
-                     "odaxis": odaxis,
-                     "odva":odva,
-                     "ossph": ossph,
-                     "oscyl":oscyl,
-                     "osaxis": osaxis,
-                     "osva":osva,
-                     "addsph": addsph,
-                     "addcyl":addcyl,
-                     "addaxis":addaxis,
-                     "addva":addva,
-                     //AUTO-REFRACTION
-                     "arodsph":arodsph,
-                     "arodcyl":arodcyl,
-                     "arodaxis":arodaxis,
-                     "arossph":arossph,
-                     "aroscyl":aroscyl,
-                     "arosaxis":arosaxis,
-                     //RETINOSCOPE
-                     "rodsph":rodsph,
-                     "rodcyl":rodcyl,
-                     "rodaxis":rodaxis,
-                     "rossph":rossph,
-                     "roscyl":roscyl,
-                     "rosaxis":rosaxis,
-                     
-                },
-                dataType: "text",
-                success: function (response){
-                    $('#status').html(response);
-                    console.log("success");
-                }
-           })
-        })
-     })
- </script>
 </body>
 </html>
 

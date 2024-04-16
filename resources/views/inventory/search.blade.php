@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="container">
-        <form action="{{route('inventory.find')}}" type="get">
+        <form action="{{route('public.records')}}" type="get">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             <table class="table">

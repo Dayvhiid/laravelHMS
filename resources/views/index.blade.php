@@ -13,10 +13,10 @@
 }
 
 .logo {
-    width: 140px;
+    /* width: 140px; */
     position: absolute;
-    top: 4%;
-    left: 5%;
+    top: -2%;
+    left: 0%;
 }
 
 .banner-text {
@@ -305,6 +305,8 @@ hr {
     line-height: 35px;
 }
 
+
+
 @media screen and (max-width: 770px) {
     .banner-text h1 {
         font-size: 44px;
@@ -339,6 +341,7 @@ hr {
         margin: 5px auto;
     }
 }
+
 </style>
 <!DOCTYPE html>
 <html lang="en">
@@ -358,7 +361,7 @@ hr {
 
 <body>
     <section id="banner">
-        <img src="sophialogo.png" height="125px" class="logo">
+        <img src="/icons/logo.png" height="300px" width="300px" class="logo">
         <div class="banner-text">
             <h1>Ola <span>Oluwa</span></h1>
             <p>Your eye is just a pair, no spare, take care.</p>
@@ -403,6 +406,7 @@ hr {
                 <li><a href="video.html">Video</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
                 <li><a href="#footer">Contact Us</a></li>
+                <li><a href="{{route('booking')}}">Book Appointment</a></li>
             </ul>
         </nav>
     </div>

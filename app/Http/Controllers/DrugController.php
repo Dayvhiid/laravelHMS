@@ -22,6 +22,7 @@ class DrugController extends Controller
         foreach($request->inputs as $key => $value){
             Drug::create($value);
         }
+        return redirect(route('pages.status'))->with('success', 'Drug List updated succefully');
     }
     public function list(){
         $drugs = Drug::paginate(9);
@@ -40,5 +41,6 @@ class DrugController extends Controller
     }
     public function destroy(Drug $drugs){
           $drugs->delete();
+          return redirect(route('doctors.list'));
     }
 }

@@ -30,7 +30,7 @@ class PagesController extends Controller
         $patient_info->emergency_email = $request->input('ee'); 
         // error_log($patient_info->patient_id);
         $patient_info->save();
-        return redirect(route('pages.edit'))->with('msg','Data saved succesfully');        
+        return redirect(route('pages.status'))->with('success','Data saved succesfully');        
     }
     public function edit(){
         $data = PatientInfo::latest()->first();

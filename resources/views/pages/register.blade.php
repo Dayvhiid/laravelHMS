@@ -17,13 +17,14 @@
 </head>
 <body>
     <div class="navbar">
-        {{-- <img class="logo" src="/hospital/images/IMG_2260.PNG.png" height="300px" width="300px"> --}}
+        <img class="logo" src="/icons/logo.png" height="300px" width="300px">
         <div class="links">
             <ul>
-                    <li><a href="{{ route('doctors.invoice') }}">Invoice</a></li>
-                    <li>Records</a></li>
-                    <li><a href="{{ route('doctors.signup') }}">Doctors Portal</a></li>
-                    <li><a href="{{ route('doctors.inventory') }}">Inventory</a></li>
+                    <li><a href="{{ route('generate.show') }}">Invoice</a></li>
+                    <li><a href="{{ route('public.records') }}">Records</a></li>
+                    <li><a href="{{ route('doctors.signin') }}">Doctors Portal</a></li>
+                    <li><a href="{{ route('testing') }}">Inventory</a></li>
+                    {{-- <li><a href="{{ route('doctors.drugs') }}">Drug</a></li> --}}
             </ul>
         </div>
     </div>
@@ -119,7 +120,7 @@
            $currentDate = date('m/Y');
            $patientID = $random_number."/".$currentDate;
         @endphp
-        <div class="email">
+        <div class="pid">
             <label>PatientID:</label><br>
             <input type="input" placeholder="Enter Email"class="emailinput" value="<?php echo $patientID ?>"  name="pid" readonly>
         </div>
@@ -128,7 +129,7 @@
               
         </script>
         <div class="buttons">
-            <input type="button" class="genbtn" value="Generate Patient ID" id="generateButton" >
+            {{-- <input type="button" class="genbtn" value="Generate Patient ID" id="generateButton" > --}}
             <input type="submit" class="save" value="Register Patient" name="submitBtn">
         </div>
         <div id="generated-number">

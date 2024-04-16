@@ -46,6 +46,12 @@
     .select-options li:last-child {
       border-bottom: none;
     }
+    ul li{
+      list-style: none;
+    }
+    a{
+      text-decoration: none;
+    }
 </style>
 </style>
 <!DOCTYPE html>
@@ -77,6 +83,9 @@
                 <p>{{ Session::get('success')}}</p>
             </div>
         @endif
+        <ul>
+          <li><a href="{{ route('doctors.list') }}">Drug List</a></li>
+        </ul>
             <table class="table table-bordered" id="table">
                 <tr>
                     <th>SN</th>
@@ -105,7 +114,10 @@
                 </tr>
             </table>
             <button type="submit" class="btn btn-primary col-md-2">Save</button>
-    </form>        
+    </form>      
+
+   
+
     <script>
         var rowCounter = 0;
       

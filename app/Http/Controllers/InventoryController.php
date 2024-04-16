@@ -28,6 +28,7 @@ class InventoryController extends Controller
         foreach($request->inputs as $key => $value){
             Test::create($value);
         }
+        return redirect(route('inventory.list'));
        
     }
     public function search(){
@@ -38,5 +39,14 @@ class InventoryController extends Controller
         $drugs = Drug::where('name','LIKE', '%'.$search_text.'%')->get();
         return view('inventory.find', compact('drugs'));
         // return view('products.search', compact('products'));
+    }
+    public function list(){
+        $item = Test::paginate(9);
+        return view('inventory.list', ['item' => $item]);
+    }
+    public function delete($item){
+       $test = Test::find($item);
+       $test->delete();
+       return redirect(route('inventory.list'));
     }
 }

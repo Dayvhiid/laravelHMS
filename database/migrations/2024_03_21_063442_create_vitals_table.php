@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('vitals', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('patient_code');
-            $table->foreign('patient_code')->references('pid')->on('patient_infos');
+            $table->string('patient_code')->unique();
+            // $table->foreignId('patient_code')->constrined()->onDelete('cascade');
             // case history
             $table->text('cc');
             $table->text('pohx');

@@ -10,7 +10,7 @@
 </head>
 <body class="bg-light">
     <div class="mt-5 .rounded">
-        <form class="w-50 mx-auto border rounded-lg p-5 " method="POST" action="{{route('doctors.store')}}">
+        <form class="w-50 mx-auto border rounded-lg p-5 " method="POST" action="{{route('doctors.data')}}">
           @csrf
           @method('POST')
             <div class="form-group">
@@ -26,7 +26,7 @@
                 <input type="password" class="form-control" name="confirm_password" placeholder="Password">
               </div>
            <div class="d-flex">
-            <button type="submit" class="btn btn-primary">Sign Up</button>
+            <button type="submit" class="btn btn-primary" >Sign Up</button>
            </div>
           </form>
           <a href="{{ route('doctors.signin') }}">Sign In</li>   
