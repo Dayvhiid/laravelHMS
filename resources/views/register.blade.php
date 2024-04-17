@@ -23,7 +23,7 @@
             @method('POST')
               <div class="form-group">
                 <label for="exampleInputEmail1">Full Name</label>
-                <input type="text" class="form-control" name="name" aria-describedby="emailHelp" placeholder="Enter email">
+                <input type="text" class="form-control" name="name" aria-describedby="emailHelp" placeholder="Enter name">
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
@@ -37,7 +37,7 @@
               <button type="submit" id="signup" class="btn btn-primary" >Sign Up</button>
              </div>
              <div class="signin">
-              <a href="{{ route('doctors.signin') }}">Sign In</li>   
+              <a href="{{ route('register.signin') }}">Sign In</li>   
             </div>
             </form>
             
