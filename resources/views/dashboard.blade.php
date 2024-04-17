@@ -71,7 +71,7 @@ body {
 <body>
   <header class="header">
     <h2 class="header__title">Dashboard</h2>
-    <a href="#" class="header__link">Click to proceed</a>
+    <a href="{{route('pages.register')}}" class="header__link">Click to proceed</a>
   </header>
   <main class="content">
     <div class="content__container">
