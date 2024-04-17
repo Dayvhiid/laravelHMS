@@ -26,5 +26,6 @@ class messagingController extends Controller
         $appointment->complaints = $request->input('complaints');
         $appointment->phone_number = $request->input('phone');
         $appointment->save();
+        return redirect(route('pages.status'))->with('success', 'Date captured we will get in touch with you soon ');
     }
 }
