@@ -366,7 +366,7 @@ hr {
             <h1>Ola <span>Oluwa</span></h1>
             <p>Your eye is just a pair, no spare, take care.</p>
             <div class="banner-btn">
-                <a  href="{{ route('login') }}"><span></span>Login</a>
+<!--                 <a  href="{{ route('login') }}"><span></span>Login</a> -->
                 <a href="{{ route('pages.register') }}"><span></span> Register</a>
             </div>
         </div>
