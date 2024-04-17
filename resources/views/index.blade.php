@@ -363,7 +363,7 @@ hr {
     <section id="banner">
         <img src="/icons/logo.png" height="300px" width="300px" class="logo">
         <div class="banner-text">
-            <h1>Olaa <span>Oluwa</span></h1>
+            <h1>Ola <span>Oluwa</span></h1>
             <p>Your eye is just a pair, no spare, take care.</p>
             <div class="banner-btn">
                 <a  href="{{ route('login') }}"><span></span>Login</a>
