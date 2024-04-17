@@ -402,7 +402,7 @@ hr {
     <div id="sideNav">
         <nav>
             <ul>
-                <li><a href="{{route('dashboard')}}">Home</a></li>
+                <li><a href="">Home</a></li>
                 <li><a href="video.html">Video</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
                 <li><a href="#footer">Contact Us</a></li>
