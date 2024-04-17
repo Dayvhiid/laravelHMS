@@ -213,6 +213,7 @@ nav ul li a {
 }
 
 .single-service {
+    width: 40%;
     flex-basis: 48%;
     text-align: center;
     border-radius: 7px;
@@ -367,7 +368,7 @@ hr {
             <p>Your eye is just a pair, no spare, take care.</p>
             <div class="banner-btn">
              {{-- <a  href="{{ route('login') }}"><span></span>Login</a> --}}
-                <a href="{{ route('pages.register') }}"><span></span>Proceed</a>
+                <a href="{{ route('booking') }}"><span></span>Book an appointment</a>
                 
             </div>
         </div>
@@ -414,7 +415,7 @@ hr {
         </nav>
     </div>
     <div id="menuBtn" onclick="toggle()">
-        <img src="menu.png" id="menu">
+        <img src="/icons/menu.png" id="menu">
     </div>
 </body>
 <!-- feature -->
@@ -455,7 +456,7 @@ hr {
             </div> 
         </div>
         <div class="features-img">
-            <img src="pic3.png">
+            <img src="/icons/background.jpg">
         </div>
     </div>
 
@@ -463,12 +464,12 @@ hr {
 <!-- service -->
 <section id="service">
     <div class="title-text">
-        <p>SERVICES</p>
-        <h1>We Provide the best services</h1>
+        <p>STAFF</p>
+        <h1>Meet our Wonderfull staff</h1>
     </div>
     <div class="service-box">
         <div class="single-service">
-            <img src="display1.jpg">
+            <img src="/icons/display1.jpg">
             <div class="overlay">
                 <div class="service-desc">
                     <h3>Hair Styling</h3>
@@ -478,7 +479,7 @@ hr {
             </div>
         </div>
         <div class="single-service">
-            <img src="display2.jpg">
+            <img src="/icons/display2.jpg">
             <div class="overlay">
                 <div class="service-desc">
                     <h3>Hair Styling</h3>
@@ -488,7 +489,7 @@ hr {
             </div>
         </div>
         <div class="single-service">
-            <img src="display3.jpg">
+            <img src="/icons/display3.jpg">
             <div class="overlay">
                 <div class="service-desc">
                     <h3>Hair Styling</h3>
@@ -498,7 +499,7 @@ hr {
             </div>
         </div>
         <div class="single-service">
-            <img src="display4.jpg">
+            <img src="/icons/display4.jpg">
             <div class="overlay">
                 <div class="service-desc">
                     <h3>Hair Styling</h3>
