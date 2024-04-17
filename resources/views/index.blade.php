@@ -368,6 +368,7 @@ hr {
             <div class="banner-btn">
 <!--                 <a  href="{{ route('login') }}"><span></span>Login</a> -->
                 <a href="{{ route('pages.register') }}"><span></span>Proceed</a>
+                Testing from vscode
             </div>
         </div>
     </section>
