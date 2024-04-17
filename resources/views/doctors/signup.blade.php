@@ -1,3 +1,11 @@
+<style>
+  .signin{
+    color: black;
+  }
+  #signup{
+    margin-top: 2%;
+  }
+</style>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,10 +34,13 @@
                 <input type="password" class="form-control" name="confirm_password" placeholder="Password">
               </div>
            <div class="d-flex">
-            <button type="submit" class="btn btn-primary" >Sign Up</button>
+            <button type="submit" id="signup" class="btn btn-primary" >Sign Up</button>
            </div>
+           <div class="signin">
+            <a href="{{ route('doctors.signin') }}">Sign In</li>   
+          </div>
           </form>
-          <a href="{{ route('doctors.signin') }}">Sign In</li>   
+          
     </div>
 </body>
 </html>

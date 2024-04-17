@@ -366,7 +366,7 @@ hr {
             <h1>Ola <span>Oluwa</span></h1>
             <p>Your eye is just a pair, no spare, take care.</p>
             <div class="banner-btn">
-<!--                 <a  href="{{ route('login') }}"><span></span>Login</a> -->
+             {{-- <a  href="{{ route('login') }}"><span></span>Login</a> --}}
                 <a href="{{ route('pages.register') }}"><span></span>Proceed</a>
                 
             </div>
@@ -408,6 +408,8 @@ hr {
                 <li><a href="gallery.html">Gallery</a></li>
                 <li><a href="#footer">Contact Us</a></li>
                 <li><a href="{{route('booking')}}">Book Appointment</a></li>
+                <li><a href="{{route('register')}}">Login (for staff only)</a></li>
+                <li><a href="{{route('register.signin')}}">Sign In (for staff only)</a></li>
             </ul>
         </nav>
     </div>
@@ -442,7 +444,7 @@ hr {
                     <p>Exercitation nulla fugiat velit ad ea consequat irure.</p>
                 </div>
             </div>
-            <!-- <h1>Quick Delivery</h1>
+             <h1>Quick Delivery</h1>
             <div class="features-desc">
                 <div class="feature-icon">
                     <i class="fa fa-shield"></i>
@@ -450,7 +452,7 @@ hr {
                 <div class="feature-icon">
                     <p>Exercitation nulla fugiat velit ad ea consequat irure.</p>
                 </div>
-            </div> -->
+            </div> 
         </div>
         <div class="features-img">
             <img src="pic3.png">

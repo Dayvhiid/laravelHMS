@@ -15,10 +15,12 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\publicRecordsController;
 use App\Http\Controllers\RecieptController;
 use App\Http\Controllers\RecordsController;
+use App\Http\Controllers\registerController;
 use App\Http\Controllers\SmsController;
 use App\Http\Controllers\TreatmentController;
 use App\Http\Controllers\twilioSmsController;
 use App\Http\Controllers\vitalsController;
+use App\Models\register;
 use App\Models\vital2;
 use Illuminate\Support\Facades\Route;
 
@@ -97,9 +99,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/search/treatment/get', [vitalsController::class, 'search'])->name('search.get');
     Route::get('/search/vitals', [vitalsController::class, 'display'])->name('search.vitals');
     Route::get('/search/vitals/get', [vitalsController::class, 'vitals'])->name('vitals.get');
+    Route::get('/register', [registerController:: class, 'index'])->name('register');
+    Route::post('/register/data', [registerController::class, 'store'])->name('register.data');
+    Route::get('/register/signin', [registerController::class, 'signin'])->name('register.signin');
+    Route::post('/register/data/check', [registerController::class, 'check'])->name('register.check');
 });
-require __DIR__.'/auth.php';
+// require __DIR__.'/auth.php';
 
-// Auth::routes();
+// // Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -1,3 +1,9 @@
+<style>
+  #signup{
+    margin-top: -2%;
+    margin-left: 2%;
+  }
+</style>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +38,9 @@
       </div>
       <button type="submit" class="btn btn-primary">Sign in</button>
     </form>
-    <button type="submit" class="btn btn-primary" href="{{route('doctors.signup')}}">Sign Up</button>
+   <div>
+    <button type="button" class="btn btn-primary" id="signup" onclick="location.href='{{route('doctors.signup') }}'">Sign Up</button>
+   </div>
   </div>
 </body>
 </html>
