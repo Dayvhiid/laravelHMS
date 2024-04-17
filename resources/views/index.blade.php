@@ -367,7 +367,7 @@ hr {
             <p>Your eye is just a pair, no spare, take care.</p>
             <div class="banner-btn">
                 <a  href="{{ route('login') }}"><span></span>Login</a>
-                <a href="{{ route('register') }}"><span></span> Register</a>
+                <a href="{{ route('pages.register') }}"><span></span> Register</a>
             </div>
         </div>
     </section>
