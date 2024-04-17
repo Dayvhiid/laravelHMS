@@ -28,12 +28,12 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-Route::middleware('auth')->group(function () {
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -103,7 +103,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/register/data', [registerController::class, 'store'])->name('register.data');
     Route::get('/register/signin', [registerController::class, 'signin'])->name('register.signin');
     Route::post('/register/data/check', [registerController::class, 'check'])->name('register.check');
-});
+
 // require __DIR__.'/auth.php';
 
 // // Auth::routes();
