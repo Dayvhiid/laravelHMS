@@ -122,7 +122,7 @@ th {
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link" href="{{route('dashboard')}}">Home</a>
+              <a class="nav-link" href="{{route('pages.register')}}">Home</a>
               <a class="nav-link" href="{{route('search.treatment')}}">Search Treatment</a>
               <a class="nav-link" href="{{route('search.vitals')}}">Search Vitals</a>
               <a class="nav-link" href="{{ route('doctors.vitals')}}">Vitals</a>
