@@ -31,8 +31,8 @@
         </label>
       </div>
       <button type="submit" class="btn btn-primary">Sign in</button>
-      <button type="submit" class="btn btn-primary" href="{{route('doctors.signup')}}">Sign Up</button>
     </form>
+    <button type="submit" class="btn btn-primary" href="{{route('doctors.signup')}}">Sign Up</button>
   </div>
 </body>
 </html>
