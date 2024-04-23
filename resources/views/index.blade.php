@@ -350,7 +350,7 @@ hr {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Energipay</title>
+    <title>Ola-Oluwa Eye clinic</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -364,7 +364,7 @@ hr {
     <section id="banner">
         <img src="/icons/logo.png" height="300px" width="300px" class="logo">
         <div class="banner-text">
-            <h1>Ola <span>Oluwa</span></h1>
+            <h1>Ola-<span>Oluwa</span></h1>
             <p>Your eye is just a pair, no spare, take care.</p>
             <div class="banner-btn">
              {{-- <a  href="{{ route('login') }}"><span></span>Login</a> --}}

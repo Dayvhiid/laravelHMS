@@ -62,7 +62,7 @@ Route::get('/', function () {
     Route::get('/testing', function (){ return view('doctors.testing');})->name('testing');
     Route::get('/inventory/store', [InventoryController::class, 'list'])->name('inventory.list');// display the list of all inventory
     Route::delete('/inventory/{item}/delete', [InventoryController::class, 'delete'])->name('inventory.delete');
-    Route::get('/devmode', function (){ return view('devmode');});
+    Route::get('/devmode', function (){ return view('landingpage');});
     Route::get('/doctors/drug', [DrugController::class, 'index'])->name('doctors.drugs');//to store drugs
     Route::post('/doctors/drug/store', [DrugController::class, 'store'])->name('doctors.store');//duplicate
     Route::get('/doctors/drug/list', [DrugController::class, 'list'])->name('doctors.list');
