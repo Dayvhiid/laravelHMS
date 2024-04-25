@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        Fresh Food
+        Ola-Oluwa Eye Clinic
     </title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap"
@@ -75,10 +75,22 @@
                     </div>
                 </a>
             </div>
-            <div class="right-menu">
+            {{-- box icon --}}
+            <div class="right-menu" onclick="toggle()">
                 <div class="cart-btn">
-                    <i class='bx bx-cart-alt'></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path></svg>
                 </div>
+            </div>
+            <div id="sideNav">
+                <nav>
+                    <div id="menuBtn" onclick="toggle()">
+                        <img src="/icons/menu.png" id="menu">
+                    </div>
+                    <ul>
+                        <li><a href="{{route('NewBooking')}}">Book Appointment</a></li>
+                        <li><a href="{{route('NewSignUp')}}">Login/signUp (for staff only)</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>
@@ -99,9 +111,11 @@
                             perspiciatis voluptate qui dolore soluta.
                         </p>
                         <div class="left-to-right play-on-scroll delay-4">
+                           <a href="{{route('NewBooking')}}">
                             <button>
                                 Book an appointment
                             </button>
+                           </a>
                         </div>
                     </div>
                 </div>
@@ -124,9 +138,7 @@
                             memories for <span class="primary-color">you</span>
                         </h3>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio natus placeat et eos,
-                            dignissimos voluptatem tempora necessitatibus doloribus! Eum qui doloribus odio dolor
-                            tenetur nihil impedit vero magni, distinctio soluta!
+                            Ola-Oluwa Eye Clinic is dedicated to providing the highest quality comprehensive eye care for patients of all ages. Our team of experienced and board-certified ophthalmologists, optometrists, and technicians combine expertise with a commitment to compassionate care.
                         </p>
                     </div>
                 </div>
@@ -143,9 +155,7 @@
                    Meet <span class="primary-color">our</span> staff.
                 </h1>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque alias aliquam eveniet, iure
-                    praesentium dicta ex dolorum inventore itaque minus repudiandae, odio provident? Velit architecto
-                    natus expedita non? Odio, dolorum.
+                    At Ola-Oluwa Eye Clinic, we believe in fostering a collaborative environment where experienced professionals work together to provide exceptional care for your vision. Our dedicated team includes:
                 </p>
                 <div class="food-category">
                     <div class="zoom play-on-scroll">
@@ -187,9 +197,9 @@
                                     <h3>
                                         Dr Braimoh
                                     </h3>
-                                    {{-- <span>
-                                        120$
-                                    </span> --}}
+                                    <span>
+                                        C.E.O
+                                    </span>
                                 </div>
                                 {{-- <div class="cart-btn">
                                     <i class="bx bx-cart-alt"></i>
@@ -207,11 +217,11 @@
                             <div class="item-info">
                                 <div>
                                     <h3>
-                                        Dr Lorem ipsum
+                                        Dr G.D Olarewaju
                                     </h3>
-                                    {{-- <span>
-                                        120$
-                                    </span> --}}
+                                    <span>
+                                        Optometrists
+                                    </span>
                                 </div>
                                 {{-- <div class="cart-btn">
                                     <i class='bx bx-cart-alt'></i>
@@ -230,11 +240,11 @@
                             <div class="item-info">
                                 <div>
                                     <h3>
-                                        Dr Lorem ipsum
+                                        Dr C. Nwachukwu 
                                     </h3>
-                                    {{-- <span>
-                                        120$
-                                    </span> --}}
+                                    <span>
+                                        C.E.O
+                                    </span>
                                 </div>
                                 {{-- <div class="cart-btn">
                                     <i class='bx bx-cart-alt'></i>
@@ -252,15 +262,13 @@
                             <div class="item-info">
                                 <div>
                                     <h3>
-                                      Dr  Lorem ipsum
+                                        Dr G.D Olarewaju
                                     </h3>
-                                    {{-- <span>
-                                        120$
-                                    </span> --}}
+                                    <span>
+                                        Clinic Manager
+                                    </span>
                                 </div>
-                                <div class="cart-btn">
-                                    <i class='bx bx-cart-alt'></i>
-                                </div>
+                             
                             </div>
                         </div>
                     </div>
@@ -274,15 +282,13 @@
                             <div class="item-info">
                                 <div>
                                     <h3>
-                                      Dr  Lorem ipsum
+                                        Miss O. Fakayode 
                                     </h3>
-                                    {{-- <span>
-                                        120$
-                                    </span> --}}
+                                    <span>
+                                        Optician
+                                    </span>
                                 </div>
-                                <div class="cart-btn">
-                                    <i class='bx bx-cart-alt'></i>
-                                </div>
+                    
                             </div>
                         </div>
                     </div>
@@ -296,15 +302,13 @@
                             <div class="item-info">
                                 <div>
                                     <h3>
-                                        Dr Lorem ipsum
+                                        Miss  A. Taleeb 
                                     </h3>
-                                    {{-- <span>
-                                        120$
-                                    </span> --}}
+                                    <span>
+                                        Receptionist
+                                    </span>
                                 </div>
-                                <div class="cart-btn">
-                                    <i class='bx bx-cart-alt'></i>
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
@@ -365,9 +369,7 @@
                     <div class="review-wrap zoom play-on-scroll delay-2">
                         <div class="review-content">
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, labore nisi non
-                                molestias, minus laboriosam nostrum impedit iure facilis odio unde quia ad sunt corrupti
-                                dolores ratione voluptatibus quidem explicabo.
+                                "I've been going to Ola-Oluwa Eye Clinic for years, and they've always provided the best care. Dr. Braimoh is incredibly knowledgeable and explains everything in a way I can understand. The staff is friendly and helpful, and I never feel rushed during my appointments. I highly recommend them!"
                             </p>
                             <div class="review-img bg-img"
                                 style="background-image: url(assets/close-up-portrait-cute-young-woman-holding-textbook-colored-pencils-posing-studio-isolated-pink_176532-9674.jpg);">
@@ -392,10 +394,7 @@
                         <div class="review-wrap active">
                             <div class="review-content">
                                 <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, labore nisi non
-                                    molestias, minus laboriosam nostrum impedit iure facilis odio unde quia ad sunt
-                                    corrupti
-                                    dolores ratione voluptatibus quidem explicabo.
+                                    "My vision had been getting progressively worse, and I was worried about what was going on. When I came to Ola-oluwa Eye Clinic, they were very thorough in their examination and diagnosed me with cataracts. Dr. Braimoh explained the treatment options clearly and answered all my questions patiently. The surgery went smoothly, and I can't believe how much better I can see now! I'm so grateful for their expertise and care." 
                                 </p>
                                 <div class="review-img bg-img"
                                     style="background-image: url(assets/michael-dam-mEZ3PoFGs_k-unsplash.jpg);">
@@ -420,9 +419,7 @@
                     <div class="review-wrap zoom play-on-scroll delay-4">
                         <div class="review-content">
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, labore nisi non
-                                molestias, minus laboriosam nostrum impedit iure facilis odio unde quia ad sunt corrupti
-                                dolores ratione voluptatibus quidem explicabo.
+                                My kids can be nervous at the doctor, but the staff at Ola-oluwa Eye Clinic made their eye exams fun and stress-free. They used kid-friendly language and explained everything in a way my children could understand. They also have a great selection of fun frames for kids to choose from. We'll definitely be back!
                             </p>
                             <div class="review-img bg-img"
                                 style="background-image: url(assets/portrait-happy-young-man_171337-21716.jpg);">
@@ -447,7 +444,7 @@
     </section>
     <!-- END TESTIMONIAL SECTION -->
     <!-- FOOTER SECTION -->
-    <section class="footer bg-img" style="background-image: url(assets/nordwood-themes-pYWrdKO5ksI-unsplash.jpg);">
+    <section class="footer bg-img"  style="background-image: url(assets/nordwood-themes-pYWrdKO5ksI-unsplash.jpg);">
         <div class="container">
             <div class="row">
                 <div class="col-6 col-xs-12">
@@ -459,9 +456,9 @@
                         quaerat fuga sint molestiae illo corrupti vitae voluptatibus. Dicta rerum est delectus
                         perspiciatis nemo nihil autem! Doloremque?</p>
                     <br>
-                    <p>Email: example@mail.com</p>
+                    <p>Email: olaoluwa</p>
                     <p>Phone: +00 123 456 789</p>
-                    <p>Website: freshfood.com</p>
+                    <p>Website: www.olaoluwaeyeclinic.com</p>
                 </div>
                 {{-- <div class="col-2 col-xs-12">
                     <h1>
@@ -497,9 +494,15 @@
                     <p>Book an appointment with us now at any convenient date and time and our doctors will get back to you in a matter of minutes</p>
                     {{-- <div class="input-group">
                         <input type="text" placeholder="Enter your email"> --}}
-                        <button class="appButton">
+                        {{-- <button class="appButton" >
+                            <a href="{{route('booking')}}"></a>
                             Book An Appointment
-                        </button>
+                        </button> --}}
+                        <a href="{{route('booking')}}">
+                            <button class="appButton" >
+                                Book An Appointment
+                            </button>
+                        </a>
                     {{-- </div> --}}
                 </div>
             </div>

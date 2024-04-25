@@ -1,4 +1,4 @@
-{{ htmlspecialchars($combinedResults[0][1]) }} 
+
 <style>
     *{
       font-family: "Montserrat", sans-serif;
@@ -295,6 +295,13 @@
     .search{
       display: flex
     }
+    .alert{
+      font-size: 2rem;
+      display: flex;
+      justify-content: center;
+      font-family: 'Courier New', Courier, monospace;
+      margin-top: 10%;
+    }
   </style>
   <!DOCTYPE html>
   <html lang="en">
@@ -307,411 +314,417 @@
       <title>Vitals</title>
   </head>
   <body>
+    @if (empty($combinedResults))
+    <p class="alert">No results found for your search.<br> Please verify patient ID</p>
+  @else
   <div class="navbar">
-          <h2>Diagnosis Vitals</h2>
-          <div class="links">
-              <ul>
-                  <li> New Patients</li>
-                  <li>Records</li>
-                  <li>Invoice</li>
-                  <li>Inventory</li>
-              {{-- <button class="doc" onclick="window.location.href='/HMS/hospital/doc.html'">
-                <img src="/HMS/hospital/images/doctor.png" height="35px" width="35px">
-              </button> --}}
-              </ul>
-          </div>
+    <h2>Diagnosis Vitals</h2>
+    <div class="links">
+        <ul>
+            <li> New Patients</li>
+            <li>Records</li>
+            <li>Invoice</li>
+            <li>Inventory</li>
+        {{-- <button class="doc" onclick="window.location.href='/HMS/hospital/doc.html'">
+          <img src="/HMS/hospital/images/doctor.png" height="35px" width="35px">
+        </button> --}}
+        </ul>
+    </div>
+</div>
+<div class="container">
+{{-- <div class="statusbar">
+      <div class="home">
+        <img height="35px" width="35px" class="homepng" src="/hospital/images/house.png">
+        <p>Home</p>
       </div>
-      <div class="container">
-      {{-- <div class="statusbar">
-            <div class="home">
-              <img height="35px" width="35px" class="homepng" src="/hospital/images/house.png">
-              <p>Home</p>
-            </div>
-            <!-- Patients -->
-            <div class="patients">
-              <img height="35px" width="35px" class="patientpng" src="/hospital/icons/patient(1).png">
-              <p>Patient</p>
-            </div>
-            <!-- Appointment -->
-            <div class="app">
-              <img height="35px" width="35px" class="apppng" src="/hospital/icons/appointment.png">
-              <p>Appointment</p>
-            </div>
-            <!-- Billing -->
-            <div class="billing">
-              <img height="35px" width="35px" class="billingpng" src="/hospital/icons/bill.png">
-              <p>Billing</p>
-            </div>
-            <!-- Records -->
-            <div class="records">
-              <img height="35px" width="35px" class="recordspng" src="/hospital/icons/search-interface-symbol.png">
-              <p>Records</p>
-            </div>
-            <div class="button"> --}}
-              {{-- <input type="submit" class="patientBtn" value="New Patient" onclick="window.location.href='/HMS/hospital/newPatient.php';">
-            </div> --}}
-         </div>
-         <div class="searchbox">
-           
-          
-           
-          <div>  
-           
-  {{-- <form method="post" action="{{route('vitals.store')}}">  
-    @csrf
-    @method('POST') --}}
-    <div></div>
-    <div class="search"> 
-      <input type="text" placeholder="Enter patient ID" name="patient_code" value="{{ htmlspecialchars($combinedResults[0]->patient_code) }} ">
-      
-     </div>
-  <label id="status"></label>   
-           <div class="top">
-           <table>
-            <tr>
-            <h3>Case history</h3>
-              <td>C/C:</td>
-              <td><input type="text" name="cc" value="{{ htmlspecialchars($combinedResults[0]->cc) }}" readonly></td>
-            </tr>
-            <tr>
-              <td>PoHx:</td>
-              <td><input type="text" name="pohx" value="{{ htmlspecialchars($combinedResults[0]->pohx) }} "></td>
-            </tr>
-            <tr>
-              <td>LEE:</td>
-              <td><input type="text" name="lee" value="{{ htmlspecialchars($combinedResults[0]->lee) }} "></td>
-            </tr>
-            <tr>
-              <td>PmHx:</td>
-              <td><input type="text" name="pmhx" value="{{ htmlspecialchars($combinedResults[0]->pmhx) }} "></td>
-            </tr>
-            <tr>
-              <td>PfoHx:</td>
-              <td><input type="text" name="pfohx" value="{{ htmlspecialchars($combinedResults[0]->pfohx) }} "></td>
-            </tr>
-           </table>
-           </div>
-  
-           <div class="flexside">
-              <div class="left">
-              <label>VISUAL ACTIVITY</label>
-              <table width="130%">
-              <tr>
-                  <th></th>
-                  <th>UNAIDED</th>
-                  <th>PIN HOLE</th>
-                  <th>NEAR V/A</th>
-              </tr>
-  
-              <tr>
-                  <td>OD:</td>
-                  <td><input type="text" name="ODunaided" value="{{ htmlspecialchars($combinedResults[0]->odunaided) }} " readonly></td>
-                  <td><input type="text" name="ODpinhole" value="{{ htmlspecialchars($combinedResults[0]->odpinhole) }} "readonly></td>
-                  <td><input type="text" name="ODnearva" value="{{ htmlspecialchars($combinedResults[0]->odnearva) }} " readonly></td>
-              </tr>
-  
-                  <tr>
-                      <td>OS:</td>
-                      <td><input type="text" name="OSunaided" value="{{ htmlspecialchars($combinedResults[0]->osunaided) }} "></td>
-                      <td><input type="text" name="OSpinhole" value="{{ htmlspecialchars($combinedResults[0]->ospinhole) }} "></td>
-                      <td><input type="text" name="OSnearva" value="{{ htmlspecialchars($combinedResults[0]->osnearva) }} "></td>
-                  </tr>
-  
-              <!-- <tr>
-                  <td>Data 3-1</td>
-                  <td>Data 3-2</td>
-                  <td>Data 3-3</td>
-                  <td>Data 3-4</td>
-              </tr> -->
+      <!-- Patients -->
+      <div class="patients">
+        <img height="35px" width="35px" class="patientpng" src="/hospital/icons/patient(1).png">
+        <p>Patient</p>
+      </div>
+      <!-- Appointment -->
+      <div class="app">
+        <img height="35px" width="35px" class="apppng" src="/hospital/icons/appointment.png">
+        <p>Appointment</p>
+      </div>
+      <!-- Billing -->
+      <div class="billing">
+        <img height="35px" width="35px" class="billingpng" src="/hospital/icons/bill.png">
+        <p>Billing</p>
+      </div>
+      <!-- Records -->
+      <div class="records">
+        <img height="35px" width="35px" class="recordspng" src="/hospital/icons/search-interface-symbol.png">
+        <p>Records</p>
+      </div>
+      <div class="button"> --}}
+        {{-- <input type="submit" class="patientBtn" value="New Patient" onclick="window.location.href='/HMS/hospital/newPatient.php';">
+      </div> --}}
+   </div>
+   <div class="searchbox">
+     
+    
+     
+    <div>  
+     
+{{-- <form method="post" action="{{route('vitals.store')}}">  
+@csrf
+@method('POST') --}}
+<div></div>
+<div class="search"> 
+<input type="text" placeholder="Enter patient ID" name="patient_code" value="{{ htmlspecialchars($combinedResults[0]->patient_code) }} ">
+
+</div>
+<label id="status"></label>   
+     <div class="top">
+     <table>
+      <tr>
+      <h3>Case history</h3>
+        <td>C/C:</td>
+        <td><input type="text" name="cc" value="{{ htmlspecialchars($combinedResults[0]->cc) }}" readonly></td>
+      </tr>
+      <tr>
+        <td>PoHx:</td>
+        <td><input type="text" name="pohx" value="{{ htmlspecialchars($combinedResults[0]->pohx) }} "></td>
+      </tr>
+      <tr>
+        <td>LEE:</td>
+        <td><input type="text" name="lee" value="{{ htmlspecialchars($combinedResults[0]->lee) }} "></td>
+      </tr>
+      <tr>
+        <td>PmHx:</td>
+        <td><input type="text" name="pmhx" value="{{ htmlspecialchars($combinedResults[0]->pmhx) }} "></td>
+      </tr>
+      <tr>
+        <td>PfoHx:</td>
+        <td><input type="text" name="pfohx" value="{{ htmlspecialchars($combinedResults[0]->pfohx) }} "></td>
+      </tr>
      </table>
-  
+     </div>
+
+     <div class="flexside">
+        <div class="left">
+        <label>VISUAL ACTIVITY</label>
+        <table width="130%">
+        <tr>
+            <th></th>
+            <th>UNAIDED</th>
+            <th>PIN HOLE</th>
+            <th>NEAR V/A</th>
+        </tr>
+
+        <tr>
+            <td>OD:</td>
+            <td><input type="text" name="ODunaided" value="{{ htmlspecialchars($combinedResults[0]->odunaided) }} " readonly></td>
+            <td><input type="text" name="ODpinhole" value="{{ htmlspecialchars($combinedResults[0]->odpinhole) }} "readonly></td>
+            <td><input type="text" name="ODnearva" value="{{ htmlspecialchars($combinedResults[0]->odnearva) }} " readonly></td>
+        </tr>
+
+            <tr>
+                <td>OS:</td>
+                <td><input type="text" name="OSunaided" value="{{ htmlspecialchars($combinedResults[0]->osunaided) }} "></td>
+                <td><input type="text" name="OSpinhole" value="{{ htmlspecialchars($combinedResults[0]->ospinhole) }} "></td>
+                <td><input type="text" name="OSnearva" value="{{ htmlspecialchars($combinedResults[0]->osnearva) }} "></td>
+            </tr>
+
+        <!-- <tr>
+            <td>Data 3-1</td>
+            <td>Data 3-2</td>
+            <td>Data 3-3</td>
+            <td>Data 3-4</td>
+        </tr> -->
+</table>
+
+        </div>
+        <div class="right">
+        <label>LENSOMETRY</label>
+<table >
+<tr>
+<th></th>
+<th>SPH</th>
+<th>CYL</th>
+<th>AXIS</th>
+<th>VA</th>
+</tr>
+
+<!-- <tr>
+<td>Data 1-1</td>
+<td>Data 1-2</td>
+<td>Data 1-3</td>
+<td>Data 1-4</td>
+<td>Data 1-5</td>
+</tr> -->
+
+<tr>
+<td>OD:</td>
+<td><input type="text" name="ODSPH" value="{{ htmlspecialchars($combinedResults[0]->lodsph) }} "></td>
+<td><input type="text" name="ODCYL" value="{{ htmlspecialchars($combinedResults[0]->lodcyl) }} "></td>
+<td><input type="text" name="ODAXIS" value="{{ htmlspecialchars($combinedResults[0]->lodaxis) }} "></td>
+<td><input type="text" name="ODVA" value="{{ htmlspecialchars($combinedResults[0]->lodva) }} "></td>
+</tr>
+
+<tr>
+<td>OS:</td>
+<td><input type="text" name="OSSPH" value="{{ htmlspecialchars($combinedResults[0]->lossph) }} "></td>
+<td><input type="text" name="OSCYL" value="{{ htmlspecialchars($combinedResults[0]->loscyl) }} "></td>
+<td><input type="text" name="OSAXIS" value="{{ htmlspecialchars($combinedResults[0]->losaxis) }} "></td>
+<td><input type="text" name="OSVA" value="{{ htmlspecialchars($combinedResults[0]->losva) }} "></td>
+</tr>
+
+<tr>
+<td>ADD:</td>
+<td><input type="text" name="ADDDSPH" value="{{ htmlspecialchars($combinedResults[0]->addsph) }} "></td>
+<td><input type="text" name="ADDCYL" value="{{ htmlspecialchars($combinedResults[0]->addcyl) }} "></td>
+<td><input type="text" name="ADDAXIS" value="{{ htmlspecialchars($combinedResults[0]->addaxis) }} "></td>
+<td><input type="text" name="ADDVA" value="{{ htmlspecialchars($combinedResults[0]->addva) }} "></td>
+</tr>
+</table>
+
+        </div>
+     </div>
+<!-- flexbox 2 -->
+<div class="flexbox2">
+       <div class="flexleft">
+       <label>AUTO-REFRACTION</label>
+       <table width="95%" >
+<tr>
+<th></th>
+<th>SPHERE</th>
+<th>CYL</th>
+<th>AXIS</th>
+</tr>
+<tr>
+<td>OD</td>
+<td><input type="text" name="arodsph" value="{{ htmlspecialchars($combinedResults[0]->arodsphere) }} "></td>
+<td><input type="text" name="arodcyl" value="{{ htmlspecialchars($combinedResults[0]->arodcyl) }} "></td>
+<td><input type="text" name="arodaxis" value="{{ htmlspecialchars($combinedResults[0]->arodaxis) }} "></td>
+</tr>
+<tr>
+<td>OS</td>
+<td><input type="text" name="arossph" value="{{ htmlspecialchars($combinedResults[0]->arossphere) }} "></td>
+<td><input type="text" name="aroscyl" value="{{ htmlspecialchars($combinedResults[0]->aroscyl) }} "></td>
+<td><input type="text" name="arosaxis" value="{{ htmlspecialchars($combinedResults[0]->arosaxis) }} "></td>
+</tr>
+</table>
+
+       </div>
+       <div class="flexright">
+       <label>RETINOSCOPE</label>
+       <table width="90%">
+<tr>
+<th></th>
+<th>SPHERE</th>
+<th>CYL</th>
+<th>AXIS</th>
+</tr>
+<tr>
+<td>OD</td>
+<td><input type="text" name="rodsph" value="{{ htmlspecialchars($combinedResults[0]->rodsph) }} "></td>
+<td><input type="text" name="rodcyl" value="{{ htmlspecialchars($combinedResults[0]->rodcyl) }} "></td>
+<td><input type="text" name="rodaxis" value="{{ htmlspecialchars($combinedResults[0]->rodaxis) }} "></td>
+</tr>
+<tr>
+<td>OS</td>
+<td><input type="text" name="rossph" value="{{ htmlspecialchars($combinedResults[0]->rossph) }} "></td>
+<td><input type="text" name="roscyl" value="{{ htmlspecialchars($combinedResults[0]->roscyl) }} "></td>
+<td><input type="text" name="rosaxis" value="{{ htmlspecialchars($combinedResults[0]->rosaxis) }} "></td>
+</tr>
+</table>
+       </div>
+       </div>
+       <div class="flexbox3">
+           <div class="flexbox3left">
+            <label>SUBJECTIVE REFRACTION</label>
+           <table class="srtable" style="width: 800px" >
+                <tr>
+                    <th></th>
+                    <th>SPH</th>
+                    <th>CYL</th>
+                    <th>AXIS</th>
+                    <th>VA</th>
+                    <th>ADD</th>
+                    <th>NVA</th>
+                </tr>
+                <tr>
+                    <td>OD:</td>
+                    <td><input type="text" name="srodsph" value="{{ htmlspecialchars($combinedResults[0]->srodsphere) }} "></td>
+                    <td><input type="text" name="srodcyl" value="{{ htmlspecialchars($combinedResults[0]->srodcyl) }} "></td>
+                    <td><input type="text" name="srodaxis" value="{{ htmlspecialchars($combinedResults[0]->arodaxis) }} "></td>
+                    <td><input type="text" name="srodva" value="{{ htmlspecialchars($combinedResults[0]->srodva) }} "></td>
+                    <td><input type="text" name="srodadd" value="{{ htmlspecialchars($combinedResults[0]->srodadd) }} "></td>
+                    <td><input type="text" name="srodnva" value="{{ htmlspecialchars($combinedResults[0]->srodnva) }} "></td>
+                </tr>
+                <tr>
+                    <td>OS:</td>
+                    <td><input type="text" name="srossph" value="{{ htmlspecialchars($combinedResults[1]->srosphere) }} "></td>
+                    <td><input type="text" name="sroscyl" value="{{ htmlspecialchars($combinedResults[1]->sroscyl) }} "></td>
+                    <td><input type="text" name="srosaxis" value="{{ htmlspecialchars($combinedResults[1]->srosaxis) }} "></td>
+                    <td><input type="text" name="srosva" value="{{ htmlspecialchars($combinedResults[1]->srosva) }} "></td>
+                    <td><input type="text" name="srosadd" value="{{ htmlspecialchars($combinedResults[1]->srosadd) }} "></td>
+                    <td><input type="text" name="srosnva" value="{{ htmlspecialchars($combinedResults[1]->srosnva) }} "></td>
+                </tr>
+                <!-- <tr>
+                    <td>Data 3-1</td>
+                    <td>Data 3-2</td>
+                    <td>Data 3-3</td>
+                    <td>Data 3-4</td>
+                    <td>Data 3-5</td>
+                    <td>Data 3-6</td>
+                    <td>Data 3-7</td>
+                </tr> -->
+                </table>
+           </div>
+           <div class="flexbox3right">
+           <label>FINAL RX</label>
+           <table width="70%">
+                <tr>
+                    <th></th>
+                    <th>SPH</th>
+                    <th>CYL</th>
+                    <th>AXIS</th>
+                    <th>VA</th>
+                    <th>ADD</th>
+                    <th>NVA</th>
+                </tr>
+                <tr>
+                    <td>OD:</td>
+                    <td><input type="text" name="fodsph" value="{{ htmlspecialchars($combinedResults[0]->fodsph) }} "></td>
+                    <td><input type="text" name="fodcyl" value="{{ htmlspecialchars($combinedResults[0]->fodcyl) }} "></td>
+                    <td><input type="text" name="fodaxis" value="{{ htmlspecialchars($combinedResults[0]->fodaxis) }} "></td>
+                    <td><input type="text" name="fodva" value="{{ htmlspecialchars($combinedResults[0]->fodva) }} "></td>
+                    <td><input type="text" name="fodadd" value="{{ htmlspecialchars($combinedResults[0]->fodadd) }} "></td>
+                    <td><input type="text" name="fodnva" value="{{ htmlspecialchars($combinedResults[0]->fodnva) }} "></td>
+                </tr>
+                <tr>
+                    <td>OS:</td>
+                    <td><input type="text" name="fossph" value="{{ htmlspecialchars($combinedResults[1]->fossph) }} "></td>
+                    <td><input type="text" name="foscyl" value="{{ htmlspecialchars($combinedResults[1]->foscyl) }} "></td>
+                    <td><input type="text" name="fosaxis"  value="{{ htmlspecialchars($combinedResults[1]->fosaxis) }} "></td>
+                    <td><input type="text" name="fosva"  value="{{ htmlspecialchars($combinedResults[1]->fosva) }} "></td>
+                    <td><input type="text" name="fosadd"  value="{{ htmlspecialchars($combinedResults[1]->fosadd) }} "></td>
+                    <td><input type="text" name="fosnva"  value="{{ htmlspecialchars($combinedResults[1]->fosnva) }} "></td>
+                </tr>
+                <!-- <tr>
+                    <td>Data 3-1</td>
+                    <td>Data 3-2</td>
+                    <td>Data 3-3</td>
+                    <td>Data 3-4</td>
+                    <td>Data 3-5</td>
+                    <td>Data 3-6</td>
+                    <td>Data 3-7</td>
+                </tr> -->
+                </table>
+           </div>
+    
+   </div>
+   <div class="flexbox4">
+              <div class="flexbox4left">
+                <table>
+                <label>External Examination And Internal Examination</label>
+                <tr>
+                    <th></th>
+                    <th>OD</th>
+                    <th>OS</th>
+                </tr>
+
+                <tr>
+                    <td>Eyelid</td>
+                    <td><input type="text" name="eyelidod"  value="{{ htmlspecialchars($combinedResults[0]->eyelidod) }} "></td>
+                    <td><input type="text" name="eyelidos" value="{{ htmlspecialchars($combinedResults[0]->eyelidos) }} "></td>
+                </tr>
+
+                <tr>
+                    <td>Conjuctiva</td>
+                    <td><input type="text" name="conjuctivaod" value="{{ htmlspecialchars($combinedResults[0]->conjuctivaod) }} "></td>
+                    <td><input type="text" name="conjuctivaos" value="{{ htmlspecialchars($combinedResults[0]->conjuctivaos) }} "></td>
+                </tr>
+
+                <tr>
+                    <td>Cornea</td>
+                    <td><input type="text" name="corneaod" value="{{ htmlspecialchars($combinedResults[0]->corneaod) }} "></td>
+                    <td><input type="text" name="corneaos" value="{{ htmlspecialchars($combinedResults[0]->corneaos) }} "></td>
+                </tr>
+
+                <tr>
+                    <td>Pupil</td>
+                    <td><input type="text" name="pupilod" value="{{ htmlspecialchars($combinedResults[0]->pupilod) }} "></td>
+                    <td><input type="text" name="pupilos" value="{{ htmlspecialchars($combinedResults[0]->pupilos) }} "></td>
+                </tr>
+
+                <tr>
+                    <td>Iris</td>
+                    <td><input type="text" name="irisod" value="{{ htmlspecialchars($combinedResults[0]->irisod) }} "></td>
+                    <td><input type="text" name="irisos" value="{{ htmlspecialchars($combinedResults[0]->irisos) }} "></td>
+                </tr>
+
+                <tr>
+                    <td>Lens</td>
+                    <td><input type="text" name="lensod" value="{{ htmlspecialchars($combinedResults[0]->lensod) }} "></td>
+                    <td><input type="text" name="lensos" value="{{ htmlspecialchars($combinedResults[0]->lensos) }} "></td>
+                </tr>
+
+                <tr>
+                    <td>Virtreous</td>
+                    <td><input type="text" name="vitreousod" value="{{ htmlspecialchars($combinedResults[0]->vitreousod) }} "></td>
+                    <td><input type="text" name="vitreousos" value="{{ htmlspecialchars($combinedResults[0]->vitreousos) }} "></td>
+                </tr>
+
+                <tr>
+                    <td>C/D Ratio</td>
+                    <td><input type="text" name="cdratiood" value="{{ htmlspecialchars($combinedResults[0]->cdratiood) }} "></td>
+                    <td><input type="text" name="cdratioos" value="{{ htmlspecialchars($combinedResults[0]->cdratioos) }} "></td>
+                </tr>
+
+                <tr>
+                    <td>Macula</td>
+                    <td><input type="text" name="macularod" value="{{ htmlspecialchars($combinedResults[0]->macularod) }} "></td>
+                    <td><input type="text" name="maculaos" value="{{ htmlspecialchars($combinedResults[0]->maculaos) }} "></td>
+                </tr>
+                </table>
+
               </div>
-              <div class="right">
-              <label>LENSOMETRY</label>
-  <table >
-    <tr>
-      <th></th>
-      <th>SPH</th>
-      <th>CYL</th>
-      <th>AXIS</th>
-      <th>VA</th>
-    </tr>
-  
-    <!-- <tr>
-      <td>Data 1-1</td>
-      <td>Data 1-2</td>
-      <td>Data 1-3</td>
-      <td>Data 1-4</td>
-      <td>Data 1-5</td>
-    </tr> -->
-  
-    <tr>
-      <td>OD:</td>
-      <td><input type="text" name="ODSPH" value="{{ htmlspecialchars($combinedResults[0]->lodsph) }} "></td>
-      <td><input type="text" name="ODCYL" value="{{ htmlspecialchars($combinedResults[0]->lodcyl) }} "></td>
-      <td><input type="text" name="ODAXIS" value="{{ htmlspecialchars($combinedResults[0]->lodaxis) }} "></td>
-      <td><input type="text" name="ODVA" value="{{ htmlspecialchars($combinedResults[0]->lodva) }} "></td>
-    </tr>
-  
-    <tr>
-      <td>OS:</td>
-      <td><input type="text" name="OSSPH" value="{{ htmlspecialchars($combinedResults[0]->lossph) }} "></td>
-      <td><input type="text" name="OSCYL" value="{{ htmlspecialchars($combinedResults[0]->loscyl) }} "></td>
-      <td><input type="text" name="OSAXIS" value="{{ htmlspecialchars($combinedResults[0]->losaxis) }} "></td>
-      <td><input type="text" name="OSVA" value="{{ htmlspecialchars($combinedResults[0]->losva) }} "></td>
-    </tr>
-  
-    <tr>
-      <td>ADD:</td>
-      <td><input type="text" name="ADDDSPH" value="{{ htmlspecialchars($combinedResults[0]->addsph) }} "></td>
-      <td><input type="text" name="ADDCYL" value="{{ htmlspecialchars($combinedResults[0]->addcyl) }} "></td>
-      <td><input type="text" name="ADDAXIS" value="{{ htmlspecialchars($combinedResults[0]->addaxis) }} "></td>
-      <td><input type="text" name="ADDVA" value="{{ htmlspecialchars($combinedResults[0]->addva) }} "></td>
-    </tr>
-  </table>
-  
+              <div class="flexbox4right">
+                <table>
+                    <label>IOP</label>
+                <tr>
+                    <th></th>
+                    <th>CCT</th>
+                    <th>NCT</th>
+                </tr>
+
+                <tr>
+                    <td>OD</td>
+                    <td><input type="text" name="odccct" value="{{ htmlspecialchars($combinedResults[0]->odccct) }} "></td>
+                    <td><input type="text" name="odnct" value="{{ htmlspecialchars($combinedResults[0]->odnct) }} "></td>
+                </tr>
+
+                <tr>
+                    <td>OS</td>
+                    <td><input type="text" name="oscct" value="{{ htmlspecialchars($combinedResults[0]->oscct) }} "></td>
+                    <td><input type="text" name="osnct" value="{{ htmlspecialchars($combinedResults[0]->osnct) }} "></td>
+                </tr>
+                </table>
+
+                <div class="time">
+                <tr>
+                    <td>Time:</td>
+                    <td><input type="text" value="<?php echo date("h:ia")?>"></td>
+                </tr>
+                </div>
+
               </div>
            </div>
-   <!-- flexbox 2 -->
-   <div class="flexbox2">
-             <div class="flexleft">
-             <label>AUTO-REFRACTION</label>
-             <table width="95%" >
-    <tr>
-      <th></th>
-      <th>SPHERE</th>
-      <th>CYL</th>
-      <th>AXIS</th>
-    </tr>
-    <tr>
-      <td>OD</td>
-      <td><input type="text" name="arodsph" value="{{ htmlspecialchars($combinedResults[0]->arodsphere) }} "></td>
-      <td><input type="text" name="arodcyl" value="{{ htmlspecialchars($combinedResults[0]->arodcyl) }} "></td>
-      <td><input type="text" name="arodaxis" value="{{ htmlspecialchars($combinedResults[0]->arodaxis) }} "></td>
-    </tr>
-    <tr>
-      <td>OS</td>
-      <td><input type="text" name="arossph" value="{{ htmlspecialchars($combinedResults[0]->arossphere) }} "></td>
-      <td><input type="text" name="aroscyl" value="{{ htmlspecialchars($combinedResults[0]->aroscyl) }} "></td>
-      <td><input type="text" name="arosaxis" value="{{ htmlspecialchars($combinedResults[0]->arosaxis) }} "></td>
-    </tr>
-  </table>
+              </div>
+
+           </div>
+
+   </div>
   
-             </div>
-             <div class="flexright">
-             <label>RETINOSCOPE</label>
-             <table width="90%">
-    <tr>
-      <th></th>
-      <th>SPHERE</th>
-      <th>CYL</th>
-      <th>AXIS</th>
-    </tr>
-    <tr>
-      <td>OD</td>
-      <td><input type="text" name="rodsph" value="{{ htmlspecialchars($combinedResults[0]->rodsph) }} "></td>
-      <td><input type="text" name="rodcyl" value="{{ htmlspecialchars($combinedResults[0]->rodcyl) }} "></td>
-      <td><input type="text" name="rodaxis" value="{{ htmlspecialchars($combinedResults[0]->rodaxis) }} "></td>
-    </tr>
-    <tr>
-      <td>OS</td>
-      <td><input type="text" name="rossph" value="{{ htmlspecialchars($combinedResults[0]->rossph) }} "></td>
-      <td><input type="text" name="roscyl" value="{{ htmlspecialchars($combinedResults[0]->roscyl) }} "></td>
-      <td><input type="text" name="rosaxis" value="{{ htmlspecialchars($combinedResults[0]->rosaxis) }} "></td>
-    </tr>
-  </table>
-             </div>
-             </div>
-             <div class="flexbox3">
-                 <div class="flexbox3left">
-                  <label>SUBJECTIVE REFRACTION</label>
-                 <table class="srtable" style="width: 800px" >
-                      <tr>
-                          <th></th>
-                          <th>SPH</th>
-                          <th>CYL</th>
-                          <th>AXIS</th>
-                          <th>VA</th>
-                          <th>ADD</th>
-                          <th>NVA</th>
-                      </tr>
-                      <tr>
-                          <td>OD:</td>
-                          <td><input type="text" name="srodsph" value="{{ htmlspecialchars($combinedResults[0]->srodsphere) }} "></td>
-                          <td><input type="text" name="srodcyl" value="{{ htmlspecialchars($combinedResults[0]->srodcyl) }} "></td>
-                          <td><input type="text" name="srodaxis" value="{{ htmlspecialchars($combinedResults[0]->arodaxis) }} "></td>
-                          <td><input type="text" name="srodva" value="{{ htmlspecialchars($combinedResults[0]->srodva) }} "></td>
-                          <td><input type="text" name="srodadd" value="{{ htmlspecialchars($combinedResults[0]->srodadd) }} "></td>
-                          <td><input type="text" name="srodnva" value="{{ htmlspecialchars($combinedResults[0]->srodnva) }} "></td>
-                      </tr>
-                      <tr>
-                          <td>OS:</td>
-                          <td><input type="text" name="srossph" value="{{ htmlspecialchars($combinedResults[1]->srosphere) }} "></td>
-                          <td><input type="text" name="sroscyl" value="{{ htmlspecialchars($combinedResults[1]->sroscyl) }} "></td>
-                          <td><input type="text" name="srosaxis" value="{{ htmlspecialchars($combinedResults[1]->srosaxis) }} "></td>
-                          <td><input type="text" name="srosva" value="{{ htmlspecialchars($combinedResults[1]->srosva) }} "></td>
-                          <td><input type="text" name="srosadd" value="{{ htmlspecialchars($combinedResults[1]->srosadd) }} "></td>
-                          <td><input type="text" name="srosnva" value="{{ htmlspecialchars($combinedResults[1]->srosnva) }} "></td>
-                      </tr>
-                      <!-- <tr>
-                          <td>Data 3-1</td>
-                          <td>Data 3-2</td>
-                          <td>Data 3-3</td>
-                          <td>Data 3-4</td>
-                          <td>Data 3-5</td>
-                          <td>Data 3-6</td>
-                          <td>Data 3-7</td>
-                      </tr> -->
-                      </table>
-                 </div>
-                 <div class="flexbox3right">
-                 <label>FINAL RX</label>
-                 <table width="70%">
-                      <tr>
-                          <th></th>
-                          <th>SPH</th>
-                          <th>CYL</th>
-                          <th>AXIS</th>
-                          <th>VA</th>
-                          <th>ADD</th>
-                          <th>NVA</th>
-                      </tr>
-                      <tr>
-                          <td>OD:</td>
-                          <td><input type="text" name="fodsph" value="{{ htmlspecialchars($combinedResults[0]->fodsph) }} "></td>
-                          <td><input type="text" name="fodcyl" value="{{ htmlspecialchars($combinedResults[0]->fodcyl) }} "></td>
-                          <td><input type="text" name="fodaxis" value="{{ htmlspecialchars($combinedResults[0]->fodaxis) }} "></td>
-                          <td><input type="text" name="fodva" value="{{ htmlspecialchars($combinedResults[0]->fodva) }} "></td>
-                          <td><input type="text" name="fodadd" value="{{ htmlspecialchars($combinedResults[0]->fodadd) }} "></td>
-                          <td><input type="text" name="fodnva" value="{{ htmlspecialchars($combinedResults[0]->fodnva) }} "></td>
-                      </tr>
-                      <tr>
-                          <td>OS:</td>
-                          <td><input type="text" name="fossph" value="{{ htmlspecialchars($combinedResults[1]->fossph) }} "></td>
-                          <td><input type="text" name="foscyl" value="{{ htmlspecialchars($combinedResults[1]->foscyl) }} "></td>
-                          <td><input type="text" name="fosaxis"  value="{{ htmlspecialchars($combinedResults[1]->fosaxis) }} "></td>
-                          <td><input type="text" name="fosva"  value="{{ htmlspecialchars($combinedResults[1]->fosva) }} "></td>
-                          <td><input type="text" name="fosadd"  value="{{ htmlspecialchars($combinedResults[1]->fosadd) }} "></td>
-                          <td><input type="text" name="fosnva"  value="{{ htmlspecialchars($combinedResults[1]->fosnva) }} "></td>
-                      </tr>
-                      <!-- <tr>
-                          <td>Data 3-1</td>
-                          <td>Data 3-2</td>
-                          <td>Data 3-3</td>
-                          <td>Data 3-4</td>
-                          <td>Data 3-5</td>
-                          <td>Data 3-6</td>
-                          <td>Data 3-7</td>
-                      </tr> -->
-                      </table>
-                 </div>
-          
-         </div>
-         <div class="flexbox4">
-                    <div class="flexbox4left">
-                      <table>
-                      <label>External Examination And Internal Examination</label>
-                      <tr>
-                          <th></th>
-                          <th>OD</th>
-                          <th>OS</th>
-                      </tr>
-  
-                      <tr>
-                          <td>Eyelid</td>
-                          <td><input type="text" name="eyelidod"  value="{{ htmlspecialchars($combinedResults[0]->eyelidod) }} "></td>
-                          <td><input type="text" name="eyelidos" value="{{ htmlspecialchars($combinedResults[0]->eyelidos) }} "></td>
-                      </tr>
-  
-                      <tr>
-                          <td>Conjuctiva</td>
-                          <td><input type="text" name="conjuctivaod" value="{{ htmlspecialchars($combinedResults[0]->conjuctivaod) }} "></td>
-                          <td><input type="text" name="conjuctivaos" value="{{ htmlspecialchars($combinedResults[0]->conjuctivaos) }} "></td>
-                      </tr>
-  
-                      <tr>
-                          <td>Cornea</td>
-                          <td><input type="text" name="corneaod" value="{{ htmlspecialchars($combinedResults[0]->corneaod) }} "></td>
-                          <td><input type="text" name="corneaos" value="{{ htmlspecialchars($combinedResults[0]->corneaos) }} "></td>
-                      </tr>
-  
-                      <tr>
-                          <td>Pupil</td>
-                          <td><input type="text" name="pupilod" value="{{ htmlspecialchars($combinedResults[0]->pupilod) }} "></td>
-                          <td><input type="text" name="pupilos" value="{{ htmlspecialchars($combinedResults[0]->pupilos) }} "></td>
-                      </tr>
-  
-                      <tr>
-                          <td>Iris</td>
-                          <td><input type="text" name="irisod" value="{{ htmlspecialchars($combinedResults[0]->irisod) }} "></td>
-                          <td><input type="text" name="irisos" value="{{ htmlspecialchars($combinedResults[0]->irisos) }} "></td>
-                      </tr>
-  
-                      <tr>
-                          <td>Lens</td>
-                          <td><input type="text" name="lensod" value="{{ htmlspecialchars($combinedResults[0]->lensod) }} "></td>
-                          <td><input type="text" name="lensos" value="{{ htmlspecialchars($combinedResults[0]->lensos) }} "></td>
-                      </tr>
-  
-                      <tr>
-                          <td>Virtreous</td>
-                          <td><input type="text" name="vitreousod" value="{{ htmlspecialchars($combinedResults[0]->vitreousod) }} "></td>
-                          <td><input type="text" name="vitreousos" value="{{ htmlspecialchars($combinedResults[0]->vitreousos) }} "></td>
-                      </tr>
-  
-                      <tr>
-                          <td>C/D Ratio</td>
-                          <td><input type="text" name="cdratiood" value="{{ htmlspecialchars($combinedResults[0]->cdratiood) }} "></td>
-                          <td><input type="text" name="cdratioos" value="{{ htmlspecialchars($combinedResults[0]->cdratioos) }} "></td>
-                      </tr>
-  
-                      <tr>
-                          <td>Macula</td>
-                          <td><input type="text" name="macularod" value="{{ htmlspecialchars($combinedResults[0]->macularod) }} "></td>
-                          <td><input type="text" name="maculaos" value="{{ htmlspecialchars($combinedResults[0]->maculaos) }} "></td>
-                      </tr>
-                      </table>
-  
-                    </div>
-                    <div class="flexbox4right">
-                      <table>
-                          <label>IOP</label>
-                      <tr>
-                          <th></th>
-                          <th>CCT</th>
-                          <th>NCT</th>
-                      </tr>
-  
-                      <tr>
-                          <td>OD</td>
-                          <td><input type="text" name="odccct" value="{{ htmlspecialchars($combinedResults[0]->odccct) }} "></td>
-                          <td><input type="text" name="odnct" value="{{ htmlspecialchars($combinedResults[0]->odnct) }} "></td>
-                      </tr>
-  
-                      <tr>
-                          <td>OS</td>
-                          <td><input type="text" name="oscct" value="{{ htmlspecialchars($combinedResults[0]->oscct) }} "></td>
-                          <td><input type="text" name="osnct" value="{{ htmlspecialchars($combinedResults[0]->osnct) }} "></td>
-                      </tr>
-                      </table>
-  
-                      <div class="time">
-                      <tr>
-                          <td>Time:</td>
-                          <td><input type="text" value="<?php echo date("h:ia")?>"></td>
-                      </tr>
-                      </div>
-  
-                    </div>
-                 </div>
-                    </div>
-  
-                 </div>
-  
-         </div>
-        
-      </div>
-   </form> 
+</div>
+</form> 
+
+  @endif
+
   
   </body>
   </html>

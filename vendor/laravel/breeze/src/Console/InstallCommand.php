@@ -8,6 +8,7 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use RuntimeException;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Finder\Finder;
@@ -18,6 +19,7 @@ use function Laravel\Prompts\confirm;
 use function Laravel\Prompts\multiselect;
 use function Laravel\Prompts\select;
 
+#[AsCommand(name: 'breeze:install')]
 class InstallCommand extends Command implements PromptsForMissingInput
 {
     use InstallsApiStack, InstallsBladeStack, InstallsInertiaStacks, InstallsLivewireStack;
@@ -31,7 +33,7 @@ class InstallCommand extends Command implements PromptsForMissingInput
                             {--dark : Indicate that dark mode support should be installed}
                             {--pest : Indicate that Pest should be installed}
                             {--ssr : Indicates if Inertia SSR support should be installed}
-                            {--typescript : Indicates if TypeScript is preferred for the Inertia stack (Experimental)}
+                            {--typescript : Indicates if TypeScript is preferred for the Inertia stack}
                             {--composer=global : Absolute path to the Composer binary which should be used to install packages}';
 
     /**
@@ -376,7 +378,7 @@ class InstallCommand extends Command implements PromptsForMissingInput
                 options: [
                     'dark' => 'Dark mode',
                     'ssr' => 'Inertia SSR',
-                    'typescript' => 'TypeScript (experimental)',
+                    'typescript' => 'TypeScript',
                 ]
             ))->each(fn ($option) => $input->setOption($option, true));
         } elseif (in_array($stack, ['blade', 'livewire', 'livewire-functional'])) {

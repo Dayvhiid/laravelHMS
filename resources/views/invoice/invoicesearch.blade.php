@@ -192,7 +192,7 @@ body{
 <body>
     <form action="{{route('invoice.search', ['users' => $users])}}" type="get">
         
-          @foreach($users as $user){ 
+          @foreach($users as $user) 
            {{-- The main code runs here --}}
            <div class = "invoice-wrapper" id = "print-area">
             <div class = "invoice">
@@ -200,7 +200,7 @@ body{
                     <div class = "invoice-head">
                         <div class = "invoice-head-top">
                             <div class = "invoice-head-top-left text-start">
-                                <img src = "images/logo.png">
+                                <img src="icons/logo.png">
                             </div>
                             <div class = "invoice-head-top-right text-end">
                                 <h3>Invoice</h3>
@@ -331,7 +331,7 @@ body{
           }
         </script>
     </body>
-          }
+          
           @endforeach
     </form>
 </body>

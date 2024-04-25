@@ -306,13 +306,13 @@ trait Creator
      * If $hour is not null then the default values for $minute and $second
      * will be 0.
      *
-     * @param DateTimeInterface|int|null   $year
-     * @param int|null                     $month
-     * @param int|null                     $day
-     * @param int|null                     $hour
-     * @param int|null                     $minute
-     * @param int|null                     $second
-     * @param DateTimeZone|string|int|null $timezone
+     * @param DateTimeInterface|string|int|null $year
+     * @param int|null                          $month
+     * @param int|null                          $day
+     * @param int|null                          $hour
+     * @param int|null                          $minute
+     * @param int|null                          $second
+     * @param DateTimeZone|string|int|null      $timezone
      *
      * @throws InvalidFormatException
      *
@@ -642,6 +642,19 @@ trait Creator
     public static function createFromFormat($format, $time, $timezone = null): ?self
     {
         $function = static::$createFromFormatFunction;
+
+        // format is a single numeric unit
+        if (\is_int($time) && \in_array(ltrim($format, '!'), ['U', 'Y', 'y', 'X', 'x', 'm', 'n', 'd', 'j', 'w', 'W', 'H', 'h', 'G', 'g', 'i', 's', 'u', 'z', 'v'], true)) {
+            $time = (string) $time;
+        }
+
+        if (!\is_string($time)) {
+            @trigger_error(
+                'createFromFormat() will only accept string or integer for 1-letter format representing a numeric unit int next version',
+                \E_USER_DEPRECATED,
+            );
+            $time = (string) $time;
+        }
 
         if (!$function) {
             return static::rawCreateFromFormat($format, $time, $timezone);

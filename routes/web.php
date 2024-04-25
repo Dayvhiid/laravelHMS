@@ -10,12 +10,15 @@ use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\InvoicegenerationController;
 use App\Http\Controllers\lensController;
 use App\Http\Controllers\messagingController;
+use App\Http\Controllers\NewDoctorVerificationController;
+use App\Http\Controllers\newValidationController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\publicRecordsController;
 use App\Http\Controllers\RecieptController;
 use App\Http\Controllers\RecordsController;
 use App\Http\Controllers\registerController;
+use App\Http\Controllers\SendSMSController;
 use App\Http\Controllers\SmsController;
 use App\Http\Controllers\TreatmentController;
 use App\Http\Controllers\twilioSmsController;
@@ -25,7 +28,7 @@ use App\Models\vital2;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('index');
+    return view('landingpage');
 });
 
 // Route::get('/dashboard', function () {
@@ -62,7 +65,7 @@ Route::get('/', function () {
     Route::get('/testing', function (){ return view('doctors.testing');})->name('testing');
     Route::get('/inventory/store', [InventoryController::class, 'list'])->name('inventory.list');// display the list of all inventory
     Route::delete('/inventory/{item}/delete', [InventoryController::class, 'delete'])->name('inventory.delete');
-    Route::get('/devmode', function (){ return view('landingpage');});
+    Route::get('/devmode', function (){ return view('landingpage');})->name('devmode');
     Route::get('/doctors/drug', [DrugController::class, 'index'])->name('doctors.drugs');//to store drugs
     Route::post('/doctors/drug/store', [DrugController::class, 'store'])->name('doctors.store');//duplicate
     Route::get('/doctors/drug/list', [DrugController::class, 'list'])->name('doctors.list');
@@ -103,6 +106,12 @@ Route::get('/', function () {
     Route::post('/register/data', [registerController::class, 'store'])->name('register.data');
     Route::get('/register/signin', [registerController::class, 'signin'])->name('register.signin');
     Route::post('/register/data/check', [registerController::class, 'check'])->name('register.check');
+    Route::get('/holding', function () { return view('holding');});
+    Route::get('/signup', [newValidationController::class, 'signup'])->name('NewSignUp');
+    Route::get('/Bookings', [newValidationController::class, 'booking'])->name('NewBooking');
+    Route::get('/doctors/signup/imp', [NewDoctorVerificationController:: class, 'index'])->name('doctorSignIn');
+    Route::get('/send-sms', [SendSMSController::class, 'loadPage']);
+    Route::post('/send-sms', [SendSMSController:: class, 'sendSMS'])->name('sendSMS');
 
 // require __DIR__.'/auth.php';
 

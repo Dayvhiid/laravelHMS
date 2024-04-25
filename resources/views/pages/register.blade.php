@@ -22,7 +22,7 @@
             <ul>
                     <li><a href="{{ route('generate.show') }}">Invoice</a></li>
                     <li><a href="{{ route('public.records') }}">Records</a></li>
-                    <li><a href="{{ route('doctors.signin') }}">Doctors Portal</a></li>
+                    <li><a href="{{ route('doctorSignIn') }}">Doctors Portal</a></li>
                     <li><a href="{{ route('testing') }}">Inventory</a></li>
                     {{-- <li><a href="{{ route('doctors.drugs') }}">Drug</a></li> --}}
             </ul>

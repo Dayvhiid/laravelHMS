@@ -1,4 +1,7 @@
 <style>
+    *{
+        background-color: #fff;
+    }
     body{
       overflow-x: hidden;
     }
@@ -141,11 +144,49 @@
     width: 60%;
     margin-left: auto;
     margin-right: auto;
+    background-color: #dddddd;
+  color: #666666;
+  padding: 1em;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  outline: none;
+  font-family: "Heebo", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.4;
+  height: 100px;
+  transition: all 0.2s;
+}
+.dosage:hover{
+    cursor: pointer;
+  background-color: #eeeeee;
+}
+.dosage:focus {
+  cursor: text;
+  color: #333333;
+  background-color: white;
+  border-color: #333333;
 }
 .remark{
     width: 60%;
     margin-left: auto;
     margin-right: auto; 
+    background-color: #dddddd;
+    color: #666666;
+  padding: 1em;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  outline: none;
+  font-family: "Heebo", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.4;
+  height: 100px;
+  transition: all 0.2s;
+}
+.remark:hover{
+    cursor: pointer;
+  background-color: #eeeeee;
 }
 .duration{
     display: grid;
@@ -234,6 +275,26 @@ h2 {
     margin-left: 20%;  
     margin-top: -10%; 
 }
+/* Basic styling */
+.durationMenu {
+  /* Adjust width as needed */
+  width: 60%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px; /* Rounded corners */
+  font-size: 16px; /* Adjust font size as needed */
+}
+
+/* Hover effect (optional) */
+.durationMenu:hover {
+  border-color: #999; /* Change hover border color */
+}
+
+/* Selected option styling */
+.durationMenu option:checked {
+  background-color: #eee; /* Light background for selected option */
+}
+
 </style>
 <!DOCTYPE html>
 <html lang="en">
@@ -246,70 +307,37 @@ h2 {
     <title>Document</title>
 </head>
 <body>
-    <div class="navbar">
-        <h2>Diagnosis Vitals</h2>
-        <div class="links">
-            <ul>
-                <li> New Patients</li>
-                <li>Records</li>
-                <li>Invoice</li>
-                <li>Inventory</li>
-            {{-- <button class="doc" onclick="window.location.href='/HMS/hospital/doc.html'">
-              <img src="/HMS/hospital/images/doctor.png" height="35px" width="35px">
-            </button> --}}
-            </ul>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link" href="#">Features</a>
+              <a class="nav-link" href="#">Pricing</a>
+              <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+            </div>
+          </div>
         </div>
-    </div>
+      </nav>
     <div class="main">
-        {{-- <div class="statusbar">
-            <div class="home">
-              <img height="35px" width="35px" class="homepng" src="/hospital/images/house.png">
-              <p>Home</p>
-            </div>
-            <!-- Patients -->
-            <div class="patients">
-              <img height="35px" width="35px" class="patientpng" src="/hospital/icons/patient(1).png">
-              <p>Patient</p>
-            </div>
-            <!-- Appointment -->
-            <div class="app">
-              <img height="35px" width="35px" class="apppng" src="/hospital/icons/appointment.png">
-              <p>Appointment</p>
-            </div>
-            <!-- Billing -->
-            <div class="billing">
-              <img height="35px" width="35px" class="billingpng" src="/hospital/icons/bill.png">
-              <p>Billing</p>
-            </div>
-            <!-- Records -->
-            <div class="records">
-              <img height="35px" width="35px" class="recordspng" src="/hospital/icons/search-interface-symbol.png">
-              <p>Records</p>
-            </div>
-            <div class="button">
-              <input type="submit" class="patientBtn" value="New Patient" onclick="window.location.href='/HMS/hospital/newPatient.php';">
-            </div>
-         </div> --}}
         <div class="content">         
               <div class="search">
-                    {{-- <form action="" method="post" class="form1"> --}}
-                        {{-- <div class="form1"> --}}
-                            {{-- <input type="text" placeholder="Enter Patient Id" name="patient_id" class="search_input"> --}}
-                            {{-- <input type="submit" value="Search" class="searchBtn">  --}}
-                        {{-- </div> --}}
-                    {{-- </form> --}}
               </div>
               <form method="POST" action="{{route('treatment.store')}}">
                 @csrf
                 @method('POST')
                 <div class="form1">
                     <input type="text" placeholder="Enter Patient Id" name="patient_id" class="search_input">
-                    {{-- <input type="submit" value="Search" class="searchBtn">  --}}
+                   
                 </div>
               {{-- DOSAGE --}}
               <div class="textarea">
                 <label for="TextArea">Dosage:</label>
-                <textarea class="dosage" name="dosage">
+                <textarea class="dosage" placeholder="Enter Dosage...." name="dosage" >
                 
                 </textarea>
               </div>

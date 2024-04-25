@@ -12,6 +12,7 @@
 <body>
     <div class="container">
         <h1 class="font-weight-bold">Generate Invoice</h1>
+        <a href="{{route('invoice.find')}}">Find Invoice</a>
         <form action="{{route('invoice.save')}}" method="POST">
             @csrf
             @method('POST')
@@ -19,7 +20,7 @@
                 <input type="text" class="form-control" placeholder="Enter Patient Name" aria-label="Recipient's username" aria-describedby="basic-addon2" name="pid">
                 <td><input type="number" name="discount" placeholder="Enter Percentage discounts" class="form-control" required></td>
                 <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="submit">Button</button>
+                  <button class="btn btn-outline-secondary" type="submit">Generate Invoice</button>
                 </div>
             </div>
             <table class="table table-bordered" id="table">
