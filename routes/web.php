@@ -111,7 +111,7 @@ Route::get('/', function () {
     Route::get('/Bookings', [newValidationController::class, 'booking'])->name('NewBooking');
     Route::get('/doctors/signup/imp', [NewDoctorVerificationController:: class, 'index'])->name('doctorSignIn');
     Route::get('/send-sms/{sms}', [SendSMSController::class, 'loadPage'])->name('newSMS');
-    Route::post('/send-sms/forward', [SendSMSController:: class, 'sendSMS'])->name('sendSMS');
+    Route::get('/send-sms', [SendSMSController:: class, 'sendSMS'])->name('sendSMS');
 
 // require __DIR__.'/auth.php';
 
