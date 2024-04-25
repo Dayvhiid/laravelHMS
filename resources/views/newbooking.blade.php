@@ -34,7 +34,7 @@
                 <i class="fas fa-lock"></i>
                 <input type="phone" placeholder="phone Number" name="phone" required/>
             </div>
-            <textarea id="my-text-area" rows="4" placeholder="Enter your Complaints" name="complaints"></textarea>
+            <textarea id="my-text-area" rows="4" placeholder="Enter your Complaints" name="complaints" required></textarea>
             <input type="submit" value="Book Now" class="btn solid" />
             {{-- <p class="social-text">Or Sign in with social platforms</p>
             <div class="social-media">

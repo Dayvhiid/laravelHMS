@@ -93,7 +93,7 @@ Route::get('/', function () {
     Route::put('/lens/{lens}/update', [lensController::class, 'update'])->name('lens.update');
     Route::delete('/lens/{len}/delete', [lensController::class, 'delete'])->name('lens.delete');
     Route::get('/smspage/{sms}', [SmsController::class, 'pass'])->name('sms.page');//sms handler
-    Route::get('/sms', [SmsController::class, 'index'])->name('doctor.sms');
+    Route::get('/sms', [SmsController::class, 'index'])->name('doctor.sms'); //
     Route::get('/invoice/find', [InvoiceController::class, 'find'])->name('invoice.find');//invoice searcher
     Route::get('/invoice/search', [InvoiceController::class, 'search'])->name('invoice.search');
     Route::post('/doctors/treatment/store', [TreatmentController::class, 'store'])->name('treatment.store');//stores data for the treatment plan
@@ -110,8 +110,8 @@ Route::get('/', function () {
     Route::get('/signup', [newValidationController::class, 'signup'])->name('NewSignUp');
     Route::get('/Bookings', [newValidationController::class, 'booking'])->name('NewBooking');
     Route::get('/doctors/signup/imp', [NewDoctorVerificationController:: class, 'index'])->name('doctorSignIn');
-    Route::get('/send-sms', [SendSMSController::class, 'loadPage']);
-    Route::post('/send-sms', [SendSMSController:: class, 'sendSMS'])->name('sendSMS');
+    Route::get('/send-sms/{sms}', [SendSMSController::class, 'loadPage'])->name('newSMS');
+    Route::post('/send-sms/forward', [SendSMSController:: class, 'sendSMS'])->name('sendSMS');
 
 // require __DIR__.'/auth.php';
 

@@ -133,13 +133,14 @@ th {
       </nav>
            
         <div class="appointments">
-          <h1>Booking Appointments</h1>
+          <h1>Booking Appointment</h1>
           <table>
             <tr>
               <th>Name</th>
               <th>Date</th>
               <th>Time</th>
               <th>Compaints</th>
+              {{-- <th>Confirm appointment status</th> --}}
               <th>Confirm appointment status</th>
               </tr>
             @forelse ($appointments as $appointment)
@@ -149,8 +150,11 @@ th {
                 <td>{{ $appointment->time }}</td>            
                   <td data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $appointment->complaints }}">
                     {{ $appointment->complaints  }} </td>
-                <td>
+                {{-- <td>
                   <a href="{{route('sms.page', ['sms' => $appointment])}}">Send Sms</a>
+                </td> --}}
+                <td>
+                  <a href="{{route('newSMS', ['sms' => $appointment])}}">Send Sms 2</a>
                 </td>
                 {{-- <td> <a href="{{route('frame.edit', ['frames' => $frame])}}">Edit</a></td> --}}
                 </tr>

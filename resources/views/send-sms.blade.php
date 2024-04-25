@@ -18,11 +18,11 @@
          @endif
             <div class="card-header">Send Message</div>
             <div class="card-body">
-                <form action="{{route('sendSMS')}}" method="POST">
+                <form action="{{route('sendSMS', ['sms' => $sms])}}" method="get">
                     @csrf
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Phone Number</label>
-                    <input type="text" class="form-control" name="number" id="exampleFormControlInput1" placeholder="Enter Recipient Number">
+                    <input type="text" class="form-control" name="number" id="exampleFormControlInput1" placeholder="Enter Recipient Number" value="{{$sms->phone_number}}">
                   </div>
                   <div class="mb-3">
                     <label for="exampleFormControlTextarea1"  class="form-label" >Your message</label>

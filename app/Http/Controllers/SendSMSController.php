@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Appointment;
 use Infobip\Api\SmsApi; 
 use Infobip\Configuration;
 use Infobip\ApiException;
@@ -12,9 +14,7 @@ use Illuminate\Http\Request;
 class SendSMSController extends Controller
 {
     //
-    public function loadPage(){
-        return view('send-sms');
-    }
+   
 
     public function sendSMS(Request $request){
         $configuration = new Configuration(
@@ -40,5 +40,9 @@ class SendSMSController extends Controller
         } catch (ApiException $apiException) {
             return redirect('/send-sms')->with('fail', $apiException->getMessage());
         }
+    }
+    public function loadPage(Appointment $sms){
+        // $appointment = Appointment::all();
+        return view('send-sms', compact('sms'));
     }
 }
