@@ -11,6 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/landingpage.css">
 </head>
 
@@ -49,8 +52,9 @@
     <div class="nav">
         <div class="menu-wrap">
             <a href="#home">
-                <div class="logo">
-                    Freshfood
+                <div class="logo">       
+                    {{-- <img src="icons/logo.png" height="200px" width="200px" class="logos"> --}}
+                    <h1 class="logo-text"><span class="primary-color-logo">Ola-oluwa</span> <span class="primary-color-logo2">Eye Clinic</span></h1>
                 </div>
             </a>
             <div class="menu h-xs">

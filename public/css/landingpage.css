@@ -421,7 +421,24 @@ section {
 .food-item-wrap.dolor>div.dolor-type {
     display: block;
 }
-
+.logo-text {
+    font-family: "Sacramento", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .primary-color-logo{
+    font-family: "Sacramento", cursive;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--olaoluwaO);
+  }
+  .primary-color-logo2{
+    font-family: "Sacramento", cursive;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--primary-color);
+  }
+  
 /* ANIMATION */
 
 .left-to-right {
@@ -588,6 +605,7 @@ nav ul li a {
     width: 20px;
     margin-top: 15px;
 }
+
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
