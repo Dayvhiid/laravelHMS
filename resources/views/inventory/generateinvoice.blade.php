@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,8 +12,23 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="font-weight-bold">Generate Invoice</h1>
-        <a href="{{route('invoice.find')}}">Find Invoice</a>
+      <div class="flex">
+        <div>
+          <h1 class="font-weight-bold">Generate Invoice</h1>
+        </div>
+        <div class="search">
+          <form action="{{route('invoice.search')}}" type="get">
+            <div class="input-group input-group-sm mb-3">
+              {{-- <span class="input-group-text" id="inputGroup-sizing-sm">Search Invoice</span> --}}
+              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Enter name to search for invoice" name="query">
+              <button class="btn btn-outline-secondary" type="submit">Search</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      
+        {{-- <a href="{{route('invoice.find')}}">Find Invoice</a> --}}
+        
         <form action="{{route('invoice.save')}}" method="POST">
             @csrf
             @method('POST')

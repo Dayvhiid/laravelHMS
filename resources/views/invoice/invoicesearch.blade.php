@@ -200,7 +200,7 @@ body{
                     <div class = "invoice-head">
                         <div class = "invoice-head-top">
                             <div class = "invoice-head-top-left text-start">
-                                <img src="icons/logo.png">
+                                <img src="/icons/logo.png">
                             </div>
                             <div class = "invoice-head-top-right text-end">
                                 <h3>Invoice</h3>

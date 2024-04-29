@@ -110,9 +110,7 @@
                              Ola - Oluwa Eye clinic
                         </h1>
                         <p class="left-to-right play-on-scroll delay-2">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae eveniet ullam perferendis
-                            eos, nobis corrupti similique fuga ipsa minus at eius ipsam expedita quam aliquam
-                            perspiciatis voluptate qui dolore soluta.
+                            At Ola-oluwa Eye clinic, we help you see the world clearly. Our team of experienced ophthalmologists and optometrists are dedicated to providing comprehensive eye care for all ages. We offer advanced diagnostic tools and personalized treatment plans to ensure optimal vision health.
                         </p>
                         <div class="left-to-right play-on-scroll delay-4">
                            <a href="{{route('NewBooking')}}">
@@ -152,7 +150,7 @@
     <!-- END SECION ABOUT -->
     <!-- FOOD MENU SECTION -->
     <section class="align-items-center bg-img bg-img-fixed" id="food-menu-section"
-        style="background-image: url(assets/katherine-chase-4MMK78S7eyk-unsplash.jpg);">
+        style="background-image: url(assets/katherine-chase-4MMK78S7eyk-unsplas.jpg);">
         <div class="container">
             <div class="food-menu">
                 <h1>

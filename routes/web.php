@@ -113,6 +113,7 @@ Route::get('/', function () {
     Route::get('/send-sms/{sms}', [SendSMSController::class, 'loadPage'])->name('newSMS');
     Route::get('/send-sms', [SendSMSController:: class, 'sendSMS'])->name('sendSMS');
     Route::get('/sms-api', [SmsController::class, 'NaijaSMS'])->name('NaijaSMS');
+    Route::get('/landing-page', function () {return view('landing-page2');} );
 
 // require __DIR__.'/auth.php';
 
