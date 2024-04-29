@@ -22,7 +22,8 @@ class frameController extends Controller
         foreach($request->inputs as $key => $value){
             Frame::create($value);
         }
-        return redirect(route('doctors.status'))->with('msg','Frame List Updated Succesfully'); 
+        // return redirect(route('doctors.status'))->with('msg','Frame List Updated Succesfully'); 
+        return redirect(route('frame.list'));
     }
 
     public function list(){
@@ -43,7 +44,8 @@ class frameController extends Controller
     public function delete($frames){
         $frame = Frame::find($frames);
         $frame->delete();
-        return redirect(route('pages.status'))->with('success', 'Frame deleted Sucesfully');
+        // return redirect(route('pages.status'))->with('success', 'Frame deleted Sucesfully');
+        return redirect(route('frame.list'));
     }    
 }
 

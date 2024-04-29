@@ -270,6 +270,7 @@ form.sign-in-form {
   pointer-events: all;
 }
 #my-text-area {
+  margin-top: 2%;
     outline: 1px solid #ccc;
     outline-offset: 2px;
     background: none;
@@ -284,7 +285,7 @@ form.sign-in-form {
     padding: 5px;
   
     /* Set width and height as desired */
-    width: 85%; 
+    width: 80%; 
     height: 60px;
   
     /* Set background color */
@@ -311,6 +312,11 @@ form.sign-in-form {
     color: #aaa;
     font-weight: 500;
   }
+ 
+
+
+
+  
   
 
   
@@ -442,4 +448,13 @@ form.sign-in-form {
     bottom: 28%;
     left: 50%;
   }
+
+  #my-text-area{
+    width: 100%;
+  }
+  
+  #my-text-area::placeholder{
+    width: 100%;
+  }
+  
 }

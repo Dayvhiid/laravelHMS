@@ -429,7 +429,7 @@ form.sign-in-form {
               <input type="password" placeholder="Password" name="password"/>
             </div>
             <input type="submit" value="Login" class="btn solid" />
-            <p class="social-text">Or Sign in with social platforms</p>
+            {{-- <p class="social-text">Or Sign in with social platforms</p>
             <div class="social-media">
               <a href="#" class="social-icon">
                 <i class="fab fa-facebook-f"></i>
@@ -443,7 +443,7 @@ form.sign-in-form {
               <a href="#" class="social-icon">
                 <i class="fab fa-linkedin-in"></i>
               </a>
-            </div>
+            </div> --}}
           </form>
           <form method="POST" action="{{route('doctors.data')}}" class="sign-up-form">
             @csrf
@@ -451,15 +451,15 @@ form.sign-in-form {
             <h2 class="title">Sign up</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
+              <input type="text" placeholder="Username" name="name"/>
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="password" />
+              <input type="password" placeholder="password" name="password"/>
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Confirm password" />
+              <input type="password" placeholder="Confirm password" name="confirm_password"/>
             </div>
             <input type="submit" class="btn" value="Sign up" />
         </form>

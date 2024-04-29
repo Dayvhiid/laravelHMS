@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="css/login.css">
-    <title>Modern Login Page | AsmrProg</title>
+    <title>Sign Up/Sign In</title>
 </head>
 
 <body>
@@ -23,7 +23,7 @@
                     <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
                     <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
                 </div> --}}
-                <span>or use your email for registeration</span>
+                {{-- <span>or use your email for registeration</span> --}}
                 <input type="text" placeholder="Name" name="name">
                 <input type="password" placeholder="password" name="password">
                 <input type="password" placeholder="Confirm" name="confirm_password">
@@ -41,7 +41,7 @@
                     <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
                     <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
                 </div> --}}
-                <span>or use your email password</span>
+                {{-- <span>or use your email password</span> --}}
                 <input type="text" placeholder="Enter your name" name="name">
                 <input type="password" placeholder="Enter your Password" name="password">
                 <a href="#">Forget Your Password?</a>

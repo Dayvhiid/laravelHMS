@@ -33,7 +33,7 @@
                   @foreach($frames as $frame)
                   <tr>
                     {{-- <th scope="row">1</th> --}}
-                    <td> <input type="text" class="form-control" name="name" value="{{$frame->sn}}" readonly></td>
+                    <td> <input type="text" class="form-control" name="name" value="{{$frame->id}}" readonly></td>
                     <td> <input type="text" class="form-control" name="price" value="{{$frame->name}}" readonly></td>
                     <td> <input type="text" class="form-control" name="price" value="{{$frame->price}}" readonly></td>
                     <td> <input type="text" class="form-control" name="price" value="{{$frame->special_code}}" readonly></td>

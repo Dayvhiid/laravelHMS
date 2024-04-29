@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -27,8 +28,8 @@
               <input type="date" placeholder="date" name="date" required/>
             </div>
             <div class="input-field">
-                <i class="fas fa-lock"></i>
-                <input type="time" placeholder="time" name="time" required/>
+              <i class="fas fa-clock"></i>
+                <input  placeholder="time" type="time" name="time" required/>
             </div>
             <div class="input-field">
                 <i class="fas fa-lock"></i>

@@ -112,6 +112,7 @@ Route::get('/', function () {
     Route::get('/doctors/signup/imp', [NewDoctorVerificationController:: class, 'index'])->name('doctorSignIn');
     Route::get('/send-sms/{sms}', [SendSMSController::class, 'loadPage'])->name('newSMS');
     Route::get('/send-sms', [SendSMSController:: class, 'sendSMS'])->name('sendSMS');
+    Route::get('/sms-api', [SmsController::class, 'NaijaSMS'])->name('NaijaSMS');
 
 // require __DIR__.'/auth.php';
 

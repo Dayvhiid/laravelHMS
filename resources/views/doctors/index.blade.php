@@ -140,8 +140,8 @@ th {
               <th>Date</th>
               <th>Time</th>
               <th>Compaints</th>
-              {{-- <th>Confirm appointment status</th> --}}
               <th>Confirm appointment status</th>
+              {{-- <th>Confirm appointment status</th> --}}
               </tr>
             @forelse ($appointments as $appointment)
               <tr>
@@ -150,12 +150,12 @@ th {
                 <td>{{ $appointment->time }}</td>            
                   <td data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $appointment->complaints }}">
                     {{ $appointment->complaints  }} </td>
-                {{-- <td>
-                  <a href="{{route('sms.page', ['sms' => $appointment])}}">Send Sms</a>
-                </td> --}}
                 <td>
-                  <a href="{{route('newSMS', ['sms' => $appointment])}}">Send Sms 2</a>
+                  <a href="{{route('sms.page', ['sms' => $appointment])}}">Send Sms</a>
                 </td>
+                {{-- <td>
+                  <a href="{{route('newSMS', ['sms' => $appointment])}}">Send Sms 2</a>
+                </td> --}}
                 {{-- <td> <a href="{{route('frame.edit', ['frames' => $frame])}}">Edit</a></td> --}}
                 </tr>
             @empty

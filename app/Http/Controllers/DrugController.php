@@ -22,7 +22,8 @@ class DrugController extends Controller
         foreach($request->inputs as $key => $value){
             Drug::create($value);
         }
-        return redirect(route('pages.status'))->with('success', 'Drug List updated succefully');
+        // return redirect(route('pages.status'))->with('success', 'Drug List updated succefully');
+        return redirect(route('doctors.list'));
     }
     public function list(){
         $drugs = Drug::paginate(9);

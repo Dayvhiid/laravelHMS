@@ -22,16 +22,23 @@
              </div>
              <input type="submit" value="SEND SMS">
         </form> --}}
-        <form method="get" action="{{route('doctor.sms', ['sms' => $sms])}}">
+        <form method="get" action="{{route('NaijaSMS')}}">
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="phone" id="floatingInput" placeholder="name@example.com" value="{{$sms->phone_number}}" readonly>
+                <input type="text" class="form-control" name="phone" id="floatingInput" placeholder="name@example.com" value="{{$sms->phone_number}}" >
                 <label for="floatingInput"></label>
               </div>
               <div class="form-floating">
                 <input type="text" class="form-control" id="floatingPassword" name="message" placeholder="Enter User Message">
                 <label for="floatingPassword">Enter Message</label>
               </div>
-              <button class="btn btn-outline-secondary" type="submit" id="inputGroupFileAddon04">SEND SMS</button>
+              <button class="btn btn-outline-secondary" name="submit" type="submit" id="inputGroupFileAddon04">SEND SMS</button>
+              {{-- @php      
+              $email = $_GET['phone'];    
+                if(isset($_GET['submit'])){
+                    echo $email
+                }
+                
+              @endphp --}}
         </form>
     </div>
 </body>

@@ -30,5 +30,10 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
+    'nigeriabulksms' => [
+        'username'      => env('NIGERIABULKSMS_USERNAME'),
+        'password'      => env('NIGERIABULKSMS_PASSWORD'),
+        'sender'        => env('NIGERIABULKSMS_SENDER'),
+    ],
 
 ];

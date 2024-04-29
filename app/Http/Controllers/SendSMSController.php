@@ -21,7 +21,7 @@ class SendSMSController extends Controller
         $message = request()->get('message');
         $configuration = new Configuration(
             host: 'https://3gllqv.api.infobip.com',
-            apiKey: '8b660cf0378d59c5b1653a4ef81b31a8-187f3662-81df-4bca-b84e-0e099347f632'
+            apiKey: 'e467bba270ffb47eed5134206d283d48-293f4f28-33ef-4cdc-8bd3-b700b027082d'
         );
 
         $sendSmsApi = new SmsApi(config: $configuration);

@@ -33,7 +33,7 @@
                   @foreach($lens as $len)
                   <tr>
                     {{-- <th scope="row">1</th> --}}
-                    <td> <input type="text" class="form-control" name="name" value="{{$len->sn}}" readonly></td>
+                    <td> <input type="text" class="form-control" name="name" value="{{$len->id}}" readonly></td>
                     <td> <input type="text" class="form-control" name="price" value="{{$len->name}}" readonly></td>
                     <td> <input type="text" class="form-control" name="price" value="{{$len->price}}" readonly></td>
                     <td> <input type="text" class="form-control" name="price" value="{{$len->special_code}}" readonly></td>

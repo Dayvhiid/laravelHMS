@@ -6,10 +6,10 @@ sideNav.style.right = "-250px"
 function toggle() {
     if (sideNav.style.right == "-250px") {
         sideNav.style.right = "0";
-        menu.src = "close.png";
+        menu.src = "icons/close.png";
     } else {
         sideNav.style.right = "-250px";
-        menu.src = "menu.png";
+        menu.src = "icons/menu.png";
     }
 }
 // back tot top

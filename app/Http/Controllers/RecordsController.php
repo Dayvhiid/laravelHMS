@@ -14,7 +14,8 @@ class RecordsController extends Controller
         $search_text = $_GET['query'];
         $users = PatientInfo::where(function ($query) use ($search_text) {
             $query->where('first_name', 'LIKE', "%{$search_text}%")
-                  ->orWhere('last_name', 'LIKE', "%{$search_text}%");
+                  ->orWhere('last_name', 'LIKE', "%{$search_text}%")
+                  ->orWhere('patient_id', 'LIKE', "%{$search_text}%");
         })
         ->get();
         

@@ -30,7 +30,7 @@ class messagingController extends Controller
             // Check if phone number is empty to avoid errors
             if (!empty($phoneNumber)) {
             // Remove the first character and prepend "+234"
-            $phoneNumber = preg_replace('/^\d/', '+234', $phoneNumber, 1);
+            $phoneNumber = preg_replace('/^\d/', '234', $phoneNumber, 1);
             $appointment->phone_number = $phoneNumber;
             } else {
             // Handle empty phone number case (optional)
