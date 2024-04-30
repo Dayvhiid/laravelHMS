@@ -24,6 +24,7 @@
                     <li><a href="{{ route('public.records') }}">Records</a></li>
                     <li><a href="{{ route('doctorSignIn') }}">Doctors Portal</a></li>
                     <li><a href="{{ route('testing') }}">Inventory</a></li>
+                    <li><a href="{{ route('search.treatment') }}">Opticianry</a></li>
                     {{-- <li><a href="{{ route('doctors.drugs') }}">Drug</a></li> --}}
             </ul>
         </div>
@@ -40,32 +41,32 @@
             <h1 class="patientLabel">New Patient</h1>
 
             <label class="fnlabel">First Name:</label><br>
-            <input type="text" placeholder="Enter First Name" class="fninput" name="firstname">
+            <input type="text" placeholder="Enter First Name" class="fninput" name="firstname" required>
 
             <label class="lnlabel">Last Name:</label><br>
-            <input type="text" placeholder="Enter Last Name" class="lninput" name="lastname">
+            <input type="text" placeholder="Enter Last Name" class="lninput" name="lastname" required>
 
             <label class="doblabel">Date Of Birth:</label>
-            <input type="date" placeholder="yyyy/mm/dd" class="dobinput" name="dob" >
+            <input type="date" placeholder="yyyy/mm/dd" class="dobinput" name="dob" required>
 
             <div class="male">
-                <input type="radio"  class="maleinput" name="radio" value="male"> 
+                <input type="radio"  class="maleinput" name="radio" value="male"required> 
                 <label >MALE</label>
             </div>
 
             <div class="female">
-                <input type="radio"  class="femaleinput" name="radio" value="female">
+                <input type="radio"  class="femaleinput" name="radio" value="female"required>
                 <label >FEMALE</label>
             </div>
 
             <div class="contactInfo">
                 <div class="phone">
                    <label>Phone:</label><br>
-                   <input type="tel" placeholder="Enter Phone Number" class="phoneinput" name="phone">
+                   <input type="tel" placeholder="Enter Phone Number" class="phoneinput" name="phone"required>
                 </div>
                 <div class="email">
                     <label>Email:</label><br>
-                    <input type="text" placeholder="Enter Email"class="emailinput" name="email">
+                    <input type="text" placeholder="Enter Email"class="emailinput" name="email"required>
                 </div>
             </div>
             <div class="adl">
@@ -74,22 +75,22 @@
             <div class="cityAndstate">
                 <div class="city">
                     <label>CITY:</label><br>
-                    <input type="text" placeholder="Enter Your City" class="cityinput" name="city">
+                    <input type="text" placeholder="Enter Your City" class="cityinput" name="city" required>
                 </div>
                 <div class="state">
                     <label>STATE:</label><br>
-                    <input type="text" placeholder="Enter Phone Number" class="stateinput" name="state">
+                    <input type="text" placeholder="Enter Phone Number" class="stateinput" name="state" required>
                 </div>
             </div>
             
             <div class="street">
                 <label>Street:</label>
-                <input type="text" placeholder="Enter your street address" class="streetinput" name="street">
+                <input type="text" placeholder="Enter your street address" class="streetinput" name="street" required>
             </div>
             <!-- Occupation -->
             <div class="occ">
                 <label>Occupation:</label>
-                <input type="text" placeholder="Enter your occupation" class="occinput" name="occupation">
+                <input type="text" placeholder="Enter your occupation" class="occinput" name="occupation" required>
             </div>
 <!-- Emergency Contact -->
             <div class="emergencyLabel">
@@ -98,21 +99,21 @@
             <div class="emergencyContact">
                 <div class="emergencyfn">
                     <label>FULL NAME:</label><br>
-                    <input type="text" placeholder="Enter Full Name" class="efninput" name="efn">
+                    <input type="text" placeholder="Enter Full Name" class="efninput" name="efn" required>
                 </div>
                 <div class="relationship">
                     <label>RELATIONSHIP:</label><br>
-                    <input type="text" placeholder="Enter Your Relationship" class="relationshipinput" name="erel">
+                    <input type="text" placeholder="Enter Your Relationship" class="relationshipinput" name="erel" required>
                 </div>
             </div>
             <div class="contactInfo">
                 <div class="phone">
                    <label>Phone:</label><br>
-                   <input type="tel" placeholder="Enter Phone Number" class="phoneinput" name="epn">
+                   <input type="tel" placeholder="Enter Phone Number" class="phoneinput" name="epn" required>
                 </div>
                 <div class="email">
                     <label>Email:</label><br>
-                    <input type="text" placeholder="Enter Email"class="emailinput" name="ee" >
+                    <input type="text" placeholder="Enter Email"class="emailinput" name="ee" required>
                 </div>
         </div>
         @php

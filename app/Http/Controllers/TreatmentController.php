@@ -11,6 +11,9 @@ class TreatmentController extends Controller
     public function index(){
         return view('doctors.treatment');
     }
+    public function index2(){
+        return view('doctors.treatment2');
+    }
     public function store(Request $request){
         $validatedData = $request->validate([
             'singlevision' => 'array',

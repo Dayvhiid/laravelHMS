@@ -219,7 +219,7 @@
                             <div class="item-info">
                                 <div>
                                     <h3>
-                                        Dr G.D Olarewaju
+                                        Dr Oluchi Izuwa
                                     </h3>
                                     <span>
                                         Optometrists
@@ -264,7 +264,7 @@
                             <div class="item-info">
                                 <div>
                                     <h3>
-                                        Dr G.D Olarewaju
+                                        Mr Dayo O Ghazal
                                     </h3>
                                     <span>
                                         Clinic Manager
@@ -379,7 +379,7 @@
                         </div>
                         <div class="review-info">
                             <h3>
-                                Lorem Ipsum Dolor
+                                Mr Toluwade Olanikpekun
                             </h3>
                             <div class="rating">
                                 <i class="bx bxs-star"></i>
@@ -404,7 +404,7 @@
                             </div>
                             <div class="review-info">
                                 <h3>
-                                    Lorem Ipsum Dolor
+                                    Mr Oluwade Kiipe
                                 </h3>
                                 <div class="rating">
                                     <i class='bx bxs-star'></i>
@@ -429,7 +429,7 @@
                         </div>
                         <div class="review-info">
                             <h3>
-                                Lorem Ipsum Dolor
+                                Mr. Akande Bolutife
                             </h3>
                             <div class="rating">
                                 <i class='bx bxs-star'></i>
@@ -451,12 +451,10 @@
             <div class="row">
                 <div class="col-6 col-xs-12">
                     <h1>
-                        Freshfood
+                        Olaoluwa Eye clinic
                     </h1>
                     <br>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, quas harum? Atque eius
-                        quaerat fuga sint molestiae illo corrupti vitae voluptatibus. Dicta rerum est delectus
-                        perspiciatis nemo nihil autem! Doloremque?</p>
+                    <p>You can follow us up on the following channels</p>
                     <br>
                     <p>Email: olaoluwa</p>
                     <p>Phone: +00 123 456 789</p>
