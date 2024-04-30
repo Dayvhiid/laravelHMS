@@ -19,18 +19,22 @@
             @csrf
             @method('POST')
             <h2 class="title">Book Now</h2>
+            <label for="">Name</label>
             <div class="input-field">
               <i class="fas fa-user"></i>
               <input type="text" placeholder="name" name="name" required/>
             </div>
+            <label for="">Date</label>
             <div class="input-field">
               <i class="fas fa-lock"></i>
               <input type="date" placeholder="date" name="date" required/>
             </div>
+            <label for="">Time</label>
             <div class="input-field">
               <i class="fas fa-clock"></i>
                 <input  placeholder="time" type="time" name="time" required/>
             </div>
+            <label for="">Phone Number</label>
             <div class="input-field">
                 <i class="fas fa-lock"></i>
                 <input type="phone" placeholder="phone Number" name="phone" required/>
