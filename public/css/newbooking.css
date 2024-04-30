@@ -444,6 +444,9 @@ form.sign-in-form {
     bottom: 72%;
     left: 50%;
   }
+  .title{
+    margin-top: 1%;
+  }
 
   .container.sign-up-mode:before {
     bottom: 28%;
