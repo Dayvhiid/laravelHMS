@@ -24,7 +24,7 @@
         </form> --}}
         <form method="get" action="{{route('NaijaSMS')}}">
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="phone" id="floatingInput" placeholder="name@example.com" value="{{$sms->phone_number}}" >
+                <input type="text" class="form-control" name="phone" id="floatingInput" placeholder="name@example.com" value="{{$sms->phone_number}}" readonly>
                 <label for="floatingInput"></label>
               </div>
               <div class="form-floating">
