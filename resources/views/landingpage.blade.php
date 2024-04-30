@@ -109,7 +109,7 @@
                         <h1 class="left-to-right play-on-scroll">
                              Ola - Oluwa Eye clinic
                         </h1>
-                        <p class="left-to-right play-on-scroll delay-2">
+                        <p class="left-to-right play-on-scroll delay-2" style="color: var(--primary-color)">
                             At Ola-oluwa Eye clinic, we help you see the world clearly. Our team of experienced ophthalmologists and optometrists are dedicated to providing comprehensive eye care for all ages. We offer advanced diagnostic tools and personalized treatment plans to ensure optimal vision health.
                         </p>
                         <div class="left-to-right play-on-scroll delay-4">
@@ -446,7 +446,7 @@
     </section>
     <!-- END TESTIMONIAL SECTION -->
     <!-- FOOTER SECTION -->
-    <section class="footer bg-img"  style="background-image: url(assets/nordwood-themes-pYWrdKO5ksI-unsplash.jpg);">
+    <section class="footer bg-img"  style="background-color:#000223 ">
         <div class="container">
             <div class="row">
                 <div class="col-6 col-xs-12">

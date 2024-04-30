@@ -1418,3 +1418,364 @@ background-attachment: fixed ;*/
         }
 
     }
+    @media (max-width: 769px) {
+
+        header{
+
+            #menuToggle{
+
+                display: block;
+
+                margin-right: 20px;
+
+                height: 20px;
+
+            }
+
+            nav{
+
+                display: none;
+
+                background-color: #2f2f2f;
+
+                position: absolute;
+
+                top: 75px;
+
+                width: 50%;
+
+                height: fit-content;
+
+                padding-top: 30px;
+
+                padding-bottom: 30px;
+
+                right: 0;
+
+            }
+
+            nav.active{
+
+                display: block;
+
+            }
+
+            nav ul{
+
+                margin-top: 40px;
+
+                display: flex;
+
+                flex-direction: column;
+
+                align-items: center;
+
+                gap: 30px;
+
+    
+
+             
+
+                
+
+            }
+
+            nav ul li{
+
+                width: 100%;
+
+                text-align: center;
+
+            }
+
+            .header-button{
+
+                color: #1e232f;
+
+                background-color: white ;
+
+                margin: auto;
+
+                display: block;
+
+            }
+
+           
+
+        }
+
+        
+
+        .legal .legal__links {
+
+            margin-left: auto;
+
+        }
+
+    }
+
+    
+
+@media (max-width:769px){
+
+    #hero{
+
+        height: 400px;
+
+        h1{
+
+            font-size: 2.5rem;
+
+        }
+
+        p{
+
+            font-size: 0.8rem;
+
+        }
+
+        #site-search{
+
+            width: 70%;
+
+            height: 40px;
+
+        }
+
+        button{
+
+            width: 30%;
+
+            height: 40px;
+
+        }
+
+        .hero-image{
+
+            height: 300px;
+
+            width: 90%;
+
+            margin-top: 70px;
+
+        }
+
+        .image{
+
+            height: 300px;
+
+        }
+
+        .left-box{
+
+            width: 190px;
+
+            height: 60px;
+
+            top: 20%;
+
+            left: -5%;
+
+            font-size: 0.8rem;
+
+        }
+
+        .right-box{
+
+            width: 190px;
+
+            height: 60px;
+
+            top: 45%;
+
+            left: -5%;
+
+            font-size: 0.8rem;
+
+            text-align: justify;
+
+            padding: 0;
+
+        }
+
+    }
+
+    #hero-description{
+
+        display: flex;
+
+        flex-direction: column;
+
+        .hero-description-1{
+
+            text-align: center;
+
+            font-size: 1rem;
+
+            max-width: 100%;
+
+        }
+
+        .hero-description-2{
+
+            margin-top: 20px;
+
+            text-align: center;
+
+            font-size: 1rem;
+
+            max-width: 100%;
+
+        }
+
+    }
+
+    #container-sect-2{
+
+        display: flex;
+
+        flex-direction: column;
+
+    }
+
+    #section-3-contact{
+
+        display: none;
+
+    }
+
+    #section-4-about{
+
+        margin-top: 70px;
+
+        height: 700px;
+
+    }
+
+    #mission-vision{
+
+        display: flex;
+
+        flex-direction: column;
+
+        .mission, .vision{
+
+            width: 100%;
+
+            height: 30%;
+
+        }
+
+    }
+
+    #team-content{
+
+        display: flex;
+
+        flex-direction: row;
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media(max-width:885px){
+
+        #hero{
+
+            .hero-image{
+
+                height: 350px;
+
+            }
+
+            .image{
+
+                height: 350px;
+
+            }
+
+            .left-box{
+
+                top: 20%;
+
+                height: 45px;
+
+            }
+
+            .right-box{
+
+                top: 35%;
+
+                left: -20%;
+
+                height: 45px;
+
+            }
+
+        }
+
+        #hero-description{
+
+            margin-top: -250px;
+
+        }
+
+        #container-sect-2{
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            .categories{
+
+                width: 60%;
+
+            }
+
+        }
+
+        .mission, .vision{
+
+            width: 40%;
+
+            text-align: center;
+
+        }
+
+        #section-3-contact{
+
+           width: 600px;
+
+           align-items: center;
+
+            .contact-container{
+
+                width: 90%;
+
+                h1{
+
+                    font-size: 1.5rem;
+
+                }
+
+            }
+
+        }
+
+    }
