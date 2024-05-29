@@ -100,6 +100,8 @@ Route::get('/devmode', function (){ return view('landingpage');})->name('devmode
     Route::put('/lens/{lens}/update', [LensController::class, 'update'])->name('lens.update');
     Route::delete('/lens/{len}/delete', [LensController::class, 'delete'])->name('lens.delete');
 
+
+    
     Route::get('/smspage/{sms}', [SmsController::class, 'pass'])->name('sms.page');
     Route::get('/sms', [SmsController::class, 'index'])->name('doctor.sms');
 
