@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class newValidationController extends Controller
+class NewValidationController extends Controller
 {
     public function signup(){
         return view('Sign_Up');
