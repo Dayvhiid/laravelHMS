@@ -96,7 +96,7 @@
   color: #ccc;
   margin-left: 1%;
 }
-.main{
+/* .main{
     display: flex;
     width: 100%;
 }
@@ -104,7 +104,7 @@
     margin-left: auto;
     margin-right: auto;
     width: 80%;
-}
+} */
 .search{
     width: 130%;
     display: flex;
@@ -190,12 +190,12 @@ body {
     font-family: sans-serif;
 }
 
-.container {
+/* .container {
     width: 800px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ddd;
-}
+} */
 
 h1 {
     text-align: center;
@@ -260,6 +260,28 @@ h2 {
      align-items: center;
      margin-left: 15%;
 }
+
+.main {
+        display: flex; 
+        flex-wrap: wrap;
+        width: 100%;
+        
+    }
+
+    .user-container {
+        flex: 0 0 calc(80.33% - 20px); /* Adjust width as needed */
+        margin: 10px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+    }
 </style>
  
 <!DOCTYPE html>
@@ -271,113 +293,71 @@ h2 {
     <title>Document</title>
 </head>
 <body>
-    @if ($users->isEmpty())
-    <div class="alert">
-      Patient record not found please verify the Patient ID.
-    </div>
-  @else
-  <div class="main">
-    <div class="content">         
-          <div class="search">
-                {{-- <form action="" method="post" class="form1"> --}}
-                    {{-- <div class="form1"> --}}
-                        {{-- <input type="text" placeholder="Enter Patient Id" name="patient_id" class="search_input"> --}}
-                        {{-- <input type="submit" value="Search" class="searchBtn">  --}}
-                    {{-- </div> --}}
-                {{-- </form> --}}
-          </div>
-          <form method="POST" action="{{route('treatment.store')}}">
-            @csrf
-            @method('POST')
-            <div class="form1">
-                <label for="TextArea">Patient ID:</label>
-                <input type="text" value="{{$users[0]->patient_id}}" placeholder="Enter Patient Id" name="patient_id" class="search_input">
-                {{-- <input type="submit" value="Search" class="searchBtn">  --}}
+    <div class="main">
+        @if($users->isEmpty())
+            <div class="error-message">
+                <p>No users found.</p>
             </div>
-          {{-- DOSAGE --}}
-          <div class="textarea">
-            <label for="TextArea">Dosage:</label>
-            <input class="dosage" type="text" value="{{$users[0]->dosage}}" readonly>
-          </div>
-          {{-- DURATION --}}
-          <div class="duration">
-              <label for="" >DURATION</label>
-              <input class="dosage" type="text" value="{{$users[0]->duration}}" readonly>
-          </div>
-          {{-- TAB --}}
-          <div class="textarea">
-            <label for="TextArea">TAB:</label>
-            <input class="dosage" type="text" value="{{$users[0]->tab}}" readonly>
-          </div>
-          {{-- GUTT --}}
-          <div class="textarea">
-            <label for="TextArea">GUTT:</label>
-            <input class="dosage" type="text" value="{{$users[0]->gutt}}" readonly>
-          </div>
-          {{-- OC --}}
-          <div class="textarea">
-            <label for="TextArea">OC:</label>
-            <input class="dosage" type="text" value="{{$users[0]->oc}}" readonly>
-          </div>
-           {{-- SUR --}}
-           <div class="textarea">
-            <label for="TextArea"  >SUR:</label>
-            <input class="dosage" type="text" value="{{$users[0]->sur}}" readonly>
-          </div>
-           {{-- RTC --}}
-           <div class="textarea">
-            <label for="TextArea">RTC:</label>
-            <input class="dosage" type="text" value="{{$users[0]->rtc}}" readonly>
-          </div>
-          {{-- Remark --}}
-          <div class="textarea">
-            <label for="TextArea" >Remark:</label>
-            <input class="dosage" type="text" value="{{$users[0]->remark}}" readonly>
-          </div>
-          <div class="lenses">
-              <h1>Lens</h1>
-              <h3>Single Vision Tintable</h3>      
-              @php
-              $decodedData = json_decode($users[0]->single_vision, true); // Decode and convert to associative array
-                if (is_array($decodedData)) 
-                    if (is_array($decodedData)) {
-                    foreach ($decodedData as $item) {
-                    echo "<li>" . $item . "</li>";
-                    }
-                }
-              @endphp
-              <h3>Bifocal Tintable</h3>
-              @php
-              $decodedData = json_decode($users[0]->bifocal, true); // Decode and convert to associative array
-              if (is_array($decodedData)) {
-                    foreach ($decodedData as $item) {
-                    echo "<li>" . $item . "</li>";
-                    }
-                }
-              @endphp
-               <h3>Special Order</h3>
-               @php
-               $decodedData = json_decode($users[0]->special_order, true); // Decode and convert to associative array
-               if (is_array($decodedData)) {
-                    foreach ($decodedData as $item) {
-                    echo "<li>" . $item . "</li>";
-                    }
-                }
-               @endphp
-                <h3>Progressive</h3>
-                @php
-                $decodedData = json_decode($users[0]->progressive, true); // Decode and convert to associative array
-                    if (is_array($decodedData)) {
-                    foreach ($decodedData as $item) {
-                    echo "<li>" . $item . "</li>";
-                    }
-                }
-                @endphp
-            
-          </div>
-  @endif
-
-    
-   
+        @else
+            @foreach ($users as $user)
+                <div class="user-container">
+                    <div class="content">
+                        <div class="form1">
+                            <p>{{$user->created_at}}</p>
+                            <label for="TextArea">Patient ID:</label>
+                            <input type="text" value="{{ $user->patient_id }}" placeholder="Enter Patient Id" name="patient_id" class="search_input" readonly>
+                        </div>
+                        <!-- Render other fields -->
+                        <div class="textarea">
+                            <label for="TextArea">Dosage:</label>
+                            <input class="dosage" type="text" value="{{ $user->dosage }}" readonly>
+                        </div>
+                        <div class="duration">
+                            <label for="">DURATION:</label>
+                            <input class="dosage" type="text" value="{{ $user->duration }}" readonly>
+                        </div>
+                        <div class="textarea">
+                            <label for="TextArea">TAB:</label>
+                            <input class="dosage" type="text" value="{{ $user->tab }}" readonly>
+                        </div>
+                        <div class="textarea">
+                            <label for="TextArea">GUTT:</label>
+                            <input class="dosage" type="text" value="{{ $user->gutt }}" readonly>
+                        </div>
+                        <div class="textarea">
+                            <label for="TextArea">OC:</label>
+                            <input class="dosage" type="text" value="{{ $user->oc }}" readonly>
+                        </div>
+                        <div class="textarea">
+                            <label for="TextArea">SUR:</label>
+                            <input class="dosage" type="text" value="{{ $user->sur }}" readonly>
+                        </div>
+                        <div class="textarea">
+                            <label for="TextArea">RTC:</label>
+                            <input class="dosage" type="text" value="{{ $user->rtc }}" readonly>
+                        </div>
+                        <div class="textarea">
+                            <label for="TextArea">Remark:</label>
+                            <input class="dosage" type="text" value="{{ $user->remark }}" readonly>
+                        </div>
+                        <!-- Render lens information -->
+                        <div class="lenses">
+                            <h1>Lens</h1>
+                            @php
+                                $lensTypes = ['single_vision', 'bifocal', 'special_order', 'progressive'];
+                            @endphp
+                            @foreach ($lensTypes as $lensType)
+                                @if ($user->$lensType)
+                                    <h3>{{ ucfirst(str_replace('_', ' ', $lensType)) }}</h3>
+                                    @foreach (json_decode($user->$lensType, true) ?? [] as $item)
+                                        <li>{{ $item }}</li>
+                                    @endforeach
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
+                </div><br>
+            @endforeach
+        @endif
+    </div>
 </body>
-</html>

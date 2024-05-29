@@ -22,8 +22,8 @@ class frameController extends Controller
         foreach($request->inputs as $key => $value){
             Frame::create($value);
         }
-        // return redirect(route('doctors.status'))->with('msg','Frame List Updated Succesfully'); 
-        return redirect(route('frame.list'));
+        return redirect(route('doctors.status'))->with('msg','Frame List Updated Succesfully'); 
+        // return redirect(route('frame.list'));
     }
 
     public function list(){
@@ -37,6 +37,7 @@ class frameController extends Controller
         $data = $request->validate([
             'name' => 'required',
             'price' => 'required',
+            'quantity' => 'required',
         ]);
         $frames->update($data); 
         return redirect(route('frame.list'));

@@ -357,9 +357,9 @@ input [type="text"]{
          
         <div>  
          
-<form method="post" action="{{route('vitals.store')}}">  
-  @csrf
-  @method('POST')
+{{-- <form method="post" action="{{route('vitals.store')}}">   --}}
+  {{-- @csrf
+  @method('POST') --}}
   <div></div>
   <div class="search"> 
     <input type="text" placeholder="Enter patient ID" name="patient_code">
@@ -447,26 +447,26 @@ input [type="text"]{
 
   <tr>
     <td>OD:</td>
-    <td><input type="text" name="ODSPH"></td>
-    <td><input type="text" name="ODCYL"></td>
-    <td><input type="text" name="ODAXIS"></td>
+    <td><input type="text" name="ODSPH" value="{{$item->lodsph}}"></td>
+    <td><input type="text" name="ODCYL" value="{{$item->lodcyl}}"></td>
+    <td><input type="text" name="ODAXIS" value="{{$item->lodaxis}}"></td>
     <td><input type="text" name="ODVA"></td>
   </tr>
 
   <tr>
     <td>OS:</td>
-    <td><input type="text" name="OSSPH"></td>
-    <td><input type="text" name="OSCYL"></td>
-    <td><input type="text" name="OSAXIS"></td>
-    <td><input type="text" name="OSVA"></td>
+    <td><input type="text" name="OSSPH" value="{{$item->lossph}}"></td>
+    <td><input type="text" name="OSCYL" value="{{$item->loscyl}}"></td>
+    <td><input type="text" name="OSAXIS" value="{{$item->losaxis}}"></td>
+    <td><input type="text" name="OSVA" value="{{$item->losva}}"></td>
   </tr>
 
   <tr>
     <td>ADD:</td>
-    <td><input type="text" name="ADDDSPH"></td>
-    <td><input type="text" name="ADDCYL"></td>
-    <td><input type="text" name="ADDAXIS"></td>
-    <td><input type="text" name="ADDVA"></td>
+    <td><input type="text" name="ADDDSPH" value="{{$item->addsph}}"></td>
+    <td><input type="text" name="ADDCYL" value="{{$item->addcyl}}"></td>
+    <td><input type="text" name="ADDAXIS" value="{{$item->addaxis}}"></td>
+    <td><input type="text" name="ADDVA" value="{{$item->addva}}"></td>
   </tr>
 </table>
 
@@ -485,15 +485,15 @@ input [type="text"]{
   </tr>
   <tr>
     <td>OD</td>
-    <td><input type="text" name="arodsph"></td>
-    <td><input type="text" name="arodcyl"></td>
-    <td><input type="text" name="arodaxis"></td>
+    <td><input type="text" name="arodsph" value="{{$item->arodsph}}"></td>
+    <td><input type="text" name="arodcyl" value="{{$item->arodcyl}}"></td>
+    <td><input type="text" name="arodaxis" value="{{$item->arodaxis}}"></td>
   </tr>
   <tr>
     <td>OS</td>
-    <td><input type="text" name="arossph"></td>
-    <td><input type="text" name="aroscyl"></td>
-    <td><input type="text" name="arosaxis"></td>
+    <td><input type="text" name="arossph" value="{{$item->arossph}}"></td>
+    <td><input type="text" name="aroscyl" value="{{$item->aroscyl}}"></td>
+    <td><input type="text" name="arosaxis" value="{{$item->arosaxis}}"></td>
   </tr>
 </table>
 
@@ -509,15 +509,15 @@ input [type="text"]{
   </tr>
   <tr>
     <td>OD</td>
-    <td><input type="text" name="rodsph"></td>
-    <td><input type="text" name="rodcyl"></td>
-    <td><input type="text" name="rodaxis"></td>
+    <td><input type="text" name="rodsph" value="{{$item->rodsph}}"></td>
+    <td><input type="text" name="rodcyl" value="{{$item->rodcyl}}"></td>
+    <td><input type="text" name="rodaxis" value="{{$item->rodaxis}}"></td>
   </tr>
   <tr>
     <td>OS</td>
-    <td><input type="text" name="rossph"></td>
-    <td><input type="text" name="roscyl"></td>
-    <td><input type="text" name="rosaxis"></td>
+    <td><input type="text" name="rossph" value="{{$item->rossph}}"></td>
+    <td><input type="text" name="roscyl" value="{{$item->roscyl}}"></td>
+    <td><input type="text" name="rosaxis" value="{{$item->rosaxis}}"></td>
   </tr>
 </table>
            </div>
@@ -537,21 +537,21 @@ input [type="text"]{
                     </tr>
                     <tr>
                         <td>OD:</td>
-                        <td><input type="text" name="srodsph"></td>
-                        <td><input type="text" name="srodcyl"></td>
-                        <td><input type="text" name="srodaxis"></td>
-                        <td><input type="text" name="srodva"></td>
-                        <td><input type="text" name="srodadd"></td>
-                        <td><input type="text" name="srodnva"></td>
+                        <td><input type="text" name="srodsph" value="{{$item->srodsph}}"></td>
+                        <td><input type="text" name="srodcyl" value="{{$item->srodcyl}}"></td>
+                        <td><input type="text" name="srodaxis" value="{{$item->srodaxis}}"></td>
+                        <td><input type="text" name="srodva" value="{{$item->srodva}}"></td>
+                        <td><input type="text" name="srodadd" value="{{$item->srodadd}}"></td>
+                        <td><input type="text" name="srodnva" value="{{$item->srodnva}}"></td>
                     </tr>
                     <tr>
                         <td>OS:</td>
-                        <td><input type="text" name="srossph"></td>
-                        <td><input type="text" name="sroscyl"></td>
-                        <td><input type="text" name="srosaxis"></td>
-                        <td><input type="text" name="srosva"></td>
-                        <td><input type="text" name="srosadd"></td>
-                        <td><input type="text" name="srosnva"></td>
+                        <td><input type="text" name="srossph" value="{{$item->srossph}}"></td>
+                        <td><input type="text" name="sroscyl" value="{{$item->sroscyl}}"></td>
+                        <td><input type="text" name="srosaxis" value="{{$item->srosaxis}}"></td>
+                        <td><input type="text" name="srosva" value="{{$item->srosva}}"></td>
+                        <td><input type="text" name="srosadd" value="{{$item->srosadd}}"></td>
+                        <td><input type="text" name="srosnva" value="{{$item->srosnva}}"></td>
                     </tr>
                     <!-- <tr>
                         <td>Data 3-1</td>
@@ -578,21 +578,21 @@ input [type="text"]{
                     </tr>
                     <tr>
                         <td>OD:</td>
-                        <td><input type="text" name="fodsph"></td>
-                        <td><input type="text" name="fodcyl"></td>
-                        <td><input type="text" name="fodaxis"></td>
-                        <td><input type="text" name="fodva"></td>
-                        <td><input type="text" name="fodadd"></td>
-                        <td><input type="text" name="fodnva"></td>
+                        <td><input type="text" name="fodsph" value="{{$item->fodsph}}"></td>
+                        <td><input type="text" name="fodcyl" value="{{$item->fodcyl}}"></td>
+                        <td><input type="text" name="fodaxis" value="{{$item->fodaxis}}"></td>
+                        <td><input type="text" name="fodva" value="{{$item->fodva}}"></td>
+                        <td><input type="text" name="fodadd" value="{{$item->fodadd}}"></td>
+                        <td><input type="text" name="fodnva" value="{{$item->fodnva}}"></td>
                     </tr>
                     <tr>
                         <td>OS:</td>
-                        <td><input type="text" name="fossph"></td>
-                        <td><input type="text" name="foscyl"></td>
-                        <td><input type="text" name="fosaxis"></td>
-                        <td><input type="text" name="fosva"></td>
-                        <td><input type="text" name="fosadd"></td>
-                        <td><input type="text" name="fosnva"></td>
+                        <td><input type="text" name="fossph" value="{{$item->fossph}}"></td>
+                        <td><input type="text" name="foscyl" value="{{$item->foscyl}}"></td>
+                        <td><input type="text" name="fosaxis" value="{{$item->fosaxis}}"></td>
+                        <td><input type="text" name="fosva" value="{{$item->fosva}}"></td>
+                        <td><input type="text" name="fosadd" value="{{$item->fosadd}}"></td>
+                        <td><input type="text" name="fosnva" value="{{$item->fosnva}}"></td>
                     </tr>
                     <!-- <tr>
                         <td>Data 3-1</td>
@@ -619,56 +619,56 @@ input [type="text"]{
 
                     <tr>
                         <td>Eyelid</td>
-                        <td><input type="text" name="eyelidod"></td>
-                        <td><input type="text" name="eyelidos"></td>
+                        <td><input type="text" name="eyelidod" value="{{$item->eyelidod}}"></td>
+                        <td><input type="text" name="eyelidos" value="{{$item->eyelidos}}"></td>
                     </tr>
 
                     <tr>
                         <td>Conjuctiva</td>
-                        <td><input type="text" name="conjuctivaod"></td>
-                        <td><input type="text" name="conjuctivaos"></td>
+                        <td><input type="text" name="conjuctivaod" value="{{$item->conjuctivaod}}"></td>
+                        <td><input type="text" name="conjuctivaos" value="{{$item->conjuctivaos}}"></td>
                     </tr>
 
                     <tr>
                         <td>Cornea</td>
-                        <td><input type="text" name="corneaod"></td>
-                        <td><input type="text" name="corneaos"></td>
+                        <td><input type="text" name="corneaod" value="{{$item->corneaod}}"></td>
+                        <td><input type="text" name="corneaos" value="{{$item->corneaos}}"></td>
                     </tr>
 
                     <tr>
                         <td>Pupil</td>
-                        <td><input type="text" name="pupilod"></td>
-                        <td><input type="text" name="pupilos"></td>
+                        <td><input type="text" name="pupilod" value="{{$item->pupilod}}"></td>
+                        <td><input type="text" name="pupilos" value="{{$item->pupilos}}"></td>
                     </tr>
 
                     <tr>
                         <td>Iris</td>
-                        <td><input type="text" name="irisod"></td>
-                        <td><input type="text" name="irisos"></td>
+                        <td><input type="text" name="irisod" value="{{$item->irisod}}"></td>
+                        <td><input type="text" name="irisos" value="{{$item->irisos}}"></td>
                     </tr>
 
                     <tr>
                         <td>Lens</td>
-                        <td><input type="text" name="lensod"></td>
-                        <td><input type="text" name="lensos"></td>
+                        <td><input type="text" name="lensod" value="{{$item->lensod}}"></td>
+                        <td><input type="text" name="lensos" value="{{$item->lensod}}"></td>
                     </tr>
 
                     <tr>
                         <td>Virtreous</td>
-                        <td><input type="text" name="vitreousod"></td>
-                        <td><input type="text" name="vitreousos"></td>
+                        <td><input type="text" name="vitreousod" value="{{$item->vitreousod}}"></td>
+                        <td><input type="text" name="vitreousos" value="{{$item->vitreousos}}"></td>
                     </tr>
 
                     <tr>
                         <td>C/D Ratio</td>
-                        <td><input type="text" name="cdratiood"></td>
-                        <td><input type="text" name="cdratioos"></td>
+                        <td><input type="text" name="cdratiood" value="{{$item->cdratiood}}"></td>
+                        <td><input type="text" name="cdratioos" value="{{$item->cdratioos}}"></td>
                     </tr>
 
                     <tr>
                         <td>Macula</td>
-                        <td><input type="text" name="macularod"></td>
-                        <td><input type="text" name="maculaos"></td>
+                        <td><input type="text" name="macularod" value="{{$item->macularod}}"></td>
+                        <td><input type="text" name="maculaos" value="{{$item->macularos}}"></td>
                     </tr>
                     </table>
 
@@ -684,14 +684,14 @@ input [type="text"]{
 
                     <tr>
                         <td>OD</td>
-                        <td><input type="text" name="odccct"></td>
-                        <td><input type="text" name="odnct"></td>
+                        <td><input type="text" name="odccct" value="{{$item->odccct}}"></td>
+                        <td><input type="text" name="odnct" value="{{$item->odnct}}"></td>
                     </tr>
 
                     <tr>
                         <td>OS</td>
-                        <td><input type="text" name="oscct"></td>
-                        <td><input type="text" name="osnct"></td>
+                        <td><input type="text" name="oscct" value="{{$item->oscct}}"></td>
+                        <td><input type="text" name="osnct" value="{{$item->osnct}}"></td>
                     </tr>
                     </table>
 
@@ -709,11 +709,11 @@ input [type="text"]{
                </div>
 
        </div>
-      <div class="save">
+      {{-- <div class="save">
         <input type="submit" class="saveBtn" id="btn-success" value="SAVE">
-      </div>
+      </div> --}}
     </div>
- </form> 
+ {{-- </form>  --}}
 
 </body>
 </html>

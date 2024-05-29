@@ -22,8 +22,8 @@ class lensController extends Controller
         foreach($request->inputs as $key => $value){
             Lens::create($value);
         }
-        // return redirect(route('doctors.status'))->with('msg','Lenses List Updated Succesfully'); 
-        return redirect(route('lens.list'));
+         return redirect(route('doctors.status'))->with('msg','Lenses List Updated Succesfully'); 
+        // return redirect(route('lens.list'));
     }
     public function list(){
         $lens = Lens::paginate(9);
@@ -36,6 +36,7 @@ class lensController extends Controller
     $data = $request->validate([
         'name' => 'required',
         'price' => 'required',
+        'quantity' => 'required',
     ]);
     $lens->update($data); 
     return redirect(route('lens.list'));

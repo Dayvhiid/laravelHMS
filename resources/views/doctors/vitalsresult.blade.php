@@ -1,308 +1,301 @@
-
 <style>
-    *{
-      font-family: "Montserrat", sans-serif;
-  }
-  .navbar{
-      text-align: center;
-      height: 10%;
-      display: flex;
-      justify-content: space-between;
-  }
-  .top{
+  *{
+    font-family: "Montserrat", sans-serif;
+}
+.navbar{
+    text-align: center;
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+}
+.top{
+  margin-top: 4%;
+}
+.top table{
+    border-collapse: collapse;
+    border: none;
+}
+.links{
+    margin-right: 5%;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    width: 45%;
+}
+.links ul li{
+    display: inline-block;
+    list-style-type: none;
+    margin-right: 10%;
+    padding-top: 3%;
+}
+.container{
+    display: flex;
+}
+.statusbar{
+    width: 15%;
+    margin-left: 2%;
+}
+.statusbar div{
+    margin-bottom: 10%;
+}
+.home{
+    display: flex;
+    justify-content: space-around;
+    height: 5%px;
+    width: 5%px;
+}
+.home p{
+    font-weight: 400;
+}
+.homepng{
+    margin-top: 6%;
+}
+.patients{
+    display: flex;
+    justify-content: space-around;
+    height: 5%px;
+    width: 5%px;
+}
+.patients p{
+    font-weight: 400;
+}
+.patientpng{
+    margin-top: 6%;
+}
+.app{
+    display: flex;
+    justify-content: space-around;
+    height: 5%px;
+    width: 5%px;
+}
+.app p{
+    font-weight: 400;
+}
+.apppng{
+    margin-top: 6%;
+}
+.billing{
+    display: flex;
+    justify-content: space-around;
+    height: 5%px;
+    width: 5%px;
+}
+.billing p{
+    font-weight: 400;
+}
+.billingpng{
+    margin-top: 6%;
+}
+.records{
+    display: flex;
+    justify-content: space-around;
+    height: 5%px;
+    width: 5%px;
+}
+.records p{
+    font-weight: 400;
+}
+.recordspng{
+    margin-top: 6%;
+}
+.saveBtn{
+  padding: 15px 55px;
+  background-color: green;
+  border-radius: 10px;
+  border: 1px solid green;
+  color: #ccc;
+}
+.save{
+  margin-left: 9%;
+  margin-top: 2%;
+}
+#btn-success{
+  /* padding: 5px 5px; */
+  background-color: green;
+  border-radius: 10px;
+  border: 1px solid green;
+  color: #ccc;
+  margin-left: 1%;
+}
+.searchbox{
+    width: 60%;
+    /* margin-left: 5%; */
+    margin-left:10%;
+    margin-right: auto;
+}
+.searchbox input{
+    padding: 2% 15px;
+    width: 60%;
+    border: 1px solid;
+    border-radius: 10px;
+}
+.searchdiv{
+    display: flex;
+    background-color: #cccc;
+    width: 120%;
+    height: 15%;
+    border: 1px solid #cccc;
+    border-radius: 10px;
+    justify-content: space-between;
+}
+/* .searchpng{
+   margin-top: 1%;
+   margin-left: 1%;
+} */
+.searchinp{
+    background-color: #cccc;
+    margin-left: 3%;
+    color: black;
+}
+.searchdiv input{
+    outline:0px solid #cccc;
+    border: none;
+    width: 50%;
+}
+.searchButton{
+    width: 5%;
+    padding: 5px 10px;
+    background-color: green;
+}
+input [type="text"]{
+    border: none;
+}
+.flexside{
+    display: flex;
+    width: 150%;
+    justify-content: space-between;
+    margin-top: 5%;
+}
+/* .flexside table{
+    border: 1px solid black;
+} */
+.flexside table {
+  border-collapse: collapse; /* Ensures borders don't overlap */
+  /*width: 70%; /* Adjust width as needed */
+ /* margin: 0 auto; /* Centers the table horizontally */
+}
+.flexside .left{
+  float: left;
+}
+
+.flexside .right{
+  float: right;
+  margin-left: 15%;
+}
+.flexside th, td {
+  border: 1px solid black; /* Adds borders to all cells */
+  padding: 10px; /* Adds padding for spacing around content */
+  text-align: left; /* Aligns content to the left by default */
+}
+
+.flexside th {
+  background-color: #f0f0f0; /* Adds a light gray background to headers */
+  font-weight: bold; /* Makes header text bold */
+}
+.flexbox2{
+    display: flex;
+    justify-content: space-between;
+    width: 140%;
     margin-top: 4%;
-  }
-  .top table{
-      border-collapse: collapse;
-      border: none;
-  }
-  .links{
-      margin-right: 5%;
-      font-family: "Montserrat", sans-serif;
-      font-weight: 400;
-      width: 45%;
-  }
-  .links ul li{
-      display: inline-block;
-      list-style-type: none;
-      margin-right: 10%;
-      padding-top: 3%;
-  }
-  .container{
-      display: flex;
-  }
-  .statusbar{
-      width: 15%;
-      margin-left: 2%;
-  }
-  .statusbar div{
-      margin-bottom: 10%;
-  }
-  .home{
-      display: flex;
-      justify-content: space-around;
-      height: 5%px;
-      width: 5%px;
-  }
-  .home p{
-      font-weight: 400;
-  }
-  .homepng{
-      margin-top: 6%;
-  }
-  .patients{
-      display: flex;
-      justify-content: space-around;
-      height: 5%px;
-      width: 5%px;
-  }
-  .patients p{
-      font-weight: 400;
-  }
-  .patientpng{
-      margin-top: 6%;
-  }
-  .app{
-      display: flex;
-      justify-content: space-around;
-      height: 5%px;
-      width: 5%px;
-  }
-  .app p{
-      font-weight: 400;
-  }
-  .apppng{
-      margin-top: 6%;
-  }
-  .billing{
-      display: flex;
-      justify-content: space-around;
-      height: 5%px;
-      width: 5%px;
-  }
-  .billing p{
-      font-weight: 400;
-  }
-  .billingpng{
-      margin-top: 6%;
-  }
-  .records{
-      display: flex;
-      justify-content: space-around;
-      height: 5%px;
-      width: 5%px;
-  }
-  .records p{
-      font-weight: 400;
-  }
-  .recordspng{
-      margin-top: 6%;
-  }
-  .patientBtn{
-    padding: 15px 55px;
-    background-color: green;
-    border-radius: 10px;
-    border: 1px solid green;
-    position: absolute;
-    bottom: 15%;
-    color: #ccc;
-    margin-left: 1%;
-  }
-  #btn-success{
-    /* padding: 5px 5px; */
-    background-color: green;
-    border-radius: 10px;
-    border: 1px solid green;
-    color: #ccc;
-    margin-left: 1%;
-  }
-  .searchbox{
-      width: 60%;
-      /* margin-left: 5%; */
-      margin-left:10%;
-      margin-right: auto;
-  }
-  .searchbox input{
-      padding: 2% 15px;
-      width: 60%;
-      border: 1px solid;
-      border-radius: 10px;
-  }
-  .searchdiv{
-      display: flex;
-      background-color: #cccc;
-      width: 120%;
-      height: 15%;
-      border: 1px solid #cccc;
-      border-radius: 10px;
-      justify-content: space-between;
-  }
-  /* .searchpng{
-     margin-top: 1%;
-     margin-left: 1%;
-  } */
-  .searchinp{
-      background-color: #cccc;
-      margin-left: 3%;
-      color: black;
-  }
-  .searchdiv input{
-      outline:0px solid #cccc;
-      border: none;
-      width: 50%;
-  }
-  .searchButton{
-      width: 5%;
-      padding: 5px 10px;
-      background-color: green;
-  }
-  input [type="text"]{
-      border: none;
-  }
-  .flexside{
-      display: flex;
-      width: 150%;
-      justify-content: space-between;
-      margin-top: 5%;
-  }
-  /* .flexside table{
-      border: 1px solid black;
-  } */
-  .flexside table {
+}
+.flexbox2 .flexleft{
+  float:left
+}
+.flexbox2 .flexright{
+  float: right;
+  margin-left: 10%;
+}
+.flexbox2 table {
+    /* width: 25vw; */
     border-collapse: collapse; /* Ensures borders don't overlap */
-    /*width: 70%; /* Adjust width as needed */
-   /* margin: 0 auto; /* Centers the table horizontally */
-  }
-  .flexside .left{
-    float: left;
+    /*width: 100%; /* Adjust width as needed */
+    /*margin: 0 auto; /* Centers the table horizontally */
   }
   
-  .flexside .right{
-    float: right;
-    margin-left: 15%;
-  }
-  .flexside th, td {
+  .flexbox2 th, td {
     border: 1px solid black; /* Adds borders to all cells */
     padding: 10px; /* Adds padding for spacing around content */
     text-align: left; /* Aligns content to the left by default */
   }
   
-  .flexside th {
+  .flexbox2 th {
     background-color: #f0f0f0; /* Adds a light gray background to headers */
     font-weight: bold; /* Makes header text bold */
   }
-  .flexbox2{
-      display: flex;
-      justify-content: space-between;
-      width: 140%;
-      margin-top: 4%;
+  .flexbox3 table {
+    border-collapse: collapse; /* Ensures borders don't overlap */
+    /*width: 100%; /* Adjust width as needed */
+    margin: 0 auto; /* Centers the table horizontally */
   }
-  .flexbox2 .flexleft{
-    float:left
+  
+  .flexbox2 th, td {
+    border: 1px solid black; /* Adds borders to all cells */
+    padding: 10px; /* Adds padding for spacing around content */
+    text-align: left; /* Aligns content to the left by default */
   }
-  .flexbox2 .flexright{
-    float: right;
-    margin-left: 10%;
+  
+  .flexbox2 th {
+    background-color: #f0f0f0; /* Adds a light gray background to headers */
+    font-weight: bold; /* Makes header text bold */
   }
-  .flexbox2 table {
-      /* width: 25vw; */
-      border-collapse: collapse; /* Ensures borders don't overlap */
-      /*width: 100%; /* Adjust width as needed */
-      /*margin: 0 auto; /* Centers the table horizontally */
-    }
-    
-    .flexbox2 th, td {
-      border: 1px solid black; /* Adds borders to all cells */
-      padding: 10px; /* Adds padding for spacing around content */
-      text-align: left; /* Aligns content to the left by default */
-    }
-    
-    .flexbox2 th {
-      background-color: #f0f0f0; /* Adds a light gray background to headers */
-      font-weight: bold; /* Makes header text bold */
-    }
-    .flexbox3 table {
-      border-collapse: collapse; /* Ensures borders don't overlap */
-      /*width: 100%; /* Adjust width as needed */
-      margin: 0 auto; /* Centers the table horizontally */
-    }
-    
-    .flexbox2 th, td {
-      border: 1px solid black; /* Adds borders to all cells */
-      padding: 10px; /* Adds padding for spacing around content */
-      text-align: left; /* Aligns content to the left by default */
-    }
-    
-    .flexbox2 th {
-      background-color: #f0f0f0; /* Adds a light gray background to headers */
-      font-weight: bold; /* Makes header text bold */
-    }
-    /* th .cyl{
-      width: 10%;
-    } */
-    .flexbox3{
-      /* display: flex; */
-      justify-content: space-between;
-      margin-top: 0%;
-      width: 120%;
-    }
-    .flexbox3 div{
-      /* margin-left: 5%; */
-      margin-top: 4%;
-    }
-    .flexbox3 table {
-      /* width: 25vw; */
-      border-collapse: collapse; /* Ensures borders don't overlap */
-      width: 100%; /* Adjust width as needed
-      /* margin: 0 auto; Centers the table horizontally */
-    }
-    
-    .flexbox3 th, td {
-      border: 1px solid black; /* Adds borders to all cells */
-      padding: 10px; /* Adds padding for spacing around content */
-      text-align: left; /* Aligns content to the left by default */
-    }
-    
-    .flexbox3 th {
-      background-color: #f0f0f0; /* Adds a light gray background to headers */
-      font-weight: bold; /* Makes header text bold */
-    }
-  .flexbox4{
-      display: flex;
-      justify-content: space-between;
-      margin-top: 8%;
+  /* th .cyl{
+    width: 10%;
+  } */
+  .flexbox3{
+    /* display: flex; */
+    justify-content: space-between;
+    margin-top: 0%;
+    width: 120%;
   }
-  .flexbox4 table {
-      width: 25vw;
-      border-collapse: collapse; /* Ensures borders don't overlap */
-      /*width: 100%; /* Adjust width as needed */
-      margin: 0 auto; /* Centers the table horizontally */
-    }
-    
-    .flexbox4 th, td {
-      border: 1px solid black; /* Adds borders to all cells */
-      padding: 10px; /* Adds padding for spacing around content */
-      text-align: left; /* Aligns content to the left by default */
-    }
-    
-    .flexbox4 th {
-      background-color: #f0f0f0; /* Adds a light gray background to headers */
-      font-weight: bold; /* Makes header text bold */
-    }
-    .time{
-       margin-top: 10%;
-    }
-    .search{
-      display: flex
-    }
-    .alert{
-      font-size: 2rem;
-      display: flex;
-      justify-content: center;
-      font-family: 'Courier New', Courier, monospace;
-      margin-top: 10%;
-    }
-  </style>
+  .flexbox3 div{
+    /* margin-left: 5%; */
+    margin-top: 4%;
+  }
+  .flexbox3 table {
+    /* width: 25vw; */
+    border-collapse: collapse; /* Ensures borders don't overlap */
+    width: 100%; /* Adjust width as needed
+    /* margin: 0 auto; Centers the table horizontally */
+  }
+  
+  .flexbox3 th, td {
+    border: 1px solid black; /* Adds borders to all cells */
+    padding: 10px; /* Adds padding for spacing around content */
+    text-align: left; /* Aligns content to the left by default */
+  }
+  
+  .flexbox3 th {
+    background-color: #f0f0f0; /* Adds a light gray background to headers */
+    font-weight: bold; /* Makes header text bold */
+  }
+.flexbox4{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8%;
+}
+.flexbox4 table {
+    width: 25vw;
+    border-collapse: collapse; /* Ensures borders don't overlap */
+    /*width: 100%; /* Adjust width as needed */
+    margin: 0 auto; /* Centers the table horizontally */
+  }
+  
+  .flexbox4 th, td {
+    border: 1px solid black; /* Adds borders to all cells */
+    padding: 10px; /* Adds padding for spacing around content */
+    text-align: left; /* Aligns content to the left by default */
+  }
+  
+  .flexbox4 th {
+    background-color: #f0f0f0; /* Adds a light gray background to headers */
+    font-weight: bold; /* Makes header text bold */
+  }
+  .time{
+     margin-top: 10%;
+  }
+  .search{
+    display: flex
+  }
+</style>
   <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -313,18 +306,21 @@
       <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
       <title>Vitals</title>
   </head>
-  <body>
-    @if (empty($combinedResults))
-    <p class="alert">No results found for your search.<br> Please verify patient ID</p>
-  @else
+ <body>
+  @if(empty($combinedResults))
+  <div class="error-message">
+      <p>No users found.</p>
+  </div>
+@else
+  @foreach ($combinedResults as $item)
   <div class="navbar">
     <h2>Diagnosis Vitals</h2>
     <div class="links">
         <ul>
-            <li> New Patients</li>
-            <li>Records</li>
-            <li>Invoice</li>
-            <li>Inventory</li>
+          {{-- <li><a class="nav-link" href="{{route('doctors.index')}}">Home</a></li> --}}
+          <li><a class="nav-link" href="{{route('doctors.treatment')}}">Treatment Plan</a></li>
+          <li><a class="nav-link" href="{{route('search.vitals')}}">Vitals Records</a></li>
+          <li><a class="nav-link" href="{{route('search.treatment')}}">Treatment Records</a></li>
         {{-- <button class="doc" onclick="window.location.href='/HMS/hospital/doc.html'">
           <img src="/HMS/hospital/images/doctor.png" height="35px" width="35px">
         </button> --}}
@@ -367,12 +363,12 @@
      
     <div>  
      
-{{-- <form method="post" action="{{route('vitals.store')}}">  
-@csrf
-@method('POST') --}}
+{{-- <form method="post" action="{{route('vitals.store')}}">   --}}
+{{-- @csrf --}}
+@method('POST')
 <div></div>
 <div class="search"> 
-<input type="text" placeholder="Enter patient ID" name="patient_code" value="{{ htmlspecialchars($combinedResults[0]->patient_code) }} ">
+<input type="text" placeholder="Enter patient ID" name="patient_code">
 
 </div>
 <label id="status"></label>   
@@ -381,23 +377,23 @@
       <tr>
       <h3>Case history</h3>
         <td>C/C:</td>
-        <td><input type="text" name="cc" value="{{ htmlspecialchars($combinedResults[0]->cc) }}" readonly></td>
+        <td><input type="text" name="cc" value="{{$item->cc}}"></td>
       </tr>
       <tr>
         <td>PoHx:</td>
-        <td><input type="text" name="pohx" value="{{ htmlspecialchars($combinedResults[0]->pohx) }} "></td>
+        <td><input type="text" name="pohx"value="{{$item->pohx}}"></td>
       </tr>
       <tr>
         <td>LEE:</td>
-        <td><input type="text" name="lee" value="{{ htmlspecialchars($combinedResults[0]->lee) }} "></td>
+        <td><input type="text" name="lee" value="{{$item->lee}}"></td>
       </tr>
       <tr>
         <td>PmHx:</td>
-        <td><input type="text" name="pmhx" value="{{ htmlspecialchars($combinedResults[0]->pmhx) }} "></td>
+        <td><input type="text" name="pmhx" value="{{$item->pmhx}}"></td>
       </tr>
       <tr>
         <td>PfoHx:</td>
-        <td><input type="text" name="pfohx" value="{{ htmlspecialchars($combinedResults[0]->pfohx) }} "></td>
+        <td><input type="text" name="pfohx" value="{{$item->pfohx}}"></td>
       </tr>
      </table>
      </div>
@@ -415,16 +411,16 @@
 
         <tr>
             <td>OD:</td>
-            <td><input type="text" name="ODunaided" value="{{ htmlspecialchars($combinedResults[0]->odunaided) }} " readonly></td>
-            <td><input type="text" name="ODpinhole" value="{{ htmlspecialchars($combinedResults[0]->odpinhole) }} "readonly></td>
-            <td><input type="text" name="ODnearva" value="{{ htmlspecialchars($combinedResults[0]->odnearva) }} " readonly></td>
+            <td><input type="text" name="ODunaided" value="{{$item->odunaided}}"></td>
+            <td><input type="text" name="ODpinhole" value="{{$item->odpinhole}}"></td>
+            <td><input type="text" name="ODnearva" value="{{$item->odnearva}}"></td>
         </tr>
 
             <tr>
                 <td>OS:</td>
-                <td><input type="text" name="OSunaided" value="{{ htmlspecialchars($combinedResults[0]->osunaided) }} "></td>
-                <td><input type="text" name="OSpinhole" value="{{ htmlspecialchars($combinedResults[0]->ospinhole) }} "></td>
-                <td><input type="text" name="OSnearva" value="{{ htmlspecialchars($combinedResults[0]->osnearva) }} "></td>
+                <td><input type="text" name="OSunaided" value="{{$item->osunaided}}"></td>
+                <td><input type="text" name="OSpinhole" value="{{$item->ospinhole}}"></td>
+                <td><input type="text" name="OSnearva" value="{{$item->nearva}}"></td>
             </tr>
 
         <!-- <tr>
@@ -457,26 +453,26 @@
 
 <tr>
 <td>OD:</td>
-<td><input type="text" name="ODSPH" value="{{ htmlspecialchars($combinedResults[0]->lodsph) }} "></td>
-<td><input type="text" name="ODCYL" value="{{ htmlspecialchars($combinedResults[0]->lodcyl) }} "></td>
-<td><input type="text" name="ODAXIS" value="{{ htmlspecialchars($combinedResults[0]->lodaxis) }} "></td>
-<td><input type="text" name="ODVA" value="{{ htmlspecialchars($combinedResults[0]->lodva) }} "></td>
+<td><input type="text" name="ODSPH" value="{{$item->lodsph}}"></td>
+<td><input type="text" name="ODCYL" value="{{$item->lodcyl}}"></td>
+<td><input type="text" name="ODAXIS" value="{{$item->lodaxis}}"></td>
+<td><input type="text" name="ODVA" value="{{$item->lodva}}"></td>
 </tr>
 
 <tr>
 <td>OS:</td>
-<td><input type="text" name="OSSPH" value="{{ htmlspecialchars($combinedResults[0]->lossph) }} "></td>
-<td><input type="text" name="OSCYL" value="{{ htmlspecialchars($combinedResults[0]->loscyl) }} "></td>
-<td><input type="text" name="OSAXIS" value="{{ htmlspecialchars($combinedResults[0]->losaxis) }} "></td>
-<td><input type="text" name="OSVA" value="{{ htmlspecialchars($combinedResults[0]->losva) }} "></td>
+<td><input type="text" name="OSSPH" value="{{$item->lossph}}"></td>
+<td><input type="text" name="OSCYL"value="{{$item->loscyl}}"></td>
+<td><input type="text" name="OSAXIS" value="{{$item->losaxis}}"></td>
+<td><input type="text" name="OSVA" value="{{$item->losva}}"></td>
 </tr>
 
 <tr>
 <td>ADD:</td>
-<td><input type="text" name="ADDDSPH" value="{{ htmlspecialchars($combinedResults[0]->addsph) }} "></td>
-<td><input type="text" name="ADDCYL" value="{{ htmlspecialchars($combinedResults[0]->addcyl) }} "></td>
-<td><input type="text" name="ADDAXIS" value="{{ htmlspecialchars($combinedResults[0]->addaxis) }} "></td>
-<td><input type="text" name="ADDVA" value="{{ htmlspecialchars($combinedResults[0]->addva) }} "></td>
+<td><input type="text" name="ADDDSPH" value="{{$item->addsph}}"></td>
+<td><input type="text" name="ADDCYL" value="{{$item->addcyl}}"></td>
+<td><input type="text" name="ADDAXIS" value="{{$item->addaxis}}"></td>
+<td><input type="text" name="ADDVA" value="{{$item->addvah}}"></td>
 </tr>
 </table>
 
@@ -495,15 +491,15 @@
 </tr>
 <tr>
 <td>OD</td>
-<td><input type="text" name="arodsph" value="{{ htmlspecialchars($combinedResults[0]->arodsphere) }} "></td>
-<td><input type="text" name="arodcyl" value="{{ htmlspecialchars($combinedResults[0]->arodcyl) }} "></td>
-<td><input type="text" name="arodaxis" value="{{ htmlspecialchars($combinedResults[0]->arodaxis) }} "></td>
+<td><input type="text" name="arodsph" value="{{$item->arodsph}}"></td>
+<td><input type="text" name="arodcyl" value="{{$item->arodcyl}}"></td>
+<td><input type="text" name="arodaxis" value="{{$item->arodaxis}}"></td>
 </tr>
 <tr>
 <td>OS</td>
-<td><input type="text" name="arossph" value="{{ htmlspecialchars($combinedResults[0]->arossphere) }} "></td>
-<td><input type="text" name="aroscyl" value="{{ htmlspecialchars($combinedResults[0]->aroscyl) }} "></td>
-<td><input type="text" name="arosaxis" value="{{ htmlspecialchars($combinedResults[0]->arosaxis) }} "></td>
+<td><input type="text" name="arossph" value="{{$item->arossph}}"></td>
+<td><input type="text" name="aroscyl" value="{{$item->aroscyl}}"></td>
+<td><input type="text" name="arosaxis" value="{{$item->arosaxis}}"></td>
 </tr>
 </table>
 
@@ -519,15 +515,15 @@
 </tr>
 <tr>
 <td>OD</td>
-<td><input type="text" name="rodsph" value="{{ htmlspecialchars($combinedResults[0]->rodsph) }} "></td>
-<td><input type="text" name="rodcyl" value="{{ htmlspecialchars($combinedResults[0]->rodcyl) }} "></td>
-<td><input type="text" name="rodaxis" value="{{ htmlspecialchars($combinedResults[0]->rodaxis) }} "></td>
+<td><input type="text" name="rodsph" value="{{$item->rodsph}}"></td>
+<td><input type="text" name="rodcyl" value="{{$item->rodcyl}}"></td>
+<td><input type="text" name="rodaxis" value="{{$item->rodaxis}}"></td>
 </tr>
 <tr>
 <td>OS</td>
-<td><input type="text" name="rossph" value="{{ htmlspecialchars($combinedResults[0]->rossph) }} "></td>
-<td><input type="text" name="roscyl" value="{{ htmlspecialchars($combinedResults[0]->roscyl) }} "></td>
-<td><input type="text" name="rosaxis" value="{{ htmlspecialchars($combinedResults[0]->rosaxis) }} "></td>
+<td><input type="text" name="rossph" value="{{$item->rossph}}"></td>
+<td><input type="text" name="roscyl" value="{{$item->roscyl}}"></td>
+<td><input type="text" name="rosaxis" value="{{$item->rosaxis}}"></td>
 </tr>
 </table>
        </div>
@@ -547,21 +543,21 @@
                 </tr>
                 <tr>
                     <td>OD:</td>
-                    <td><input type="text" name="srodsph" value="{{ htmlspecialchars($combinedResults[0]->srodsphere) }} "></td>
-                    <td><input type="text" name="srodcyl" value="{{ htmlspecialchars($combinedResults[0]->srodcyl) }} "></td>
-                    <td><input type="text" name="srodaxis" value="{{ htmlspecialchars($combinedResults[0]->arodaxis) }} "></td>
-                    <td><input type="text" name="srodva" value="{{ htmlspecialchars($combinedResults[0]->srodva) }} "></td>
-                    <td><input type="text" name="srodadd" value="{{ htmlspecialchars($combinedResults[0]->srodadd) }} "></td>
-                    <td><input type="text" name="srodnva" value="{{ htmlspecialchars($combinedResults[0]->srodnva) }} "></td>
+                    <td><input type="text" name="srodsph" value="{{$item->srodsph}}"></td>
+                    <td><input type="text" name="srodcyl" value="{{$item->srodcyl}}"></td>
+                    <td><input type="text" name="srodaxis" value="{{$item->srodaxis}}"></td>
+                    <td><input type="text" name="srodva" value="{{$item->srodva}}"></td>
+                    <td><input type="text" name="srodadd" value="{{$item->srodadd}}"></td>
+                    <td><input type="text" name="srodnva" value="{{$item->srodnva}}"></td>
                 </tr>
                 <tr>
                     <td>OS:</td>
-                    <td><input type="text" name="srossph" value="{{ htmlspecialchars($combinedResults[1]->srosphere) }} "></td>
-                    <td><input type="text" name="sroscyl" value="{{ htmlspecialchars($combinedResults[1]->sroscyl) }} "></td>
-                    <td><input type="text" name="srosaxis" value="{{ htmlspecialchars($combinedResults[1]->srosaxis) }} "></td>
-                    <td><input type="text" name="srosva" value="{{ htmlspecialchars($combinedResults[1]->srosva) }} "></td>
-                    <td><input type="text" name="srosadd" value="{{ htmlspecialchars($combinedResults[1]->srosadd) }} "></td>
-                    <td><input type="text" name="srosnva" value="{{ htmlspecialchars($combinedResults[1]->srosnva) }} "></td>
+                    <td><input type="text" name="srossph" value="{{$item->srossph}}"></td>
+                    <td><input type="text" name="sroscyl" value="{{$item->sroscyl}}"></td>
+                    <td><input type="text" name="srosaxis" value="{{$item->srosaxis}}"></td>
+                    <td><input type="text" name="srosva" value="{{$item->srosva}}"></td>
+                    <td><input type="text" name="srosadd" value="{{$item->srosadd}}"></td>
+                    <td><input type="text" name="srosnva" value="{{$item->srosnva}}"></td>
                 </tr>
                 <!-- <tr>
                     <td>Data 3-1</td>
@@ -588,21 +584,21 @@
                 </tr>
                 <tr>
                     <td>OD:</td>
-                    <td><input type="text" name="fodsph" value="{{ htmlspecialchars($combinedResults[0]->fodsph) }} "></td>
-                    <td><input type="text" name="fodcyl" value="{{ htmlspecialchars($combinedResults[0]->fodcyl) }} "></td>
-                    <td><input type="text" name="fodaxis" value="{{ htmlspecialchars($combinedResults[0]->fodaxis) }} "></td>
-                    <td><input type="text" name="fodva" value="{{ htmlspecialchars($combinedResults[0]->fodva) }} "></td>
-                    <td><input type="text" name="fodadd" value="{{ htmlspecialchars($combinedResults[0]->fodadd) }} "></td>
-                    <td><input type="text" name="fodnva" value="{{ htmlspecialchars($combinedResults[0]->fodnva) }} "></td>
+                    <td><input type="text" name="fodsph" value="{{$item->fodsph}}"></td>
+                    <td><input type="text" name="fodcyl" value="{{$item->fodcyl}}"></td>
+                    <td><input type="text" name="fodaxis" value="{{$item->fodaxis}}"></td>
+                    <td><input type="text" name="fodva" value="{{$item->fodva}}"></td>
+                    <td><input type="text" name="fodadd" value="{{$item->fodadd}}"></td>
+                    <td><input type="text" name="fodnva" value="{{$item->fodnva}}"></td>
                 </tr>
                 <tr>
                     <td>OS:</td>
-                    <td><input type="text" name="fossph" value="{{ htmlspecialchars($combinedResults[1]->fossph) }} "></td>
-                    <td><input type="text" name="foscyl" value="{{ htmlspecialchars($combinedResults[1]->foscyl) }} "></td>
-                    <td><input type="text" name="fosaxis"  value="{{ htmlspecialchars($combinedResults[1]->fosaxis) }} "></td>
-                    <td><input type="text" name="fosva"  value="{{ htmlspecialchars($combinedResults[1]->fosva) }} "></td>
-                    <td><input type="text" name="fosadd"  value="{{ htmlspecialchars($combinedResults[1]->fosadd) }} "></td>
-                    <td><input type="text" name="fosnva"  value="{{ htmlspecialchars($combinedResults[1]->fosnva) }} "></td>
+                    <td><input type="text" name="fossph" value="{{$item->fossph}}"></td>
+                    <td><input type="text" name="foscyl" value="{{$item->foscyl}}"></td>
+                    <td><input type="text" name="fosaxis" value="{{$item->fosaxis}}"></td>
+                    <td><input type="text" name="fosva" value="{{$item->fosva}}"></td>
+                    <td><input type="text" name="fosadd" value="{{$item->fosadd}}"></td>
+                    <td><input type="text" name="fosnva" value="{{$item->fodnva}}"></td>
                 </tr>
                 <!-- <tr>
                     <td>Data 3-1</td>
@@ -629,56 +625,56 @@
 
                 <tr>
                     <td>Eyelid</td>
-                    <td><input type="text" name="eyelidod"  value="{{ htmlspecialchars($combinedResults[0]->eyelidod) }} "></td>
-                    <td><input type="text" name="eyelidos" value="{{ htmlspecialchars($combinedResults[0]->eyelidos) }} "></td>
+                    <td><input type="text" name="eyelidod" value="{{$item->eyelidod}}"></td>
+                    <td><input type="text" name="eyelidos" value="{{$item->eyelidos}}"></td>
                 </tr>
 
                 <tr>
                     <td>Conjuctiva</td>
-                    <td><input type="text" name="conjuctivaod" value="{{ htmlspecialchars($combinedResults[0]->conjuctivaod) }} "></td>
-                    <td><input type="text" name="conjuctivaos" value="{{ htmlspecialchars($combinedResults[0]->conjuctivaos) }} "></td>
+                    <td><input type="text" name="conjuctivaod" value="{{$item->conjucticaod}}"></td>
+                    <td><input type="text" name="conjuctivaos" value="{{$item->conjucticaos}}"></td>
                 </tr>
 
                 <tr>
                     <td>Cornea</td>
-                    <td><input type="text" name="corneaod" value="{{ htmlspecialchars($combinedResults[0]->corneaod) }} "></td>
-                    <td><input type="text" name="corneaos" value="{{ htmlspecialchars($combinedResults[0]->corneaos) }} "></td>
+                    <td><input type="text" name="corneaod" value="{{$item->corneaod}}"></td>
+                    <td><input type="text" name="corneaos" value="{{$item->corneaos}}"></td>
                 </tr>
 
                 <tr>
                     <td>Pupil</td>
-                    <td><input type="text" name="pupilod" value="{{ htmlspecialchars($combinedResults[0]->pupilod) }} "></td>
-                    <td><input type="text" name="pupilos" value="{{ htmlspecialchars($combinedResults[0]->pupilos) }} "></td>
+                    <td><input type="text" name="pupilod" value="{{$item->pupilod}}"></td>
+                    <td><input type="text" name="pupilos" value="{{$item->pupilos}}"></td>
                 </tr>
 
                 <tr>
                     <td>Iris</td>
-                    <td><input type="text" name="irisod" value="{{ htmlspecialchars($combinedResults[0]->irisod) }} "></td>
-                    <td><input type="text" name="irisos" value="{{ htmlspecialchars($combinedResults[0]->irisos) }} "></td>
+                    <td><input type="text" name="irisod" value="{{$item->irisod}}"></td>
+                    <td><input type="text" name="irisos" value="{{$item->irisos}}"></td>
                 </tr>
 
                 <tr>
                     <td>Lens</td>
-                    <td><input type="text" name="lensod" value="{{ htmlspecialchars($combinedResults[0]->lensod) }} "></td>
-                    <td><input type="text" name="lensos" value="{{ htmlspecialchars($combinedResults[0]->lensos) }} "></td>
+                    <td><input type="text" name="lensod" value="{{$item->lensod}}"></td>
+                    <td><input type="text" name="lensos" value="{{$item->lensos}}"></td>
                 </tr>
 
                 <tr>
                     <td>Virtreous</td>
-                    <td><input type="text" name="vitreousod" value="{{ htmlspecialchars($combinedResults[0]->vitreousod) }} "></td>
-                    <td><input type="text" name="vitreousos" value="{{ htmlspecialchars($combinedResults[0]->vitreousos) }} "></td>
+                    <td><input type="text" name="vitreousod" value="{{$item->vitreousod}}"></td>
+                    <td><input type="text" name="vitreousos" value="{{$item->vitreousos}}"></td>
                 </tr>
 
                 <tr>
                     <td>C/D Ratio</td>
-                    <td><input type="text" name="cdratiood" value="{{ htmlspecialchars($combinedResults[0]->cdratiood) }} "></td>
-                    <td><input type="text" name="cdratioos" value="{{ htmlspecialchars($combinedResults[0]->cdratioos) }} "></td>
+                    <td><input type="text" name="cdratiood" value="{{$item->cdratiood}}"></td>
+                    <td><input type="text" name="cdratioos" value="{{$item->cdratioos}}"></td>
                 </tr>
 
                 <tr>
                     <td>Macula</td>
-                    <td><input type="text" name="macularod" value="{{ htmlspecialchars($combinedResults[0]->macularod) }} "></td>
-                    <td><input type="text" name="maculaos" value="{{ htmlspecialchars($combinedResults[0]->maculaos) }} "></td>
+                    <td><input type="text" name="macularod" value="{{$item->macularod}}"></td>
+                    <td><input type="text" name="maculaos" value="{{$item->maculaos}}"></td>
                 </tr>
                 </table>
 
@@ -694,14 +690,14 @@
 
                 <tr>
                     <td>OD</td>
-                    <td><input type="text" name="odccct" value="{{ htmlspecialchars($combinedResults[0]->odccct) }} "></td>
-                    <td><input type="text" name="odnct" value="{{ htmlspecialchars($combinedResults[0]->odnct) }} "></td>
+                    <td><input type="text" name="odccct" value="{{$item->odcct}}"></td>
+                    <td><input type="text" name="odnct" value="{{$item->odnct}}"></td>
                 </tr>
 
                 <tr>
                     <td>OS</td>
-                    <td><input type="text" name="oscct" value="{{ htmlspecialchars($combinedResults[0]->oscct) }} "></td>
-                    <td><input type="text" name="osnct" value="{{ htmlspecialchars($combinedResults[0]->osnct) }} "></td>
+                    <td><input type="text" name="oscct" value="{{$item->oscct}}"></td>
+                    <td><input type="text" name="osnct" value="{{$item->osnct}}"></td>
                 </tr>
                 </table>
 
@@ -719,14 +715,15 @@
            </div>
 
    </div>
-  
+  <div class="save">
+    <input type="submit" class="saveBtn" id="btn-success" value="SAVE">
+  </div>
 </div>
 </form> 
 
-  @endif
-
-  
-  </body>
+  @endforeach
+@endif
+ </body>
   </html>
   
   

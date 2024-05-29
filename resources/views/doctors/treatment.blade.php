@@ -331,7 +331,7 @@ h2 {
                 @csrf
                 @method('POST')
                 <div class="form1">
-                    <input type="text" placeholder="Enter Patient Id" name="patient_id" class="search_input">
+                    <input type="text" placeholder="Enter Patient Id" name="patient_id" class="search_input" required>
                    
                 </div>
               {{-- DOSAGE --}}

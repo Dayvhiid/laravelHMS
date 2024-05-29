@@ -92,7 +92,7 @@
                     <th>Frame  Name</th>
                     <th>Price</th>
                     <th>ID</th>
-                    {{-- <th>Drug Type</th> --}}
+                    <th>Quantity</th>
                     <th>Action</th>
                 </tr>
 
@@ -101,6 +101,7 @@
                     <td><input type="text" name="inputs[0][name]" class="form-control" placeholder="Enter lens Name"></td>
                     <td><input type="text" name="inputs[0][price]" placeholder="Enter Lens Price" class="form-control"></td>
                     <td><input type="text" name="inputs[0][special_code]" placeholder="Enter Unique Code" class="form-control"></td>
+                    <td><input type="text" name="inputs[0][quantity]" placeholder="Quantity" class="form-control"></td>
                     {{-- <td>
                      <div class="select-wrapper">
                       <select class="select-styled" name="inputs[0][drug_type]">
@@ -150,6 +151,12 @@
             type: 'text',
             name: 'inputs[' + rowCounter + '][special_code]',
             placeholder: 'Enter Unique Code',
+            class: 'form-control'
+          })));
+          newRow.append($('<td>').append($('<input>', {
+            type: 'text',
+            name: 'inputs[' + rowCounter + '][quantity]',
+            placeholder: 'Enter quantity',
             class: 'form-control'
           })));
 //           newRow.append($('<td>').append($('<select>', {

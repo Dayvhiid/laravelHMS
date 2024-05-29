@@ -25,6 +25,7 @@
                     <th scope="col">Name</th>
                     <th scope="col">Price</th>
                     <th scope="col">ID</th>
+                    <th scope="col">Quantity</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Action</th>
                   </tr>
@@ -37,6 +38,7 @@
                     <td> <input type="text" class="form-control" name="price" value="{{$len->name}}" readonly></td>
                     <td> <input type="text" class="form-control" name="price" value="{{$len->price}}" readonly></td>
                     <td> <input type="text" class="form-control" name="price" value="{{$len->special_code}}" readonly></td>
+                    <td> <input type="text" class="form-control" name="quantity" value="{{$len->quantity}}" readonly></td>
                     <td> <a href="{{route('lens.edit', ['len' => $len])}}">Edit</a></td>
                     <td>
                       <form action="{{route('lens.delete', ['len' => $len ])}}" method="POST">

@@ -28,7 +28,8 @@ class InventoryController extends Controller
         foreach($request->inputs as $key => $value){
             Test::create($value);
         }
-        return redirect(route('inventory.list'));
+        return redirect(route('pages.status'))->with('success', 'Inventory List updated succefully');
+        // return redirect(route('inventory.list'));
        
     }
     public function search(){

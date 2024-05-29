@@ -32,6 +32,10 @@
         <input type="text" placeholder="Enter the price" value="{{$frames->special_code}}" readonly>
      </div>
      <div>
+        <label>Quantity: </label>
+        <input type="text" name="quantity" placeholder="Enter the quantity" value="{{$frames->quantity}}">
+     </div>
+     <div>
         <input type="submit" value="SUBMIT">
      </div>
     </form>

@@ -25,6 +25,7 @@
                     <th scope="col">Drug Name</th>
                     <th scope="col">Price</th>
                     <th scope="col">Drug type</th>
+                    <th scope="col">Quantity</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
@@ -36,6 +37,7 @@
                     <td> <input type="text" class="form-control" name="name" value="{{$drug->name}}"></td>
                     <td> <input type="text" class="form-control" name="price" value="{{$drug->price}}"></td>
                     <td> <input type="text" class="form-control" value="{{$drug->drug_type}}"></td>
+                    <td> <input type="text" class="form-control" value="{{$drug->quantity}}"></td>
                     <td> <a href="{{route('drugs.edit', ['drugs' => $drug])}}">Edit</a></td>
                     <td>
                       <form action="{{route('doctors.delete', ['drugs' => $drug ])}}" method="POST">

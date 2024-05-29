@@ -94,7 +94,7 @@
           <h2>Bifocal Transition</h2>
           
           <input id="html" aria-label="html" type="checkbox" name="html">
-          <label for="html">Single Vision Tintable Photochromic</label>
+          <label for="html">Bifocal Transit</label>
 
           <input id="css" aria-label="css" type="checkbox" name="css">
           <label for="css">Single Vision Transition A/R</label>

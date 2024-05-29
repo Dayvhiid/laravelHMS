@@ -25,6 +25,7 @@
                     <th scope="col">Name</th>
                     <th scope="col">Price</th>
                     <th scope="col">ID</th>
+                    <th scope="col">Quantity</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Action</th>
                   </tr>
@@ -37,6 +38,7 @@
                     <td> <input type="text" class="form-control" name="price" value="{{$frame->name}}" readonly></td>
                     <td> <input type="text" class="form-control" name="price" value="{{$frame->price}}" readonly></td>
                     <td> <input type="text" class="form-control" name="price" value="{{$frame->special_code}}" readonly></td>
+                    <td> <input type="text" class="form-control" name="quantity" value="{{$frame->quantity}}" readonly></td>
                     <td> <a href="{{route('frame.edit', ['frames' => $frame])}}">Edit</a></td>
                     <td>
                       <form action="{{route('frame.delete', ['frames' => $frame ])}}" method="POST">

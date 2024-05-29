@@ -14,5 +14,6 @@ class Drug extends Model
         'price',
         'special_code',
         'drug_type',
+        'quantity'
     ];
 }

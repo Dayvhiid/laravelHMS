@@ -31,6 +31,10 @@
         <label>Type: </label>
         <input type="text" placeholder="Enter the price" value="{{$drug->drug_type}}" readonly>
      </div>
+     <div>
+        <label>Quantity: </label>
+        <input type="text" placeholder="Enter the price" value="{{$drug->quantity}}" readonly>
+     </div>
      {{-- <div>
         <label>Description: </label>
         <input type="text" name="description" placeholder="Enter the description" value="{{$product->description}}">
