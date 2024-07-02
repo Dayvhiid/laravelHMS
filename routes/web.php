@@ -23,6 +23,8 @@ use App\Http\Controllers\SendSMSController;
 use App\Http\Controllers\NewDoctorVerificationController;
 use App\Http\Controllers\NewValidationController;
 use App\Http\Controllers\FullCalenderController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\WebrtcStreamingController;
 
 Route::get('/', function () {
     return view('landingpage');
@@ -146,6 +148,20 @@ Route::get('/devmode', function (){ return view('landingpage');})->name('devmode
     //Full calender
     Route::get('full-calender', [FullCalenderController::class, 'index'])->name('calender');
     Route::post('full-calender/action', [FullCalenderController::class, 'action']);
+    //Payment
+    Route::get('payment-index', [PaymentController::class, 'index'])->name('payment');
+
+    // web video
+    Route::get('/client', function () {
+        return view('video.index');
+    })->name('video');
+    
+    Route::get('/client/confo/{room}/{type}/{ref}',  "EnxRtc\RoomController@confo");
+    
+
+
+
+
 // });
 
 // // Example of protecting some routes with both 'auth' and 'verified' middleware

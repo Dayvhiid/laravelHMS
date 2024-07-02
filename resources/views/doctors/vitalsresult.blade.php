@@ -312,9 +312,15 @@ input [type="text"]{
       <p>No users found.</p>
   </div>
 @else
-  @foreach ($combinedResults as $item)
+<?php
+$totalResults = count($combinedResults);
+$halfResults = floor($totalResults / 2);
+$halfCombinedResults = array_slice($combinedResults, 0, $halfResults);
+?>
+  @foreach ($halfCombinedResults as $item)
   <div class="navbar">
     <h2>Diagnosis Vitals</h2>
+    <p>{{$item->created_at}}</p>
     <div class="links">
         <ul>
           {{-- <li><a class="nav-link" href="{{route('doctors.index')}}">Home</a></li> --}}
