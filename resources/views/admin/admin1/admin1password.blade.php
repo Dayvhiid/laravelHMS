@@ -269,8 +269,8 @@ body{
                 </div>
                 <div class="toggle-panel toggle-right">
                     <h1>Admin's Portal</h1>
-                    {{-- <p>Create a new account</p> 
-                     <button class="hidden" id="register">Sign Up</button> --}}
+                    <p>Create a new account</p> 
+                     <button class="hidden" id="register">Sign Up</button>
                 </div>
             </div>
         </div>
