@@ -56,10 +56,8 @@ class registerController extends Controller
             // Handle results (process $search)
             if(password_verify($data['password'], $search[0]['password'])){
                 return redirect(route('pages.register'));
-                error_log('Password Correct');
           } else {
-            return redirect(route('doctors.status'))->with('msg','Invalid Input details'); 
-              error_log('Password Incorrect');
+            return redirect(route('doctors.status'))->with('msg','Wrong Password'); 
           }
         }
 
