@@ -31,7 +31,7 @@ class DoctorsController extends Controller
                 $doctor->name = $name;
                 $doctor->password = $hashedPassword;
                 $doctor->save();
-                return redirect(route('doctors.status'))->with('msg','Doctor account created sucesfully'); 
+                return redirect(route('doctors.status'))->with('msg','Doctor account created succesfully'); 
              } else {
                 return redirect(route('doctors.status'))->with('msg','Passwords do not match'); 
              }
@@ -61,7 +61,8 @@ class DoctorsController extends Controller
                 return redirect(route('doctors.index'));
                 error_log('Password Correct');
           } else {
-              error_log('Password Incorrect');
+            return redirect(route('doctors.status'))->with('msg','Invalid Input details'); 
+            
           }
         }
 
