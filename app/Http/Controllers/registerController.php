@@ -58,6 +58,7 @@ class registerController extends Controller
                 return redirect(route('pages.register'));
                 error_log('Password Correct');
           } else {
+            return redirect(route('doctors.status'))->with('msg','Invalid Input details'); 
               error_log('Password Incorrect');
           }
         }
