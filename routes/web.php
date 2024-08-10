@@ -23,6 +23,7 @@ use App\Http\Controllers\SendSMSController;
 use App\Http\Controllers\NewDoctorVerificationController;
 use App\Http\Controllers\NewValidationController;
 use App\Http\Controllers\FullCalenderController;
+use App\Http\Controllers\ImageUpload;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\WebrtcStreamingController;
 
@@ -141,7 +142,7 @@ Route::get('/devmode', function (){ return view('landingpage');})->name('devmode
     Route::post('admin1/check', [Admin2Controller::class, 'check'])->name('admin1.check');
 
     //testing
-    Route::get('/testing', function (){ return view('doctors.testing');})->name('testing');
+    Route::get('/admin-entry', function (){ return view('doctors.testing');})->name('testing');
 
     //status
     Route::get('/doctors/signup/status', function () { return view('doctors.status'); })->name('doctors.status');
@@ -157,8 +158,16 @@ Route::get('/devmode', function (){ return view('landingpage');})->name('devmode
     })->name('video');
     
     Route::get('/client/confo/{room}/{type}/{ref}',  "EnxRtc\RoomController@confo");
-    
 
+    //Image Uplaod
+    Route::get('/patients/image-upload', [ImageUpload::class, 'index'])->name('image.upload');
+    Route::post('images/upload', [ImageUpload::class, 'store'])->name('images.store');
+
+
+    Route::get('images', [ImageUpload::class, 'display'])->name('images.index');
+
+    Route::get('images/search', [ImageUpload::class, 'search'])->name('images.search');
+    Route::post('images/search', [ImageUpload::class, 'searchResult'])->name('images.search.result');
 
 
 

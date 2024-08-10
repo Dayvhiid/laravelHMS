@@ -26,6 +26,7 @@
                     {{-- <li><a href="{{ route('testing') }}">Inventory</a></li> --}}
                     <li><a href="{{ route('search.treatment') }}">Opticianry</a></li>
                     <li><a href="{{ route('admin.admin2') }}">Admin 2</a></li>
+                    <li><a href="{{ route('image.upload') }}">Case File Upload</a></li>
                     {{-- <li><a href="{{ route('doctors.drugs') }}">Drug</a></li> --}}
             </ul>
         </div>

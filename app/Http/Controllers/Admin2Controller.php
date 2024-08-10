@@ -28,7 +28,7 @@ class Admin2Controller extends Controller
                 $register->name = $name;
                 $register->password = $hashedPassword;
                 $register->save();
-                return redirect(route('doctors.status'))->with('msg','account created sucesfully'); 
+                return redirect(route('doctors.status'))->with('msg','account created successfully'); 
              } else {
                 return redirect(route('doctors.status'))->with('msg','Passwords do not match'); 
              }

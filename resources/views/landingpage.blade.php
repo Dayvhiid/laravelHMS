@@ -223,7 +223,7 @@
                                         Dr Oluchi Izuwa
                                     </h3>
                                     <span>
-                                        Optometrists
+                                        Optometrist
                                     </span>
                                 </div>
                                 {{-- <div class="cart-btn">
@@ -246,7 +246,7 @@
                                         Dr C. Nwachukwu 
                                     </h3>
                                     <span>
-                                        C.E.O
+                                        Optometrist
                                     </span>
                                 </div>
                                 {{-- <div class="cart-btn">
@@ -375,7 +375,7 @@
                                 "I've been going to Ola-Oluwa Eye Clinic for years, and they've always provided the best care. Dr. Braimoh is incredibly knowledgeable and explains everything in a way I can understand. The staff is friendly and helpful, and I never feel rushed during my appointments. I highly recommend them!"
                             </p>
                             <div class="review-img bg-img"
-                                style="background-image: url(assets/close-up-portrait-cute-young-woman-holding-textbook-colored-pencils-posing-studio-isolated-pink_176532-9674.jpg);">
+                                style="background-image: url(assets/testimonial2.jpg);">
                             </div>
                         </div>
                         <div class="review-info">
@@ -400,12 +400,12 @@
                                     "My vision had been getting progressively worse, and I was worried about what was going on. When I came to Ola-oluwa Eye Clinic, they were very thorough in their examination and diagnosed me with cataracts. Dr. Braimoh explained the treatment options clearly and answered all my questions patiently. The surgery went smoothly, and I can't believe how much better I can see now! I'm so grateful for their expertise and care." 
                                 </p>
                                 <div class="review-img bg-img"
-                                    style="background-image: url(assets/michael-dam-mEZ3PoFGs_k-unsplash.jpg);">
+                                    style="background-image: url(assets/testimonial4.jpg);">
                                 </div>
                             </div>
                             <div class="review-info">
                                 <h3>
-                                    Mr Oluwade Kiipe
+                                    Mrs Akande Boluwatife
                                 </h3>
                                 <div class="rating">
                                     <i class='bx bxs-star'></i>
@@ -425,12 +425,12 @@
                                 My kids can be nervous at the doctor, but the staff at Ola-oluwa Eye Clinic made their eye exams fun and stress-free. They used kid-friendly language and explained everything in a way my children could understand. They also have a great selection of fun frames for kids to choose from. We'll definitely be back!
                             </p>
                             <div class="review-img bg-img"
-                                style="background-image: url(assets/portrait-happy-young-man_171337-21716.jpg);">
+                                style="background-image: url(assets/testimonial3.jpg);">
                             </div>
                         </div>
                         <div class="review-info">
                             <h3>
-                                Mr. Akande Bolutife
+                                Mr. Olamilekan Gabriel
                             </h3>
                             <div class="rating">
                                 <i class='bx bxs-star'></i>

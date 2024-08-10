@@ -128,6 +128,7 @@ th {
               <a class="nav-link" href="{{ route('doctors.vitals')}}">Vitals</a>
               <a class="nav-link" href="{{route('doctors.treatment')}}">Treatment Plan</a>
               <a class="nav-link" href="{{route('calender')}}">Patient Management</a>
+              <a class="nav-link" href="{{route('images.search')}}">Case Files</a>
             </div>
           </div>
         </div>
