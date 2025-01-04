@@ -123,6 +123,28 @@
            $currentDate = date('m/Y');
            $patientID = $random_number."/".$currentDate;
         @endphp
+        {{-- @php
+        // Generate a shorter unique part using uniqid and hash
+        $uniquePart = substr(hash('crc32', uniqid(mt_rand(), true)), 0, 8); // Shorten to 8 characters
+        $currentDate = date('m/Y'); // Current date in 'month/year' format
+        $patientID = $uniquePart . "/" . $currentDate; // Combine unique part and date
+    @endphp --}}
+    
+        {{-- @php
+    // Fetch the next auto-increment ID from the database (ensure it is reliable and transactional)
+    $lastID = DB::table('patient_infos')->max('id') + 1; // Use the table name where patient records are stored
+
+    // Add a unique suffix based on microtime
+    $uniqueSuffix = uniqid();
+
+    // Format the current date
+    $currentDate = date('m/Y');
+
+    // Generate the Patient ID
+    $patientID = $lastID . "-" . $uniqueSuffix . "/" . $currentDate;
+@endphp --}}
+
+
         <div class="pid">
             <label>PatientID:</label><br>
             <input type="input" placeholder="Enter Email"class="emailinput" value="<?php echo $patientID ?>"  name="pid" readonly>
