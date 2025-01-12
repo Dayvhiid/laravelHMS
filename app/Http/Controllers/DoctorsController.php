@@ -72,7 +72,7 @@ class DoctorsController extends Controller
 
     public function show(){
         $appointments = Appointment::latest()->limit(5)->get();
-        $notifications = Notification::latest()->limit(10)->get();
+        $notifications = Notification::latest()->limit(7)->get();
         return view('doctors.index', compact('appointments','notifications'));
     }
 

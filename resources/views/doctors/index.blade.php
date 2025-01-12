@@ -542,7 +542,7 @@ th {
         function reloadPage() {
     setInterval(function() {
         location.reload(); // Reload the current page
-    }, 120000); // 120000 ms = 2 minutes
+    }, 30000); // 120000 ms = 2 minutes
 }
 
 // Call the function to start reloading
