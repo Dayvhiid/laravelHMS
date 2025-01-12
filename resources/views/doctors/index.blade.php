@@ -435,7 +435,7 @@ th {
         @foreach ($notifications as $notification)
 <div class="notification {{ $notification->status === 'unread' ? 'unreaded' : '' }}">
     <div class="avatar">
-        <img src="{{ asset($notification->avatar) }}" alt="User Avatar">
+        {{-- <img src="{{ asset($notification->avatar) }}" alt="User Avatar"> --}}
     </div>
     <div class="text">
         <div class="text-top">
