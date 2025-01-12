@@ -392,6 +392,13 @@ h2 {
                 
                 </textarea>
               </div>
+               {{-- Prescription --}}
+               <div class="textarea">
+                <label for="TextArea">Prescription:</label>
+                <textarea class="dosage"  name="prescription">
+                
+                </textarea>
+              </div>
               {{-- Remark --}}
               <div class="textarea">
                 <label for="TextArea" >Remark:</label>

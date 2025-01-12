@@ -39,6 +39,7 @@ class TreatmentController extends Controller
         $treatment->oc = $request->input('oc');
         $treatment->sur = $request->input('sur');
         $treatment->rtc = $request->input('rtc');
+        $treatment->prescription = $request->input('prescription');
         $treatment->remark = $request->input('remark');
         $treatment->single_vision = isset($validatedData['singlevision']) ? json_encode($validatedData['singlevision']) : null;
         $treatment->bifocal = isset($validatedData['bifocal']) ? json_encode($validatedData['bifocal']) : null;

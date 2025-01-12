@@ -337,6 +337,10 @@ h2 {
                             <input class="dosage" type="text" value="{{ $user->rtc }}" readonly>
                         </div>
                         <div class="textarea">
+                            <label for="TextArea">Prescription:</label>
+                            <input class="dosage" type="text" value="{{ $user->prescription }}" readonly>
+                        </div>
+                        <div class="textarea">
                             <label for="TextArea">Remark:</label>
                             <input class="dosage" type="text" value="{{ $user->remark }}" readonly>
                         </div>

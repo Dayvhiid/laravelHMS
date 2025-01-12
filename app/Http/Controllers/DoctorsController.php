@@ -6,6 +6,7 @@ use App\Models\Appointment;
 use App\Models\Doctor;
 use App\Models\Vital;
 use Illuminate\Http\Request;
+use App\Models\Notification;
 
 class DoctorsController extends Controller
 {
@@ -71,8 +72,12 @@ class DoctorsController extends Controller
 
     public function show(){
         $appointments = Appointment::latest()->limit(5)->get();
-        return view('doctors.index', compact('appointments'));
+        $notifications = Notification::latest()->limit(10)->get();
+        return view('doctors.index', compact('appointments','notifications'));
     }
+
+    
+
     public function vitals(){
        return view('doctors.vital');
     }

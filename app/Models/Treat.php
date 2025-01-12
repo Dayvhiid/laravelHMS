@@ -22,5 +22,6 @@ class Treat extends Model
         'bifocal',
         'special_order',
         'progressive',
+        'prescription', 
     ];
 }
