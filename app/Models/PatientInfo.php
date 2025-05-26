@@ -19,6 +19,10 @@ class PatientInfo extends Model
         'email',
         'street',
         'state',
-        'emergency_phone'
+        'emergency_phone',
+        'patient_id',
+        'fullname',
+        'datee',
+        'age',
     ];
 }

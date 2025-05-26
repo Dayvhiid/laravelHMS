@@ -1,31 +1,38 @@
 <?php
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\PagesController;
-use App\Http\Controllers\DoctorsController;
-use App\Http\Controllers\TreatmentController;
-use App\Http\Controllers\InventoryController;
-use App\Http\Controllers\InvoiceController;
-use App\Http\Controllers\RecieptController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\FrameController;
-use App\Http\Controllers\LensController;
-use App\Http\Controllers\SmsController;
-use App\Http\Controllers\MessagingController;
-use App\Http\Controllers\TwilioSmsController;
-use App\Http\Controllers\RecordsController;
-use App\Http\Controllers\InvoicegenerationController;
-use App\Http\Controllers\VitalsController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\Admin2Controller;
-use App\Http\Controllers\DrugController;
-use App\Http\Controllers\SendSMSController;
-use App\Http\Controllers\NewDoctorVerificationController;
-use App\Http\Controllers\NewValidationController;
-use App\Http\Controllers\FullCalenderController;
+use App\Models\PatientInfo;
+use App\Imports\UsersImport;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\ImageUpload;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SmsController;
+use App\Http\Controllers\DrugController;
+use App\Http\Controllers\LensController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ExcelController;
+use App\Http\Controllers\FrameController;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\Admin2Controller;
+use App\Http\Controllers\VitalsController;
+use App\Http\Controllers\DoctorsController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RecieptController;
+use App\Http\Controllers\RecordsController;
+use App\Http\Controllers\SendSMSController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Middleware\CheckAllowedIpRange;
+use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\MessagingController;
+use App\Http\Controllers\TreatmentController;
+use App\Http\Controllers\TwilioSmsController;
+use App\Http\Controllers\PatientInfoController;
+use App\Http\Controllers\FullCalenderController;
+use App\Http\Controllers\NewValidationController;
 use App\Http\Controllers\WebrtcStreamingController;
+use App\Http\Controllers\InvoicegenerationController;
+use App\Http\Controllers\NewDoctorVerificationController;
 
 Route::get('/', function () {
     return view('landingpage');
@@ -168,6 +175,23 @@ Route::get('/devmode', function (){ return view('landingpage');})->name('devmode
 
     Route::get('images/search', [ImageUpload::class, 'search'])->name('images.search');
     Route::post('images/search', [ImageUpload::class, 'searchResult'])->name('images.search.result');
+
+
+    Route::get('/import/users',  [ExcelController::class, 'index'])->name('excel.index');
+    // Route::get('/import/users', [ExcelController::class, 'index'])
+    // ->middleware('ip.restrict') 
+    // ->name('excel.index');
+
+
+    //Update Patient Info
+    Route::put('/users/{id}', [PatientInfoController::class, 'update'])->name('users.update'); //Hold
+    Route::get('/doctors/{users}/edit', [PatientInfoController::class, 'edit'])->name('drugs.edit'); //Hold
+
+    Route::post('/import-users', function (Request $request) {
+        Excel::import(new UsersImport, $request->file('file'));
+
+    return 'Users Imported Successfully';
+})->name('excel.import');
 
 
 

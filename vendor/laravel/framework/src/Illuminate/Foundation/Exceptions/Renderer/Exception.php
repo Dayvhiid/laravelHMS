@@ -2,9 +2,12 @@
 
 namespace Illuminate\Foundation\Exceptions\Renderer;
 
+use Closure;
 use Composer\Autoload\ClassLoader;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Bootstrap\HandleExceptions;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Symfony\Component\ErrorHandler\Exception\FlattenException;
 
 class Exception
@@ -118,7 +121,7 @@ class Exception
             array_shift($trace);
         }
 
-        return collect(array_map(
+        return new Collection(array_map(
             fn (array $trace) => new Frame($this->exception, $classMap, $trace, $this->basePath), $trace,
         ));
     }
@@ -173,7 +176,9 @@ class Exception
         return $route ? array_filter([
             'controller' => $route->getActionName(),
             'route name' => $route->getName() ?: null,
-            'middleware' => implode(', ', $route->gatherMiddleware()),
+            'middleware' => implode(', ', array_map(function ($middleware) {
+                return $middleware instanceof Closure ? 'Closure' : $middleware;
+            }, $route->gatherMiddleware())),
         ]) : [];
     }
 
