@@ -40,8 +40,7 @@ class DrugController extends Controller
         $data = $request->validate([
             'name' => 'required',
             'price' => 'required',
-        ]);
-        error_log($data['price']);  
+        ]);  
         $drugs->update($data); 
         return redirect(route('doctors.list'));
     }
@@ -67,6 +66,23 @@ class DrugController extends Controller
         return view('drug.index', compact('mergedResults'));
     }
     
-    
+    public function updated(Request $request, $id)
+{
+    $patient = Drug::findOrFail($id);
+    // dd($request->all());
+
+
+    $patient->update([
+        'sn' => $request->input('sn'),
+        'name' => $request->input('name'),
+        'price' => $request->input('price'),
+        'special_code' => $request->input('special_code'),
+        'drug_type' => $request->input('drug_type'),
+        'quantity' => $request->input('quantity'),
+    ]);
+
+    // return redirect()->back()->with('success', 'Patient updated successfully!');
+     return redirect(route('pages.status'))->with('success', 'Drug List updated successfully');
+}
     
 }

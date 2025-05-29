@@ -50,4 +50,5 @@ class InventoryController extends Controller
        $test->delete();
        return redirect(route('inventory.list'));
     }
+
 }

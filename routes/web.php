@@ -13,6 +13,7 @@ use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\FrameController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\Admin2Controller;
+use App\Http\Controllers\CombinationController;
 use App\Http\Controllers\VitalsController;
 use App\Http\Controllers\DoctorsController;
 use App\Http\Controllers\InvoiceController;
@@ -84,6 +85,7 @@ Route::get('/devmode', function (){ return view('landingpage');})->name('devmode
     Route::put('/doctors/{drugs}/update', [DrugController::class, 'update'])->name('doctors.update');
     Route::delete('/doctors/{drugs}/destroy', [DrugController::class, 'destroy'])->name('doctors.delete');
     //Invoice Routes
+    Route::post('/invoices/store', [InvoiceController::class, 'store'])->name('invoices.store');
     Route::get('/invoice', [InvoicegenerationController::class, 'index'])->name('invoice.show');
     Route::get('/invoice/generate', [InvoiceController::class, 'show'])->name('generate.show');
     Route::post('/doctors/invoice/save', [InvoiceController::class, 'save'])->name('invoice.save');
@@ -148,6 +150,18 @@ Route::get('/devmode', function (){ return view('landingpage');})->name('devmode
     Route::post('admin1/password', [Admin2Controller::class, 'password'])->name('admin1.password');
     Route::post('admin1/check', [Admin2Controller::class, 'check'])->name('admin1.check');
 
+    //Admin Dashboard
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    //Admin Demographics
+    Route::get('/admin/demographics', [AdminController::class, 'demographics'])->name('admin.demographics');
+    //Admin Staff
+    Route::get('/admin/staff', [AdminController::class, 'staff'])->name('admin.staff'); // Get Back to this later
+    //Inventory Analytics
+    Route::get('/inventory/analytics', [AdminController::class, 'inventoryAnalytics'])->name('admin.inventory.analytics');
+    Route::get('/inventoryTwo/analytics', [AdminController::class, 'inventoryTwoAnalytics'])->name('admin.inventoryTwo.analytics');
+    //Invoice Analytics
+    Route::get('/invoice/analytics', [AdminController::class, 'invoiceAnalytics'])->name('admin.invoice.analytics');
+    Route::get('/invoices-api', [InvoiceController::class, 'getAllInvoices']);
     //testing
     Route::get('/admin-entry', function (){ return view('doctors.testing');})->name('testing');
 
@@ -185,7 +199,13 @@ Route::get('/devmode', function (){ return view('landingpage');})->name('devmode
 
     //Update Patient Info
     Route::put('/users/{id}', [PatientInfoController::class, 'update'])->name('users.update'); //Hold
-    Route::get('/doctors/{users}/edit', [PatientInfoController::class, 'edit'])->name('drugs.edit'); //Hold
+    Route::get('/doctors/{drugs}/edit', [DrugController::class, 'updated'])->name('drugs.edit'); //Hold
+
+
+
+    //New Invoice Routes
+    // Route::get('/invoice/generate/new', [InvoiceController::class, 'newIndex'])->name('invoice.generate.new');
+    Route::get('/items', [CombinationController::class, 'getAllItems']);
 
     Route::post('/import-users', function (Request $request) {
         Excel::import(new UsersImport, $request->file('file'));

@@ -17,7 +17,7 @@
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
         </nav> --}}
-        <form action="">
+        {{-- <form action=""> --}}
             <table class="table">
                 <thead>
                   <tr>
@@ -31,14 +31,14 @@
                 </thead>
                 <tbody>
                   @foreach($drugs as $drug)
-                  <tr>
-                    {{-- <th scope="row">1</th> --}}
+                  {{-- <tr>
                     <td>{{ $drug->id}}</td>
                     <td> <input type="text" class="form-control" name="name" value="{{$drug->name}}"></td>
                     <td> <input type="text" class="form-control" name="price" value="{{$drug->price}}"></td>
-                    <td> <input type="text" class="form-control" value="{{$drug->drug_type}}"></td>
-                    <td> <input type="text" class="form-control" value="{{$drug->quantity}}"></td>
-                    <td> <a href="{{route('drugs.edit', ['drugs' => $drug])}}">Edit</a></td>
+                    <td> <input type="text" class="form-control" name="drug_type" value="{{$drug->drug_type}}"></td>
+                    <td> <input type="text" class="form-control" name="quantity" value="{{$drug->quantity}}"></td>
+                
+                       <td> <a href="{{route('doctors.update', ['drugs' => $drug])}}">Edit</a></td> 
                     <td>
                       <form action="{{route('doctors.delete', ['drugs' => $drug ])}}" method="POST">
                         @csrf
@@ -46,11 +46,34 @@
                         <button type="submit" class="btn btn-danger">Delete</button>
                       </form>
                     </td>
-                  </tr>
+                  </tr> --}}
+
+                  <tr>
+                      <td>{{ $drug->id }}</td>
+
+                      <form action="{{ route('doctors.update', ['drugs' => $drug->id]) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <td><input type="text" class="form-control" name="name" value="{{ $drug->name }}"></td>
+                        <td><input type="text" class="form-control" name="price" value="{{ $drug->price }}"></td>
+                        <td><input type="text" class="form-control" name="drug_type" value="{{ $drug->drug_type }}"></td>
+                        <td><input type="text" class="form-control" name="quantity" value="{{ $drug->quantity }}"></td>
+                        <td><button type="submit" class="btn btn-primary">Update</button></td>
+                      </form>
+
+                      <td>
+                        <form action="{{ route('doctors.delete', ['drugs' => $drug->id]) }}" method="POST">
+                          @csrf
+                          @method('DELETE')
+                          <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                      </td>
+                    </tr>
+
                   @endforeach
                   {{ $drugs->links('pagination::bootstrap-4') }}
               </table>
-        </form>
+        {{-- </form> --}}
     </div>
 </body>
 </html>

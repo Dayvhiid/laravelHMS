@@ -17,5 +17,6 @@ class Invo extends Model
     protected $fillable = [
         'pid',
         'discount',
+        'amount',
     ];
 }

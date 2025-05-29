@@ -58,4 +58,7 @@ class Admin2Controller extends Controller
         }
 
     }
+    public function dashboard(){
+        
+    }
 }
