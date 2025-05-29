@@ -125,7 +125,7 @@
               <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-6 border border-[#dce0e5]">
                 <p class="text-[#111418] text-base font-medium leading-normal">Low Stock Items</p>
                 <p class="text-[#111418] tracking-light text-2xl font-bold leading-tight"> {{$summary['lowStock']['total']}} </p>
-                {{-- <p class="text-[#e73908] text-base font-medium leading-normal">-10%</p> --}}
+             
               </div>
             </div>
             {{-- <h2 class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Inventory Value Over Time</h2>
