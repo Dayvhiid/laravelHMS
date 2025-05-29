@@ -132,7 +132,7 @@ public function staff(){
 
 
 public function inventoryAnalytics(){
-    $threshold = 50; // Quantity threshold for low stock
+    $threshold = 10; // Quantity threshold for low stock
 
     // Summary Data
     $totalDrugs = Drug::count();
