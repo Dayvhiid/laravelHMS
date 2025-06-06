@@ -18,4 +18,10 @@ export default defineConfig({
             },
         }),
     ],
+    server : {
+        host: '0.0.0.0', // Listen on all network interfaces
+        hmr: {
+            host: 'localhost', // Force HMR to use localhost
+        },
+    },
 });
