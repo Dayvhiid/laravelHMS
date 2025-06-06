@@ -12,6 +12,9 @@ class Image extends Model
         'title',
         'file_path',
         'image_data',
-        'name'
+        'name',
+        'path',
+        'mime_type',
+        'size',
     ];
 }

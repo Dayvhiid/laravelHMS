@@ -173,36 +173,6 @@
   value: 'tablet',
   text: 'Tablet'
 }))));
-        //   newRow.append($('<td>').append($('<input>', {
-        //     type: 'text',
-        //     name: 'inputs[' + rowCounter + '][patient_code]',
-        //     placeholder: 'Patient Code',
-        //     class: 'form-control'
-        //   })));
-        //   newRow.append($('<td>').append($('<input>', {
-        //     type: 'text',
-        //     name: 'inputs[' + rowCounter + '][booklet_no]',
-        //     placeholder: 'Book reciept Number',
-        //     class: 'form-control'
-        //   })));
-        //   newRow.append($('<td>').append($('<input>', {
-        //     type: 'text',
-        //     name: 'inputs[' + rowCounter + '][qty_in]',
-        //     placeholder: 'ENTER QTY IN',
-        //     class: 'form-control'
-        //   })));
-        //   newRow.append($('<td>').append($('<input>', {
-        //     type: 'text',
-        //     name: 'inputs[' + rowCounter + '][qty_out]',
-        //     placeholder: 'ENTER QTY OUT',
-        //     class: 'form-control'
-        //   })));
-        //   newRow.append($('<td>').append($('<input>', {
-        //     type: 'text',
-        //     name: 'inputs[' + rowCounter + '][balance]',
-        //     placeholder: 'ENTER BALANCE',
-        //     class: 'form-control'
-        //   })));
           newRow.append($('<td>').append($('<button>', {
             type: 'button',
             class: 'btn btn-danger remove-table-row',

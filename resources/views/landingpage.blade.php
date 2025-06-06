@@ -92,8 +92,8 @@
                     </div>
                     <ul>
                         <li><a href="{{route('NewBooking')}}">Book Appointment</a></li>
-                        <li><a href="{{route('NewSignUp')}}">Login/signUp (for staff only)</a></li>
-                        <li><a href="{{route('admin1.index')}}">Admin 1.</li>
+                        <li><a href="{{ route('login')}}">Login/signUp (for staff only)</a></li>
+                        <li><a href="/login">Admin 1.</li>
                     </ul>
                 </nav>
             </div>

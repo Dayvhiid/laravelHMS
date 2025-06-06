@@ -20,6 +20,8 @@ return Application::configure(basePath: dirname(__DIR__))
 
           $middleware->alias([
         'ip.restrict' => \App\Http\Middleware\CheckAllowedIpRange::class,
+        'doctor' => \App\Http\Middleware\EnsureUserIsDoctor::class,
+           'admin' => \App\Http\Middleware\EnsureUserIsAdmin::class,
     ]);
 
         //

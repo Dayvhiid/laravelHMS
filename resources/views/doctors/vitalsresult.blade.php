@@ -323,45 +323,16 @@ $halfCombinedResults = array_slice($combinedResults, 0, $halfResults);
     <p>{{$item->created_at}}</p>
     <div class="links">
         <ul>
-          {{-- <li><a class="nav-link" href="{{route('doctors.index')}}">Home</a></li> --}}
+    
           <li><a class="nav-link" href="{{route('doctors.treatment')}}">Treatment Plan</a></li>
           <li><a class="nav-link" href="{{route('search.vitals')}}">Vitals Records</a></li>
           <li><a class="nav-link" href="{{route('search.treatment')}}">Treatment Records</a></li>
-        {{-- <button class="doc" onclick="window.location.href='/HMS/hospital/doc.html'">
-          <img src="/HMS/hospital/images/doctor.png" height="35px" width="35px">
-        </button> --}}
+
         </ul>
     </div>
 </div>
 <div class="container">
-{{-- <div class="statusbar">
-      <div class="home">
-        <img height="35px" width="35px" class="homepng" src="/hospital/images/house.png">
-        <p>Home</p>
-      </div>
-      <!-- Patients -->
-      <div class="patients">
-        <img height="35px" width="35px" class="patientpng" src="/hospital/icons/patient(1).png">
-        <p>Patient</p>
-      </div>
-      <!-- Appointment -->
-      <div class="app">
-        <img height="35px" width="35px" class="apppng" src="/hospital/icons/appointment.png">
-        <p>Appointment</p>
-      </div>
-      <!-- Billing -->
-      <div class="billing">
-        <img height="35px" width="35px" class="billingpng" src="/hospital/icons/bill.png">
-        <p>Billing</p>
-      </div>
-      <!-- Records -->
-      <div class="records">
-        <img height="35px" width="35px" class="recordspng" src="/hospital/icons/search-interface-symbol.png">
-        <p>Records</p>
-      </div>
-      <div class="button"> --}}
-        {{-- <input type="submit" class="patientBtn" value="New Patient" onclick="window.location.href='/HMS/hospital/newPatient.php';">
-      </div> --}}
+
    </div>
    <div class="searchbox">
      
@@ -369,8 +340,7 @@ $halfCombinedResults = array_slice($combinedResults, 0, $halfResults);
      
     <div>  
      
-{{-- <form method="post" action="{{route('vitals.store')}}">   --}}
-{{-- @csrf --}}
+
 @method('POST')
 <div></div>
 <div class="search"> 
@@ -429,12 +399,7 @@ $halfCombinedResults = array_slice($combinedResults, 0, $halfResults);
                 <td><input type="text" name="OSnearva" value="{{$item->nearva}}"></td>
             </tr>
 
-        <!-- <tr>
-            <td>Data 3-1</td>
-            <td>Data 3-2</td>
-            <td>Data 3-3</td>
-            <td>Data 3-4</td>
-        </tr> -->
+     
 </table>
 
         </div>
@@ -449,13 +414,7 @@ $halfCombinedResults = array_slice($combinedResults, 0, $halfResults);
 <th>VA</th>
 </tr>
 
-<!-- <tr>
-<td>Data 1-1</td>
-<td>Data 1-2</td>
-<td>Data 1-3</td>
-<td>Data 1-4</td>
-<td>Data 1-5</td>
-</tr> -->
+
 
 <tr>
 <td>OD:</td>
@@ -565,15 +524,7 @@ $halfCombinedResults = array_slice($combinedResults, 0, $halfResults);
                     <td><input type="text" name="srosadd" value="{{$item->srosadd}}"></td>
                     <td><input type="text" name="srosnva" value="{{$item->srosnva}}"></td>
                 </tr>
-                <!-- <tr>
-                    <td>Data 3-1</td>
-                    <td>Data 3-2</td>
-                    <td>Data 3-3</td>
-                    <td>Data 3-4</td>
-                    <td>Data 3-5</td>
-                    <td>Data 3-6</td>
-                    <td>Data 3-7</td>
-                </tr> -->
+              
                 </table>
            </div>
            <div class="flexbox3right">
@@ -606,15 +557,7 @@ $halfCombinedResults = array_slice($combinedResults, 0, $halfResults);
                     <td><input type="text" name="fosadd" value="{{$item->fosadd}}"></td>
                     <td><input type="text" name="fosnva" value="{{$item->fodnva}}"></td>
                 </tr>
-                <!-- <tr>
-                    <td>Data 3-1</td>
-                    <td>Data 3-2</td>
-                    <td>Data 3-3</td>
-                    <td>Data 3-4</td>
-                    <td>Data 3-5</td>
-                    <td>Data 3-6</td>
-                    <td>Data 3-7</td>
-                </tr> -->
+           
                 </table>
            </div>
     

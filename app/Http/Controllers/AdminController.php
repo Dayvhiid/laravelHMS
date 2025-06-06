@@ -10,6 +10,7 @@ use App\Models\Test;
 use App\Models\Event;
 // use Illuminate\Support\Carbon;
 use App\Models\Frame;
+use App\Models\Inventory;
 use App\Models\Appointment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -19,11 +20,17 @@ class AdminController extends Controller
     public function index(){
         return view('admin.admin2.admin2');
     }
+      public function indexTwo(){
+        return view('admin.admin2.newadmin2');
+    }
     public function drugsIndex(){
         return view('admin.admin2.admin2drugs');
     }
+    public function drugsIndexTwo(){
+        return view('admin.admin2.admin2drugsIndex');
+    }
     public function inventoryIndex(){
-        $item = Test::paginate(9);
+        $item = Inventory::paginate(9);
         return view ('admin.admin2.admin2inventory', ['item' => $item]);
     }
     public function drugList(){
@@ -33,12 +40,18 @@ class AdminController extends Controller
     public function frameIndex(){
         return view('admin.admin2.admin2frame');
     }
+      public function frameIndexTwo(){
+        return view('admin.admin2.newadmin2frame');
+    }
     public function frameList(){
         $frames = Frame::paginate(9);
         return view('admin.admin2.admin2framelist', [ 'frames' => $frames]);
     }
     public function lensIndex(){
         return view('admin.admin2.admin2lens');
+    }
+     public function lensIndexTwo(){
+        return view('admin.admin2.newadmin2lens');
     }
     public function lensList(){
         $lens = Lens::paginate(9);

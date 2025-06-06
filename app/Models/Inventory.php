@@ -18,5 +18,6 @@ class Inventory extends Model
         'qty_in',
         'qty_out',
         'balance',
+        'booklet_no',
     ];
 }

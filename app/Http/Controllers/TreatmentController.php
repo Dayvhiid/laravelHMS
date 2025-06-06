@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 class TreatmentController extends Controller
 {
     public function index(){
-        return view('doctors.treatment');
+        // return view('doctors.treatment');
+        return view('doctors.newIndex');
     }
     public function index2(){
         return view('doctors.treatment2');
@@ -45,6 +46,7 @@ class TreatmentController extends Controller
         $treatment->bifocal = isset($validatedData['bifocal']) ? json_encode($validatedData['bifocal']) : null;
         $treatment->special_order = isset($validatedData['specialorder']) ? json_encode($validatedData['specialorder']) : null;
         $treatment->progressive = isset($validatedData['progressive']) ? json_encode($validatedData['progressive']) : null;
+        $treatment->invisible = isset($validatedData['invisible']) ? json_encode($validatedData['invisible']) : null;
         $treatment->save();
     
         return redirect(route('doctors.status'))->with('msg', 'Patient\'s vitals recorded successfully');

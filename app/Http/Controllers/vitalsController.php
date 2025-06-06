@@ -136,9 +136,10 @@ class vitalsController extends Controller
     }
     public function search(){
         $search_text = $_GET['query'];
-        $users = Treat::where('patient_id', $search_text)
+        $treatments = Treat::where('patient_id', $search_text)
         ->get();        
-        return view('doctors.treatmentresult', compact('users'));
+        // return view('doctors.treatmentresult', compact('users'));
+         return view('doctors.newtreatmentresult', compact('treatments'));
     }
     public function display(){
         return view('doctors.searchvitals');
@@ -166,7 +167,8 @@ class vitalsController extends Controller
             $combinedResults[] = $vital2;
         });
     
-        return view('doctors.vitalsresult', compact('combinedResults'));
+        // return view('doctors.vitalsresult', compact('combinedResults'));
+        return view('doctors.vitalsresultTwo', ['combinedResults' => $combinedResults]);
     }
 
     // public function vitals() {

@@ -75,13 +75,14 @@ class PagesController extends Controller
     $patient_info->emergency_email = $validatedData['ee'] ?? null;
 
     // Save the record to the database
-    $patient_info->save();
+    
     $notification = new Notification();
     $notification->patient_name = $patient_info->first_name . ' ' . $patient_info->last_name;
     $notification->message =  "New Patient Registered";
     $notification->added_by = "Front Desk";
     $notification->pid =  $request->input('pid');
     $notification->save();
+    $patient_info->save();
 
     // (new NewPatientNotification($patient_info))->toDatabase(null);
     // Notification::send(null, new NewPatientNotification($patient_info));

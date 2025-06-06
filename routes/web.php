@@ -1,10 +1,13 @@
 <?php
+
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
 use App\Models\PatientInfo;
 use App\Imports\UsersImport;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\ImageUpload;
-use Illuminate\Support\Facades\Route;
+// use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SmsController;
 use App\Http\Controllers\DrugController;
 use App\Http\Controllers\LensController;
@@ -18,7 +21,7 @@ use App\Http\Controllers\VitalsController;
 use App\Http\Controllers\DoctorsController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\ProfileController;
+// use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RecieptController;
 use App\Http\Controllers\RecordsController;
 use App\Http\Controllers\SendSMSController;
@@ -34,28 +37,24 @@ use App\Http\Controllers\NewValidationController;
 use App\Http\Controllers\WebrtcStreamingController;
 use App\Http\Controllers\InvoicegenerationController;
 use App\Http\Controllers\NewDoctorVerificationController;
+use App\Http\Controllers\OpticianController;
+use App\Http\Controllers\PatientCardController;
+
+Route::get('/Bookings', [NewValidationController::class, 'booking'])->name('NewBooking');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/', function () {
     return view('landingpage');
 })->name('home');
 
-// Public routes
-Route::get('/register', [RegisterController::class, 'index'])->name('register');
-Route::post('/register/data', [RegisterController::class, 'store'])->name('register.data');
-Route::get('/register/signin', [RegisterController::class, 'signin'])->name('register.signin');
-Route::post('/register/data/check', [RegisterController::class, 'check'])->name('register.check');
-Route::get('/doctor/signup', [DoctorsController::class, 'index'])->name('doctors.signup');
-Route::post('/doctor/signup/store', [DoctorsController::class, 'store'])->name('doctors.data');
-Route::get('/doctor/signin', [DoctorsController::class, 'signin'])->name('doctors.signin');
-Route::post('/doctors/check', [DoctorsController::class, 'check'])->name('doctors.check');
-Route::get('/holding', function () { return view('holding'); });
-Route::get('/devmode', function (){ return view('landingpage');})->name('devmode');
-
-// Protected Routes
-// Route::middleware(['auth'])->group(function () {
+Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
 
     Route::get('/createpatient', [PagesController::class, 'index'])->name('pages.register');
     Route::post('/createpatient/store', [PagesController::class, 'store'])->name('pages.store');
@@ -64,7 +63,11 @@ Route::get('/devmode', function (){ return view('landingpage');})->name('devmode
     Route::get('/createpatient/status', function(){ return view('pages.status'); })->name('pages.status');
     Route::delete('/createpatients/{record}/delete',[PagesController::class, 'destroy'])->name('pages.delete');
 
-    Route::get('/doctors/index', [DoctorsController::class, 'show'])->name('doctors.index');
+   
+    Route::middleware('doctor')->group(function () {
+      Route::get('/doctors/index', [DoctorsController::class, 'testShow'])->name('doctors.index');
+    });
+
     Route::get('doctors/vitals', [DoctorsController::class, 'vitals'])->name('doctors.vitals');
     Route::post('/doctors/vitals/post', [DoctorsController::class, 'vitalSave'])->name('vitals.post');
     Route::get('doctors/treatment', [TreatmentController::class, 'index'])->name('doctors.treatment');
@@ -75,112 +78,47 @@ Route::get('/devmode', function (){ return view('landingpage');})->name('devmode
     Route::get('/doctors/inventory/find', [InventoryController::class, 'find'])->name('inventory.find');
     Route::get('/doctors/reciept', [RecieptController::class,'index'])->name('doctors.reciept');
 
-    Route::get('/inventory/store', [InventoryController::class, 'list'])->name('inventory.list');
-    Route::delete('/inventory/{item}/delete', [InventoryController::class, 'delete'])->name('inventory.delete');
-    //Drug Routes
-    Route::get('/doctors/drug', [DrugController::class, 'index'])->name('doctors.drugs');
-    Route::post('/doctors/drug/store', [DrugController::class, 'store'])->name('doctors.store');
-    Route::get('/doctors/drug/list', [DrugController::class, 'list'])->name('doctors.list');
-    Route::get('/doctors/{drugs}/edit', [DrugController::class, 'edit'])->name('drugs.edit');
-    Route::put('/doctors/{drugs}/update', [DrugController::class, 'update'])->name('doctors.update');
-    Route::delete('/doctors/{drugs}/destroy', [DrugController::class, 'destroy'])->name('doctors.delete');
-    //Invoice Routes
-    Route::post('/invoices/store', [InvoiceController::class, 'store'])->name('invoices.store');
-    Route::get('/invoice', [InvoicegenerationController::class, 'index'])->name('invoice.show');
-    Route::get('/invoice/generate', [InvoiceController::class, 'show'])->name('generate.show');
-    Route::post('/doctors/invoice/save', [InvoiceController::class, 'save'])->name('invoice.save');
-
-    Route::get('/booking', [MessagingController::class, 'index'])->name('booking');
-    Route::post('/booking/status', [MessagingController::class, 'store'])->name('booking.store');
-
-    Route::get('/sendsms', [TwilioSmsController::class, 'test'])->name('sms');
-
-    Route::get('/records', [RecordsController::class, 'index'])->name('public.records');
-    Route::get('/records/search', [RecordsController::class, 'search'])->name('records.search');
-
-    Route::get('/frames', [FrameController::class, 'index'])->name('frame');
-    Route::post('/frame/store', [FrameController::class, 'store'])->name('frame.store');
-    Route::get('/frame/list', [FrameController::class, 'list'])->name('frame.list');
-    Route::get('/frames/{frames}/edit', [FrameController::class, 'edit'])->name('frame.edit');
-    Route::put('/frames/{frames}/update', [FrameController::class, 'update'])->name('frame.update');
-    Route::delete('/frames/{frames}/delete', [FrameController::class, 'delete'])->name('frame.delete');
-
-    Route::get('/lens', [LensController::class, 'index'])->name('lens');
-    Route::post('/lens/store', [LensController::class, 'store'])->name('lens.store');
-    Route::get('/lens/list', [LensController::class, 'list'])->name('lens.list');
-    Route::get('/lens/{len}/edit', [LensController::class, 'edit'])->name('lens.edit');
-    Route::put('/lens/{lens}/update', [LensController::class, 'update'])->name('lens.update');
-    Route::delete('/lens/{len}/delete', [LensController::class, 'delete'])->name('lens.delete');
-
-
-    
-    Route::get('/smspage/{sms}', [SmsController::class, 'pass'])->name('sms.page');
-    Route::get('/sms', [SmsController::class, 'index'])->name('doctor.sms');
 
     Route::get('/invoice/find', [InvoiceController::class, 'find'])->name('invoice.find');
     Route::get('/invoice/search', [InvoiceController::class, 'search'])->name('invoice.search');
     Route::post('/doctors/treatment/store', [TreatmentController::class, 'store'])->name('treatment.store');
     Route::post('/doctors/vitals/store', [VitalsController::class, 'store'])->name('vitals.store');
-    Route::get('/search/treatment', [VitalsController:: class, 'show'])->name('search.treatment');
+    Route::get('/search/treatment', [VitalsController:: class, 'show'])->name('search.treatment'); //Previous Optician Default Page
     Route::get('/search/treatment/get', [VitalsController::class, 'search'])->name('search.get');
     Route::get('/search/vitals', [VitalsController::class, 'display'])->name('search.vitals');
     Route::get('/search/vitals/get', [VitalsController::class, 'vitals'])->name('vitals.get');
 
-    Route::get('/signup', [NewValidationController::class, 'signup'])->name('NewSignUp');
-    Route::get('/Bookings', [NewValidationController::class, 'booking'])->name('NewBooking');
-    Route::get('/doctors/signup/imp', [NewDoctorVerificationController:: class, 'index'])->name('doctorSignIn');
-    Route::get('/send-sms/{sms}', [SendSMSController::class, 'loadPage'])->name('newSMS');
-    Route::get('/send-sms', [SendSMSController:: class, 'sendSMS'])->name('sendSMS');
-    Route::get('/sms-api', [SmsController::class, 'NaijaSMS'])->name('NaijaSMS');
 
-    Route::get('/landing-page', function () {return view('landing-page2');} );
 
-    // Admin routes
-    Route::get('/admin2', [AdminController::class, 'index'])->name('admin.admin2');
-    Route::get('/admin/drug', [AdminController::class, 'drugsIndex'])->name('admin2.drugs');
-    Route::get('/admin/drug/list', [AdminController::class, 'drugList'])->name('admin2.druglist');
-    Route::get('/admin/inventory/store', [AdminController::class, 'inventoryIndex'])->name('admin2.inventory');
-    Route::get('/admin/frame', [AdminController::class, 'frameIndex'])->name('admin2.frame');
-    Route::get('/admin/framelist', [AdminController::class, 'framelist'])->name('admin2.framelist');
-    Route::get('/admin2/lens', [AdminController::class, 'lensIndex'])->name('admin2.lens');
-    Route::get('/admin/lenslist', [AdminController::class, 'lenslist'])->name('admin2.lenslist');
 
-    // Admin 1 routes
-    Route::get('/admin1/index', [Admin2Controller::class, 'index'])->name('admin1.index');
-    Route::post('admin1/password', [Admin2Controller::class, 'password'])->name('admin1.password');
-    Route::post('admin1/check', [Admin2Controller::class, 'check'])->name('admin1.check');
+    Route::get('/search/treatment', [VitalsController:: class, 'show'])->name('search.treatment');
+    //admin
+    // Route::get('/admin2', [AdminController::class, 'indexTwo'])->name('admin.admin2');
 
-    //Admin Dashboard
-    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-    //Admin Demographics
-    Route::get('/admin/demographics', [AdminController::class, 'demographics'])->name('admin.demographics');
-    //Admin Staff
-    Route::get('/admin/staff', [AdminController::class, 'staff'])->name('admin.staff'); // Get Back to this later
-    //Inventory Analytics
-    Route::get('/inventory/analytics', [AdminController::class, 'inventoryAnalytics'])->name('admin.inventory.analytics');
-    Route::get('/inventoryTwo/analytics', [AdminController::class, 'inventoryTwoAnalytics'])->name('admin.inventoryTwo.analytics');
-    //Invoice Analytics
-    Route::get('/invoice/analytics', [AdminController::class, 'invoiceAnalytics'])->name('admin.invoice.analytics');
-    Route::get('/invoices-api', [InvoiceController::class, 'getAllInvoices']);
-    //testing
-    Route::get('/admin-entry', function (){ return view('doctors.testing');})->name('testing');
+    Route::get('/records', [RecordsController::class, 'index'])->name('public.records');
+    Route::get('/records/search', [RecordsController::class, 'search'])->name('records.search');
 
-    //status
-    Route::get('/doctors/signup/status', function () { return view('doctors.status'); })->name('doctors.status');
-    //Full calender
+    //invoice
+    Route::post('/invoices/store', [InvoiceController::class, 'store'])->name('invoices.store');
+    Route::get('/invoice', [InvoicegenerationController::class, 'index'])->name('invoice.show');
+    Route::get('/invoice/generate', [InvoiceController::class, 'show'])->name('generate.show');
+    Route::post('/doctors/invoice/save', [InvoiceController::class, 'save'])->name('invoice.save');
+
+
+    // Case Files
+    Route::get('/patients/image-upload', [ImageUpload::class, 'index'])->name('image.upload');
+    Route::post('images/upload', [ImageUpload::class, 'store'])->name('images.store');
+
+    //SMS
+    Route::get('/smspage/{sms}', [SmsController::class, 'pass'])->name('sms.page');
+    Route::get('/sms', [SmsController::class, 'index'])->name('doctor.sms');
+
+
+    //Full Calender
     Route::get('full-calender', [FullCalenderController::class, 'index'])->name('calender');
     Route::post('full-calender/action', [FullCalenderController::class, 'action']);
-    //Payment
-    Route::get('payment-index', [PaymentController::class, 'index'])->name('payment');
 
-    // web video
-    Route::get('/client', function () {
-        return view('video.index');
-    })->name('video');
-    
-    Route::get('/client/confo/{room}/{type}/{ref}',  "EnxRtc\RoomController@confo");
 
-    //Image Uplaod
     Route::get('/patients/image-upload', [ImageUpload::class, 'index'])->name('image.upload');
     Route::post('images/upload', [ImageUpload::class, 'store'])->name('images.store');
 
@@ -190,41 +128,135 @@ Route::get('/devmode', function (){ return view('landingpage');})->name('devmode
     Route::get('images/search', [ImageUpload::class, 'search'])->name('images.search');
     Route::post('images/search', [ImageUpload::class, 'searchResult'])->name('images.search.result');
 
+    //Messaging 
+    Route::get('/send-sms/{sms}', [SendSMSController::class, 'loadPage'])->name('newSMS');
+    Route::get('/send-sms', [SendSMSController:: class, 'sendSMS'])->name('sendSMS');
+    Route::get('/sms-api', [SmsController::class, 'NaijaSMS'])->name('NaijaSMS');
 
-    Route::get('/import/users',  [ExcelController::class, 'index'])->name('excel.index');
-    // Route::get('/import/users', [ExcelController::class, 'index'])
-    // ->middleware('ip.restrict') 
-    // ->name('excel.index');
 
+    // Admin routes
+    Route::get('/admin2', [AdminController::class, 'indexTwo'])->name('admin.admin2');
+    Route::get('/admin/drug', [AdminController::class, 'drugsIndexTwo'])->name('admin2.drugs');
+    Route::get('/admin/drug/list', [AdminController::class, 'drugList'])->name('admin2.druglist');
+    Route::get('/admin/inventory/store', [AdminController::class, 'inventoryIndex'])->name('admin2.inventory');
+    Route::get('/admin/frame', [AdminController::class, 'frameIndexTwo'])->name('admin2.frame');
+    Route::get('/admin/framelist', [AdminController::class, 'framelist'])->name('admin2.framelist');
+    Route::get('/admin2/lens', [AdminController::class, 'lensIndexTwo'])->name('admin2.lens');
+    Route::get('/admin/lenslist', [AdminController::class, 'lenslist'])->name('admin2.lenslist');
 
-    //Update Patient Info
+    // Admin 1 routes
+    Route::get('/admin1/index', [Admin2Controller::class, 'index'])->name('admin1.index');
+    Route::post('admin1/password', [Admin2Controller::class, 'password'])->name('admin1.password');
+    Route::post('admin1/check', [Admin2Controller::class, 'check'])->name('admin1.check');
+
+    //Admin Dashboard
+    Route::middleware('admin')->group(function () {
+        Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+         //Admin Demographics
+        Route::get('/admin/demographics', [AdminController::class, 'demographics'])->name('admin.demographics');
+        //Admin Staff
+        Route::get('/admin/staff', [AdminController::class, 'staff'])->name('admin.staff'); // Get Back to this later
+        //Inventory Analytics
+        Route::get('/inventory/analytics', [AdminController::class, 'inventoryAnalytics'])->name('admin.inventory.analytics');
+        Route::get('/inventoryTwo/analytics', [AdminController::class, 'inventoryTwoAnalytics'])->name('admin.inventoryTwo.analytics');
+        //Invoice Analytics
+        Route::get('/invoice/analytics', [AdminController::class, 'invoiceAnalytics'])->name('admin.invoice.analytics');
+    });
+
+    //Inventory API
+    Route::get('/items', [CombinationController::class, 'getAllItems']);
+
+     //Drug Routes
+    Route::get('/doctors/drug', [DrugController::class, 'index'])->name('doctors.drugs');
+    Route::post('/doctors/drug/store', [DrugController::class, 'store'])->name('doctors.store');
+    Route::get('/doctors/drug/list', [DrugController::class, 'list'])->name('doctors.list');
+    Route::get('/doctors/{drugs}/edit', [DrugController::class, 'edit'])->name('drugs.edit');
+    Route::put('/doctors/{drugs}/update', [DrugController::class, 'update'])->name('doctors.update');
+    Route::delete('/doctors/{drugs}/destroy', [DrugController::class, 'destroy'])->name('doctors.delete');
+
+    //Frames
+    Route::get('/frames', [FrameController::class, 'index'])->name('frame');
+    Route::post('/frame/store', [FrameController::class, 'store'])->name('frame.store');
+    Route::get('/frame/list', [FrameController::class, 'list'])->name('frame.list');
+    Route::get('/frames/{frames}/edit', [FrameController::class, 'edit'])->name('frame.edit');
+    Route::put('/frames/{frames}/update', [FrameController::class, 'update'])->name('frame.update');
+    Route::delete('/frames/{frames}/delete', [FrameController::class, 'delete'])->name('frame.delete');
+
+    //Lens
+    Route::get('/lens', [LensController::class, 'index'])->name('lens');
+    Route::post('/lens/store', [LensController::class, 'store'])->name('lens.store');
+    Route::get('/lens/list', [LensController::class, 'list'])->name('lens.list');
+    Route::get('/lens/{len}/edit', [LensController::class, 'edit'])->name('lens.edit');
+    Route::put('/lens/{lens}/update', [LensController::class, 'update'])->name('lens.update');
+    Route::delete('/lens/{len}/delete', [LensController::class, 'delete'])->name('lens.delete');
+
+    //status
+    Route::get('/doctors/signup/status', function () { return view('doctors.status'); })->name('doctors.status');
+
+     //Update Patient Info
     Route::put('/users/{id}', [PatientInfoController::class, 'update'])->name('users.update'); //Hold
     Route::get('/doctors/{drugs}/edit', [DrugController::class, 'updated'])->name('drugs.edit'); //Hold
 
 
+    //Image Uplaod
+    Route::get('/patients/image-upload', [ImageUpload::class, 'index'])->name('image.upload');
+    Route::post('images/upload', [ImageUpload::class, 'store'])->name('images.store');
+    Route::get('images', [ImageUpload::class, 'display'])->name('images.index');
+    Route::get('images/search', [ImageUpload::class, 'search'])->name('images.search');
+    Route::post('images/search', [ImageUpload::class, 'searchResult'])->name('images.search.result');
+    Route::get('/import/users',  [ExcelController::class, 'index'])->name('excel.index');
+   
+    Route::get('/invoices-api', [InvoiceController::class, 'getAllInvoices']);
 
-    //New Invoice Routes
-    // Route::get('/invoice/generate/new', [InvoiceController::class, 'newIndex'])->name('invoice.generate.new');
-    Route::get('/items', [CombinationController::class, 'getAllItems']);
+    //Optician Routes
+    Route::get(	'/opticians/index', [OpticianController::class, 'index'])->name('optician.index'); //Protect this route with a middleware later
+    Route::get('/optician/records', [OpticianController::class, 'records'])->name('optician.records');
+    Route::post('/optician/store', [OpticianController::class, 'store'])->name('optician.store');
+    Route::get('/optician/list', [OpticianController::class, 'list'])->name('optician.list');
+    Route::get('/optician/find', [OpticianController::class, 'find'])->name('optician.find');
+    Route::get('/optician/search', [OpticianController::class, 'search'])->name('optician.search'); //search
 
-    Route::post('/import-users', function (Request $request) {
-        Excel::import(new UsersImport, $request->file('file'));
 
+    //patient card
+    Route::get('/patient-cards/{id}', [PatientCardController::class,'show'])->name('patient.show');
+}); //Closing Block
+
+
+  Route::post('/import-users', function (Request $request) {
+    Excel::import(new UsersImport, $request->file('file'));
     return 'Users Imported Successfully';
 })->name('excel.import');
 
 
+// Inventory Routes
+Route::get('/inventory/store', [InventoryController::class, 'list'])->name('inventory.list');
+Route::delete('/inventory/{item}/delete', [InventoryController::class, 'delete'])->name('inventory.delete');
 
-// });
+// Booking/Messaging
+Route::get('/booking', [MessagingController::class, 'index'])->name('booking');
+Route::post('/booking/status', [MessagingController::class, 'store'])->name('booking.store');
 
-// // Example of protecting some routes with both 'auth' and 'verified' middleware
-// Route::middleware(['auth', 'verified'])->group(function () {
-//     Route::get('/dashboard', function () {
-//         return view('dashboard');
-//     })->name('dashboard');
-// });
+// SMS (Twilio)
+Route::get('/sendsms', [TwilioSmsController::class, 'test'])->name('sms');
 
-// // Example of a public route that does not require authentication
-// Route::get('/public', function () {
-//     return 'This is a public page';
-// })->name('public');
+// New Validation/Signup
+Route::get('/signup', [NewValidationController::class, 'signup'])->name('NewSignUp');
+Route::get('/doctors/signup/imp', [NewDoctorVerificationController::class, 'index'])->name('doctorSignIn');
+
+// Video/WebRTC
+Route::get('/client', function () { return view('video.index'); })->name('video');
+Route::get('/client/confo/{room}/{type}/{ref}',  "EnxRtc\RoomController@confo");
+
+// Testing/Admin Entry
+Route::get('/admin-entry', function (){ return view('doctors.testing');})->name('testing');
+
+// Payment
+Route::get('payment-index', [PaymentController::class, 'index'])->name('payment');
+
+// Landing Page
+Route::get('/landing-page', function () {return view('landing-page2');} );
+
+
+   
+
+require __DIR__.'/auth.php';

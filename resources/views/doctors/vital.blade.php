@@ -402,29 +402,7 @@ input [type="text"]{
    </div>
 <label id="status"></label>   
          <div class="top">
-         {{-- <table>
-          <tr>
-          <h3>Case history</h3>
-            <td>C/C:</td>
-            <td><input type="text" name="cc"></td>
-          </tr>
-          <tr>
-            <td>PoHx:</td>
-            <td><input type="text" name="pohx"></td>
-          </tr>
-          <tr>
-            <td>LEE:</td>
-            <td><input type="text" name="lee"></td>
-          </tr>
-          <tr>
-            <td>PmHx:</td>
-            <td><input type="text" name="pmhx"></td>
-          </tr>
-          <tr>
-            <td>PfoHx:</td>
-            <td><input type="text" name="pfohx"></td>
-          </tr>
-         </table> --}}
+         
          <div class="textarea">
           <label for="TextArea">CC:</label>
           <textarea class="dosage" name="cc">
@@ -482,12 +460,7 @@ input [type="text"]{
                     <td><input type="text" name="OSnearva"></td>
                 </tr>
 
-            <!-- <tr>
-                <td>Data 3-1</td>
-                <td>Data 3-2</td>
-                <td>Data 3-3</td>
-                <td>Data 3-4</td>
-            </tr> -->
+         
    </table>
 
             </div>
@@ -502,13 +475,7 @@ input [type="text"]{
     <th>VA</th>
   </tr>
 
-  <!-- <tr>
-    <td>Data 1-1</td>
-    <td>Data 1-2</td>
-    <td>Data 1-3</td>
-    <td>Data 1-4</td>
-    <td>Data 1-5</td>
-  </tr> -->
+ 
 
   <tr>
     <td>OD:</td>
@@ -618,15 +585,7 @@ input [type="text"]{
                         <td><input type="text" name="srosadd" ></td>
                         <td><input type="text" name="srosnva"></td>
                     </tr>
-                    <!-- <tr>
-                        <td>Data 3-1</td>
-                        <td>Data 3-2</td>
-                        <td>Data 3-3</td>
-                        <td>Data 3-4</td>
-                        <td>Data 3-5</td>
-                        <td>Data 3-6</td>
-                        <td>Data 3-7</td>
-                    </tr> -->
+                 
                     </table>
                </div>
                <div class="flexbox3right">
@@ -659,15 +618,7 @@ input [type="text"]{
                         <td><input type="text" name="fosadd"></td>
                         <td><input type="text" name="fosnva"></td>
                     </tr>
-                    <!-- <tr>
-                        <td>Data 3-1</td>
-                        <td>Data 3-2</td>
-                        <td>Data 3-3</td>
-                        <td>Data 3-4</td>
-                        <td>Data 3-5</td>
-                        <td>Data 3-6</td>
-                        <td>Data 3-7</td>
-                    </tr> -->
+                 
                     </table>
                </div>
         

@@ -40,13 +40,13 @@
                 <a class="nav-link" href="{{route('admin2.inventory')}}">Inventory List</a> 
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{route('admin2.drugs')}}">Drug</a>
+                <a class="nav-link" href="{{route('admin2.drugs')}}" >Drug</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{route('admin2.frame')}}">Frames</a>
+                <a class="nav-link" href="{{route('admin2.frame')}} ">Frames</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{route('admin2.lens')}}">Lens</a>
+                <a class="nav-link" href="{{route('admin2.lens')}} ">Lens</a>
               </li>
             </ul>
           </div>

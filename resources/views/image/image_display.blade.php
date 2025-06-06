@@ -49,17 +49,16 @@
     </style>
 </head>
 <body>
-    <div class="image-container">
-        @foreach($images as $image)
-            <div class="image-item">
-                <h3>{{ $image->title }}</h3>
-                @if($image->file_path)
-                    <img src="{{ asset('storage/' . $image->file_path) }}" alt="{{ $image->title }}" width="300">
-                @else
-                    <img src="data:image/jpeg;base64,{{ base64_encode($image->image_data) }}" alt="{{ $image->title }}" width="300">
-                @endif
-            </div>
-        @endforeach
-    </div>
+     <div class="image-container">
+    @foreach($images as $image)
+        <div class="image-item">
+            <h3>{{ $image->title }}</h3>
+           <img src="{{ asset('storage/' . $image->path) }}" alt="{{ $image->title }}" width="300">
+            
+        </div>
+    @endforeach
+   
+</div>
+
 </body>
 </html>

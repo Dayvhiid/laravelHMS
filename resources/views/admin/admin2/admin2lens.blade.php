@@ -89,7 +89,7 @@
             <table class="table table-bordered" id="table">
                 <tr>
                     <th>SN</th>
-                    <th>Frame  Name</th>
+                    <th>Lens  Name</th>
                     <th>Price</th>
                     <th>ID</th>
                     <th>Quantity</th>

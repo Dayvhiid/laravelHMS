@@ -1,4 +1,4 @@
-<style>
+{{-- <style>
   .W-sidebar{
     height: 60vh;
   }
@@ -388,7 +388,7 @@ th {
               <th>Confirm appointment status</th>
               {{-- <th>Confirm appointment status</th> --}}
               </tr>
-            @forelse ($appointments as $appointment)
+            {{-- @forelse ($appointments as $appointment)
               <tr>
                 <td>{{ $appointment->name }}</td>
                 <td>{{ $appointment->date }}</td>
@@ -403,13 +403,13 @@ th {
                 </td> --}}
                 {{-- <td> <a href="{{route('frame.edit', ['frames' => $frame])}}">Edit</a></td> --}}
                 </tr>
-            @empty
+            {{-- @empty
               <tr><td colspan="4">No appointments found.</td></tr>
             @endforelse
           </table>
         </div>
       <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> --}} --}}
 
 {{--  --}}
 
@@ -448,90 +448,13 @@ th {
                 @endif
             </p>
         </div>
-        <div class="text-bottom">{{ $notification->created_at->diffForHumans() }}</div>
+        <div class="text-bottom"> {{ $notification->created_at->diffForHumans() }} </div>
 
     </div>
 </div>
 @endforeach
 
-        {{-- <div class="notification unreaded">
-          <div class="avatar"><img src="assets/images/avatar-mark-webber.webp"></div>
-          <div class="text">
-            <div class="text-top">
-              <p><span class="profil-name">Mark Webber</span> reacted to your recent post <b>My first tournament
-                  today!</b><span class="unread-dot"></span></p>
-            </div>
-            <div class="text-bottom"> 1m ago</div>
-          </div>
-        </div> --}}
-        {{-- <div class="notification unreaded">
-          <div class="avatar"><img src="assets/images/avatar-angela-gray.webp"></div>
-          <div class="text">
-            <div class="text-top">
-              <p><span class="profil-name">Angela Gray</span> followed you<span class="unread-dot"></span></p>
-            </div>
-            <div class="text-bottom"> 5m ago</div>
-          </div>
-        </div> --}}
-        {{-- <div class="notification unreaded">
-          <div class="avatar"><img src="assets/images/avatar-jacob-thompson.webp"></div>
-          <div class="text">
-            <div class="text-top">
-              <p><span class="profil-name">Jacob Thompson</span> has joined your group <b class="b-blue">Chess
-                  Club</b><span class="unread-dot"></span></p>
-            </div>
-            <div class="text-bottom"> 1 day ago</div>
-          </div>
-        </div>
-        <div class="notification readed private-message">
-          <div class="avatar"><img src="assets/images/avatar-rizky-hasanuddin.webp"></div>
-          <div class="text">
-            <div class="text-top">
-              <p><span class="profil-name">Rizky Hasanuddin</span> sent you a private message</p>
-            </div>
-            <div class="text-bottom"> 5 days ago
-              <p> Hello, thanks for setting up the Chess Club. I've been a member for a few weeks now and
-                I'm already having lots of fun and improving my game.</p>
-            </div>
-          </div>
-        </div>
-        <div class="notification readed picture">
-          <div class="avatar"><img src="assets/images/avatar-kimberly-smith.webp"></div>
-          <div class="text">
-            <div class="text-top">
-              <p><span class="profil-name">Kimberly Smith</span> commented on your picture</p>
-            </div>
-            <div class="text-bottom"> 1 week ago</div>
-          </div>
-          <div class="commented-picture">
-            <img src="assets/images/image-chess.webp">
-          </div>
-        </div>
-        <div class="notification readed">
-          <div class="avatar"><img src="assets/images/avatar-nathan-peterson.webp"></div>
-          <div class="text">
-            <div class="text-top">
-              <p><span class="profil-name">Nathan Peterson</span> reacted to your recent post <b>5 end-game strategies to increase your win rate</b></p>
-            </div>
-            <div class="text-bottom">  2 weeks ago</div>
-          </div>
-        </div>
-        <div class="notification readed">
-          <div class="avatar"><img src="assets/images/avatar-anna-kim.webp"></div>
-          <div class="text">
-            <div class="text-top">
-              <p><span class="profil-name">Anna Kim </span>left the group<b class="b-blue"> Chess Club</b></p>
-            </div>
-            <div class="text-bottom">   2 weeks ago</div>
-          </div>
-        </div>
-      </div>
-    </div> --}}
-
-    {{-- <div class="attribution">
-      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-      Coded by <a href="https://www.frontendmentor.io/profile/vonjytahina" target="_blank">Vonjy Tahina CHAN</a>.
-    </div> --}}
+       
   </div>
   <script src="script.js"></script>
 </body>
@@ -551,4 +474,187 @@ reloadPage();
       </script>
       
 </body>
-</html>
+</html> --}}
+
+
+
+<html><head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Lexend%3Awght%40400%3B500%3B700%3B900&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<title>Stitch Design</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+<body class="bg-white" style='font-family: Lexend, "Noto Sans", sans-serif;'>
+<div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 px-10 py-4 shadow-sm">
+<div class="flex items-center gap-3 text-slate-800">
+<svg class="size-7 text-[#1993e5]" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M2 17L12 22L22 17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M2 12L12 17L22 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<h1 class="text-xl font-bold leading-tight tracking-tight text-slate-900">MediConnect</h1>
+</div>
+<nav class="flex items-center gap-8">
+<a class="text-sm font-medium text-slate-700 hover:text-[#1993e5] transition-colors duration-200" href="#">Doctors</a>
+<a class="text-sm font-medium text-slate-700 hover:text-[#1993e5] transition-colors duration-200" href="#">Home</a>
+<a class="text-sm font-medium text-slate-700 hover:text-[#1993e5] transition-colors duration-200" href="#">Search</a>
+<a class="text-sm font-medium text-slate-700 hover:text-[#1993e5] transition-colors duration-200" href="#">Vitals</a>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-gray-200 shadow-sm" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDnoRkCLE4bExTFjpCm8IS1EzT7i6pY7T47r832KqIfnz_zq8OBwroxbH5-S1p0VEHOKuzsRqEF1iRrzjJ5Ezv5IBTWz7oZS3XOuKVPNBtcGqx7FNOrpoUSHjombGa3pgm9eTIe_Ph2e6HpWrgAp_-aduzAPFMRFB8nmcHKQNfySdNBODRzj_tnQcbktxOwwzhvbypsBsOM88wnleIOoy-dENzW-ThGjt8H9NyzV59I6otvvr4CP3XNz8Rmh8gNErZijlR6TMRDvHmI");'></div>
+</nav>
+</header>
+<main class="flex-1 bg-slate-50 px-10 py-8">
+<div class="mx-auto max-w-6xl">
+<h2 class="text-3xl font-bold text-slate-800 mb-8">Booking Appointment</h2>
+<div class="overflow-x-auto rounded-lg border border-gray-200 bg-white shadow-md mb-12 @container">
+<table class="w-full">
+<thead class="bg-slate-100">
+<tr>
+<th class="table-6918ea61-2ff9-470b-9d8c-fa491184ef0a-column-120 px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-600">Name</th>
+<th class="table-6918ea61-2ff9-470b-9d8c-fa491184ef0a-column-240 px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-600">Date</th>
+<th class="table-6918ea61-2ff9-470b-9d8c-fa491184ef0a-column-360 px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-600">Time</th>
+<th class="table-6918ea61-2ff9-470b-9d8c-fa491184ef0a-column-480 px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-600">
+                      Complaints
+                    </th>
+<th class="table-6918ea61-2ff9-470b-9d8c-fa491184ef0a-column-600 px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-600">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-200">
+<tr class="hover:bg-slate-50 transition-colors duration-150">
+<td class="table-6918ea61-2ff9-470b-9d8c-fa491184ef0a-column-120 px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-900">
+                      Sophia Clark
+                    </td>
+<td class="table-6918ea61-2ff9-470b-9d8c-fa491184ef0a-column-240 px-6 py-4 whitespace-nowrap text-sm text-slate-600">
+                      2024-03-15
+                    </td>
+<td class="table-6918ea61-2ff9-470b-9d8c-fa491184ef0a-column-360 px-6 py-4 whitespace-nowrap text-sm text-slate-600">10:00 AM</td>
+<td class="table-6918ea61-2ff9-470b-9d8c-fa491184ef0a-column-480 px-6 py-4 whitespace-nowrap text-sm text-slate-600">Headache</td>
+<td class="table-6918ea61-2ff9-470b-9d8c-fa491184ef0a-column-600 px-6 py-4 whitespace-nowrap text-sm">
+<button class="inline-flex items-center gap-2 rounded-md bg-[#1993e5] px-4 py-2 text-xs font-semibold text-white shadow-sm hover:bg-[#137abd] focus:outline-none focus:ring-2 focus:ring-[#1993e5] focus:ring-offset-2 transition-colors duration-200">
+<span class="material-icons text-sm">sms</span> Send SMS
+                      </button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors duration-150">
+<td class="table-6918ea61-2ff9-470b-9d8c-fa491184ef0a-column-120 px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-900">
+                      Ethan Carter
+                    </td>
+<td class="table-6918ea61-2ff9-470b-9d8c-fa491184ef0a-column-240 px-6 py-4 whitespace-nowrap text-sm text-slate-600">
+                      2024-03-15
+                    </td>
+<td class="table-6918ea61-2ff9-470b-9d8c-fa491184ef0a-column-360 px-6 py-4 whitespace-nowrap text-sm text-slate-600">11:00 AM</td>
+<td class="table-6918ea61-2ff9-470b-9d8c-fa491184ef0a-column-480 px-6 py-4 whitespace-nowrap text-sm text-slate-600">Fever</td>
+<td class="table-6918ea61-2ff9-470b-9d8c-fa491184ef0a-column-600 px-6 py-4 whitespace-nowrap text-sm">
+<button class="inline-flex items-center gap-2 rounded-md bg-[#1993e5] px-4 py-2 text-xs font-semibold text-white shadow-sm hover:bg-[#137abd] focus:outline-none focus:ring-2 focus:ring-[#1993e5] focus:ring-offset-2 transition-colors duration-200">
+<span class="material-icons text-sm">sms</span> Send SMS
+                      </button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors duration-150">
+<td class="table-6918ea61-2ff9-470b-9d8c-fa491184ef0a-column-120 px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-900">
+                      Olivia Bennett
+                    </td>
+<td class="table-6918ea61-2ff9-470b-9d8c-fa491184ef0a-column-240 px-6 py-4 whitespace-nowrap text-sm text-slate-600">
+                      2024-03-15
+                    </td>
+<td class="table-6918ea61-2ff9-470b-9d8c-fa491184ef0a-column-360 px-6 py-4 whitespace-nowrap text-sm text-slate-600">12:00 PM</td>
+<td class="table-6918ea61-2ff9-470b-9d8c-fa491184ef0a-column-480 px-6 py-4 whitespace-nowrap text-sm text-slate-600">Cough</td>
+<td class="table-6918ea61-2ff9-470b-9d8c-fa491184ef0a-column-600 px-6 py-4 whitespace-nowrap text-sm">
+<button class="inline-flex items-center gap-2 rounded-md bg-[#1993e5] px-4 py-2 text-xs font-semibold text-white shadow-sm hover:bg-[#137abd] focus:outline-none focus:ring-2 focus:ring-[#1993e5] focus:ring-offset-2 transition-colors duration-200">
+<span class="material-icons text-sm">sms</span> Send SMS
+                      </button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors duration-150">
+<td class="table-6918ea61-2ff9-470b-9d8c-fa491184ef0a-column-120 px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-900">
+                      Liam Foster
+                    </td>
+<td class="table-6918ea61-2ff9-470b-9d8c-fa491184ef0a-column-240 px-6 py-4 whitespace-nowrap text-sm text-slate-600">
+                      2024-03-15
+                    </td>
+<td class="table-6918ea61-2ff9-470b-9d8c-fa491184ef0a-column-360 px-6 py-4 whitespace-nowrap text-sm text-slate-600">01:00 PM</td>
+<td class="table-6918ea61-2ff9-470b-9d8c-fa491184ef0a-column-480 px-6 py-4 whitespace-nowrap text-sm text-slate-600">
+                      Sore Throat
+                    </td>
+<td class="table-6918ea61-2ff9-470b-9d8c-fa491184ef0a-column-600 px-6 py-4 whitespace-nowrap text-sm">
+<button class="inline-flex items-center gap-2 rounded-md bg-[#1993e5] px-4 py-2 text-xs font-semibold text-white shadow-sm hover:bg-[#137abd] focus:outline-none focus:ring-2 focus:ring-[#1993e5] focus:ring-offset-2 transition-colors duration-200">
+<span class="material-icons text-sm">sms</span> Send SMS
+                      </button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors duration-150">
+<td class="table-6918ea61-2ff9-470b-9d8c-fa491184ef0a-column-120 px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-900">
+                      Ava Harper
+                    </td>
+<td class="table-6918ea61-2ff9-470b-9d8c-fa491184ef0a-column-240 px-6 py-4 whitespace-nowrap text-sm text-slate-600">
+                      2024-03-15
+                    </td>
+<td class="table-6918ea61-2ff9-470b-9d8c-fa491184ef0a-column-360 px-6 py-4 whitespace-nowrap text-sm text-slate-600">02:00 PM</td>
+<td class="table-6918ea61-2ff9-470b-9d8c-fa491184ef0a-column-480 px-6 py-4 whitespace-nowrap text-sm text-slate-600">
+                      Body Aches
+                    </td>
+<td class="table-6918ea61-2ff9-470b-9d8c-fa491184ef0a-column-600 px-6 py-4 whitespace-nowrap text-sm">
+<button class="inline-flex items-center gap-2 rounded-md bg-[#1993e5] px-4 py-2 text-xs font-semibold text-white shadow-sm hover:bg-[#137abd] focus:outline-none focus:ring-2 focus:ring-[#1993e5] focus:ring-offset-2 transition-colors duration-200">
+<span class="material-icons text-sm">sms</span> Send SMS
+                      </button>
+</td>
+</tr>
+</tbody>
+</table>
+<style>
+                @container (max-width:640px) {
+                  .table-6918ea61-2ff9-470b-9d8c-fa491184ef0a-column-240,
+                  .table-6918ea61-2ff9-470b-9d8c-fa491184ef0a-column-360 { display: none; }
+                }
+                @container (max-width:768px) {
+                  .table-6918ea61-2ff9-470b-9d8c-fa491184ef0a-column-480 { display: none; }
+                }
+              </style>
+</div>
+<h2 class="text-2xl font-bold text-slate-800 mb-6">New Patient Registrations</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="rounded-lg border border-gray-200 bg-white shadow-md p-6 hover:shadow-lg transition-shadow duration-200">
+<div class="flex items-start gap-4">
+<div class="size-16 rounded-full bg-center bg-no-repeat bg-cover border border-gray-200 shadow-sm flex-shrink-0" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCRH2DFNkpUiBX198iz1URgxJjwoNNy3vmppbmW84ca7CsLActnFIXeQrVmF2YLrQG4f-GYYrurmgk67GSKQMqLCJnxm_wEYBuqumkgMvGthY6aBLa9x0U1vtxols04R3EmrDfEdsKCNsPTtguYFFiuynYvtDkYCUbhN15Qj757j8vgtg6GFKOw3pf6kXMFsAv2J-BMyQyhLtCjYtYPWeuFKNecyGUCAWs3COUlKqLR1SC3QH99SVXXF68uj23dXzrXfgrHVj1bakFp");'></div>
+<div class="flex-grow">
+<p class="text-xs font-medium text-[#1993e5] mb-1">New Patient</p>
+<h3 class="text-lg font-semibold text-slate-800 mb-1">Isabella Rossi</h3>
+<p class="text-xs text-slate-500">ID: 1234567890</p>
+<p class="text-xs text-slate-500">Registered at 09:00 AM</p>
+</div>
+</div>
+</div>
+<div class="rounded-lg border border-gray-200 bg-white shadow-md p-6 hover:shadow-lg transition-shadow duration-200">
+<div class="flex items-start gap-4">
+<div class="size-16 rounded-full bg-center bg-no-repeat bg-cover border border-gray-200 shadow-sm flex-shrink-0" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuByYQB2OzSsDdih6-COK66F5PBRcYjmLVN_kMNOl4qnH8sqLtHRrRsGJVQ2FboG9IrAgZfpoTnBcTsDob-qEd8nq0A7UdWnAAwQjaWbAHktk5DEflAcH30TF3bvepljpAagIr-hl_4nLt-pxTr0Y882uZuyZYgqxnDGuOhJ5MFMTpmrLHk5D_oA-DDcYi8zx6VaqIkAEYNVoG_KKP68EgjVAs7oMrTfrocZgqPLDyTXY6xdDNjdo1rTdg1i0ihoaazrvnTrNNyYEZBF");'></div>
+<div class="flex-grow">
+<p class="text-xs font-medium text-[#1993e5] mb-1">New Patient</p>
+<h3 class="text-lg font-semibold text-slate-800 mb-1">Noah Parker</h3>
+<p class="text-xs text-slate-500">ID: 9876543210</p>
+<p class="text-xs text-slate-500">Registered at 09:15 AM</p>
+</div>
+</div>
+</div>
+<div class="rounded-lg border border-gray-200 bg-white shadow-md p-6 hover:shadow-lg transition-shadow duration-200">
+<div class="flex items-start gap-4">
+<div class="size-16 rounded-full bg-center bg-no-repeat bg-cover border border-gray-200 shadow-sm flex-shrink-0" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAPF2_0D9708vSnxbXT1l5gqYVW4k4lTxIJo04zVa5Q0ScACnChHmlWvs7oz6hepRjjNq7YKZv1dLRX1jk4u4hmyZ_l55HCQ4RbqgInH2bjNO33uKogIJEYztsJo685DF_dGbya49pGQncSTtsAl3dbsRTJX2GvoJf9Sw8HF_of9O1XntOciNelNIwUEm14SIhfY7AMYOH0KUW3PSXzV3hpleQ45zh0Rc1dmCcWKcr8SPs_3dOO4mA3ANtAnl9zD1oaOctMYMbbSVDU");'></div>
+<div class="flex-grow">
+<p class="text-xs font-medium text-[#1993e5] mb-1">New Patient</p>
+<h3 class="text-lg font-semibold text-slate-800 mb-1">Chloe Evans</h3>
+<p class="text-xs text-slate-500">ID: 4567891230</p>
+<p class="text-xs text-slate-500">Registered at 09:30 AM</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+
+</body></html>
+

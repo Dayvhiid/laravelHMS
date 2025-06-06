@@ -12,23 +12,53 @@ class ImageUpload extends Controller
         return view('image.image');
     }
    
+    // public function store(Request $request)
+    // {
+    //     $request->validate([
+    //         'title' => 'required|string|max:255',
+    //         'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    //     ]);
+
+    //     $image = $request->file('image');
+
+    //     // Option 1: Store image as binary data in database
+    //     $imageData = file_get_contents($image->getRealPath());
+    //     $imageModel = Image::create([
+    //         'title' => $request->input('title'),
+    //         'image_data' => $imageData,
+    //     ]);
+    //     return redirect(route('pages.status'))->with('success', 'Case File Updated Succesfully');
+    // }
+
+
     public function store(Request $request)
-    {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
+{
+    $validated = $request->validate([
+        'title' => 'required|string|max:255',
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // 2 MB
+    ]);
 
-        $image = $request->file('image');
 
-        // Option 1: Store image as binary data in database
-        $imageData = file_get_contents($image->getRealPath());
-        $imageModel = Image::create([
-            'title' => $request->input('title'),
-            'image_data' => $imageData,
-        ]);
-        return redirect(route('pages.status'))->with('success', 'Case File Updated Succesfully');
-    }
+
+
+
+
+    $file   = $validated['image'];                 // Illuminate\Http\UploadedFile
+       $path = $request->file('image')->store('images', 'public');
+
+
+    Image::create([
+        'title'     => $validated['title'],
+        'path'      => $path,
+        'mime_type' => $file->getClientMimeType(),
+        'size'      => $file->getSize(),
+    ]);
+
+    return redirect()
+        ->route('pages.status')
+        ->with('success', 'Image uploaded successfully');
+}
+
 
             public function display() {
               $images = Image::all();

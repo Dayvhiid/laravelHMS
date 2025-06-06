@@ -23,5 +23,6 @@ class Treat extends Model
         'special_order',
         'progressive',
         'prescription', 
+        'invisible',
     ];
 }
