@@ -32,10 +32,10 @@ class vitalsController extends Controller
         'pfohx' => $request->input('pfohx'),
         'odunaided' => $request->input('ODunaided'),
         'odpinhole' => $request->input('ODpinhole'),
-        'odaxis' => $request->input('ODnearva'), //stroing od nearva as odaxis
+        'odaxis' => $request->input('ODAXIS'), //stroing od nearva as odaxis
         'osunaided' => $request->input('OSunaided'),
         'ospinhole' => $request->input('OSpinhole'),
-        'osaxis' => $request->input('OSnearva'), //STORING OD NEARVA AS ODAXIS
+        'osaxis' => $request->input('OSAXIS'), //STORING OD NEARVA AS ODAXIS
         'lodsph' => $request->input('ODSPH'),
         'lodcyl' => $request->input('ODCYL'),
         'lodaxis' => $request->input('ODAXIS'),
@@ -44,14 +44,14 @@ class vitalsController extends Controller
         'loscyl' => $request->input('OSCYL'), 
         'losaxis' => $request->input('OSAXIS'),
         'losva' => $request->input('OSVA'),
-        'addsph' => $request->input('ADDDSPH'),
+        'addsph' => $request->input('ADDSPH'),
         'addcyl' => $request->input('ADDCYL'),
         'addaxis' => $request->input('ADDAXIS'),
         'addva' => $request->input('ADDVA'),
         'arodsphere' => $request->input('arodsph'),
         'arodcyl' => $request->input('arodcyl'),
         'arodaxis' => $request->input('arodaxis'),
-        'arossphere' => $request->input('arossph'),
+        'arossphere' => $request->input('arosph'),
         'aroscyl' => $request->input('aroscyl'),
         'arosaxis' => $request->input('arosaxis'),
         'rodsph' => $request->input('rodsph'),
@@ -96,7 +96,7 @@ class vitalsController extends Controller
         'osnct' => $request->input('osnct'),
     ];
     $data2 = [
-        'srosphere' => $request->input('srosphere'),
+        'srosphere' => $request->input('srosph'),
         'patient_code' => $request->input('patient_code'),
         'sroscyl' => $request->input('sroscyl'),
         'srosaxis' => $request->input('srosaxis'),
