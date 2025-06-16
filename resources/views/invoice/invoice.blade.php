@@ -162,7 +162,7 @@ body{
     min-width: 600px;
 }
 
-@media print{
+/* @media print{
     .print-area{
         visibility: visible;
         width: 100%;
@@ -179,6 +179,17 @@ body{
     .invoice-btns{
         display: none;
     }
+} */
+
+@media print {
+  @page {
+    size: 80mm 200mm; /* Adjust to your thermal paper size */
+    margin: 0; /* Remove default margins */
+  }
+  body { 
+    font-family: monospace; /* Better for thermal printers */
+    font-size: 12px;
+  }
 }
 </style>
 <!DOCTYPE html>
