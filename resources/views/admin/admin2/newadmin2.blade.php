@@ -156,11 +156,12 @@
                       </td>
                         <td class="table-15609774-3410-47a9-be9c-d86617fbc518-column-840 h-[72px] px-4 py-2 w-[400px] text-[#4d7999] text-sm font-normal leading-normal">
                            <button
+                           type="button"
                            name="add"
                             id="add"
                             class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#e7eef3] text-[#0e161b] text-sm font-bold leading-normal tracking-[0.015em]"
                         >
-                            <span class="truncate"  name="add" id="add">Add</span>
+                            <span  class="truncate"  name="add" id="add">Add</span>
                         </button>
                       </td>
                     </tr>
@@ -182,7 +183,7 @@
               <button
                 class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#1581cf] text-slate-50 text-sm font-bold leading-normal tracking-[0.015em]"
               >
-                <span class="truncate">Submit</span>
+                <span type="submit" class="truncate">Submit</span>
               </button>
             </div>
           </div>
@@ -190,9 +191,6 @@
       </div>
     </div>
 </form>
-  </body>
- 
-
 <script>
 $(document).ready(function() {
   var rowCounter = 0;
@@ -281,4 +279,5 @@ $(document).ready(function() {
   });
 });
 </script>
+</body>
 </html>
