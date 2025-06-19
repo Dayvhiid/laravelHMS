@@ -36,6 +36,7 @@ use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\NewValidationController;
 use App\Http\Controllers\WebrtcStreamingController;
 use App\Http\Controllers\InvoicegenerationController;
+use App\Http\Controllers\LensImportController;
 use App\Http\Controllers\NewDoctorVerificationController;
 use App\Http\Controllers\OpticianController;
 use App\Http\Controllers\PatientCardController;
@@ -220,6 +221,9 @@ Route::middleware('auth')->group(function () {
     //patient card
     Route::get('/patient-cards/{id}', [PatientCardController::class,'show'])->name('patient.show');
 }); //Closing Block
+
+Route::get('/lensesImport', [LensImportController::class, 'index'])->name('lenses.import.index');
+Route::post('/lenses/import', [LensImportController::class, 'import'])->name('lenses.import');
 
 
   Route::post('/import-users', function (Request $request) {
