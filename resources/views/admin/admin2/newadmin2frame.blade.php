@@ -43,7 +43,7 @@
             </button>
             <nav class="flex items-center gap-8">
                     <a class="text-sm font-medium text-slate-700 hover:text-[#1993e5] transition-colors duration-200"
-                        href=" {{ route('admin2.framelist') }} ">Frame List</a>
+                        href=" {{ route('frame.list') }} ">Frame List</a>
                 </nav>
             <div
               class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"

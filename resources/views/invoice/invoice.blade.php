@@ -268,7 +268,7 @@
                     <div class = "hr"></div>
                     <div class = "invoice-head-middle">
                         <div class = "invoice-head-middle-left text-start">
-                            <p><span class = "text-bold">Date</span>@php echo date('Y-m-d H:i:s') @endphp</p>
+                            <p><span class = "text-bold">Date</span> @php echo date('Y-m-d H:i:s') @endphp</p>
                         </div>
                         <div class = "invoice-head-middle-right text-end">
                             <p>
@@ -307,19 +307,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- <tr>
-                                         <td>Design</td> 
-                                        <td>Creating a website design</td>
-                                        <td>$50.00</td>
-                                        <td>10</td>
-                                        <td class = "text-end">$500.00</td>
-                                    </tr>  --}}
                                 <?php $subtotal = 0; ?>
                                 @foreach ($invoice->name as $index => $item)
                                     <tr>
                                         <td>{{ $item }}</td> {{-- Display name --}}
-                                        <td><span>&#8358</span>{{ $invoice->price[$index] }}</td> {{-- Access price using index --}}
-                                        <td>{{ $invoice->qty[$index] }}</td> {{-- Access quantity using index --}}
+                                        <td><span>&#8358</span> {{ $invoice->price[$index] }} </td> {{-- Access price using index --}}
+                                        <td> {{ $invoice->qty[$index] }} </td> {{-- Access quantity using index --}}
                                         <td> <span>&#8358</span>{{ $invoice->price[$index] * $invoice->qty[$index] }}
                                         </td> {{-- Calculate total amount --}}
                                         <?php $subtotal += $invoice->price[$index] * $invoice->qty[$index]; ?>
@@ -328,25 +321,6 @@
                                     </tr>
                                 @endforeach
 
-                                {{-- <tr>
-                                        <td>Development</td>
-                                        <td>Website Development</td>
-                                        <td>$50.00</td>
-                                        <td>10</td>
-                                        <td class = "text-end">$500.00</td>
-                                    </tr>
-                                    
-                                    <tr>
-                                        <td>SEO</td>
-                                        <td>Optimize the site for search engines (SEO)</td>
-                                        <td>$50.00</td>
-                                        <td>10</td>
-                                        <td class = "text-end">$500.00</td>
-                                    </tr> --}}
-                                <!-- <tr>
-                                        <td colspan="4">10</td>
-                                        <td>$500.00</td>
-                                    </tr> -->
                             </tbody>
                         </table>
                         <div class = "invoice-body-bottom">

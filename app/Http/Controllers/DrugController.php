@@ -36,14 +36,30 @@ class DrugController extends Controller
     public function edit(Drug $drugs){
         return view('inventory.edit', ['drug' => $drugs]);
     }
-    public function update(Drug $drugs, Request $request){
-        $data = $request->validate([
-            'name' => 'required',
-            'price' => 'required',
-        ]);  
-        $drugs->update($data); 
-        return redirect(route('doctors.list'));
-    }
+    // public function update(Drug $drugs, Request $request){
+    //     $data = $request->validate([
+    //         'name' => 'required',
+    //         'price' => 'required',
+    //     ]);  
+    //     $drugs->update($data); 
+    //     return redirect(route('doctors.list'));
+    // }
+
+    public function update(Request $request, $id)
+{
+    $drug = Drug::findOrFail($id);
+    
+    $data = $request->validate([
+        'name' => 'required',
+        'price' => 'required|numeric',
+        'drug_type' => 'required',
+        'quantity' => 'required|integer'
+    ]);
+    
+    $drug->update($data);
+    
+    return redirect(route('doctors.list'))->with('success', 'Drug updated successfully');
+}
     public function destroy(Drug $drugs){
           $drugs->delete();
           return redirect(route('doctors.list'));

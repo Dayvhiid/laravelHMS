@@ -52,7 +52,7 @@
             </button>
             <nav class="flex items-center gap-8">
                     <a class="text-sm font-medium text-slate-700 hover:text-[#1993e5] transition-colors duration-200"
-                        href=" {{ route('admin2.druglist') }} ">Drug List</a>
+                        href=" {{ route('doctors.list') }} ">Drug List</a>
                 </nav>
             <div
               class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"

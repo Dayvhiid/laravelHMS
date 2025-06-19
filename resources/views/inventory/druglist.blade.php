@@ -31,22 +31,6 @@
                 </thead>
                 <tbody>
                   @foreach($drugs as $drug)
-                  {{-- <tr>
-                    <td>{{ $drug->id}}</td>
-                    <td> <input type="text" class="form-control" name="name" value="{{$drug->name}}"></td>
-                    <td> <input type="text" class="form-control" name="price" value="{{$drug->price}}"></td>
-                    <td> <input type="text" class="form-control" name="drug_type" value="{{$drug->drug_type}}"></td>
-                    <td> <input type="text" class="form-control" name="quantity" value="{{$drug->quantity}}"></td>
-                
-                       <td> <a href="{{route('doctors.update', ['drugs' => $drug])}}">Edit</a></td> 
-                    <td>
-                      <form action="{{route('doctors.delete', ['drugs' => $drug ])}}" method="POST">
-                        @csrf
-                        @method('delete')
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                      </form>
-                    </td>
-                  </tr> --}}
 
                   <tr>
                       <td>{{ $drug->id }}</td>
