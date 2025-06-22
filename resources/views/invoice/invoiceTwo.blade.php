@@ -152,21 +152,29 @@
 
             <tbody>
 
-                <tr>
-                    <?php $subtotal = 0; ?>
-                    @foreach ($invoice->name as $index => $item)
+                <?php $subtotal = 0; ?>
+                @foreach ($invoice->name as $index => $item)
+                    <tr>
                         <td>{{ $item }}</td>
-
                         <td class="right">{{ $invoice->price[$index] }}</td>
-
                         <td class="right">{{ $invoice->qty[$index] }}</td>
-
                         <td class="right">{{ $invoice->price[$index] * $invoice->qty[$index] }}</td>
-
                         <?php $subtotal += $invoice->price[$index] * $invoice->qty[$index]; ?>
-                        <?php $discount_amount = $subtotal * ($invoice->discount / 100); ?>
-                        <?php $discounted_subtotal = $subtotal - $discount_amount; ?>
-                    @endforeach
+                    </tr>
+                @endforeach
+                <tr>
+                    <td colspan="3" class="right">Subtotal:</td>
+                    <td class="right">{{ $subtotal }}</td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="right">Discount ({{ $invoice->discount }}%):</td>
+                    <?php $discount_amount = $subtotal * ($invoice->discount / 100); ?>
+                    <td class="right">-{{ $discount_amount }}</td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="right">Total:</td>
+                    <?php $discounted_subtotal = $subtotal - $discount_amount; ?>
+                    <td class="right">{{ $discounted_subtotal }}</td>
                 </tr>
 
 

@@ -4,33 +4,48 @@ namespace App\Imports;
 
 use App\Models\Lens;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
-use Maatwebsite\Excel\Concerns\WithBatchInserts;
-use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
-use Maatwebsite\Excel\Concerns\SkipsOnError;
-use Illuminate\Support\Str;
 
-class LensesImport implements ToModel, WithHeadingRow, WithChunkReading, WithBatchInserts, SkipsEmptyRows, SkipsOnError
+class LensesImport implements WithMultipleSheets
+{
+    public function sheets(): array
+    {
+        return [
+            'CYLINDRICAL LENSES PLUS' => new LensSheetImport(),
+            'CYLINDRICAL LENSES MINUS' => new LensSheetImport(),
+            'BIFOCAL BLUE CUT' => new LensSheetImport(),
+            // Add all your sheet names here
+        ];
+    }
+}
+
+class LensSheetImport implements ToModel, WithHeadingRow, WithChunkReading
 {
     private $importedCount = 0;
     private $skippedCount = 0;
 
     public function model(array $row)
     {
-        // Normalize column names by removing numbers/dots
-        $normalizedRow = [];
-        foreach ($row as $key => $value) {
-            $normalizedKey = strtolower(preg_replace('/[0-9.]+/', '', $key));
-            $normalizedRow[$normalizedKey] = $value;
+        // Skip if header row or empty row
+        if (isset($row['power']) && $row['power'] === 'Power') {
+            return null;
         }
 
-        // Find power and pairs values using flexible matching
-        $power = $this->findValue($normalizedRow, ['power', 'pwr', 'lenspower']);
-        $pairs = $this->findValue($normalizedRow, ['pairs', 'pair', 'quantity', 'qty']);
+        // Get values directly using known column names
+        $power = $row['power'] ?? null;
+        $pairs = $row['pairs'] ?? null;
 
-        // Skip if required fields are missing
+        // Skip if required fields are missing or empty
         if (empty($power) || empty($pairs)) {
+            $this->skippedCount++;
+            return null;
+        }
+
+        // Clean and validate pairs value
+        $quantity = $this->convertPairsToQuantity($pairs);
+        if ($quantity === null) {
             $this->skippedCount++;
             return null;
         }
@@ -39,51 +54,46 @@ class LensesImport implements ToModel, WithHeadingRow, WithChunkReading, WithBat
 
         return new Lens([
             'name' => $this->cleanPower($power),
-            'quantity' => $this->convertPairsToQuantity($pairs),
+            'quantity' => $quantity,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
     }
 
-    private function findValue(array $row, array $possibleKeys)
-    {
-        foreach ($possibleKeys as $key) {
-            if (isset($row[$key]) && !empty($row[$key])) {
-                return $row[$key];
-            }
-        }
-        return null;
-    }
-
     private function cleanPower($power): string
     {
-        return trim(str_replace(['Power:', 'Pwr:', 'P:'], '', (string)$power));
+        // Remove any prefixes and trim
+        return trim(preg_replace('/^(PL|pl|Pl|pL)\s*\/?\s*/', '', $power));
     }
 
-    private function convertPairsToQuantity($pairs): int
+    private function convertPairsToQuantity($pairs): ?int
     {
-        $pairs = strtolower((string)$pairs);
-        
-        if (str_contains($pairs, 'pair')) {
-            return (int)filter_var($pairs, FILTER_SANITIZE_NUMBER_INT) * 2;
+        // Handle decimal values (like 1.5 pairs)
+        if (is_numeric($pairs)) {
+            return (int) ceil((float)$pairs * 2); // Round up to nearest whole item
         }
         
-        return (int)$pairs * 2;
+        // Handle "x" or other non-numeric values
+        if (strtolower($pairs) === 'x') {
+            return null; // Skip invalid entries
+        }
+        
+        // Handle "pairs" text
+        if (preg_match('/(\d+)\s*pairs?/i', $pairs, $matches)) {
+            return (int)$matches[1] * 2;
+        }
+        
+        // Try to extract any number
+        if (preg_match('/(\d+)/', $pairs, $matches)) {
+            return (int)$matches[1] * 2;
+        }
+        
+        return null;
     }
 
     public function chunkSize(): int
     {
         return 500;
-    }
-
-    public function batchSize(): int
-    {
-        return 500;
-    }
-
-    public function onError(\Throwable $e)
-    {
-        $this->skippedCount++;
     }
 
     public function getImportResults(): array
