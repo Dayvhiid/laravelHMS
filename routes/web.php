@@ -40,6 +40,7 @@ use App\Http\Controllers\LensImportController;
 use App\Http\Controllers\NewDoctorVerificationController;
 use App\Http\Controllers\OpticianController;
 use App\Http\Controllers\PatientCardController;
+use App\Http\Controllers\ServicesController;
 
 Route::get('/Bookings', [NewValidationController::class, 'booking'])->name('NewBooking');
 
@@ -216,6 +217,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/optician/list', [OpticianController::class, 'list'])->name('optician.list');
     Route::get('/optician/find', [OpticianController::class, 'find'])->name('optician.find');
     Route::get('/optician/search', [OpticianController::class, 'search'])->name('optician.search'); //search
+
+
+    //Services
+    Route::get('/services', [ServicesController::class,'index'])->name('services.index');
+    Route::post('/services/store', [ServicesController::class,'store'])->name('services.store');
+    Route::get('/services/list', [ServicesController::class,'list'])->name('services.list');
+     Route::put('/services/{drugs}/update', [ServicesController::class, 'update'])->name('services.update');
+      Route::delete('/doctors/{drugs}/destroy', [ServicesController::class, 'destroy'])->name('services.delete');
 
 
     //patient card

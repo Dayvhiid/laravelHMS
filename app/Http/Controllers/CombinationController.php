@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-  use App\Models\Drug;
 use App\Models\Lens;
+  use App\Models\Drug;
 use App\Models\Frame;
+use App\Models\Services;
+use Illuminate\Http\Request;
 
 class CombinationController extends Controller
 {
@@ -16,6 +17,7 @@ public function getAllItems()
     $drugs = Drug::select('id', 'name', 'price', 'quantity')->get();
     $lenses = Lens::select('id', 'name', 'price', 'quantity')->get();
     $frames = Frame::select('id', 'name', 'price', 'quantity')->get();
+    $services = Services::select('id', 'name', 'price')->get();
 
     // Combine all into one array with a "type" field to identify
     $items = collect();
@@ -50,6 +52,17 @@ public function getAllItems()
             'price' => $frame->price,
             'quantity' => $frame->quantity,
             'type' => 'frame',
+        ]);
+    }
+
+      foreach ($services as $service) {
+        $items->push([
+            'id' => $service->id,
+            'label' => $service->name . ' (Service)',
+            'name' => $service->name,
+            'price' => $service->price,
+            'quantity' => $service->quantity,
+            'type' => 'service',
         ]);
     }
 

@@ -51,6 +51,7 @@
           </div>
           <div class="flex flex-1 justify-end gap-8">
             <div class="flex items-center gap-9">
+               <a class="text-[#0e161b] text-sm font-medium leading-normal"  href="{{route('services.index')}}">Services</a>
               <a class="text-[#0e161b] text-sm font-medium leading-normal"  href="{{route('admin2.inventory')}}">Inventory List</a>
               <a class="text-[#0e161b] text-sm font-medium leading-normal" href="{{route('admin2.drugs')}}" >Drug</a>
               <a class="text-[#0e161b] text-sm font-medium leading-normal"  href="{{route('admin2.frame')}}"  >Frame</a>
