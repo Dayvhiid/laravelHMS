@@ -147,7 +147,7 @@
 
         <div class="pid">
             <label>PatientID:</label><br>
-            <input type="input" placeholder="Enter Email"class="emailinput" value="<?php echo $patientID ?>"  name="pid" readonly>
+            <input type="input" placeholder="Enter Email"class="emailinput" value="<?php echo $patientID ?>"  name="pid" >
         </div>
         <script>
             

@@ -30,7 +30,7 @@
                   @foreach($drugs as $drug)
 
                   <tr>
-                      <td>{{ $drug->id }}</td>
+                      
 
                       <form action="{{ route('services.update', ['drugs' => $drug->id]) }}" method="POST">
                         @csrf
