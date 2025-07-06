@@ -11,7 +11,7 @@ use App\Notifications\NewPatientNotification;
 class PagesController extends Controller
 {
     public function index() {
-        return view('pages.register');
+        return view('pages.registerTwo');
     }
 
     public function store(Request $request)

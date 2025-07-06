@@ -20,13 +20,13 @@
         <img class="logo" src="/icons/logo.png" height="300px" width="300px">
         <div class="links">
             <ul>
-                    <li><a href="{{ route('generate.show') }}">Invoice</a></li>
-                    <li><a href="{{ route('public.records') }}">Records</a></li>
-                    <li><a href="/doctors/index">Doctors Portal</a></li>
+                    <li><a href="{{ route('generate.show')}}" >Invoice</a></li>
+                    <li><a href="{{ route('public.records')}}" >Records</a></li>
+                    <li><a href="/doctors/index" >Doctors Portal</a></li>
                     {{-- <li><a href="{{ route('testing') }}">Inventory</a></li> --}}
-                    <li><a href="{{ route('optician.index') }}">Opticianry</a></li>
-                    <li><a href="{{ route('admin.admin2') }}">Admin 2</a></li>
-                    <li><a href="{{ route('image.upload') }}">Case File Upload</a></li>
+                    <li><a href="{{ route('optician.index')}}" >Opticianry</a></li>
+                    <li><a href="{{ route('admin.admin2') }}" >Admin 2</a></li>
+                    <li><a href="{{ route('image.upload') }}" >Case File Upload</a></li>
                     {{-- <li><a href="{{ route('doctors.drugs') }}">Drug</a></li> --}}
             </ul>
         </div>
@@ -123,26 +123,7 @@
            $currentDate = date('m/Y');
            $patientID = $random_number."/".$currentDate;
         @endphp
-        {{-- @php
-        // Generate a shorter unique part using uniqid and hash
-        $uniquePart = substr(hash('crc32', uniqid(mt_rand(), true)), 0, 8); // Shorten to 8 characters
-        $currentDate = date('m/Y'); // Current date in 'month/year' format
-        $patientID = $uniquePart . "/" . $currentDate; // Combine unique part and date
-    @endphp --}}
-    
-        {{-- @php
-    // Fetch the next auto-increment ID from the database (ensure it is reliable and transactional)
-    $lastID = DB::table('patient_infos')->max('id') + 1; // Use the table name where patient records are stored
 
-    // Add a unique suffix based on microtime
-    $uniqueSuffix = uniqid();
-
-    // Format the current date
-    $currentDate = date('m/Y');
-
-    // Generate the Patient ID
-    $patientID = $lastID . "-" . $uniqueSuffix . "/" . $currentDate;
-@endphp --}}
 
 
         <div class="pid">
@@ -154,7 +135,6 @@
               
         </script>
         <div class="buttons">
-            {{-- <input type="button" class="genbtn" value="Generate Patient ID" id="generateButton" > --}}
             <input type="submit" class="save" value="Register Patient" name="submitBtn">
         </div>
         <div id="generated-number">
