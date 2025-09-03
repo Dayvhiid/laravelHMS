@@ -50,6 +50,7 @@
               <label class="flex flex-col min-w-40 flex-1">
                 <p class="text-[#0e161b] text-base font-medium leading-normal pb-2">Doctor Name</p>
                 <input
+                  id="doctor-name-input"
                   placeholder="Dr. Emily Carter"
                   class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#0e161b] focus:outline-0 focus:ring-0 border border-[#d0dee7] bg-slate-50 focus:border-[#d0dee7] h-14 placeholder:text-[#4e7a97] p-[15px] text-base font-normal leading-normal"
                   value=""
@@ -60,6 +61,7 @@
               <label class="flex flex-col min-w-40 flex-1">
                 <p class="text-[#0e161b] text-base font-medium leading-normal pb-2">Room Code</p>
                 <input
+                  id="room-code-input"
                   placeholder="Enter Room Code"
                   class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#0e161b] focus:outline-0 focus:ring-0 border border-[#d0dee7] bg-slate-50 focus:border-[#d0dee7] h-14 placeholder:text-[#4e7a97] p-[15px] text-base font-normal leading-normal"
                   value=""
@@ -96,10 +98,12 @@
             btn.disabled = true;
             btn.textContent = 'Creating...';
             try {
-              // Get the value from the Room Title input field
+              // Get values from the input fields
+              let doctorName = document.getElementById('doctor-name-input').value.trim();
+              let roomCode = document.getElementById('room-code-input').value.trim();
               let title = document.getElementById('room-title-input').value.trim();
-              if (!title) {
-                alert('Please enter a room title.');
+              if (!doctorName || !roomCode || !title) {
+                alert('Please fill in all fields.');
                 btn.disabled = false;
                 btn.textContent = 'Create Telemedicine Room';
                 return;
@@ -109,7 +113,7 @@
                 headers: {
                   'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ title: title })
+                body: JSON.stringify({ code: roomCode, title: title, createdBy: doctorName })
               });
               if (!response.ok) {
                 const err = await response.json();
