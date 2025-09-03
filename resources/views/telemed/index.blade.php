@@ -70,6 +70,7 @@
               <label class="flex flex-col min-w-40 flex-1">
                 <p class="text-[#0e161b] text-base font-medium leading-normal pb-2">Room Title</p>
                 <input
+                  id="room-title-input"
                   placeholder="Enter Room Title"
                   class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#0e161b] focus:outline-0 focus:ring-0 border border-[#d0dee7] bg-slate-50 focus:border-[#d0dee7] h-14 placeholder:text-[#4e7a97] p-[15px] text-base font-normal leading-normal"
                   value=""
@@ -89,14 +90,20 @@
           <div id="room-card-container" class="my-6"></div>
 
           <script>
+
           document.getElementById('create-room-btn').addEventListener('click', async function() {
             const btn = this;
             btn.disabled = true;
             btn.textContent = 'Creating...';
             try {
-              // Prompt for a room title (optional)
-              let title = prompt('Enter room title (optional):', 'telemed');
-              if (title === null) { btn.disabled = false; btn.textContent = 'Create Telemedicine Room'; return; }
+              // Get the value from the Room Title input field
+              let title = document.getElementById('room-title-input').value.trim();
+              if (!title) {
+                alert('Please enter a room title.');
+                btn.disabled = false;
+                btn.textContent = 'Create Telemedicine Room';
+                return;
+              }
               const response = await fetch('https://hms-telemedicine-api.onrender.com/api/rooms/create', {
                 method: 'POST',
                 headers: {
@@ -120,10 +127,12 @@
                     </div>
                     <div class="flex-grow">
                       <p class="text-xs font-medium text-[#1993e5] mb-1">Telemedicine Room</p>
-                      <h3 class="text-lg font-semibold text-slate-800 mb-1">\${room.title || ''}</h3>
+                      <h3 class="text-lg font-semibold text-slate-800 mb-1">
+                        ${room.title || ''}
+                      </h3>
                       <div class="flex items-center gap-1">
-                        <p class="text-xs text-slate-500" id="room-code">\${room.code}</p>
-                        <button onclick="copyRoomCode(this, '\${room.code}')"
+                        <p class="text-xs text-slate-500" id="room-code">${room.code}</p>
+                        <button onclick="copyRoomCode(this, '${room.code}')"
                           class="text-gray-400 hover:text-gray-600 focus:outline-none transition-colors duration-200"
                           title="Copy Room Code">
                           <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -131,12 +140,12 @@
                           </svg>
                         </button>
                       </div>
-                      <p class="text-xs text-slate-500 mt-2">Created: \${new Date(room.createdAt).toLocaleString()}</p>
+                      <p class="text-xs text-slate-500 mt-2">Created: ${new Date(room.createdAt).toLocaleString()}</p>
                     </div>
                   </div>
                 </div>
               </div>
-              \`;
+              `;
               document.getElementById('room-card-container').innerHTML = cardHtml;
             } catch (err) {
               alert('Failed to create room: ' + err.message);
