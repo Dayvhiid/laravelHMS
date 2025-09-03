@@ -51,10 +51,10 @@
             </header>
             <div class="px-40 flex flex-1 justify-center py-5">
                 <div class="layout-content-container flex flex-col w-[512px] max-w-[512px] py-5 max-w-[960px] flex-1">
-                    {{-- <div class="flex flex-wrap justify-between gap-3 p-4">
+                    <div class="flex flex-wrap justify-between gap-3 p-4">
                         <p class="text-[#121516] tracking-light text-[32px] font-bold leading-tight min-w-72">New
                             Patient</p>
-                    </div> --}}
+                    </div>
                     <h3 class="text-[#121516] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">
                         Patient Information</h3>
                     <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">

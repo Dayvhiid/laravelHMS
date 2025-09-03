@@ -41,6 +41,7 @@ use App\Http\Controllers\NewDoctorVerificationController;
 use App\Http\Controllers\OpticianController;
 use App\Http\Controllers\PatientCardController;
 use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\TeleMedController;
 
 Route::get('/Bookings', [NewValidationController::class, 'booking'])->name('NewBooking');
 
@@ -223,8 +224,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/services', [ServicesController::class,'index'])->name('services.index');
     Route::post('/services/store', [ServicesController::class,'store'])->name('services.store');
     Route::get('/services/list', [ServicesController::class,'list'])->name('services.list');
-     Route::put('/services/{drugs}/update', [ServicesController::class, 'update'])->name('services.update');
-      Route::delete('/doctors/{drugs}/destroy', [ServicesController::class, 'destroy'])->name('services.delete');
+    Route::put('/services/{drugs}/update', [ServicesController::class, 'update'])->name('services.update');
+    Route::delete('/doctors/{drugs}/destroy', [ServicesController::class, 'destroy'])->name('services.delete');
+
+
+    //Telemedicine Route
+    Route::get('/telemed', [TeleMedController::class,'index'])->name('telemed.index');
 
 
     //patient card

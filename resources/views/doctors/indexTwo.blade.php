@@ -103,6 +103,7 @@
                                 
                             </tbody>
                         </table>
+
                         <style>
                             @container (max-width:640px)
 
@@ -123,27 +124,23 @@
                             }
                         </style>
                     </div>
-                    <h2 class="text-2xl font-bold text-slate-800 mb-6">New Patient Registrations</h2>
+                    {{-- Telemedicine --}}
+                       {{-- <button
+                                class="inline-flex items-center gap-2 rounded-md bg-[#1993e5] px-4 py-2 text-xs font-semibold text-white shadow-sm hover:bg-[#137abd] focus:outline-none focus:ring-2 focus:ring-[#1993e5] focus:ring-offset-2 transition-colors duration-200">
+                                    <span class="material-icons text-sm">sms</span> <a href="{{route('sms.page', ['sms' => $appointment])}}">Send Sms</a>
+                        </button> --}}
+                        <!-- filepath: c:\laragon\www\authentication\resources\views\doctors\indexTwo.blade.php -->
+<button
+    id="create-room-btn"
+    type="button"
+    class="inline-flex items-center gap-2 rounded-md bg-[#1993e5] px-4 py-2 text-xs font-semibold text-white shadow-sm hover:bg-[#137abd] focus:outline-none focus:ring-2 focus:ring-[#1993e5] focus:ring-offset-2 transition-colors duration-200"
+    onclick="window.location.href='{{ route('telemed.index') }}'"
+>
+    <span class="material-icons text-sm">sms</span>
+    Telemedicine Module.
+</button>
 
-                    {{-- @foreach ($notifications as $notification )
-                          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div
-                            class="rounded-lg border border-gray-200 bg-white shadow-md p-6 hover:shadow-lg transition-shadow duration-200">
-                            <div class="flex items-start gap-4">
-                                <div class="size-16 rounded-full bg-center bg-no-repeat bg-cover border border-gray-200 shadow-sm flex-shrink-0"
-                                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCRH2DFNkpUiBX198iz1URgxJjwoNNy3vmppbmW84ca7CsLActnFIXeQrVmF2YLrQG4f-GYYrurmgk67GSKQMqLCJnxm_wEYBuqumkgMvGthY6aBLa9x0U1vtxols04R3EmrDfEdsKCNsPTtguYFFiuynYvtDkYCUbhN15Qj757j8vgtg6GFKOw3pf6kXMFsAv2J-BMyQyhLtCjYtYPWeuFKNecyGUCAWs3COUlKqLR1SC3QH99SVXXF68uj23dXzrXfgrHVj1bakFp");'>
-                                </div>
-                                <div class="flex-grow">
-                                    <p class="text-xs font-medium text-[#1993e5] mb-1">New Patient</p>
-                                    <h3 class="text-lg font-semibold text-slate-800 mb-1"> {{ $notification->patient_name }}  </h3>
-                                    <p class="text-xs text-slate-500">  {{ $notification->message }} </p>
-                                    <p class="text-xs text-slate-500">  {{ $notification->created_at->diffForHumans()  }}  </p>
-                                      <p class="text-xs text-slate-500">  {{ $notification->pid }} </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach --}}
+                    <h2 class="text-2xl font-bold text-slate-800 mb-6">New Patient Registrations</h2>
                    @foreach ($notifications as $notification)
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div class="rounded-lg border border-gray-200 bg-white shadow-md p-6 hover:shadow-lg transition-shadow duration-200">
