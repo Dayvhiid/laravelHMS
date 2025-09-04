@@ -13,4 +13,12 @@ class TeleMedController extends Controller
     public function list () {
         return view('telemed.list');
     }
+
+    public function join () {
+        return view('telemed.join');
+    }
+
+    public function chat () {
+        return view('telemed.chat');
+    }
 }

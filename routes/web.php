@@ -229,8 +229,11 @@ Route::middleware('auth')->group(function () {
 
 
     //Telemedicine Route
+
     Route::get('/telemed', [TeleMedController::class,'index'])->name('telemed.index');
     Route::get('/telemed/list', [TeleMedController::class,'list'])->name('telemed.list');
+    Route::get('/telemed/chat', [TeleMedController::class, 'chat'])->name('telemed.chat');
+    Route::get('telemed/join-room', [WebrtcStreamingController::class, 'join'])->name('telemed.join');
 
 
     //patient card

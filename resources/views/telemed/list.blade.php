@@ -80,15 +80,131 @@
                   const start = (page - 1) * pageSize;
                   const end = start + pageSize;
                   const pageRooms = roomsData.slice(start, end);
-                  tbody.innerHTML = pageRooms.map(room => `
+                  tbody.innerHTML = pageRooms.map((room, idx) => `
                     <tr class="border-t border-t-[#d0dee7]">
                       <td class="table-4d5b6bd6-3a3c-4230-87dd-7f88d62ca642-column-120 h-[72px] px-4 py-2 w-[400px] text-[#0e161b] text-sm font-normal leading-normal">${room.title || ''}</td>
                       <td class="table-4d5b6bd6-3a3c-4230-87dd-7f88d62ca642-column-240 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal">${room.code || ''}</td>
                       <td class="table-4d5b6bd6-3a3c-4230-87dd-7f88d62ca642-column-360 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal">${room.createdBy || ''}</td>
-                      <td class="table-4d5b6bd6-3a3c-4230-87dd-7f88d62ca642-column-480 h-[72px] px-4 py-2 w-60 text-[#4e7a97] text-sm font-bold leading-normal tracking-[0.015em]">Join</td>
+                      <td class="table-4d5b6bd6-3a3c-4230-87dd-7f88d62ca642-column-480 h-[72px] px-4 py-2 w-60 text-[#4e7a97] text-sm font-bold leading-normal tracking-[0.015em]">
+                        <button class="join-chat-btn px-3 py-1 rounded bg-[#1993e5] text-white" data-roomcode="${room.code}" data-doctor="${room.createdBy}">Join</button>
+                      </td>
                     </tr>
                   `).join('');
                   renderPagination();
+                  setTimeout(() => {
+                    document.querySelectorAll('.join-chat-btn').forEach(btn => {
+                      btn.onclick = function() {
+                        const doctorName = btn.getAttribute('data-doctor');
+                        const roomCode = btn.getAttribute('data-roomcode');
+                        // Redirect to join.blade.php with doctorName and roomCode as query params
+                        window.location.href = `/telemed/chat?doctor=${encodeURIComponent(doctorName)}&room=${encodeURIComponent(roomCode)}`;
+                      };
+                    });
+                  }, 100);
+                }
+                // Chat modal and Socket.IO logic
+                function showJoinChatModal(doctorName, roomCode) {
+                  // Create modal
+                  let modal = document.getElementById('join-chat-modal');
+                  if (!modal) {
+                    modal = document.createElement('div');
+                    modal.id = 'join-chat-modal';
+                    modal.className = 'fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50';
+                    modal.innerHTML = `
+                      <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
+                        <h2 class="text-lg font-bold mb-4">Join Telemed Chat</h2>
+                        <form id="join-chat-form">
+                          <label class="block mb-2">Doctor Name
+                            <input type="text" id="modal-doctor-name" class="w-full border rounded px-2 py-1" value="${doctorName}" required />
+                          </label>
+                          <label class="block mb-2">Room Code
+                            <input type="text" id="modal-room-code" class="w-full border rounded px-2 py-1" value="${roomCode}" required />
+                          </label>
+                          <button type="submit" class="bg-[#1993e5] text-white px-4 py-2 rounded">Join Chat</button>
+                          <button type="button" id="close-chat-modal" class="ml-2 px-4 py-2 rounded border">Cancel</button>
+                        </form>
+                        <div id="chat-status" class="mt-2 text-sm"></div>
+                        <div id="chat-room-container" class="mt-4 hidden">
+                          <div class="border rounded p-2 mb-2 h-40 overflow-y-auto" id="chat-messages"></div>
+                          <form id="chat-message-form" class="flex gap-2">
+                            <input type="text" id="chat-message-input" class="flex-1 border rounded px-2 py-1" placeholder="Type a message..." />
+                            <button type="submit" class="bg-[#1993e5] text-white px-3 py-1 rounded">Send</button>
+                          </form>
+                        </div>
+                      </div>
+                    `;
+                    document.body.appendChild(modal);
+                  } else {
+                    modal.style.display = 'flex';
+                    document.getElementById('modal-doctor-name').value = doctorName;
+                    document.getElementById('modal-room-code').value = roomCode;
+                  }
+                  document.getElementById('close-chat-modal').onclick = function() {
+                    modal.style.display = 'none';
+                  };
+                  document.getElementById('join-chat-form').onsubmit = function(e) {
+                    e.preventDefault();
+                    const name = document.getElementById('modal-doctor-name').value.trim();
+                    const code = document.getElementById('modal-room-code').value.trim();
+                    if (!name || !code) {
+                      document.getElementById('chat-status').textContent = 'Please enter both fields.';
+                      return;
+                    }
+                    joinChatRoom(name, code);
+                  };
+                }
+
+                // Socket.IO logic
+                let socket = null;
+                function joinChatRoom(name, code) {
+                  document.getElementById('chat-status').textContent = 'Connecting...';
+                  if (socket) {
+                    socket.disconnect();
+                  }
+                  // Load Socket.IO client if not loaded
+                  if (typeof io === 'undefined') {
+                    const script = document.createElement('script');
+                    script.src = 'https://cdn.socket.io/4.7.4/socket.io.min.js';
+                    script.onload = () => {
+                      connectSocket(name, code);
+                    };
+                    document.body.appendChild(script);
+                  } else {
+                    connectSocket(name, code);
+                  }
+                }
+
+                function connectSocket(name, code) {
+                  socket = io('https://hms-telemedicine-api.onrender.com/', {
+                    transports: ['websocket']
+                  });
+                  socket.on('connect', () => {
+                    document.getElementById('chat-status').textContent = 'Connected. Joining room...';
+                    socket.emit('joinRoom', { username: name, roomCode: code });
+                  });
+                  socket.on('roomJoined', (data) => {
+                    document.getElementById('chat-status').textContent = 'Joined room!';
+                    document.getElementById('chat-room-container').classList.remove('hidden');
+                  });
+                  socket.on('connect_error', () => {
+                    document.getElementById('chat-status').textContent = 'Connection error. Please try again.';
+                  });
+                  socket.on('message', (msg) => {
+                    const messagesDiv = document.getElementById('chat-messages');
+                    const el = document.createElement('div');
+                    el.textContent = msg.username ? `${msg.username}: ${msg.text}` : msg.text;
+                    messagesDiv.appendChild(el);
+                    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                  });
+                  document.getElementById('chat-message-form').onsubmit = function(e) {
+                    e.preventDefault();
+                    const input = document.getElementById('chat-message-input');
+                    const text = input.value.trim();
+                    if (text && socket) {
+                      socket.emit('chatMessage', { text });
+                      input.value = '';
+                    }
+                  };
                 }
 
                 function renderPagination() {
