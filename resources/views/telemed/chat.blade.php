@@ -104,6 +104,18 @@
         roomName.textContent = `Room: ${roomCode}`;
         // Video call and image upload variables
         let peer, localStream;
+        // Fetch previous messages before listening for new ones
+        fetch(`https://hms-telemedicine-api.onrender.com/api/messages/${roomCode}?limit=100`)
+            .then(res => res.json())
+            .then(result => {
+                if (result.data && Array.isArray(result.data)) {
+                    messagesDiv.innerHTML = '';
+                    result.data.forEach(msg => displayMessage(msg));
+                }
+            })
+            .catch(err => {
+                console.error('Failed to fetch messages:', err);
+            });
         // Join room automatically
         socket.emit('join-room', {
             roomCode: roomCode,
