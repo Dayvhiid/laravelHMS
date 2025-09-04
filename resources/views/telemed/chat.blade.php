@@ -224,12 +224,27 @@
         const remoteVideo = document.getElementById('remote-video');
         startCallBtn.addEventListener('click', async () => {
             try {
-                localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+                localStream = await navigator.mediaDevices.getUserMedia({
+                    video: { width: { ideal: 320 }, height: { ideal: 180 } },
+                    audio: true
+                });
                 localVideo.srcObject = localStream;
                 videoSection.classList.remove('hidden');
                 startCallBtn.classList.add('hidden');
                 endCallBtn.classList.remove('hidden');
-                peer = new SimplePeer({ initiator: true, trickle: false, stream: localStream });
+                peer = new SimplePeer({
+                    initiator: true,
+                    trickle: false,
+                    stream: localStream,
+                    config: {
+                        iceServers: [
+                            { urls: 'stun:stun.l.google.com:19302' },
+                            { urls: 'stun:stun1.l.google.com:19302' },
+                             { urls: 'stun:stun2.l.google.com:19302' }
+                          
+                        ]
+                    }
+                });
                 peer.on('signal', (signal) => {
                     socket.emit('signal', { roomCode: roomCode, signal });
                 });
