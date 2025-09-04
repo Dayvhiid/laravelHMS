@@ -230,6 +230,7 @@ Route::middleware('auth')->group(function () {
 
     //Telemedicine Route
     Route::get('/telemed', [TeleMedController::class,'index'])->name('telemed.index');
+    Route::get('/telemed/list', [TeleMedController::class,'list'])->name('telemed.list');
 
 
     //patient card
