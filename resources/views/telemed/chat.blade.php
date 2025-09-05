@@ -29,7 +29,7 @@
                         </svg>
                     </div>
                     <h2 class="text-[#0e161b] text-lg font-bold leading-tight tracking-[-0.015em]" id="header-title">
-                        HealthConnect</h2>
+                        HealthConnect !</h2>
                 </div>
             </header>
             <div class="px-10 flex flex-1 justify-center py-5">
