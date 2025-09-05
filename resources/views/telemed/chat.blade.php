@@ -45,11 +45,11 @@
                     <div class="flex gap-2 px-4 py-2">
                         <button id="start-call-btn"
                             class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-green-600 hover:bg-green-700 text-white text-sm font-bold leading-normal flex-1">
-                            <span class="truncate">?? Start Video Call</span>
+                            <span class="truncate"> Start Video Call</span>
                         </button>
                         <button id="end-call-btn"
                             class="hidden flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-red-600 hover:bg-red-700 text-white text-sm font-bold leading-normal flex-1">
-                            <span class="truncate">?? End Call</span>
+                            <span class="truncate"> End Call</span>
                         </button>
                     </div>
                     <div id="video-section" class="hidden px-4 py-3">
