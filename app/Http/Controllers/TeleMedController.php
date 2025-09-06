@@ -21,4 +21,7 @@ class TeleMedController extends Controller
     public function chat () {
         return view('telemed.chat');
     }
+    public function test () {
+        return view('telemed.test');
+    }
 }

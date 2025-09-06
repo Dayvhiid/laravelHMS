@@ -234,6 +234,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/telemed/list', [TeleMedController::class,'list'])->name('telemed.list');
     Route::get('/telemed/chat', [TeleMedController::class, 'chat'])->name('telemed.chat');
     Route::get('telemed/join-room', [WebrtcStreamingController::class, 'join'])->name('telemed.join');
+    Route::get('/telemed-test', [TeleMedController::class, 'test'])->name('telemed.test');//Test  Route
 
 
     //patient card
