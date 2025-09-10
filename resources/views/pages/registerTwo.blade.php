@@ -1,197 +1,179 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Patient Form</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link rel="stylesheet" as="style" onload="this.rel='stylesheet'"
         href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Public+Sans%3Awght%40400%3B500%3B700%3B900" />
-
-    <title>Stitch Design</title>
-    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
-
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 </head>
 
-<body>
-    <div class="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden"
-        style='font-family: "Public Sans", "Noto Sans", sans-serif;'>
+<body class="bg-white" style='font-family: "Public Sans", "Noto Sans", sans-serif;'>
+    <div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden">
         <div class="layout-container flex h-full grow flex-col">
+
+            <!-- Navbar -->
             <header
                 class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f1f3f4] px-10 py-3">
                 <div class="flex items-center gap-4 text-[#121516]">
-                    <div class="size-20 flex items-center justify-center rounded-full ">
-                        <img class="logo" src="/icons/logo.png">
-                        {{-- <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"> --}}
-                        {{-- <path
-                  d="M36.7273 44C33.9891 44 31.6043 39.8386 30.3636 33.69C29.123 39.8386 26.7382 44 24 44C21.2618 44 18.877 39.8386 17.6364 33.69C16.3957 39.8386 14.0109 44 11.2727 44C7.25611 44 4 35.0457 4 24C4 12.9543 7.25611 4 11.2727 4C14.0109 4 16.3957 8.16144 17.6364 14.31C18.877 8.16144 21.2618 4 24 4C26.7382 4 29.123 8.16144 30.3636 14.31C31.6043 8.16144 33.9891 4 36.7273 4C40.7439 4 44 12.9543 44 24C44 35.0457 40.7439 44 36.7273 44Z"
-                  fill="currentColor"
-                ></path> --}}
-                        </svg>
+                    <div class="size-20 flex items-center justify-center rounded-full">
+                        <img class="logo" src="/icons/logo.png" alt="logo">
                     </div>
-                    <h2 class="text-[#121516] text-lg font-bold leading-tight tracking-[-0.015em]">Register Patients
-                    </h2>
+                    <h2 class="text-[#121516] text-lg font-bold">Register Patients</h2>
                 </div>
                 <div class="flex flex-1 justify-end gap-8">
                     <div class="flex items-center gap-9">
-                        <a class="text-[#121516] text-sm font-medium leading-normal"
-                            href="{{ route('generate.show') }}">Invoice Records</a>
-                        <a class="text-[#121516] text-sm font-medium leading-normal"
-                            href="{{ route('public.records') }}">Records</a>
-                        <a class="text-[#121516] text-sm font-medium leading-normal" href="/doctors/index">Doctors
-                            Portal</a>
-                        <a class="text-[#121516] text-sm font-medium leading-normal"
-                            href="{{ route('optician.index') }}">Opticianry</a>
-                        <a class="text-[#121516] text-sm font-medium leading-normal"
-                            href="{{ route('admin.admin2') }}">Admin 2</a>
-                        <a class="text-[#121516] text-sm font-medium leading-normal"
-                            href="{{ route('image.upload') }}">Case File Upload</a>
+                        <a class="text-sm font-medium text-[#121516]" href="{{ route('generate.show') }}">Invoice</a>
+                        <a class="text-sm font-medium text-[#121516]" href="{{ route('public.records') }}">Records</a>
+                        <a class="text-sm font-medium text-[#121516]" href="/doctors/index">Doctors Portal</a>
+                        <a class="text-sm font-medium text-[#121516]" href="{{ route('optician.index') }}">Opticianry</a>
+                        <a class="text-sm font-medium text-[#121516]" href="{{ route('admin.admin2') }}">Admin 2</a>
+                        <a class="text-sm font-medium text-[#121516]" href="{{ route('image.upload') }}">Case File Upload</a>
                     </div>
-                    <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
-                        style='background-image: url("/public/icons/logo.png");'></div>
                 </div>
             </header>
-            <div class="px-40 flex flex-1 justify-center py-5">
-                <div class="layout-content-container flex flex-col w-[512px] max-w-[512px] py-5 max-w-[960px] flex-1">
-                    <div class="flex flex-wrap justify-between gap-3 p-4">
-                        <p class="text-[#121516] tracking-light text-[32px] font-bold leading-tight min-w-72">New
-                            Patient</p>
-                    </div>
-                    <h3 class="text-[#121516] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">
-                        Patient Information</h3>
-                    <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-                        <label class="flex flex-col min-w-40 flex-1">
-                            <p class="text-[#121516] text-base font-medium leading-normal pb-2">First Name</p>
-                            <input placeholder="Enter first name" name="firstname"
-                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#121516] focus:outline-0 focus:ring-0 border border-[#dde1e3] bg-white focus:border-[#dde1e3] h-14 placeholder:text-[#6a7881] p-[15px] text-base font-normal leading-normal"
-                                value="" required />
-                        </label>
-                        <label class="flex flex-col min-w-40 flex-1">
-                            <p class="text-[#121516] text-base font-medium leading-normal pb-2">Last Name</p>
-                            <input placeholder="Enter last name"
-                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#121516] focus:outline-0 focus:ring-0 border border-[#dde1e3] bg-white focus:border-[#dde1e3] h-14 placeholder:text-[#6a7881] p-[15px] text-base font-normal leading-normal"
-                                value="" name="lastname" required />
-                        </label>
-                    </div>
-                    <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-                        <label class="flex flex-col min-w-40 flex-1">
-                            <p class="text-[#121516] text-base font-medium leading-normal pb-2">Date of Birth</p>
-                            <input placeholder="MM/DD/YYYY"
-                                type="date"
-                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#121516] focus:outline-0 focus:ring-0 border border-[#dde1e3] bg-white focus:border-[#dde1e3] h-14 placeholder:text-[#6a7881] p-[15px] text-base font-normal leading-normal"
-                                value="" name="dob" required />
-                        </label>
-                        {{-- <label class="flex flex-col min-w-40 flex-1">
-                <p class="text-[#121516] text-base font-medium leading-normal pb-2">Gender</p>
-                <input
-                  placeholder="Select"
-                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#121516] focus:outline-0 focus:ring-0 border border-[#dde1e3] bg-white focus:border-[#dde1e3] h-14 placeholder:text-[#6a7881] p-[15px] text-base font-normal leading-normal"
-                  value=""
-                />
-              </label> --}}
-                        <label class="flex flex-col min-w-40 flex-1">
-                            <p class="text-[#121516] text-base font-medium leading-normal pb-2">Gender</p>
-                            <select
-                                class="form-select flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#121516] focus:outline-0 focus:ring-0 border border-[#dde1e3] bg-white focus:border-[#dde1e3] h-14 placeholder:text-[#6a7881] p-[15px] text-base font-normal leading-normal">
-                                <option value="">Select</option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                            </select>
-                        </label>
 
-                    </div>
-                    <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-                        <label class="flex flex-col min-w-40 flex-1">
-                            <p class="text-[#121516] text-base font-medium leading-normal pb-2">Phone</p>
-                            <input placeholder="Enter phone number"
-                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#121516] focus:outline-0 focus:ring-0 border border-[#dde1e3] bg-white focus:border-[#dde1e3] h-14 placeholder:text-[#6a7881] p-[15px] text-base font-normal leading-normal"
-                                value="" />
-                        </label>
-                        <label class="flex flex-col min-w-40 flex-1">
-                            <p class="text-[#121516] text-base font-medium leading-normal pb-2">Email</p>
-                            <input placeholder="Enter email address"
-                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#121516] focus:outline-0 focus:ring-0 border border-[#dde1e3] bg-white focus:border-[#dde1e3] h-14 placeholder:text-[#6a7881] p-[15px] text-base font-normal leading-normal"
-                                value="" />
-                        </label>
-                    </div>
-                    <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-                        <label class="flex flex-col min-w-40 flex-1">
-                            <p class="text-[#121516] text-base font-medium leading-normal pb-2">Address</p>
-                            <input placeholder="Enter address"
-                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#121516] focus:outline-0 focus:ring-0 border border-[#dde1e3] bg-white focus:border-[#dde1e3] h-14 placeholder:text-[#6a7881] p-[15px] text-base font-normal leading-normal"
-                                value="" />
-                        </label>
-                    </div>
-                    <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-                        <label class="flex flex-col min-w-40 flex-1">
-                            <p class="text-[#121516] text-base font-medium leading-normal pb-2">City</p>
-                            <input placeholder="Enter city"
-                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#121516] focus:outline-0 focus:ring-0 border border-[#dde1e3] bg-white focus:border-[#dde1e3] h-14 placeholder:text-[#6a7881] p-[15px] text-base font-normal leading-normal"
-                                value="" />
-                        </label>
-                        <label class="flex flex-col min-w-40 flex-1">
-                            <p class="text-[#121516] text-base font-medium leading-normal pb-2">State</p>
-                            <input placeholder="Select"
-                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#121516] focus:outline-0 focus:ring-0 border border-[#dde1e3] bg-white focus:border-[#dde1e3] h-14 placeholder:text-[#6a7881] p-[15px] text-base font-normal leading-normal"
-                                value="" />
-                        </label>
-                    </div>
-                    <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-                        <label class="flex flex-col min-w-40 flex-1">
-                            <p class="text-[#121516] text-base font-medium leading-normal pb-2">Street</p>
-                            <input placeholder="Enter street"
-                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#121516] focus:outline-0 focus:ring-0 border border-[#dde1e3] bg-white focus:border-[#dde1e3] h-14 placeholder:text-[#6a7881] p-[15px] text-base font-normal leading-normal"
-                                value="" />
-                        </label>
-                    </div>
-                    <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-                        <label class="flex flex-col min-w-40 flex-1">
-                            <p class="text-[#121516] text-base font-medium leading-normal pb-2">Occupation</p>
-                            <input placeholder="Enter occupation"
-                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#121516] focus:outline-0 focus:ring-0 border border-[#dde1e3] bg-white focus:border-[#dde1e3] h-14 placeholder:text-[#6a7881] p-[15px] text-base font-normal leading-normal"
-                                value="" />
-                        </label>
-                    </div>
-                    <h3 class="text-[#121516] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">
-                        Emergency Contact</h3>
-                    <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-                        <label class="flex flex-col min-w-40 flex-1">
-                            <p class="text-[#121516] text-base font-medium leading-normal pb-2">Full Name</p>
-                            <input placeholder="Enter full name"
-                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#121516] focus:outline-0 focus:ring-0 border border-[#dde1e3] bg-white focus:border-[#dde1e3] h-14 placeholder:text-[#6a7881] p-[15px] text-base font-normal leading-normal"
-                                value="" />
-                        </label>
-                    </div>
-                    <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-                        <label class="flex flex-col min-w-40 flex-1">
-                            <p class="text-[#121516] text-base font-medium leading-normal pb-2">Relationship</p>
-                            <input placeholder="Enter relationship"
-                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#121516] focus:outline-0 focus:ring-0 border border-[#dde1e3] bg-white focus:border-[#dde1e3] h-14 placeholder:text-[#6a7881] p-[15px] text-base font-normal leading-normal"
-                                value="" />
-                        </label>
-                        <label class="flex flex-col min-w-40 flex-1">
-                            <p class="text-[#121516] text-base font-medium leading-normal pb-2">Phone</p>
-                            <input placeholder="Enter phone number"
-                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#121516] focus:outline-0 focus:ring-0 border border-[#dde1e3] bg-white focus:border-[#dde1e3] h-14 placeholder:text-[#6a7881] p-[15px] text-base font-normal leading-normal"
-                                value="" />
-                        </label>
-                    </div>
-                    <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-                        <label class="flex flex-col min-w-40 flex-1">
-                            <p class="text-[#121516] text-base font-medium leading-normal pb-2">Email</p>
-                            <input placeholder="Enter email address"
-                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#121516] focus:outline-0 focus:ring-0 border border-[#dde1e3] bg-white focus:border-[#dde1e3] h-14 placeholder:text-[#6a7881] p-[15px] text-base font-normal leading-normal"
-                                value="" />
-                        </label>
-                    </div>
-                    <h3 class="text-[#121516] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">
-                        System Generated ID</h3>
-                    <p class="text-[#121516] text-base font-normal leading-normal pb-3 pt-1 px-4">PatientID:
-                        368/07/2025</p>
-                    <div class="flex px-4 py-3 justify-center">
-                        <button
-                            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#b2d1e5] text-[#121516] text-sm font-bold leading-normal tracking-[0.015em]">
-                            <span class="truncate">Submit</span>
-                        </button>
-                    </div>
+            <!-- Form Section -->
+            <div class="px-10 flex flex-1 justify-center py-5">
+                <div class="w-full max-w-2xl bg-white shadow-md rounded-xl p-8">
+
+                    @if(session()->has('success'))
+                        <div class="mb-4 p-3 rounded bg-green-100 text-green-800">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    @php
+                        $random_number = rand(1, 1000);
+                        $currentDate = date('m/Y');
+                        $patientID = $random_number."/".$currentDate;
+                    @endphp
+
+                    <h1 class="text-2xl font-bold text-[#121516] mb-6">New Patient</h1>
+
+                    <form method="POST" action="{{ route('pages.store') }}">
+                        @csrf
+                        @method('POST')
+
+                        <!-- First + Last Name -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">First Name</label>
+                                <input type="text" name="firstname" placeholder="Enter First Name" required
+                                    class="form-input w-full rounded-xl border border-gray-300 h-12 px-3" />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Last Name</label>
+                                <input type="text" name="lastname" placeholder="Enter Last Name" required
+                                    class="form-input w-full rounded-xl border border-gray-300 h-12 px-3" />
+                            </div>
+                        </div>
+
+                        <!-- DOB + Gender -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Date of Birth</label>
+                                <input type="date" name="dob" required
+                                    class="form-input w-full rounded-xl border border-gray-300 h-12 px-3" />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Gender</label>
+                                <select name="radio" required
+                                    class="form-select w-full rounded-xl border border-gray-300 h-12 px-3">
+                                    <option value="">Select</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Phone + Email -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Phone</label>
+                                <input type="tel" name="phone" placeholder="Enter Phone Number" required
+                                    class="form-input w-full rounded-xl border border-gray-300 h-12 px-3" />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Email</label>
+                                <input type="email" name="email" placeholder="Enter Email" required
+                                    class="form-input w-full rounded-xl border border-gray-300 h-12 px-3" />
+                            </div>
+                        </div>
+
+                        <!-- Address -->
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium mb-2">Street</label>
+                            <input type="text" name="street" placeholder="Enter your street address" required
+                                class="form-input w-full rounded-xl border border-gray-300 h-12 px-3" />
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">City</label>
+                                <input type="text" name="city" placeholder="Enter Your City" required
+                                    class="form-input w-full rounded-xl border border-gray-300 h-12 px-3" />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">State</label>
+                                <input type="text" name="state" placeholder="Enter Your State" required
+                                    class="form-input w-full rounded-xl border border-gray-300 h-12 px-3" />
+                            </div>
+                        </div>
+
+                        <!-- Occupation -->
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium mb-2">Occupation</label>
+                            <input type="text" name="occupation" placeholder="Enter your occupation" required
+                                class="form-input w-full rounded-xl border border-gray-300 h-12 px-3" />
+                        </div>
+
+                        <!-- Emergency Contact -->
+                        <h2 class="text-lg font-bold mt-6 mb-4">Emergency Contact</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Full Name</label>
+                                <input type="text" name="efn" placeholder="Enter Full Name" required
+                                    class="form-input w-full rounded-xl border border-gray-300 h-12 px-3" />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Relationship</label>
+                                <input type="text" name="erel" placeholder="Enter Relationship" required
+                                    class="form-input w-full rounded-xl border border-gray-300 h-12 px-3" />
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Phone</label>
+                                <input type="tel" name="epn" placeholder="Enter Phone Number" required
+                                    class="form-input w-full rounded-xl border border-gray-300 h-12 px-3" />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Email</label>
+                                <input type="email" name="ee" placeholder="Enter Email" required
+                                    class="form-input w-full rounded-xl border border-gray-300 h-12 px-3" />
+                            </div>
+                        </div>
+
+                        <!-- Patient ID -->
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium mb-2">Patient ID</label>
+                            <input type="text" name="pid" value="{{ $patientID }}" readonly
+                                class="form-input w-full rounded-xl border border-gray-300 h-12 px-3 bg-gray-100 cursor-not-allowed" />
+                        </div>
+
+                        <!-- Submit -->
+                        <div class="flex justify-center">
+                            <button type="submit"
+                                class="px-6 py-3 rounded-xl bg-blue-500 text-white font-bold hover:bg-blue-600">
+                                Register Patient
+                            </button>
+                        </div>
+
+                    </form>
                 </div>
             </div>
         </div>
