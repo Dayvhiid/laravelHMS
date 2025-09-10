@@ -161,7 +161,7 @@
                         <!-- Patient ID -->
                         <div class="mb-6">
                             <label class="block text-sm font-medium mb-2">Patient ID</label>
-                            <input type="text" name="pid" value="{{ $patientID }}" readonly
+                            <input type="text" name="pid" value="{{ $patientID }}" 
                                 class="form-input w-full rounded-xl border border-gray-300 h-12 px-3 bg-gray-100 cursor-not-allowed" />
                         </div>
 
