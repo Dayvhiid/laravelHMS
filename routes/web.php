@@ -176,6 +176,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/doctors/{drugs}/edit', [DrugController::class, 'edit'])->name('drugs.edit');
     Route::put('/doctors/{drugs}/update', [DrugController::class, 'update'])->name('doctors.update');
     Route::delete('/doctors/{drugs}/destroy', [DrugController::class, 'destroy'])->name('doctors.delete');
+    Route::delete('/drugs/{drugs}/delete', [DrugController::class, 'destroy'])->name('drugs.delete');
 
     //Frames
     Route::get('/frames', [FrameController::class, 'index'])->name('frame');
@@ -184,6 +185,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/frames/{frames}/edit', [FrameController::class, 'edit'])->name('frame.edit');
     Route::put('/frames/{frames}/update', [FrameController::class, 'update'])->name('frame.update');
     Route::delete('/frames/{frames}/delete', [FrameController::class, 'delete'])->name('frame.delete');
+
 
     //Lens
     Route::get('/lens', [LensController::class, 'index'])->name('lens');
