@@ -13,6 +13,8 @@ class DrugController extends Controller
     public function index(){
         return view('inventory.drug');
     }
+
+
     public function store(Request $request){
         $request->validate([
             // 'inputs.*.sn' => 'required',
@@ -29,13 +31,19 @@ class DrugController extends Controller
          return redirect(route('pages.status'))->with('success', 'Drug List updated succefully');
         // return redirect(route('doctors.list'));
     }
+
+
     public function list(){
         $drugs = Drug::paginate(9);
         return view('inventory.druglist', ['drugs' => $drugs]);
     }
+
+
     public function edit(Drug $drugs){
         return view('inventory.edit', ['drug' => $drugs]);
     }
+
+    
     // public function update(Drug $drugs, Request $request){
     //     $data = $request->validate([
     //         'name' => 'required',
