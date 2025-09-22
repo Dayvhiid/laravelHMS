@@ -166,6 +166,10 @@ class vitalsController extends Controller
         vital2::where('patient_code', $search_text)->each(function ($vital2) use (&$combinedResults) {
             $combinedResults[] = $vital2;
         });
+
+        //  if (!empty($combinedResults)) {
+        //    dd($combinedResults[1]->toArray()); // This will show all available fields
+        //    }
     
         // return view('doctors.vitalsresult', compact('combinedResults'));
         return view('doctors.vitalsresultTwo', ['combinedResults' => $combinedResults]);

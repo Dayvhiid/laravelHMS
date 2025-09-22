@@ -157,13 +157,13 @@
                       </td>
                       <td class="table-ed93db9d-8d40-4a89-8594-a3c6ef716f33-column-240 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal">{{ $combinedResult->odunaided }}</td>
                       <td class="table-ed93db9d-8d40-4a89-8594-a3c6ef716f33-column-360 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal"> {{ $combinedResult->odpinhole }} </td>
-                      <td class="table-ed93db9d-8d40-4a89-8594-a3c6ef716f33-column-480 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal"> {{ $combinedResult->odnearva }} </td>
+                      <td class="table-ed93db9d-8d40-4a89-8594-a3c6ef716f33-column-480 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal"> {{ $combinedResult->odaxis }} </td>
                     </tr>
                     <tr class="border-t border-t-[#d0dee7]">
                       <td class="table-ed93db9d-8d40-4a89-8594-a3c6ef716f33-column-120 h-[72px] px-4 py-2 w-[400px] text-[#0e161b] text-sm font-normal leading-normal">Left Eye</td>
                       <td class="table-ed93db9d-8d40-4a89-8594-a3c6ef716f33-column-240 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal"> {{  $combinedResult->osunaided }} </td>
                       <td class="table-ed93db9d-8d40-4a89-8594-a3c6ef716f33-column-360 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal"> {{ $combinedResult->ospinhole }} </td>
-                      <td class="table-ed93db9d-8d40-4a89-8594-a3c6ef716f33-column-480 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal"> Missing record from database </td>
+                      <td class="table-ed93db9d-8d40-4a89-8594-a3c6ef716f33-column-480 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal"> {{$combinedResult->osaxis}} </td>
                     </tr>
                   </tbody>
                 </table>
@@ -214,7 +214,7 @@
                       <td class="table-0ff4604b-733a-4828-be83-9f4a384d75a3-column-120 h-[72px] px-4 py-2 w-[400px] text-[#0e161b] text-sm font-normal leading-normal">Left Eye</td>
                       <td class="table-0ff4604b-733a-4828-be83-9f4a384d75a3-column-240 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal"> {{ $combinedResult->lossph }}</td>
                       <td class="table-0ff4604b-733a-4828-be83-9f4a384d75a3-column-360 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal"> {{ $combinedResult->loscyl }} </td>
-                      <td class="table-0ff4604b-733a-4828-be83-9f4a384d75a3-column-480 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal"> {{ $combinedResult->loaxis }} </td>
+                      <td class="table-0ff4604b-733a-4828-be83-9f4a384d75a3-column-480 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal"> {{ $combinedResult->losaxis }} </td>
                       <td class="table-0ff4604b-733a-4828-be83-9f4a384d75a3-column-600 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal"> {{ $combinedResult->losva }} </td>
                    
                     </tr>
@@ -251,13 +251,13 @@
                       <td class="table-3e1aa050-7954-44d8-94a8-b2590c05fc7d-column-120 h-[72px] px-4 py-2 w-[400px] text-[#0e161b] text-sm font-normal leading-normal">
                         Right Eye
                       </td>
-                      <td class="table-3e1aa050-7954-44d8-94a8-b2590c05fc7d-column-240 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal">{{ $combinedResult->arodsph }}</td>
+                      <td class="table-3e1aa050-7954-44d8-94a8-b2590c05fc7d-column-240 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal">{{ $combinedResult->arodsphere }}</td>
                       <td class="table-3e1aa050-7954-44d8-94a8-b2590c05fc7d-column-360 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal"> {{ $combinedResult->arodcyl }} </td>
                       <td class="table-3e1aa050-7954-44d8-94a8-b2590c05fc7d-column-480 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal"> {{ $combinedResult->arodaxis }} </td>
                     </tr>
                     <tr class="border-t border-t-[#d0dee7]">
                       <td class="table-3e1aa050-7954-44d8-94a8-b2590c05fc7d-column-120 h-[72px] px-4 py-2 w-[400px] text-[#0e161b] text-sm font-normal leading-normal">Left Eye</td>
-                      <td class="table-3e1aa050-7954-44d8-94a8-b2590c05fc7d-column-240 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal">{{ $combinedResult->arossph }}</td>
+                      <td class="table-3e1aa050-7954-44d8-94a8-b2590c05fc7d-column-240 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal">{{ $combinedResult->arossphere }}</td>
                       <td class="table-3e1aa050-7954-44d8-94a8-b2590c05fc7d-column-360 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal"> {{ $combinedResult->aroscyl }} </td>
                       <td class="table-3e1aa050-7954-44d8-94a8-b2590c05fc7d-column-480 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal"> {{ $combinedResult->arosaxis}} </td>
                     </tr>
@@ -344,7 +344,7 @@
                       <td class="table-ae47780c-e688-4c02-9f3e-0f37f1371680-column-120 h-[72px] px-4 py-2 w-[400px] text-[#0e161b] text-sm font-normal leading-normal">
                         Right Eye
                       </td>
-                      <td class="table-ae47780c-e688-4c02-9f3e-0f37f1371680-column-240 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal">{{ $combinedResult->srodsph }} </td>
+                      <td class="table-ae47780c-e688-4c02-9f3e-0f37f1371680-column-240 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal">{{ $combinedResult->srodsphere }} </td>
                       <td class="table-ae47780c-e688-4c02-9f3e-0f37f1371680-column-360 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal">{{ $combinedResult->srodcyl }}</td>
                       <td class="table-ae47780c-e688-4c02-9f3e-0f37f1371680-column-480 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal"> {{ $combinedResult->srodaxis}} </td>
                       <td class="table-ae47780c-e688-4c02-9f3e-0f37f1371680-column-600 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal"> {{ $combinedResult->srodva }}  </td>
@@ -353,12 +353,12 @@
                     </tr>
                     <tr class="border-t border-t-[#d0dee7]">
                       <td class="table-ae47780c-e688-4c02-9f3e-0f37f1371680-column-120 h-[72px] px-4 py-2 w-[400px] text-[#0e161b] text-sm font-normal leading-normal">Left Eye</td>
-                      <td class="table-ae47780c-e688-4c02-9f3e-0f37f1371680-column-240 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal">{{ $combinedResult->srossph }}</td>
-                      <td class="table-ae47780c-e688-4c02-9f3e-0f37f1371680-column-360 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal">{{ $combinedResult->sroscyl }}</td>
-                      <td class="table-ae47780c-e688-4c02-9f3e-0f37f1371680-column-480 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal">{{ $combinedResult->srosaxis }}</td>
-                      <td class="table-ae47780c-e688-4c02-9f3e-0f37f1371680-column-600 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal">{{ $combinedResult->srosva }}</td>
-                       <td class="table-ae47780c-e688-4c02-9f3e-0f37f1371680-column-600 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal">{{ $combinedResult->srosadd }}</td>
-                        <td class="table-ae47780c-e688-4c02-9f3e-0f37f1371680-column-600 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal">{{ $combinedResult->srosnva }}</td>
+                      <td class="table-ae47780c-e688-4c02-9f3e-0f37f1371680-column-240 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal">{{ $combinedResults[1]->srosphere }}</td>
+                      <td class="table-ae47780c-e688-4c02-9f3e-0f37f1371680-column-360 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal">{{ $combinedResults[1]->sroscyl }}</td>
+                      <td class="table-ae47780c-e688-4c02-9f3e-0f37f1371680-column-480 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal">{{ $combinedResults[1]->srosaxis }}</td>
+                      <td class="table-ae47780c-e688-4c02-9f3e-0f37f1371680-column-600 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal">{{ $combinedResults[1]->srosva }}</td>
+                       <td class="table-ae47780c-e688-4c02-9f3e-0f37f1371680-column-600 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal">{{ $combinedResults[1]->srosadd }}</td>
+                        <td class="table-ae47780c-e688-4c02-9f3e-0f37f1371680-column-600 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal">{{ $combinedResults[1]->srosnva }}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -412,12 +412,12 @@
                     </tr>
                     <tr class="border-t border-t-[#d0dee7]">
                       <td class="table-ae47780c-e688-4c02-9f3e-0f37f1371680-column-120 h-[72px] px-4 py-2 w-[400px] text-[#0e161b] text-sm font-normal leading-normal">Left Eye</td>
-                      <td class="table-ae47780c-e688-4c02-9f3e-0f37f1371680-column-240 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal">{{ $combinedResult->fossph }}</td>
-                      <td class="table-ae47780c-e688-4c02-9f3e-0f37f1371680-column-360 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal">{{ $combinedResult->foscyl }}</td>
-                      <td class="table-ae47780c-e688-4c02-9f3e-0f37f1371680-column-480 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal">{{ $combinedResult->fosaxis }}</td>
-                      <td class="table-ae47780c-e688-4c02-9f3e-0f37f1371680-column-600 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal">{{ $combinedResult->fosva }}</td>
-                       <td class="table-ae47780c-e688-4c02-9f3e-0f37f1371680-column-600 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal">{{ $combinedResult->fosadd }}</td>
-                        <td class="table-ae47780c-e688-4c02-9f3e-0f37f1371680-column-600 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal">{{ $combinedResult->fodnva}}</td>
+                      <td class="table-ae47780c-e688-4c02-9f3e-0f37f1371680-column-240 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal">{{ $combinedResults[1]->fossph }}</td>
+                      <td class="table-ae47780c-e688-4c02-9f3e-0f37f1371680-column-360 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal">{{ $combinedResults[1]->foscyl }}</td>
+                      <td class="table-ae47780c-e688-4c02-9f3e-0f37f1371680-column-480 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal">{{ $combinedResults[1]->fosaxis }}</td>
+                      <td class="table-ae47780c-e688-4c02-9f3e-0f37f1371680-column-600 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal">{{ $combinedResults[1]->fosva }}</td>
+                       <td class="table-ae47780c-e688-4c02-9f3e-0f37f1371680-column-600 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal">{{ $combinedResults[1]->fosadd }}</td>
+                        <td class="table-ae47780c-e688-4c02-9f3e-0f37f1371680-column-600 h-[72px] px-4 py-2 w-[400px] text-[#4e7a97] text-sm font-normal leading-normal">{{ $combinedResults[1]->fosnva}}</td>
                     </tr>
                   </tbody>
                 </table>
