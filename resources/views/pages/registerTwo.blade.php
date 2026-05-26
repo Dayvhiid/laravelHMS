@@ -32,6 +32,7 @@
                         <a class="text-sm font-medium text-[#121516]" href="{{ route('optician.index') }}">Opticianry</a>
                         <a class="text-sm font-medium text-[#121516]" href="{{ route('admin.admin2') }}">Admin 2</a>
                         <a class="text-sm font-medium text-[#121516]" href="{{ route('image.upload') }}">Case File Upload</a>
+                                                <a class="text-sm font-medium text-[#121516]" href="/images/search">View Case File</a>
                     </div>
                 </div>
             </header>
