@@ -20,66 +20,19 @@
           <div class="layout-content-container flex flex-col w-80">
             <div class="flex h-full min-h-[700px] flex-col justify-between bg-slate-50 p-4">
               <div class="flex flex-col gap-4">
-                <h1 class="text-[#0e161b] text-base font-medium leading-normal">MediCare Solutions</h1>
-                <div class="flex flex-col gap-2">
-                  <div class="flex items-center gap-3 px-3 py-2">
-                    <div class="text-[#0e161b]" data-icon="House" data-size="24px" data-weight="regular">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                        <path
-                          d="M218.83,103.77l-80-75.48a1.14,1.14,0,0,1-.11-.11,16,16,0,0,0-21.53,0l-.11.11L37.17,103.77A16,16,0,0,0,32,115.55V208a16,16,0,0,0,16,16H96a16,16,0,0,0,16-16V160h32v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V115.55A16,16,0,0,0,218.83,103.77ZM208,208H160V160a16,16,0,0,0-16-16H112a16,16,0,0,0-16,16v48H48V115.55l.11-.1L128,40l79.9,75.43.11.1Z"
-                        ></path>
-                      </svg>
-                    </div>
-                    <p class="text-[#0e161b] text-sm font-medium leading-normal">Dashboard</p>
-                  </div>
-                  <div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-[#e7eef3]">
-                    <div class="text-[#0e161b]" data-icon="Users" data-size="24px" data-weight="fill">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                        <path
-                          d="M164.47,195.63a8,8,0,0,1-6.7,12.37H10.23a8,8,0,0,1-6.7-12.37,95.83,95.83,0,0,1,47.22-37.71,60,60,0,1,1,66.5,0A95.83,95.83,0,0,1,164.47,195.63Zm87.91-.15a95.87,95.87,0,0,0-47.13-37.56A60,60,0,0,0,144.7,54.59a4,4,0,0,0-1.33,6A75.83,75.83,0,0,1,147,150.53a4,4,0,0,0,1.07,5.53,112.32,112.32,0,0,1,29.85,30.83,23.92,23.92,0,0,1,3.65,16.47,4,4,0,0,0,3.95,4.64h60.3a8,8,0,0,0,7.73-5.93A8.22,8.22,0,0,0,252.38,195.48Z"
-                        ></path>
-                      </svg>
-                    </div>
-                    <p class="text-[#0e161b] text-sm font-medium leading-normal">Patients</p>
-                  </div>
-                  <div class="flex items-center gap-3 px-3 py-2">
-                    <div class="text-[#0e161b]" data-icon="Calendar" data-size="24px" data-weight="regular">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                        <path
-                          d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-96-88v64a8,8,0,0,1-16,0V132.94l-4.42,2.22a8,8,0,0,1-7.16-14.32l16-8A8,8,0,0,1,112,120Zm59.16,30.45L152,176h16a8,8,0,0,1,0,16H136a8,8,0,0,1-6.4-12.8l28.78-38.37A8,8,0,1,0,145.07,132a8,8,0,1,1-13.85-8A24,24,0,0,1,176,136,23.76,23.76,0,0,1,171.16,150.45Z"
-                        ></path>
-                      </svg>
-                    </div>
-                    <p class="text-[#0e161b] text-sm font-medium leading-normal">Appointments</p>
-                  </div>
-                  <div class="flex items-center gap-3 px-3 py-2">
-                    <div class="text-[#0e161b]" data-icon="Buildings" data-size="24px" data-weight="regular">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                        <path
-                          d="M240,208H224V96a16,16,0,0,0-16-16H144V32a16,16,0,0,0-24.88-13.32L39.12,72A16,16,0,0,0,32,85.34V208H16a8,8,0,0,0,0,16H240a8,8,0,0,0,0-16ZM208,96V208H144V96ZM48,85.34,128,32V208H48ZM112,112v16a8,8,0,0,1-16,0V112a8,8,0,1,1,16,0Zm-32,0v16a8,8,0,0,1-16,0V112a8,8,0,1,1,16,0Zm0,56v16a8,8,0,0,1-16,0V168a8,8,0,0,1,16,0Zm32,0v16a8,8,0,0,1-16,0V168a8,8,0,0,1,16,0Z"
-                        ></path>
-                      </svg>
-                    </div>
-                    <p class="text-[#0e161b] text-sm font-medium leading-normal">Departments</p>
-                  </div>
-                  <div class="flex items-center gap-3 px-3 py-2">
-                    <div class="text-[#0e161b]" data-icon="UsersThree" data-size="24px" data-weight="regular">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                        <path
-                          d="M244.8,150.4a8,8,0,0,1-11.2-1.6A51.6,51.6,0,0,0,192,128a8,8,0,0,1-7.37-4.89,8,8,0,0,1,0-6.22A8,8,0,0,1,192,112a24,24,0,1,0-23.24-30,8,8,0,1,1-15.5-4A40,40,0,1,1,219,117.51a67.94,67.94,0,0,1,27.43,21.68A8,8,0,0,1,244.8,150.4ZM190.92,212a8,8,0,1,1-13.84,8,57,57,0,0,0-98.16,0,8,8,0,1,1-13.84-8,72.06,72.06,0,0,1,33.74-29.92,48,48,0,1,1,58.36,0A72.06,72.06,0,0,1,190.92,212ZM128,176a32,32,0,1,0-32-32A32,32,0,0,0,128,176ZM72,120a8,8,0,0,0-8-8A24,24,0,1,1,87.24,82a8,8,0,1,0,15.5-4A40,40,0,1,0,37,117.51,67.94,67.94,0,0,0,9.6,139.19a8,8,0,1,0,12.8,9.61A51.6,51.6,0,0,1,64,128,8,8,0,0,0,72,120Z"
-                        ></path>
-                      </svg>
-                    </div>
-                    <p class="text-[#0e161b] text-sm font-medium leading-normal">Staff</p>
-                  </div>
-                </div>
-              </div>
-              <div class="flex flex-col gap-4">
-                <button
+                <a href="{{ route('patient.edit', $user->id) }}"
                   class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#1993e5] text-slate-50 text-sm font-bold leading-normal tracking-[0.015em]"
                 >
                   <span class="truncate">Update Details</span>
-                </button>
+                </a>
+                <form method="POST" action="{{ route('patient.checkin', $user->id) }}">
+                  @csrf
+                  <button type="submit"
+                    class="flex w-full min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#16a34a] text-slate-50 text-sm font-bold leading-normal tracking-[0.015em]"
+                  >
+                    <span class="truncate">Check In (Returning Patient)</span>
+                  </button>
+                </form>
                 <div class="flex flex-col gap-1">
                   <div class="flex items-center gap-3 px-3 py-2">
                     <div class="text-[#0e161b]" data-icon="Gear" data-size="24px" data-weight="regular">
@@ -112,6 +65,12 @@
                 <p class="text-[#4e7a97] text-sm font-normal leading-normal">View and manage patient information</p>
               </div>
             </div>
+            @if (session('success'))
+              <div class="mx-4 rounded-lg bg-green-100 p-3 text-sm text-green-800">{{ session('success') }}</div>
+            @endif
+            @if (session('info'))
+              <div class="mx-4 rounded-lg bg-amber-100 p-3 text-sm text-amber-800">{{ session('info') }}</div>
+            @endif
             <div class="flex p-4 @container">
               <div class="flex w-full flex-col gap-4 @[520px]:flex-row @[520px]:justify-between @[520px]:items-center">
                 <div class="flex gap-4">
@@ -192,6 +151,39 @@
                 <p class="text-[#4e7a97] text-sm font-normal leading-normal">Last Visit</p>
                 <p class="text-[#0e161b] text-sm font-normal leading-normal">  {{ $user->datee }} </p>
               </div>
+            </div>
+            <h2 class="text-[#0e161b] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Medical Records</h2>
+            <div class="p-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+              @foreach ([
+                ['label' => 'Vitals', 'count' => $medicalRecords['vitalsCount'], 'latest' => $medicalRecords['latestVital'], 'route' => 'vitals.get', 'button' => 'View Vitals', 'empty' => 'No vitals recorded',
+                 'icon' => 'M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z'],
+                ['label' => 'Treatment Plans', 'count' => $medicalRecords['treatmentsCount'], 'latest' => $medicalRecords['latestTreatment'], 'route' => 'search.get', 'button' => 'View Treatment Plan', 'empty' => 'No treatment plans recorded',
+                 'icon' => 'M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z'],
+              ] as $record)
+                <div class="flex flex-col gap-3 rounded-lg border border-[#d0dee7] bg-slate-50 p-4">
+                  <div class="flex items-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 flex-shrink-0 text-[#1993e5]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="{{ $record['icon'] }}" />
+                    </svg>
+                    <div>
+                      <p class="text-[#0e161b] text-base font-bold leading-normal">{{ $record['label'] }} ({{ $record['count'] }})</p>
+                      <p class="text-[#4e7a97] text-sm font-normal leading-normal">
+                        @if ($record['latest'])
+                          Latest: {{ \Carbon\Carbon::parse($record['latest'])->format('F j, Y') }}
+                        @else
+                          {{ $record['empty'] }}
+                        @endif
+                      </p>
+                    </div>
+                  </div>
+                  @if ($record['count'] > 0)
+                    <a href="{{ route($record['route'], ['query' => $user->patient_id]) }}"
+                      class="flex items-center justify-center rounded-lg h-10 px-4 bg-[#1993e5] text-slate-50 text-sm font-bold leading-normal tracking-[0.015em]">
+                      {{ $record['button'] }}
+                    </a>
+                  @endif
+                </div>
+              @endforeach
             </div>
             {{-- <h2 class="text-[#0e161b] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Recent Appointments</h2>
             <div class="px-4 py-3 @container">

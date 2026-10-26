@@ -131,6 +131,9 @@
                                             <td
                                                 class="table-01f350db-fc4a-45fd-98af-7eb5564daaf5-column-960 h-[72px] px-4 py-2 w-[400px] text-[#677583] text-sm font-normal leading-normal">
                                                 {{ $treatment->rtc }} </td>
+                                            <td
+                                                class="table-01f350db-fc4a-45fd-98af-7eb5564daaf5-column-1080 h-[72px] px-4 py-2 w-[400px] text-[#677583] text-sm font-normal leading-normal">
+                                                {{ $treatment->remark }} </td>
                                         </tr>
                                     @endforeach
 
@@ -356,6 +359,14 @@
                       <td class="table-01f350db-fc4a-45fd-98af-7eb5564daaf5-column-720 h-[72px] px-4 py-2 w-[400px] text-[#677583] text-sm font-normal leading-normal"> {{ $treatment->oc }} </td>
                       <td class="table-01f350db-fc4a-45fd-98af-7eb5564daaf5-column-840 h-[72px] px-4 py-2 w-[400px] text-[#677583] text-sm font-normal leading-normal"> {{ $treatment->sur }} </td>
                       <td class="table-01f350db-fc4a-45fd-98af-7eb5564daaf5-column-960 h-[72px] px-4 py-2 w-[400px] text-[#677583] text-sm font-normal leading-normal"> {{ $treatment->rtc }} </td> --}}
+                                    </tr>
+                                    <tr>
+                                        <td colspan="6" class="px-4 pb-4">
+                                            <div class="rounded-lg border border-[#dde0e4] bg-[#f8f9fa] p-4">
+                                                <p class="text-[#121417] text-sm font-medium leading-normal pb-2">Prescription</p>
+                                                <p class="text-[#677583] text-sm font-normal leading-normal whitespace-pre-line">{{ trim($treatment->prescription ?? '') !== '' ? trim($treatment->prescription) : 'N/A' }}</p>
+                                            </div>
+                                        </td>
                                     </tr>
                                 @endforeach
 

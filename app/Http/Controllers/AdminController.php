@@ -145,66 +145,157 @@ public function staff(){
 
 
 public function inventoryAnalytics(){
-    $threshold = 10; // Quantity threshold for low stock
+    $threshold = max((int) request('threshold', 10), 1);
 
-    // Summary Data
     $totalDrugs = Drug::count();
     $totalFrames = Frame::count();
     $totalLenses = Lens::count();
     $total = $totalDrugs + $totalFrames + $totalLenses;
 
-    $valueDrugs = Drug::sum(DB::raw('price * quantity'));
-    $valueFrames = Frame::sum(DB::raw('price * quantity'));
-    $valueLenses = Lens::sum(DB::raw('price * quantity'));
+    $valueDrugs = (float) Drug::sum(DB::raw('price * quantity'));
+    $valueFrames = (float) Frame::sum(DB::raw('price * quantity'));
+    $valueLenses = (float) Lens::sum(DB::raw('price * quantity'));
     $totalValue = $valueDrugs + $valueFrames + $valueLenses;
 
-    $lowStockDrugs = Drug::where('quantity', '<', $threshold)->count();
-    $lowStockFrames = Frame::where('quantity', '<', $threshold)->count();
-    $lowStockLenses = Lens::where('quantity', '<', $threshold)->count();
+    $toLowStockPayload = function ($items, string $type) use ($threshold) {
+        return $items->map(function ($item) use ($type, $threshold) {
+            $quantity = (int) ($item->quantity ?? 0);
+            $price = (float) ($item->price ?? 0);
+            $criticalCutoff = (int) ceil($threshold / 2);
+            $severity = $quantity <= $criticalCutoff ? 'critical' : 'warning';
+            $reorderQty = max($threshold - $quantity, 0);
+
+            return [
+                'type' => $type,
+                'sn' => $item->sn,
+                'name' => $item->name,
+                'special_code' => $item->special_code,
+                'quantity' => $quantity,
+                'price' => $price,
+                'value' => $quantity * $price,
+                'reorder_qty' => $reorderQty,
+                'severity' => $severity,
+            ];
+        });
+    };
+
+    $lowStockDrugsItems = Drug::where('quantity', '<', $threshold)
+        ->select('sn', 'name', 'special_code', 'quantity', 'price')
+        ->get();
+    $lowStockFramesItems = Frame::where('quantity', '<', $threshold)
+        ->select('sn', 'name', 'special_code', 'quantity', 'price')
+        ->get();
+    $lowStockLensesItems = Lens::where('quantity', '<', $threshold)
+        ->select('sn', 'name', 'special_code', 'quantity', 'price')
+        ->get();
+
+    $lowStockDrugs = $lowStockDrugsItems->count();
+    $lowStockFrames = $lowStockFramesItems->count();
+    $lowStockLenses = $lowStockLensesItems->count();
     $lowStockTotal = $lowStockDrugs + $lowStockFrames + $lowStockLenses;
 
+    $lowStockItems = collect()
+        ->merge($toLowStockPayload($lowStockDrugsItems, 'Drug'))
+        ->merge($toLowStockPayload($lowStockFramesItems, 'Frame'))
+        ->merge($toLowStockPayload($lowStockLensesItems, 'Lens'))
+        ->sortBy('quantity')
+        ->values();
 
+    $startDate = Carbon::now()->subDays(29)->startOfDay();
+    $endDate = Carbon::now()->endOfDay();
+
+    $movements = Inventory::whereDate('date', '>=', $startDate->toDateString())
+        ->whereDate('date', '<=', $endDate->toDateString())
+        ->get(['date', 'name', 'patient_code', 'booklet_no', 'qty_in', 'qty_out', 'balance', 'new_stock']);
+
+    $totalInbound = 0;
+    $totalOutbound = 0;
+    $restockEntries = 0;
+
+    $dailyMovementMap = [];
+    for ($i = 29; $i >= 0; $i--) {
+        $dateKey = Carbon::now()->subDays($i)->toDateString();
+        $dailyMovementMap[$dateKey] = [
+            'in' => 0,
+            'out' => 0,
+        ];
+    }
+
+    foreach ($movements as $movement) {
+        $dateKey = Carbon::parse($movement->date)->toDateString();
+        $inQty = (int) ($movement->qty_in ?? 0);
+        $outQty = (int) ($movement->qty_out ?? 0);
+
+        $totalInbound += $inQty;
+        $totalOutbound += $outQty;
+
+        if ((int) ($movement->new_stock ?? 0) > 0) {
+            $restockEntries++;
+        }
+
+        if (array_key_exists($dateKey, $dailyMovementMap)) {
+            $dailyMovementMap[$dateKey]['in'] += $inQty;
+            $dailyMovementMap[$dateKey]['out'] += $outQty;
+        }
+    }
 
     $dateLabels = [];
-    $inventoryValues = [];
+    $netMovementData = [];
+    $inboundData = [];
+    $outboundData = [];
+    foreach ($dailyMovementMap as $dateKey => $movementData) {
+        $dateLabels[] = Carbon::parse($dateKey)->format('M d');
+        $inboundData[] = $movementData['in'];
+        $outboundData[] = $movementData['out'];
+        $netMovementData[] = $movementData['in'] - $movementData['out'];
+    }
 
-    // for ($i = 30; $i >= 0; $i -= 5) {
-    //     $date = Carbon::now()->subDays($i)->format('M d');
-    //     $value = rand(20000, 40000); // Fake data; replace with real logic from DB
+    $recentMovements = Inventory::orderByDesc('date')
+        ->limit(8)
+        ->get(['date', 'name', 'patient_code', 'booklet_no', 'qty_in', 'qty_out', 'balance'])
+        ->map(function ($row) {
+            return [
+                'date' => Carbon::parse($row->date)->format('Y-m-d'),
+                'name' => $row->name,
+                'patient_code' => $row->patient_code,
+                'booklet_no' => $row->booklet_no,
+                'qty_in' => (int) ($row->qty_in ?? 0),
+                'qty_out' => (int) ($row->qty_out ?? 0),
+                'balance' => (int) ($row->balance ?? 0),
+            ];
+        })->values();
 
-    //    $record = Inventory::whereDate('date', $date)->first();
+    $topConsumed = [];
+    $recentInvoices = Invo::where('created_at', '>=', $startDate)->get(['name', 'qty']);
+    foreach ($recentInvoices as $invoice) {
+        $names = is_array($invoice->name) ? $invoice->name : json_decode((string) $invoice->name, true);
+        $qtys = is_array($invoice->qty) ? $invoice->qty : json_decode((string) $invoice->qty, true);
 
-    // // If record found, get its value, otherwise 0 or null
-    // $value = $record ? $record->value : 0;
+        if (!is_array($names) || !is_array($qtys)) {
+            $names = array_filter(array_map('trim', explode(',', (string) $invoice->name)));
+            $qtys = array_filter(array_map('trim', explode(',', (string) $invoice->qty)));
+        }
 
+        foreach ($names as $idx => $itemName) {
+            $qty = (int) ($qtys[$idx] ?? 0);
+            if ($qty < 1) {
+                continue;
+            }
+            if (!isset($topConsumed[$itemName])) {
+                $topConsumed[$itemName] = 0;
+            }
+            $topConsumed[$itemName] += $qty;
+        }
+    }
 
-    //     $dateLabels[] = $date;
-    //     $inventoryValues[] = $value;
-    // }
-
-
-    
-
-for ($i = 30; $i >= 0; $i--) {
-    $date = Carbon::now()->subDays($i)->toDateString(); // e.g. 2025-04-28
-
-    // Sum price * quantity for all items added on or before this date (cumulative)
-    $drugValue = Drug::whereDate('created_at', '<=', $date)
-        ->sum(DB::raw('price * quantity'));
-
-    $frameValue = Frame::whereDate('created_at', '<=', $date)
-        ->sum(DB::raw('price * quantity'));
-
-    $lensValue = Lens::whereDate('created_at', '<=', $date)
-        ->sum(DB::raw('price * quantity'));
-
-    $totalValue = $drugValue + $frameValue + $lensValue;
-
-    $dateLabels[] = Carbon::parse($date)->format('M d');
-    $inventoryValues[] = $totalValue;
-}
-
-
+    arsort($topConsumed);
+    $topConsumedRows = collect(array_slice($topConsumed, 0, 7, true))
+        ->map(function ($qty, $name) {
+            return [
+                'name' => $name,
+                'qty' => (int) $qty,
+            ];
+        })->values();
 
     return view('admin.inventoryanalytics',[
         'summary' => [
@@ -227,18 +318,23 @@ for ($i = 30; $i >= 0; $i--) {
                 'total' => $lowStockTotal,
             ],
         ],
-        'tableData' => [
-            'drugs' => Drug::all(),
-            'frames' => Frame::all(),
-            'lenses' => Lens::all(),
+        'kpis' => [
+            'inbound_units' => $totalInbound,
+            'outbound_units' => $totalOutbound,
+            'net_units' => $totalInbound - $totalOutbound,
+            'restock_entries' => $restockEntries,
+            'critical_low_stock' => $lowStockItems->where('severity', 'critical')->count(),
         ],
         'threshold' => $threshold,
-         'chart' => [
+        'chart' => [
             'labels' => $dateLabels,
-            'data' => $inventoryValues,
+            'net' => $netMovementData,
+            'inbound' => $inboundData,
+            'outbound' => $outboundData,
         ],
-         'labels' => $dateLabels,
-         'data' => $inventoryValues,
+        'lowStockItems' => $lowStockItems,
+        'topConsumedRows' => $topConsumedRows,
+        'recentMovements' => $recentMovements,
     ]);
 }
 

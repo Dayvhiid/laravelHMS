@@ -171,9 +171,21 @@
                       <td class="table-eac3796d-5e32-4c1a-85a7-eac564274ab1-column-240 h-[72px] px-4 py-2 w-[400px] text-[#60758a] text-sm font-normal leading-normal">  {{ $user->patient_id }} </td>
                       <td class="table-eac3796d-5e32-4c1a-85a7-eac564274ab1-column-360 h-[72px] px-4 py-2 w-[400px] text-[#60758a] text-sm font-normal leading-normal"> {{ $user->gender}}  </td>
                       <td class="table-eac3796d-5e32-4c1a-85a7-eac564274ab1-column-480 h-[72px] px-4 py-2 w-60 text-[#60758a] text-sm font-bold leading-normal tracking-[0.015em]">
-                            <a href="{{ route('patient.show', $user->id) }}" class="text-blue-600 hover:underline">
-                                            View Patient Card
-                              </a>
+                            <a href="{{ route('patient.show', $user->id) }}" class="inline-flex items-center gap-1.5 text-blue-600 hover:underline">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Zm6-10.125a1.875 1.875 0 1 1-3.75 0 1.875 1.875 0 0 1 3.75 0Zm1.294 6.336a6.721 6.721 0 0 1-3.17.789 6.721 6.721 0 0 1-3.168-.789 3.376 3.376 0 0 1 6.338 0Z" />
+                              </svg>
+                              View Patient Card
+                            </a>
+                            <form method="POST" action="{{ route('patient.checkin', $user->id) }}" class="mt-1">
+                              @csrf
+                              <button type="submit" class="inline-flex items-center gap-1.5 text-green-700 hover:underline">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                </svg>
+                                Check In
+                              </button>
+                            </form>
                       </td>
                     </tr>
                     @endforeach

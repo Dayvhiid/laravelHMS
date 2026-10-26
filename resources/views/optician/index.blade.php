@@ -41,7 +41,7 @@
                 </nav>
             </header>
             <main class="flex-1 bg-slate-50 px-10 py-8">
-                    <h2 class="text-2xl font-bold text-slate-800 mb-6">New Patient Registrations</h2>
+                    <h2 class="text-2xl font-bold text-slate-800 mb-6">Patient Notifications</h2>
                    @foreach ($notifications as $notification)
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <div class="rounded-lg border border-gray-200 bg-white shadow-md p-6 hover:shadow-lg transition-shadow duration-200">
@@ -50,7 +50,11 @@
                                     style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCRH2DFNkpUiBX198iz1URgxJjwoNNy3vmppbmW84ca7CsLActnFIXeQrVmF2YLrQG4f-GYYrurmgk67GSKQMqLCJnxm_wEYBuqumkgMvGthY6aBLa9x0U1vtxols04R3EmrDfEdsKCNsPTtguYFFiuynYvtDkYCUbhN15Qj757j8vgtg6GFKOw3pf6kXMFsAv2J-BMyQyhLtCjYtYPWeuFKNecyGUCAWs3COUlKqLR1SC3QH99SVXXF68uj23dXzrXfgrHVj1bakFp");'>
                                 </div>
                                 <div class="flex-grow">
+                                    @if ($notification->message === \App\Models\Notification::RETURNING_PATIENT)
+                                    <p class="text-xs font-medium text-[#16a34a] mb-1">Returning Patient</p>
+                                    @else
                                     <p class="text-xs font-medium text-[#1993e5] mb-1">New Patient</p>
+                                    @endif
                                     <h3 class="text-lg font-semibold text-slate-800 mb-1">{{ $notification->patient_name }}</h3>
                                     <p class="text-xs text-slate-500">{{ $notification->message }}</p>
                                     <p class="text-xs text-slate-500">{{ $notification->created_at->diffForHumans() }}</p>

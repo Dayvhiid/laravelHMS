@@ -67,9 +67,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/createpatients/{record}/delete',[PagesController::class, 'destroy'])->name('pages.delete');
 
    
-    Route::middleware('doctor')->group(function () {
-      Route::get('/doctors/index', [DoctorsController::class, 'testShow'])->name('doctors.index');
-    });
+    Route::get('/doctors/index', [DoctorsController::class, 'testShow'])->name('doctors.index');
 
     Route::get('doctors/vitals', [DoctorsController::class, 'vitals'])->name('doctors.vitals');
     Route::post('/doctors/vitals/post', [DoctorsController::class, 'vitalSave'])->name('vitals.post');
@@ -241,6 +239,10 @@ Route::middleware('auth')->group(function () {
 
     //patient card
     Route::get('/patient-cards/{id}', [PatientCardController::class,'show'])->name('patient.show');
+    Route::get('/patient-cards/{id}/edit', [PatientCardController::class,'edit'])->name('patient.edit');
+    Route::put('/patient-cards/{id}', [PatientCardController::class,'update'])->name('patient.update');
+    Route::get('/patient/pid/{pid}', [PatientCardController::class,'redirectByPid'])->name('patient.bypid')->where('pid', '.*');
+    Route::post('/patients/{id}/check-in', [PatientCardController::class,'checkIn'])->name('patient.checkin');
 }); //Closing Block
 
 Route::get('/lensesImport', [LensImportController::class, 'index'])->name('lenses.import.index');
@@ -270,7 +272,7 @@ Route::get('/doctors/signup/imp', [NewDoctorVerificationController::class, 'inde
 
 // Video/WebRTC
 Route::get('/client', function () { return view('video.index'); })->name('video');
-Route::get('/client/confo/{room}/{type}/{ref}',  "EnxRtc\RoomController@confo");
+Route::get('/client/confo/{room}/{type}/{ref}',  [\App\Http\Controllers\EnxRtc\RoomController::class, 'confo']);
 
 // Testing/Admin Entry
 Route::get('/admin-entry', function (){ return view('doctors.testing');})->name('testing');

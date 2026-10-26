@@ -20,6 +20,7 @@ class PatientInfo extends Model
         'street',
         'state',
         'emergency_phone',
+        'emergency_fullname',
         'patient_id',
         'fullname',
         'datee',
