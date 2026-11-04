@@ -174,7 +174,7 @@
               </label>
             </div>
             <h2 class="text-[#121417] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Lens Type</h2>
-            <h5>Single Vision Tintable</h5>
+            <h5>Single Vision</h5>
             <div class="px-4">
               <label class="flex gap-x-3 py-3 flex-row">
                 <input
@@ -183,7 +183,7 @@
                   value="single vision tintable"
                   class="h-5 w-5 rounded border-[#dde0e4] border-2 bg-transparent text-[#d2e2f3] checked:bg-[#d2e2f3] checked:border-[#d2e2f3] checked:bg-[image:--checkbox-tick-svg] focus:ring-0 focus:ring-offset-0 focus:border-[#dde0e4] focus:outline-none"
                 />
-                <p class="text-[#121417] text-base font-normal leading-normal">Single Vision Tintable Photochromic</p>
+                <p class="text-[#121417] text-base font-normal leading-normal">Single Vision Tintable</p>
               </label>
               <label class="flex gap-x-3 py-3 flex-row">
                 <input
@@ -192,20 +192,29 @@
                   value="single vision tintable photochromic"
                   class="h-5 w-5 rounded border-[#dde0e4] border-2 bg-transparent text-[#d2e2f3] checked:bg-[#d2e2f3] checked:border-[#d2e2f3] checked:bg-[image:--checkbox-tick-svg] focus:ring-0 focus:ring-offset-0 focus:border-[#dde0e4] focus:outline-none"
                 />
-                <p class="text-[#121417] text-base font-normal leading-normal">Single Vision Transition A/R</p>
+                <p class="text-[#121417] text-base font-normal leading-normal">Single Vision Tintable Photochromic</p>
               </label>
-               <label class="flex gap-x-3 py-3 flex-row">
+              <label class="flex gap-x-3 py-3 flex-row">
                 <input
                   name="singlevision[]"
                   type="checkbox"
                   value="single vision transition A/R"
                   class="h-5 w-5 rounded border-[#dde0e4] border-2 bg-transparent text-[#d2e2f3] checked:bg-[#d2e2f3] checked:border-[#d2e2f3] checked:bg-[image:--checkbox-tick-svg] focus:ring-0 focus:ring-offset-0 focus:border-[#dde0e4] focus:outline-none"
                 />
+                <p class="text-[#121417] text-base font-normal leading-normal">Single Vision Transition A/R</p>
+              </label>
+               <label class="flex gap-x-3 py-3 flex-row">
+                <input
+                  name="singlevision[]"
+                  type="checkbox"
+                  value="single vision transition A/R B/C"
+                  class="h-5 w-5 rounded border-[#dde0e4] border-2 bg-transparent text-[#d2e2f3] checked:bg-[#d2e2f3] checked:border-[#d2e2f3] checked:bg-[image:--checkbox-tick-svg] focus:ring-0 focus:ring-offset-0 focus:border-[#dde0e4] focus:outline-none"
+                />
                 <p class="text-[#121417] text-base font-normal leading-normal">Single Vision Transition A/R B/C</p>
               </label>
             </div>
             {{-- Bifocal --}}
-            <h2>Bifocal Tintable</h2>
+            <h2>Bifocal</h2>
             <div class="px-4">
               <label class="flex gap-x-3 py-3 flex-row">
                 <input
@@ -214,13 +223,22 @@
                   value="bifocal tintable"
                   class="h-5 w-5 rounded border-[#dde0e4] border-2 bg-transparent text-[#d2e2f3] checked:bg-[#d2e2f3] checked:border-[#d2e2f3] checked:bg-[image:--checkbox-tick-svg] focus:ring-0 focus:ring-offset-0 focus:border-[#dde0e4] focus:outline-none"
                 />
-                <p class="text-[#121417] text-base font-normal leading-normal">Bifocal transition A/R</p>
+                <p class="text-[#121417] text-base font-normal leading-normal">Bifocal Tintable</p>
               </label>
               <label class="flex gap-x-3 py-3 flex-row">
                 <input
                   name="bifocal[]"
                   type="checkbox"
                   value="bifocal transition A/R"
+                  class="h-5 w-5 rounded border-[#dde0e4] border-2 bg-transparent text-[#d2e2f3] checked:bg-[#d2e2f3] checked:border-[#d2e2f3] checked:bg-[image:--checkbox-tick-svg] focus:ring-0 focus:ring-offset-0 focus:border-[#dde0e4] focus:outline-none"
+                />
+                <p class="text-[#121417] text-base font-normal leading-normal">Bifocal Transition A/R</p>
+              </label>
+              <label class="flex gap-x-3 py-3 flex-row">
+                <input
+                  name="bifocal[]"
+                  type="checkbox"
+                  value="bifocal transition A/R B/C"
                   class="h-5 w-5 rounded border-[#dde0e4] border-2 bg-transparent text-[#d2e2f3] checked:bg-[#d2e2f3] checked:border-[#d2e2f3] checked:bg-[image:--checkbox-tick-svg] focus:ring-0 focus:ring-offset-0 focus:border-[#dde0e4] focus:outline-none"
                 />
                 <p class="text-[#121417] text-base font-normal leading-normal">Bifocal transition A/R B/C</p>

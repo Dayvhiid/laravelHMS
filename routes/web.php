@@ -11,6 +11,7 @@ use App\Http\Controllers\ImageUpload;
 use App\Http\Controllers\SmsController;
 use App\Http\Controllers\DrugController;
 use App\Http\Controllers\LensController;
+use App\Http\Controllers\PharmacyController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\FrameController;
@@ -90,6 +91,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/search/treatment/get', [VitalsController::class, 'search'])->name('search.get');
     Route::get('/search/vitals', [VitalsController::class, 'display'])->name('search.vitals');
     Route::get('/search/vitals/get', [VitalsController::class, 'vitals'])->name('vitals.get');
+
+    //Pharmacy
+    Route::get('/pharmacy', [PharmacyController::class, 'index'])->name('pharmacy.index');
+    Route::get('/pharmacy/search', [PharmacyController::class, 'search'])->name('pharmacy.search');
 
 
 
