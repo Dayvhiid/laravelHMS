@@ -66,7 +66,7 @@ class DrugController extends Controller
     
     $drug->update($data);
     
-    return redirect(route('doctors.list'))->with('success', 'Drug updated successfully');
+    return redirect()->back()->with('success', "Drug \"{$drug->name}\" updated successfully");
 }
     public function destroy(Drug $drugs){
           $drugs->delete();

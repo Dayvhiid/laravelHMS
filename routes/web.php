@@ -205,7 +205,6 @@ Route::middleware('auth')->group(function () {
 
      //Update Patient Info
     Route::put('/users/{id}', [PatientInfoController::class, 'update'])->name('users.update'); //Hold
-    Route::get('/doctors/{drugs}/edit', [DrugController::class, 'updated'])->name('drugs.edit'); //Hold
 
 
     //Image Uplaod

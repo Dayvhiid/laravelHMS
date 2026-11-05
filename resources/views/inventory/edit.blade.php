@@ -15,6 +15,9 @@
         @endforeach
     </ul>
     @endif
+    @if (session('success'))
+        <p><strong>{{ session('success') }}</strong></p>
+    @endif
     <h1>Update Drug</h1>
     <form method="post" action="{{route('doctors.update', ['drugs' => $drug])}}">
         @csrf
@@ -29,11 +32,11 @@
        </div>
        <div>
         <label>Type: </label>
-        <input type="text" placeholder="Enter the price" value="{{$drug->drug_type}}" readonly>
+        <input type="text" name="drug_type" placeholder="Enter the drug type" value="{{$drug->drug_type}}" readonly>
      </div>
      <div>
         <label>Quantity: </label>
-        <input type="text" placeholder="Enter the price" value="{{$drug->quantity}}" readonly>
+        <input type="text" name="quantity" placeholder="Enter the quantity" value="{{$drug->quantity}}" readonly>
      </div>
      {{-- <div>
         <label>Description: </label>
