@@ -147,6 +147,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/drug', [AdminController::class, 'drugsIndexTwo'])->name('admin2.drugs');
     Route::get('/admin/drug/list', [AdminController::class, 'drugList'])->name('admin2.druglist');
     Route::get('/admin/inventory/store', [AdminController::class, 'inventoryIndex'])->name('admin2.inventory');
+    Route::put('/admin/inventory/{item}/update', [InventoryController::class, 'update'])->name('admin2.inventory.update');
+    Route::delete('/admin/inventory/{item}/delete', [InventoryController::class, 'destroy'])->name('admin2.inventory.delete');
     Route::get('/admin/frame', [AdminController::class, 'frameIndexTwo'])->name('admin2.frame');
     Route::get('/admin/framelist', [AdminController::class, 'framelist'])->name('admin2.framelist');
     Route::get('/admin2/lens', [AdminController::class, 'lensIndexTwo'])->name('admin2.lens');

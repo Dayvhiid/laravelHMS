@@ -43,6 +43,32 @@ class InventoryController extends Controller
         $item = Inventory::paginate(9);
         return view('inventory.list', ['item' => $item]);
     }
+    public function update(Request $request, $item){
+        $inventory = Inventory::findOrFail($item);
+
+        $data = $request->validate([
+            'date' => 'required|date',
+            'new_stock' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
+            'patient_code' => 'required|string|max:255',
+            'booklet_no' => 'required|string|max:255',
+            'qty_in' => 'required|numeric|min:0',
+            'qty_out' => 'required|numeric|min:0',
+        ]);
+
+        // Balance is always derived from the quantities, never taken from the request.
+        $data['balance'] = (string) ($data['qty_in'] - $data['qty_out']);
+
+        $inventory->update($data);
+
+        return redirect()->back()->with('success', "Inventory item \"{$inventory->name}\" updated successfully");
+    }
+    public function destroy($item){
+        $inventory = Inventory::findOrFail($item);
+        $inventory->delete();
+
+        return redirect()->back()->with('success', "Inventory item \"{$inventory->name}\" deleted successfully");
+    }
     public function delete($item){
        $test = Inventory::find($item);
        $test->delete();
