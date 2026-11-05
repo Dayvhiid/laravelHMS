@@ -15,6 +15,8 @@ use App\Http\Controllers\PharmacyController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\FrameController;
+use App\Http\Controllers\StockLogController;
+use App\Http\Controllers\OpticianStockController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\Admin2Controller;
 use App\Http\Controllers\CombinationController;
@@ -147,6 +149,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/drug', [AdminController::class, 'drugsIndexTwo'])->name('admin2.drugs');
     Route::get('/admin/drug/list', [AdminController::class, 'drugList'])->name('admin2.druglist');
     Route::get('/admin/inventory/store', [AdminController::class, 'inventoryIndex'])->name('admin2.inventory');
+    Route::post('/admin/stock/store', [InventoryController::class, 'storeFrameStock'])->name('admin2.stock.store');
+    Route::get('/admin/stock-log', [StockLogController::class, 'index'])->name('admin2.stocklog');
     Route::put('/admin/inventory/{item}/update', [InventoryController::class, 'update'])->name('admin2.inventory.update');
     Route::delete('/admin/inventory/{item}/delete', [InventoryController::class, 'destroy'])->name('admin2.inventory.delete');
     Route::get('/admin/frame', [AdminController::class, 'frameIndexTwo'])->name('admin2.frame');
@@ -226,6 +230,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/optician/list', [OpticianController::class, 'list'])->name('optician.list');
     Route::get('/optician/find', [OpticianController::class, 'find'])->name('optician.find');
     Route::get('/optician/search', [OpticianController::class, 'search'])->name('optician.search'); //search
+
+    // Optician stock book: categories and their records
+    Route::get('/optician/stock', [OpticianStockController::class, 'index'])->name('optician.stock');
+    Route::post('/optician/stock/categories', [OpticianStockController::class, 'storeCategory'])->name('optician.stock.categories.store');
+    Route::put('/optician/stock/{category}', [OpticianStockController::class, 'updateCategory'])->name('optician.stock.categories.update');
+    Route::delete('/optician/stock/{category}', [OpticianStockController::class, 'destroyCategory'])->name('optician.stock.categories.destroy');
+    Route::get('/optician/stock/{category}', [OpticianStockController::class, 'show'])->name('optician.stock.show');
+    Route::post('/optician/stock/{category}/records', [OpticianStockController::class, 'storeRecord'])->name('optician.stock.records.store');
+    Route::put('/optician/stock/{category}/records/{record}', [OpticianStockController::class, 'updateRecord'])->name('optician.stock.records.update');
+    Route::delete('/optician/stock/{category}/records/{record}', [OpticianStockController::class, 'destroyRecord'])->name('optician.stock.records.destroy');
 
 
     //Services

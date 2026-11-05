@@ -72,13 +72,15 @@ class DoctorsController extends Controller
 
     public function show(){
         $appointments = Appointment::latest()->limit(5)->get();
-        $notifications = Notification::latest()->limit(7)->get();
+        // Treatment notifications are for opticians only.
+        $notifications = Notification::patientArrivals()->latest()->limit(7)->get();
         return view('doctors.index', compact('appointments','notifications')   );
     }
 
     public function testShow(){
          $appointments = Appointment::latest()->limit(5)->get();
-        $notifications = Notification::latest()->limit(7)->get();
+        // Treatment notifications are for opticians only.
+        $notifications = Notification::patientArrivals()->latest()->limit(7)->get();
         return view('doctors.indexTwo', compact('appointments','notifications'));
     }
 

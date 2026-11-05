@@ -82,12 +82,12 @@
                       <td class="table-bd426a45-3b65-4bc2-a180-0d5449f4261c-column-240 h-[72px] px-4 py-2 w-[400px] text-[#6a7681] text-sm font-normal leading-normal">
                          {{ $optician->patient_name}} 
                       </td>
-                      <td class="table-bd426a45-3b65-4bc2-a180-0d5449f4261c-column-360 h-[72px] px-4 py-2 w-[400px] text-[#6a7681] text-sm font-normal leading-normal"> {{ $optician->power}} </td>
-                      <td class="table-bd426a45-3b65-4bc2-a180-0d5449f4261c-column-480 h-[72px] px-4 py-2 w-[400px] text-[#6a7681] text-sm font-normal leading-normal"> {{  $optician->posted_from }} </td>
+                      <td class="table-bd426a45-3b65-4bc2-a180-0d5449f4261c-column-360 h-[72px] px-4 py-2 w-[400px] text-[#6a7681] text-sm font-normal leading-normal whitespace-pre-line align-top"> {{ $optician->power}} </td>
+                      <td class="table-bd426a45-3b65-4bc2-a180-0d5449f4261c-column-480 h-[72px] px-4 py-2 w-[400px] text-[#6a7681] text-sm font-normal leading-normal whitespace-pre-line align-top"> {{  $optician->posted_from }} </td>
                       <td class="table-bd426a45-3b65-4bc2-a180-0d5449f4261c-column-600 h-[72px] px-4 py-2 w-[400px] text-[#6a7681] text-sm font-normal leading-normal">
                         {{ $optician->card_number }}
                       </td>
-                      <td class="table-bd426a45-3b65-4bc2-a180-0d5449f4261c-column-720 h-[72px] px-4 py-2 w-[400px] text-[#6a7681] text-sm font-normal leading-normal">{{ $optician->frame_type}}</td>
+                      <td class="table-bd426a45-3b65-4bc2-a180-0d5449f4261c-column-720 h-[72px] px-4 py-2 w-[400px] text-[#6a7681] text-sm font-normal leading-normal whitespace-pre-line align-top">{{ $optician->frame_type}}</td>
                       <td class="table-bd426a45-3b65-4bc2-a180-0d5449f4261c-column-840 h-[72px] px-4 py-2 w-[400px] text-[#6a7681] text-sm font-normal leading-normal">{{ $optician->qty}} </td>
                     </tr>
                     @endforeach

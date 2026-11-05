@@ -15,24 +15,13 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   </head>
   <body>
-       <form action="{{ route('inventory.store')}}" method="POST">
+    @php
+      $inputClass = 'form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111518] focus:outline-0 focus:ring-0 border border-[#d5dce2] bg-gray-50 focus:border-[#d5dce2] h-14 placeholder:text-[#5e7687] px-3 text-base font-normal leading-normal';
+      $cellClass = 'h-[72px] px-4 py-2 text-[#4d7999] text-sm font-normal leading-normal';
+      $rows = array_values(old('inputs', [[]]));
+    @endphp
+       <form action="{{ route('admin2.stock.store') }}" method="POST" id="stock-form">
          @csrf
-        @method('POST')
-         @if($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
-        @if (Session::has('success'))
-            <div class="alert alert-success text-center">
-                <p>{{ Session::get('success')}}</p>
-            </div>
-        @endif
     <div class="relative flex size-full min-h-screen flex-col bg-slate-50 group/design-root overflow-x-hidden" style='font-family: Inter, "Noto Sans", sans-serif;'>
       <div class="layout-container flex h-full grow flex-col">
         <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7eef3] px-10 py-3">
@@ -53,6 +42,7 @@
             <div class="flex items-center gap-9">
                <a class="text-[#0e161b] text-sm font-medium leading-normal"  href="{{route('services.index')}}">Services</a>
               <a class="text-[#0e161b] text-sm font-medium leading-normal"  href="{{route('admin2.inventory')}}">Inventory List</a>
+              <a class="text-[#0e161b] text-sm font-medium leading-normal"  href="{{route('admin2.stocklog')}}">Stock Log</a>
               <a class="text-[#0e161b] text-sm font-medium leading-normal" href="{{route('admin2.drugs')}}" >Drug</a>
               <a class="text-[#0e161b] text-sm font-medium leading-normal"  href="{{route('admin2.frame')}}"  >Frame</a>
               <a class="text-[#0e161b] text-sm font-medium leading-normal"   href="{{route('admin2.lens')}}">Lens</a>
@@ -65,117 +55,98 @@
         </header>
         <div class="px-6 flex flex-1 justify-center py-5">
           <div class="layout-content-container flex flex-col w-full flex-1">
-            <div class="flex flex-wrap justify-between gap-3 p-4"><p class="text-[#0e161b] tracking-light text-[32px] font-bold leading-tight min-w-72">Stock Management</p></div>
+            <div class="flex flex-wrap justify-between gap-3 p-4">
+              <p class="text-[#0e161b] tracking-light text-[32px] font-bold leading-tight min-w-72">Stock Management</p>
+              <a href="{{ route('admin2.stocklog') }}" class="self-center text-sm font-bold text-[#1581cf]">View stock log &rarr;</a>
+            </div>
+
+            @if (Session::has('success'))
+              <div class="mx-4 mb-2 rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-green-800" role="status">
+                {{ Session::get('success') }}
+              </div>
+            @endif
+            @if ($errors->any())
+              <div class="mx-4 mb-2 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-red-800" role="alert">
+                <ul class="list-disc pl-5">
+                  @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                  @endforeach
+                </ul>
+              </div>
+            @endif
+            @if ($frames->isEmpty())
+              <div class="mx-4 mb-2 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-amber-800">
+                There are no frames on the frame list yet. <a class="font-bold underline" href="{{ route('admin2.frame') }}">Add frames</a> first, then take stock here.
+              </div>
+            @endif
+
             <div class="px-4 py-3 @container">
               <div class="flex overflow-x-auto rounded-xl border border-[#d0dde7] bg-slate-50">
                 <table class="flex-1" id="table">
                   <thead>
                     <tr class="bg-slate-50">
-                      <th class="table-15609774-3410-47a9-be9c-d86617fbc518-column-120 px-4 py-3 text-left text-[#0e161b] w-[170px] text-sm font-medium leading-normal" >Date</th>
-                      <th class="table-15609774-3410-47a9-be9c-d86617fbc518-column-240 px-4 py-3 text-left text-[#0e161b] w-[160px] text-sm font-medium leading-normal">
-                        New Stock
-                      </th>
-                      <th class="table-15609774-3410-47a9-be9c-d86617fbc518-column-360 px-4 py-3 text-left text-[#0e161b] w-[340px] text-sm font-medium leading-normal">
-                        Name
-                      </th>
-                      <th class="table-15609774-3410-47a9-be9c-d86617fbc518-column-480 px-4 py-3 text-left text-[#0e161b] w-[200px] text-sm font-medium leading-normal">
-                        Patient Code
-                      </th>
-                      <th class="table-15609774-3410-47a9-be9c-d86617fbc518-column-600 px-4 py-3 text-left text-[#0e161b] w-[200px] text-sm font-medium leading-normal">Reciept Number</th>
-                      <th class="table-15609774-3410-47a9-be9c-d86617fbc518-column-720 px-4 py-3 text-left text-[#0e161b] w-[130px] text-sm font-medium leading-normal">Qty In</th>
-                      <th class="table-15609774-3410-47a9-be9c-d86617fbc518-column-840 px-4 py-3 text-left text-[#0e161b] w-[130px] text-sm font-medium leading-normal">Qty Out</th>
-                       <th class="table-15609774-3410-47a9-be9c-d86617fbc518-column-840 px-4 py-3 text-left text-[#0e161b] w-[130px] text-sm font-medium leading-normal">Balance</th>
-                        <th class="table-15609774-3410-47a9-be9c-d86617fbc518-column-840 px-4 py-3 text-left text-[#0e161b] w-[120px] text-sm font-medium leading-normal">Action</th>
+                      <th class="px-4 py-3 text-left text-[#0e161b] w-[170px] text-sm font-medium leading-normal">Date</th>
+                      <th class="px-4 py-3 text-left text-[#0e161b] w-[340px] text-sm font-medium leading-normal">Frame (name &mdash; type)</th>
+                      <th class="px-4 py-3 text-left text-[#0e161b] w-[220px] text-sm font-medium leading-normal">Patient Name</th>
+                      <th class="px-4 py-3 text-left text-[#0e161b] w-[200px] text-sm font-medium leading-normal">Patient Code</th>
+                      <th class="px-4 py-3 text-left text-[#0e161b] w-[200px] text-sm font-medium leading-normal">Reciept Number</th>
+                      <th class="px-4 py-3 text-left text-[#0e161b] w-[130px] text-sm font-medium leading-normal">Qty In</th>
+                      <th class="px-4 py-3 text-left text-[#0e161b] w-[130px] text-sm font-medium leading-normal">Qty Out</th>
+                      <th class="px-4 py-3 text-left text-[#0e161b] w-[130px] text-sm font-medium leading-normal">Balance</th>
+                      <th class="px-4 py-3 text-left text-[#0e161b] w-[120px] text-sm font-medium leading-normal">Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="border-t border-t-[#d0dde7]">
-                      <td class="table-15609774-3410-47a9-be9c-d86617fbc518-column-120 h-[72px] px-4 py-2 text-[#4d7999] text-sm font-normal leading-normal">
-                         <input
-                            placeholder="Enter Date"
-                            name="inputs[0][date]"
-                            type="date"
-                            class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111518] focus:outline-0 focus:ring-0 border border-[#d5dce2] bg-gray-50 focus:border-[#d5dce2] h-14 placeholder:text-[#5e7687] px-3 text-base font-normal leading-normal"
-                            value=""
-                            />
-                      </td>
-                      <td class="table-15609774-3410-47a9-be9c-d86617fbc518-column-240 h-[72px] px-4 py-2 text-[#4d7999] text-sm font-normal leading-normal">
-                          <input
-                            placeholder="Enter Stock"
-                                name="inputs[0][new_stock]"
-                            class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111518] focus:outline-0 focus:ring-0 border border-[#d5dce2] bg-gray-50 focus:border-[#d5dce2] h-14 placeholder:text-[#5e7687] px-3 text-base font-normal leading-normal"
-                            value=""
-                            />
-                      </td>
-                      <td class="table-15609774-3410-47a9-be9c-d86617fbc518-column-360 h-[72px] px-4 py-2 text-[#4d7999] text-sm font-normal leading-normal">
-                         <input
-                        placeholder="Enter Stock Name"
-                            name="inputs[0][name]"
-                        class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111518] focus:outline-0 focus:ring-0 border border-[#d5dce2] bg-gray-50 focus:border-[#d5dce2] h-14 placeholder:text-[#5e7687] px-3 text-base font-normal leading-normal"
-                        value=""
-                        />
-                      </td>
-                      <td class="table-15609774-3410-47a9-be9c-d86617fbc518-column-480 h-[72px] px-4 py-2 text-[#4d7999] text-sm font-normal leading-normal">
-                         <input
-                            placeholder="Enter Patient Code"
-                            name="inputs[0][patient_code]"
-                            class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111518] focus:outline-0 focus:ring-0 border border-[#d5dce2] bg-gray-50 focus:border-[#d5dce2] h-14 placeholder:text-[#5e7687] px-3 text-base font-normal leading-normal"
-                            value=""
-                            />
-                      </td>
-                      <td class="table-15609774-3410-47a9-be9c-d86617fbc518-column-600 h-[72px] px-4 py-2 text-[#4d7999] text-sm font-normal leading-normal">
-                         <input
-                            placeholder="Enter Code"
-                            name="inputs[0][booklet_no]"
-                            class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111518] focus:outline-0 focus:ring-0 border border-[#d5dce2] bg-gray-50 focus:border-[#d5dce2] h-14 placeholder:text-[#5e7687] px-3 text-base font-normal leading-normal"
-                            value=""
-                            />
-                      </td>
-                      <td class="table-15609774-3410-47a9-be9c-d86617fbc518-column-720 h-[72px] px-4 py-2 text-[#4d7999] text-sm font-normal leading-normal">
-                         <input
-                            placeholder="Enter Quantity in"
-                            name="inputs[0][qty_in]"
-                            class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111518] focus:outline-0 focus:ring-0 border border-[#d5dce2] bg-gray-50 focus:border-[#d5dce2] h-14 placeholder:text-[#5e7687] px-3 text-base font-normal leading-normal"
-                            value=""
-                            />
-                      </td>
-                      <td class="table-15609774-3410-47a9-be9c-d86617fbc518-column-840 h-[72px] px-4 py-2 text-[#4d7999] text-sm font-normal leading-normal">
-                         <input
-                            placeholder="Enter Quantity Out"
-                            name="inputs[0][qty_out]"
-                            class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111518] focus:outline-0 focus:ring-0 border border-[#d5dce2] bg-gray-50 focus:border-[#d5dce2] h-14 placeholder:text-[#5e7687] px-3 text-base font-normal leading-normal"
-                            value=""
-                            />
-                      </td>
-                        <td class="table-15609774-3410-47a9-be9c-d86617fbc518-column-840 h-[72px] px-4 py-2 text-[#4d7999] text-sm font-normal leading-normal">
-                         <input
-                            placeholder="Enter Balance"
-                            name="inputs[0][balance]"
-                            class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111518] focus:outline-0 focus:ring-0 border border-[#d5dce2] bg-gray-50 focus:border-[#d5dce2] h-14 placeholder:text-[#5e7687] px-3 text-base font-normal leading-normal"
-                            value=""
-                            />
-                      </td>
-                        <td class="table-15609774-3410-47a9-be9c-d86617fbc518-column-840 h-[72px] px-4 py-2 text-[#4d7999] text-sm font-normal leading-normal">
-                           <button
-                           type="button"
-                           name="add"
-                            id="add"
-                            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#e7eef3] text-[#0e161b] text-sm font-bold leading-normal tracking-[0.015em]"
-                        >
-                            <span  class="truncate"  name="add" id="add">Add</span>
-                        </button>
-                      </td>
-                    </tr>
+                    @foreach ($rows as $i => $row)
+                      <tr class="border-t border-t-[#d0dde7] stock-row">
+                        <td class="{{ $cellClass }}">
+                          <input type="date" name="inputs[{{ $i }}][date]" class="{{ $inputClass }}" value="{{ $row['date'] ?? now()->toDateString() }}" required />
+                        </td>
+                        <td class="{{ $cellClass }}">
+                          <select name="inputs[{{ $i }}][frame_id]" class="{{ $inputClass }} js-frame" required>
+                            <option value="">Select a frame</option>
+                            @foreach ($frames as $frame)
+                              <option value="{{ $frame->id }}" data-qty="{{ (int) $frame->quantity }}" @selected((string) ($row['frame_id'] ?? '') === (string) $frame->id)>{{ $frame->name }}{{ $frame->special_code ? ' — '.$frame->special_code : '' }} (in stock: {{ (int) $frame->quantity }})</option>
+                            @endforeach
+                          </select>
+                        </td>
+                        <td class="{{ $cellClass }}">
+                          <input placeholder="Enter Patient Name" name="inputs[{{ $i }}][patient_name]" class="{{ $inputClass }}" value="{{ $row['patient_name'] ?? '' }}" required />
+                        </td>
+                        <td class="{{ $cellClass }}">
+                          <input placeholder="Enter Patient Code" name="inputs[{{ $i }}][patient_code]" class="{{ $inputClass }}" value="{{ $row['patient_code'] ?? '' }}" required />
+                        </td>
+                        <td class="{{ $cellClass }}">
+                          <input placeholder="Enter Code" name="inputs[{{ $i }}][booklet_no]" class="{{ $inputClass }}" value="{{ $row['booklet_no'] ?? '' }}" required />
+                        </td>
+                        <td class="{{ $cellClass }}">
+                          <input type="number" min="0" step="1" placeholder="0" name="inputs[{{ $i }}][qty_in]" class="{{ $inputClass }} js-qty-in" value="{{ $row['qty_in'] ?? 0 }}" required />
+                        </td>
+                        <td class="{{ $cellClass }}">
+                          <input type="number" min="0" step="1" placeholder="0" name="inputs[{{ $i }}][qty_out]" class="{{ $inputClass }} js-qty-out" value="{{ $row['qty_out'] ?? 0 }}" required />
+                        </td>
+                        <td class="{{ $cellClass }}">
+                          <input class="{{ $inputClass }} js-balance" placeholder="Auto" title="Calculated automatically: frame stock + Qty In − Qty Out" readonly tabindex="-1" />
+                        </td>
+                        <td class="{{ $cellClass }}">
+                          @if ($i === 0)
+                            <button type="button" id="add" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#e7eef3] text-[#0e161b] text-sm font-bold leading-normal tracking-[0.015em]">
+                              <span class="truncate">Add</span>
+                            </button>
+                          @else
+                            <button type="button" class="remove-table-row flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-red-500 text-white text-sm font-bold leading-normal tracking-[0.015em]">Remove</button>
+                          @endif
+                        </td>
+                      </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>
             </div>
-        
+
             <div class="flex px-4 py-3 justify-end">
-              <button
-                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#1581cf] text-slate-50 text-sm font-bold leading-normal tracking-[0.015em]"
-              >
-                <span type="submit" class="truncate">Submit</span>
+              <button type="submit" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#1581cf] text-slate-50 text-sm font-bold leading-normal tracking-[0.015em]" @disabled($frames->isEmpty())>
+                <span class="truncate">Submit</span>
               </button>
             </div>
           </div>
@@ -185,87 +156,49 @@
 </form>
 <script>
 $(document).ready(function() {
-  var rowCounter = 0;
+  var rowCounter = $('#table tbody tr.stock-row').length - 1;
+
+  // Balance = the chosen frame's current stock + Qty In - Qty Out. The server recalculates it on save.
+  function recalc(row) {
+    var option = row.find('.js-frame option:selected');
+    var balance = row.find('.js-balance');
+    if (!option.val()) { balance.val(''); return; }
+    var stock = parseInt(option.data('qty'), 10) || 0;
+    var qtyIn = parseInt(row.find('.js-qty-in').val(), 10) || 0;
+    var qtyOut = parseInt(row.find('.js-qty-out').val(), 10) || 0;
+    balance.val(stock + qtyIn - qtyOut);
+  }
+
+  $(document).on('change input', '.js-frame, .js-qty-in, .js-qty-out', function() {
+    recalc($(this).closest('tr'));
+  });
+  $('#table tbody tr.stock-row').each(function() { recalc($(this)); });
 
   $(document).on('click', '#add', function() {
     rowCounter++;
+    var newRow = $('#table tbody tr.stock-row').first().clone();
 
-    var newRow = $('<tr class="border-t border-t-[#d0dde7]">');
+    newRow.find('input, select').each(function() {
+      var name = $(this).attr('name');
+      if (name) {
+        $(this).attr('name', name.replace(/inputs\[\d+\]/, 'inputs[' + rowCounter + ']'));
+      }
+    });
+    // Keep the date; start everything else empty.
+    newRow.find('input:not([type=date])').val('');
+    newRow.find('.js-qty-in, .js-qty-out').val('0');
+    newRow.find('.js-frame').val('');
+    newRow.find('#add').replaceWith(
+      $('<button>', {
+        type: 'button',
+        class: 'remove-table-row flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-red-500 text-white text-sm font-bold leading-normal tracking-[0.015em]',
+        text: 'Remove'
+      })
+    );
 
-    // Date
-    newRow.append($('<td class="h-[72px] px-4 py-2">').append($('<input>', {
-      type: 'date',
-      name: 'inputs[' + rowCounter + '][date]',
-      placeholder: 'Enter Date',
-      class: 'form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111518] focus:outline-0 focus:ring-0 border border-[#d5dce2] bg-gray-50 focus:border-[#d5dce2] h-14 placeholder:text-[#5e7687] px-3 text-base font-normal leading-normal'
-    })));
-
-    // New Stock
-    newRow.append($('<td class="h-[72px] px-4 py-2">').append($('<input>', {
-      type: 'text',
-      name: 'inputs[' + rowCounter + '][new_stock]',
-      placeholder: 'Enter Stock',
-      class: 'form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111518] focus:outline-0 focus:ring-0 border border-[#d5dce2] bg-gray-50 focus:border-[#d5dce2] h-14 placeholder:text-[#5e7687] px-3 text-base font-normal leading-normal'
-    })));
-
-    // Name
-    newRow.append($('<td class="h-[72px] px-4 py-2">').append($('<input>', {
-      type: 'text',
-      name: 'inputs[' + rowCounter + '][name]',
-      placeholder: 'Enter Name',
-      class: 'form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111518] focus:outline-0 focus:ring-0 border border-[#d5dce2] bg-gray-50 focus:border-[#d5dce2] h-14 placeholder:text-[#5e7687] px-3 text-base font-normal leading-normal'
-    })));
-
-    // patient code
-    newRow.append($('<td class="h-[72px] px-4 py-2">').append($('<input>', {
-      type: 'text',
-      name: 'inputs[' + rowCounter + '][patient_code]',
-      placeholder: 'Enter Patient Code',
-      class: 'form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111518] focus:outline-0 focus:ring-0 border border-[#d5dce2] bg-gray-50 focus:border-[#d5dce2] h-14 placeholder:text-[#5e7687] px-3 text-base font-normal leading-normal'
-    })));
-      //Reciept No
-    newRow.append($('<td class="h-[72px] px-4 py-2">').append($('<input>', {
-      type: 'text',
-      name: 'inputs[' + rowCounter + '][booklet_no]',
-      placeholder: 'Enter Code',
-      class: 'form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111518] focus:outline-0 focus:ring-0 border border-[#d5dce2] bg-gray-50 focus:border-[#d5dce2] h-14 placeholder:text-[#5e7687] px-3 text-base font-normal leading-normal'
-    })));
-      //Qunatity In
-    newRow.append($('<td class="h-[72px] px-4 py-2">').append($('<input>', {
-      type: 'text',
-      name: 'inputs[' + rowCounter + '][qty_in]',
-      placeholder: 'Enter Quantity In',
-      class: 'form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111518] focus:outline-0 focus:ring-0 border border-[#d5dce2] bg-gray-50 focus:border-[#d5dce2] h-14 placeholder:text-[#5e7687] px-3 text-base font-normal leading-normal'
-    })));
-         //Qunatity out
-    newRow.append($('<td class="h-[72px] px-4 py-2">').append($('<input>', {
-      type: 'text',
-      name: 'inputs[' + rowCounter + '][qty_out]',
-      placeholder: 'Enter Quantity Out',
-      class: 'form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111518] focus:outline-0 focus:ring-0 border border-[#d5dce2] bg-gray-50 focus:border-[#d5dce2] h-14 placeholder:text-[#5e7687] px-3 text-base font-normal leading-normal'
-    })));
-         //Balance 
-    newRow.append($('<td class="h-[72px] px-4 py-2">').append($('<input>', {
-      type: 'text',
-      name: 'inputs[' + rowCounter + '][balance]',
-      placeholder: 'Enter Balance',
-      class: 'form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111518] focus:outline-0 focus:ring-0 border border-[#d5dce2] bg-gray-50 focus:border-[#d5dce2] h-14 placeholder:text-[#5e7687] px-3 text-base font-normal leading-normal'
-    })));
-
-    // Add the remaining cells similarly...
-
-    // Remove button
-    newRow.append($('<td class="h-[72px] px-4 py-2">').append($('<button>', {
-      type: 'button',
-      class: 'remove-table-row flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-red-500 text-white text-sm font-bold leading-normal tracking-[0.015em]',
-      text: 'Remove'
-    })));
-
-    // Append to the table body (target tbody, not just table)
-    $('table tbody').append(newRow);
+    $('#table tbody').append(newRow);
   });
 
-  // Remove row
   $(document).on('click', '.remove-table-row', function() {
     $(this).closest('tr').remove();
   });

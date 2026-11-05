@@ -9,10 +9,12 @@ class Inventory extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'frame_id',
         'sn',
         'date',
         'new_stock',
         'name',
+        'patient_name',
         'patient_code',
         'receipt_number',
         'qty_in',
@@ -20,4 +22,9 @@ class Inventory extends Model
         'balance',
         'booklet_no',
     ];
+
+    public function frame(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Frame::class);
+    }
 }

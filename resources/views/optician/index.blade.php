@@ -39,6 +39,8 @@
                     <a class="text-sm font-medium text-slate-700 hover:text-[#1993e5] transition-colors duration-200"
                         href=" {{ route('search.treatment') }}">Treatment Record</a>
                     <a class="text-sm font-medium text-slate-700 hover:text-[#1993e5] transition-colors duration-200"
+                        href="{{ route('optician.stock') }}">Stock</a>
+                    <a class="text-sm font-medium text-slate-700 hover:text-[#1993e5] transition-colors duration-200"
                         href="{{ route('admin2.lens') }}">Lens</a>
                 </nav>
             </header>
@@ -52,14 +54,16 @@
                                     style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCRH2DFNkpUiBX198iz1URgxJjwoNNy3vmppbmW84ca7CsLActnFIXeQrVmF2YLrQG4f-GYYrurmgk67GSKQMqLCJnxm_wEYBuqumkgMvGthY6aBLa9x0U1vtxols04R3EmrDfEdsKCNsPTtguYFFiuynYvtDkYCUbhN15Qj757j8vgtg6GFKOw3pf6kXMFsAv2J-BMyQyhLtCjYtYPWeuFKNecyGUCAWs3COUlKqLR1SC3QH99SVXXF68uj23dXzrXfgrHVj1bakFp");'>
                                 </div>
                                 <div class="flex-grow">
-                                    @if ($notification->message === \App\Models\Notification::RETURNING_PATIENT)
+                                    @if ($notification->isTreatment())
+                                    <p class="text-xs font-medium text-[#9333ea] mb-1">New Treatment</p>
+                                    @elseif ($notification->message === \App\Models\Notification::RETURNING_PATIENT)
                                     <p class="text-xs font-medium text-[#16a34a] mb-1">Returning Patient</p>
                                     @else
                                     <p class="text-xs font-medium text-[#1993e5] mb-1">New Patient</p>
                                     @endif
                                     <h3 class="text-lg font-semibold text-slate-800 mb-1">{{ $notification->patient_name }}</h3>
                                     <p class="text-xs text-slate-500">{{ $notification->message }}</p>
-                                    <p class="text-xs text-slate-500">{{ $notification->created_at->diffForHumans() }}</p>
+                                    <p class="text-xs text-slate-500">{{ $notification->created_at->diffForHumans() }}@if ($notification->isTreatment() && $notification->added_by) &middot; by {{ $notification->added_by }}@endif</p>
                                     <div class="flex items-center gap-1">
                                         <p class="text-xs text-slate-500">{{ $notification->pid }}</p>
                                         <button onclick="copyPid(this, '{{ $notification->pid }}')" 
@@ -70,6 +74,12 @@
                                             </svg>
                                         </button>
                                     </div>
+                                    @if ($notification->treatmentUrl())
+                                        <a href="{{ $notification->treatmentUrl() }}"
+                                           class="mt-2 inline-flex items-center gap-1 rounded-md bg-[#1993e5] px-3 py-1.5 text-xs font-semibold text-white hover:bg-[#147bc0] transition-colors duration-200">
+                                            View treatment &rarr;
+                                        </a>
+                                    @endif
                                 </div>
                             </div>
                         </div>

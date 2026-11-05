@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Notification;
+use App\Models\PatientInfo;
 use App\Models\Treat;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TreatmentController extends Controller
 {
@@ -47,8 +50,29 @@ class TreatmentController extends Controller
         $treatment->special_order = isset($validatedData['specialorder']) ? json_encode($validatedData['specialorder']) : null;
         $treatment->progressive = isset($validatedData['progressive']) ? json_encode($validatedData['progressive']) : null;
         $treatment->invisible = isset($validatedData['invisible']) ? json_encode($validatedData['invisible']) : null;
-        $treatment->save();
-    
+
+        DB::transaction(function () use ($treatment) {
+            $treatment->save();
+
+            // Let the opticians know, with a link straight to this treatment.
+            $patient = $treatment->patient_id
+                ? PatientInfo::where('patient_id', $treatment->patient_id)->first()
+                : null;
+            $patientName = $patient
+                ? (($patient->first_name && $patient->last_name)
+                    ? $patient->first_name.' '.$patient->last_name
+                    : $patient->fullname)
+                : null;
+
+            Notification::create([
+                'message' => Notification::NEW_TREATMENT,
+                'patient_name' => $patientName ?: ($treatment->patient_id ?: 'Unknown patient'),
+                'added_by' => auth()->user()->name,
+                'pid' => $treatment->patient_id,
+                'treat_id' => $treatment->id,
+            ]);
+        });
+
         return redirect(route('doctors.status'))->with('msg', 'Patient\'s vitals recorded successfully');
     }
     

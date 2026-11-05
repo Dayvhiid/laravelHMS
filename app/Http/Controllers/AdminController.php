@@ -21,7 +21,8 @@ class AdminController extends Controller
         return view('admin.admin2.admin2');
     }
       public function indexTwo(){
-        return view('admin.admin2.newadmin2');
+        $frames = Frame::orderBy('name')->get(['id', 'name', 'special_code', 'quantity']);
+        return view('admin.admin2.newadmin2', ['frames' => $frames]);
     }
     public function drugsIndex(){
         return view('admin.admin2.admin2drugs');

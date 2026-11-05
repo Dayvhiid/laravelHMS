@@ -8,6 +8,9 @@ use App\Models\Drug;
 use App\Models\Lens;
 use App\Models\Frame;
 use App\Models\Invoice;
+use App\Models\PatientInfo;
+use App\Models\StockMovement;
+use App\Services\FrameStock;
 use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
@@ -107,6 +110,9 @@ class InvoiceController extends Controller
         $invoice->amount = $total; // Save the total amount after discount
     $invoice->save();
 
+    // For the stock log: the invoice's patient ID, matched to a registered patient's name when there is one.
+    $patientName = PatientInfo::where('patient_id', $invoice->pid)->value('fullname');
+
     // Process each input
     foreach ($request->input('inputs') as $input) {
         $name = $input['name'];
@@ -142,8 +148,11 @@ class InvoiceController extends Controller
 
         $frame = Frame::where('name', $cleanName)->first();
         if ($frame) {
-            $frame->quantity -= $qty;
-            $frame->save();
+            FrameStock::adjust($frame, 0, (int) $qty, StockMovement::SALE, [
+                'reference' => 'Invoice #'.$invoice->id,
+                'patient_code' => $invoice->pid,
+                'patient_name' => $patientName,
+            ]);
             continue;
         }
     }

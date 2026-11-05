@@ -105,8 +105,15 @@
 
 
                                     @foreach ($treatments as $treatment)
-                                        <tr class="border-t border-t-[#dde0e4]">
-                                          <td class="table-01f350db-fc4a-45fd-98af-7eb5564daaf5-column-840 h-[72px] px-4 py-2 text-[#677583] text-sm font-normal leading-normal"> {{ \Carbon\Carbon::parse($treatment->created_at)->format('F j, Y g:i A') }} </td>
+                                        @php $isLinked = (string) request('treatment') === (string) $treatment->id; @endphp
+                                        {{-- Each row can be linked to directly (e.g. from an optician's "New Treatment" notification). --}}
+                                        <tr id="treatment-{{ $treatment->id }}" class="border-t border-t-[#dde0e4] scroll-mt-24 {{ $isLinked ? 'bg-amber-50 outline outline-2 outline-amber-400' : '' }}" @if ($isLinked) aria-current="true" @endif>
+                                          <td class="table-01f350db-fc4a-45fd-98af-7eb5564daaf5-column-840 h-[72px] px-4 py-2 text-[#677583] text-sm font-normal leading-normal">
+                                            @if ($isLinked)
+                                                <span class="mb-1 inline-block rounded bg-amber-400 px-1.5 py-0.5 text-[11px] font-bold text-slate-900">New treatment</span><br>
+                                            @endif
+                                            {{ \Carbon\Carbon::parse($treatment->created_at)->format('F j, Y g:i A') }}
+                                          </td>
                                             <td
                                                 class="table-01f350db-fc4a-45fd-98af-7eb5564daaf5-column-120 h-[72px] px-4 py-2 text-[#677583] text-sm font-normal leading-normal">
                                                 {{ $treatment->patient_id }} </td>

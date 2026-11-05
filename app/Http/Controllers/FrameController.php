@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Frame;
+use App\Models\StockMovement;
+use App\Services\FrameStock;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FrameController extends Controller
 {
@@ -19,9 +22,14 @@ class FrameController extends Controller
             // 'inputs.*.drug_type' => 'required',
         ]);
 
-        foreach($request->inputs as $key => $value){
-            Frame::create($value);
-        }
+        DB::transaction(function () use ($request) {
+            foreach($request->inputs as $key => $value){
+                $frame = Frame::create($value);
+                if ((int) $frame->quantity !== 0) {
+                    FrameStock::recordSetQuantity($frame, 0, StockMovement::OPENING, ['note' => 'New frame added']);
+                }
+            }
+        });
         return redirect(route('doctors.status'))->with('msg','Frame List Updated Succesfully'); 
         // return redirect(route('frame.list'));
     }
@@ -37,9 +45,13 @@ class FrameController extends Controller
         $data = $request->validate([
             'name' => 'required',
             'price' => 'required',
-            'quantity' => 'required',
+            'quantity' => 'required|integer',
         ]);
-        $frames->update($data); 
+        DB::transaction(function () use ($frames, $data) {
+            $oldQuantity = (int) $frames->quantity;
+            $frames->update($data);
+            FrameStock::recordSetQuantity($frames, $oldQuantity, StockMovement::ADJUSTMENT, ['note' => 'Quantity changed on the frame list']);
+        });
         return redirect(route('frame.list'));
     }
     public function delete($frames){
